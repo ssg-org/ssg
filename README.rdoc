@@ -1,4 +1,5 @@
 == Install SSG
 
+
 - bundle install
 - rails s
