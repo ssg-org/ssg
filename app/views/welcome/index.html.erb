@@ -1,0 +1,18 @@
+<div class="left-menu">
+	<%=menu_item(0, 'SSG', 	'POCETNA', 'menu-grayish', {:active => false})%>
+	<%=menu_item(1, 1, 		'PARKIRANJE', 'menu-blueish', {:active => params[:menu] == '1'})%>
+	<%=menu_item(2, 2, 		'FASADE', 'menu-orangeish', {:active => params[:menu] == '2'})%>
+	<%=menu_item(3, 3, 		'OKOLIS', 'menu-greenish', {:active => params[:menu] == '3'})%>
+	<%=menu_item(4, 4, 		'RASVJETA', 'menu-yellowish', {:active => params[:menu] == '4'})%>
+	<%=menu_item(5, 5, 		'PUTEVI', 'menu-brownish', {:active => params[:menu] == '5'})%>
+</div>
+
+<div style="margin-left:50px; background-color:#213540; height:100%;">
+	<%=image_tag 'old-back.png'%>
+</div>
+
+<script>
+	$(document).ready(function() {
+		$('.left-menu-label').main_menu();
+	});
+</script>
