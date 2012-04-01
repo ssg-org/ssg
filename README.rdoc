@@ -3,3 +3,5 @@
 
 - bundle install
 - rails s
+
+Enjoy!
