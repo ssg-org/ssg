@@ -5,4 +5,6 @@ tmp
 .DS_Store
 *.cache
 public/system/**/*
+public/assets
 db/schema.rb
+
