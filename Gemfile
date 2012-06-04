@@ -8,7 +8,7 @@ gem 'rails', '3.2.2'
 gem 'sqlite3'
 gem 'execjs'
 gem 'therubyracer'
-
+gem 'oauth2'
 
 # Gems used only for assets and not required
 # in production environments by default.
