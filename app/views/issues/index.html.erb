@@ -1,0 +1,33 @@
+<div style="float:right;">
+	Welcome <%=@user.first_name%>
+	<% if @user.role == User::ROLE_GUEST %>
+		<a href='#' onclick="fb_login(); return false;">LOGIN</a>
+	<% else %>
+		<a href='<%=logout_users_path()%>'>Logout</a>
+	<% end %>
+</div>
+
+<br style="clear:both;"/>
+<script>
+function fb_login(){
+	var  screenX     = 	typeof window.screenX != 'undefined' ? window.screenX : window.screenLeft;
+	var  screenY     = 	typeof window.screenY != 'undefined' ? window.screenY : window.screenTop;
+	var  outerWidth  = 	typeof window.outerWidth != 'undefined' ? window.outerWidth : document.body.clientWidth;
+	var  outerHeight = 	typeof window.outerHeight != 'undefined' ? window.outerHeight : (document.body.clientHeight - 22);
+	var  width    = 500;
+	var  height   = 280;
+	var  left     = parseInt(screenX + ((outerWidth - width) / 2), 10);
+	var  top      = parseInt(screenY + ((outerHeight - height) / 2.5), 10);
+	var  features = 'width=' + width + ',height=' + height + ',left=' + left + ',top=' + top + ',title=' + 'Facebook login page' + ',background-color:' + '#000000';
+	var newwindow = window.open('https://www.facebook.com/dialog/oauth?client_id=' + '<%=Config::get(:fb, :application_id)%>' +'&redirect_uri=' + escape('<%=fb_login_users_url()%>') + '&scope=' + '<%=Config::get(:fb, :scope)%>' + '&state=4&display=popup', 'Facebook', features);
+	if (window.focus) {
+		newwindow.focus();
+	}
+	return false;
+}
+// FB dialog will call this to redirect
+function goto_url(url){
+	window.location.href = url;
+}
+
+</script>

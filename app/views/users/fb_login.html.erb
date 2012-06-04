@@ -1,0 +1,6 @@
+<script>
+	<% if params[:code] %>
+		window.opener.goto_url("<%=@redirect_uri%>");
+	<% end %>
+	window.close();
+</script>
