@@ -1,0 +1,6 @@
+development:
+    fb:
+        application_id:                     129964973740367
+        secret_key:                         f17a0872a1a7e1235010eaa3f8feb1b8
+        site_url:                           https://graph.facebook.com
+        scope:                              "email,user_photos"
