@@ -7,6 +7,21 @@
 	<% end %>
 </div>
 
+<div>
+	<% @issues.each do |issue| %>
+		<p>ID: <%=issue.id%></p>
+		<p>Name: <%=issue.name%></p>
+		<p>Description: <%=issue.description%></p>
+		<p>User ID: <%=issue.user_id%></p>
+		<p>Updates:</p>
+		<% issue.issue_update.all.each do |update| %>
+		<p>    Description: <%=update.description%></p>		
+		<p>    User ID: <%=update.user_id%></p>		
+		<% end %>
+		<br>
+		<% end %>
+</div>
+
 <br style="clear:both;"/>
 <script>
 function fb_login(){
