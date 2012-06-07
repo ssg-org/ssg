@@ -18,6 +18,10 @@
 		<p>    Description: <%=update.description%></p>		
 		<p>    User ID: <%=update.user_id%></p>		
 		<% end %>
+		<p>Attachments:</p>
+		<% issue.attachments.each do |attachment| %>
+		<img src="<%=attachment.URL%>">
+		<% end %>
 		<br>
 		<% end %>
 </div>
