@@ -7,6 +7,9 @@ class UsersController < ApplicationController
     return uri.to_s
   end
   
+  def index
+    @users = User.all
+  end
   
   def logout
     reset_session
