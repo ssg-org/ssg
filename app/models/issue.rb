@@ -2,5 +2,5 @@ class Issue < ActiveRecord::Base
   belongs_to 	:area
   belongs_to 	:user
 
-  has_many		:issue_update
+  has_many		:issue_updates
 end

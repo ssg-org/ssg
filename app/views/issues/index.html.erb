@@ -14,7 +14,7 @@
 		<p>Description: <%=issue.description%></p>
 		<p>User ID: <%=issue.user_id%></p>
 		<p>Updates:</p>
-		<% issue.issue_update.all.each do |update| %>
+		<% issue.issue_updates.each do |update| %>
 		<p>    Description: <%=update.description%></p>		
 		<p>    User ID: <%=update.user_id%></p>		
 		<% end %>
