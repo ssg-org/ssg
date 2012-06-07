@@ -1,5 +1,5 @@
 class IssuesController < ApplicationController
   def index
-  	@issues = Issue.all
+  	@issues = Issue.includes(:issue_updates).limit(20)
   end
 end
