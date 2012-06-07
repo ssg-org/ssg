@@ -50,44 +50,53 @@ module FbLoader
 							fb_photo_id = fb_photo['id']
 							fb_item = FbItem.find_by_fb_id(fb_photo_id)
 
-							# Did we import this photo before?
-							if (fb_item.nil?)
-								issue = Issue.new
-								fb_item = FbItem.new
-								attachment = Attachment.new
-							else
-								issue = Issue.find(fb_item.ssg_id)
-								attachment = issue.attachment
-							end
+							# We didn't import this photo or it was updated after the import
+							if (fb_item.nil? || fb_item.fb_updated_at > fb_photo['updated_time'])
 
-							# 1. Issue
-							issue.user = user
-							issue.name = "Moj grad, moja sigurnost, moja odgovornost - Issue \##{num_of_photos}"
-							issue.description = "This issue is created from \"Moj grad, moja sigurnost, moja odgovornost\" - Facebook ID=#{fb_photo['id']}"
-							if (!fb_photo['place'].nil?)
-								issue.latitude = fb_photo['place']['location']['latitude']
-								issue.longitude = fb_photo['place']['location']['longitude']
-							end
-							issue.save
+								# first time
+								if (fb_item.nil?)
+									fb_item = FbItem.new
+									issue = Issue.new
+									attachment = Attachment.new
+								else
+									issue = Issue.find(fb_item.ssg_id)
+									attachment = issue.attachments.first
+								end
 
-							# 1.1 FBItem for photo
-							fb_item.fb_object_type = FbItem::PHOTO
-							fb_item.name = fb_photo['name']
-							fb_item.fb_id = fb_photo_id
-							fb_item.ssg_id = issue.id
-							fb_item.save
+								# 1. Issue
+								issue.name = "Moj grad, moja sigurnost, moja odgovornost - Issue \##{num_of_photos}"
+								issue.description = "This issue is created from \"Moj grad, moja sigurnost, moja odgovornost\" - Facebook ID=#{fb_photo['id']}"
+								if (!fb_photo['place'].nil?)
+									issue.latitude = fb_photo['place']['location']['latitude']
+									issue.longitude = fb_photo['place']['location']['longitude']
+								end
+								user.issues << issue
 
-							# 2. Attachment 
-							attachment.file_type = Attachment::JPG
-							attachment.user = user
-							attachment.issue = issue
-							attachment.name = !fb_photo['name'].nil? ? fb_photo['name'] : "Attachment"
-							attachment.URL = fb_photo['source']
-							attachment.width = fb_photo['width']
-							attachment.height = fb_photo['height']
-							attachment.save
-							
-							puts "\t\tPhoto: ID=#{fb_photo_id}"
+								# 2. Attachment
+								attachment.file_type = Attachment::JPG
+								attachment.name = !fb_photo['name'].nil? ? fb_photo['name'] : "Attachment"
+								attachment.URL = fb_photo['source']
+								attachment.width = fb_photo['width']
+								attachment.height = fb_photo['height']
+								attachment.user = user
+								
+								issue.attachments << attachment
+
+								# 1.1 FBItem for photo
+								fb_item.fb_object_type = FbItem::PHOTO
+								fb_item.name = fb_photo['name']
+								fb_item.fb_id = fb_photo_id
+								fb_item.ssg_id = issue.id
+								fb_item.fb_created_at = fb_photo['created_time']
+								fb_item.fb_updated_at = fb_photo['updated_time']
+
+								# save to DB 
+								issue.save
+								attachment.save
+								fb_item.save								
+								
+								puts "\t\tPhoto: ID=#{fb_photo_id}"	
+							end							
 
 							# retrieve photo comments
 							fb_comments = @graph.get_connections(fb_photo_id,"comments")
@@ -107,25 +116,28 @@ module FbLoader
 
 									# Update existing
 									fb_item = FbItem.find_by_fb_id(fb_comment_id)
+
+									# Comments cannot be updated so we're skipping already imported
 									if (fb_item.nil?)
 										fb_item = FbItem.new
 										issue_update = IssueUpdate.new
-									else
-										issue_update = IssueUpdate.find(fb_item.ssg_id)
+
+										# Create issue update from comment
+										issue_update.description = fb_comment['message']
+										issue_update.user = user
+										issue_update.save
+
+										issue.issue_updates << issue_update
+										issue.save
+
+										# 1.1 FBItem for comment
+										fb_item.fb_object_type = FbItem::COMMENT
+										fb_item.name = fb_comment['name']
+										fb_item.fb_id = fb_comment_id
+										fb_item.ssg_id = issue_update.id
+										fb_item.fb_created_at = fb_comment['created_time']
+										fb_item.save
 									end
-
-									# Create issue update from comment
-									issue_update.description = fb_comment['message']
-									issue_update.issue = issue
-									issue_update.user = user
-									issue_update.save
-
-									# 1.1 FBItem for comment
-									fb_item.fb_object_type = FbItem::COMMENT
-									fb_item.name = fb_comment['name']
-									fb_item.fb_id = fb_comment_id
-									fb_item.ssg_id = issue_update.id
-									fb_item.save
 								end
 								
 								# Get next comments
@@ -135,6 +147,24 @@ module FbLoader
 						end						
 						# Get next set of photos
 						fb_photos = fb_photos.next_page
+					end
+
+					# Save album to fb_items
+					fb_album_id = fb_album['id']
+					fb_item = FbItem.find_by_fb_id(fb_album_id)
+
+					if (fb_item.nil?)
+						fb_item = FbItem.new
+					end
+
+					if (fb_item.fb_updated_at < fb_album['updated_time'])
+						fb_item.fb_id = fb_album_id
+						fb_item.ssg_id = -1
+						fb_item.fb_object_type = FbItem::ALBUM
+						fb_item.name = fb_album['name']
+						fb_item.fb_created_at = fb_album['created_time']
+						fb_item.fb_updated_at = fb_album['updated_time']
+						fb_item.save
 					end
 				end
 				
