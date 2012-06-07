@@ -52,6 +52,9 @@ Ssg::Application.routes.draw do
   resources  :users do
     collection do
       get :fb_login
+    end
+
+    member do
       get :logout
     end
   end
