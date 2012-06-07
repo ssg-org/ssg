@@ -50,18 +50,18 @@ module FbLoader
 							fb_photo_id = fb_photo['id']
 							fb_item = FbItem.find_by_fb_id(fb_photo_id)
 
-							# We didn't import this photo or it was updated after the import
-							if (fb_item.nil? || fb_item.fb_updated_at > fb_photo['updated_time'])
+							# first time
+							if (fb_item.nil?)
+								fb_item = FbItem.new
+								issue = Issue.new
+								attachment = Attachment.new
+							else
+								issue = Issue.find(fb_item.ssg_id)
+								attachment = issue.attachments.first
+							end
 
-								# first time
-								if (fb_item.nil?)
-									fb_item = FbItem.new
-									issue = Issue.new
-									attachment = Attachment.new
-								else
-									issue = Issue.find(fb_item.ssg_id)
-									attachment = issue.attachments.first
-								end
+							# Was this photo updated after the import?
+							if (fb_item.fb_updated_at.nil? || fb_item.fb_updated_at < fb_photo['updated_time'])							
 
 								# 1. Issue
 								issue.name = "Moj grad, moja sigurnost, moja odgovornost - Issue \##{num_of_photos}"
@@ -90,10 +90,11 @@ module FbLoader
 								fb_item.fb_created_at = fb_photo['created_time']
 								fb_item.fb_updated_at = fb_photo['updated_time']
 
-								# save to DB 
+								# save to DB
+								user.save
 								issue.save
 								attachment.save
-								fb_item.save								
+								fb_item.save
 								
 								puts "\t\tPhoto: ID=#{fb_photo_id}"	
 							end							
@@ -157,7 +158,7 @@ module FbLoader
 						fb_item = FbItem.new
 					end
 
-					if (fb_item.fb_updated_at < fb_album['updated_time'])
+					if (fb_item.fb_updated_at.nil? || fb_item.fb_updated_at < fb_album['updated_time'])
 						fb_item.fb_id = fb_album_id
 						fb_item.ssg_id = -1
 						fb_item.fb_object_type = FbItem::ALBUM
