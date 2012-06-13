@@ -3,8 +3,7 @@ class User < ActiveRecord::Base
   ROLE_USER   = 2
   
   GUEST_USER = User.new(:role => ROLE_GUEST, :first_name => 'Guest')
-  
-  
+
   has_many  :issues
   has_many  :votes
   
@@ -16,6 +15,10 @@ class User < ActiveRecord::Base
   
   def self.get_categories
     return Category.all
+  end
+
+  def self.get_cities
+    return City.all
   end
   
   def display_name
@@ -50,10 +53,12 @@ class User < ActiveRecord::Base
     end
   end
   
-  def create_issue(title, category_id, descripion, file_desc)
+  def create_issue(title, category_id, city_id, descripion, file_desc)
     ActiveRecord::Base.transaction do
       category = Category.find_by_id(category_id)
-      issue = Issue.create({ :user => self, :title => title, :description => descripion, :category => category })
+      city = City.find_by_id(city_id)
+
+      issue = Issue.create({ :user => self, :title => title, :description => descripion, :category => category, :city => city })
       if (file_desc)
         Image.create({ :issue => issue, :file => file_desc })
       end

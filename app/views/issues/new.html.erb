@@ -9,11 +9,21 @@
 			<td><%= text_field_tag :title%></td>
 		</tr>
 		<tr>
-			<td><%= label_tag :category, 'Problem'%> </td>
+			<td><%= label_tag :category, 'Ketegorija'%> </td>
 			<td>
 				<select name="category">
 					<%User.get_categories.each do |cat|%>
 						<option value="<%=cat.id%>"><%=cat.name%></option>
+					<% end %>
+				</select>
+			</td>
+		</tr>
+		<tr>
+			<td><%= label_tag :city, 'Grad'%> </td>
+			<td>
+				<select name="city">
+					<%User.get_cities.each do |city|%>
+						<option value="<%=city.id%>"><%=city.name%></option>
 					<% end %>
 				</select>
 			</td>

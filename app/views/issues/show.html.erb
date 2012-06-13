@@ -1,5 +1,5 @@
 <div id="issues_left_column">
-	<span style="background-color:yellow; padding:2px;"><%=@issue.category.name%></span>
+	<%=@issue.city.name%>/<span style="background-color:yellow; padding:2px;"><%=@issue.category.name%></span>
 	 - <%=@issue.user.display_name%> <%=link_to '(follow)', follow_user_path(@issue.user.id)%><br/><br/>
 	<b><%=@issue.title%></b><br/>
 	<% if @issue.images.length > 0 %>

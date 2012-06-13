@@ -1,21 +1,14 @@
 class IssuesController < ApplicationController
   def index
-    category_id = params[:category]
-    
-    if (category_id.nil?)
-  	  @issues_relation = Issue
-	  else
-	    @issues_relation = Issue.where(:category_id => category_id)
-    end
-    
-    @issues = @issues_relation.includes([:images, :category]).limit(9).offset(0)
+   
+    @issues = Issue.get_issues(params, 9, 0) 
   end
   
   def new
   end
   
   def create
-    @user.create_issue(params[:title], params[:category], params[:description], params[:file])
+    @user.create_issue(params[:title], params[:category], params[:city], params[:description], params[:file])
     
     redirect_to issues_path()
   end
