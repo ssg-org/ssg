@@ -1,7 +1,9 @@
 class Issue < ActiveRecord::Base
-  belongs_to 	:area
   belongs_to 	:user
+  belongs_to  :category
 
-  has_many		:issue_updates
-  has_many		:attachments
+  has_many		:comments
+  has_many    :images
+  
+  has_many    :votes
 end

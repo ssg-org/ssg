@@ -1,0 +1,7 @@
+<div style="float:right; border:1px solid black; height: 20px;">
+	<% if @user.role == User::ROLE_GUEST %>
+		<%= link_to 'Login', login_users_path() %>
+	<% else %>
+		Welcome <%=@user.first_name%> | <%=link_to 'Logout', logout_users_path()%>
+	<% end %>
+</div>

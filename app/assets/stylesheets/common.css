@@ -1,14 +1,3 @@
-@font-face {  
-  font-family: "MyriadPro";  
-  src: url(fonts/myriadpro-regular-webfont.eot); /* IE */  
-  src: local("MyriadPro"), url(fonts/myriadpro-regular-webfont.ttf) format("truetype"); /* non-IE */  
-}
-@font-face {  
-  font-family: "MyriadProBold";  
-  src: url(fonts/myriadpro-semibold-webfont.eot); /* IE */  
-  src: local("MyriadProBold"), url(fonts/myriadpro-semibold-webfont.ttf) format("truetype"); /* non-IE */  
-}
-
 html, body {
 	margin: 0px;
 	padding: 0px;
@@ -16,13 +5,52 @@ html, body {
 	font-family: 'Helvetica', 'Ariel';
 	color:black;
 	font-size:12px;
-	background-color:#eee;
+	background-color:white;
 }
 a {
 	cursor: hand; /*IE*/
 	cursor: pointer; /*Rest*/
-	color:white;
 }
-#container {
+ul {
+	padding:0px;
+}
+#top_header {
+	height:40px;
+	border-bottom:1px solid black;
+}
+#main_menu {
+	height:35px;
+	border-bottom:1px solid black;
+}
+#footer {
+	height: 180px;
+	border-top:1px solid black;
+}
+#main {
+	width: 1000px;
 	margin: 0 auto;
+}
+#issues_left_column {
+	float:left; 
+	width:750px;
+}
+#issues_right_column {
+	float:left; 
+	width:250px; 
+}
+.issue {
+	float:left;
+	width:230px;
+	height: 330px;
+	margin:5px;
+	background-color:#ddd;
+	border-radius:9px;
+	padding:5px;
+}
+
+.issue div {
+	border-radius:6px;
+	background-color:white;
+	padding: 3px;
+	height:324px;
 }

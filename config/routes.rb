@@ -52,13 +52,20 @@ Ssg::Application.routes.draw do
   resources  :users do
     collection do
       get :fb_login
-    end
-
-    member do
       get :logout
+      get :login
+      post :verify_login
+    end
+    member do
+      get :follow
     end
   end
-  resources  :issues
+  resources  :issues do 
+    member do
+      post  :vote
+      get  :follow
+    end
+  end
   resources  :areas
   
   

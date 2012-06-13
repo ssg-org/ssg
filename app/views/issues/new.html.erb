@@ -1,0 +1,39 @@
+<div id="issues_left_column">
+<% if @user.guest? %>
+	<%=link_to 'Logirajte se prvo', login_users_path() %>
+<% else %>
+	<%= form_tag issues_path() , :multipart => true do %>
+	<table>
+		<tr>
+			<td><%= label_tag :title, 'Problem'%> </td>
+			<td><%= text_field_tag :title%></td>
+		</tr>
+		<tr>
+			<td><%= label_tag :category, 'Problem'%> </td>
+			<td>
+				<select name="category">
+					<%User.get_categories.each do |cat|%>
+						<option value="<%=cat.id%>"><%=cat.name%></option>
+					<% end %>
+				</select>
+			</td>
+		</tr>
+		<tr>
+			<td><%= label_tag :description, 'Opis problema'%> </td>
+			<td><%= text_area_tag :description%></td>
+		</tr>
+		<tr>
+			<td><%= label_tag :file, 'Slika'%> </td>
+			<td><%= file_field_tag :file%></td>
+		</tr>
+		<tr>
+			<td><%= submit_tag 'Kreiraj'%> </td>
+		</tr>
+	</table>
+	<% end %>
+<% end %>
+</div>
+
+
+<%= render :partial => 'right_menu' %>
+

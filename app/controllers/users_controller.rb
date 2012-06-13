@@ -1,5 +1,11 @@
 class UsersController < ApplicationController
 
+
+  def follow
+    @user.follow_user(params[:id])
+    redirect_to issues_path()
+  end
+
   def redirect_uri()
     uri = URI.parse(request.url)
     uri.path = '/users/fb_login'
@@ -7,13 +13,20 @@ class UsersController < ApplicationController
     return uri.to_s
   end
   
-  def index
-    @users = User.all
-  end
-  
   def logout
     reset_session
     session = nil
+    redirect_to issues_path()
+  end
+  
+  def login
+  end
+  
+  def verify_login
+    user = User.exists?(params[:username], params[:password])
+    if user
+      session[:id] = user.id
+    end
     redirect_to issues_path()
   end
   
@@ -38,16 +51,7 @@ class UsersController < ApplicationController
           user = User.find_by_fb_id(me['id'])
           
           if (user.nil?)
-            # create new user
-            user = User.new
-            user.email = me['email'] 
-            user.fb_id = me['id']
-            user.fb_token = access_token.token
-            user.last_name = me['last_name']
-            user.first_name = me['first_name']
-            user.active = true
-            user.role = User::ROLE_USER
-            user.save
+            user = create_fb_user(access_token.token, me['email'], me['id'], me['last_name'], me['first_name'] )
           end
           
         end
@@ -56,7 +60,7 @@ class UsersController < ApplicationController
       
       session[:id] = user.id
     end
-    @redirect_uri = issues_url()
+    @redirect_uri = issues_path()
     
   end
   
