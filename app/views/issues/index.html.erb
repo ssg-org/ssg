@@ -1,105 +1,31 @@
-<style>
-.box {
-	width:312px;
-	margin:5px;
-	border-radius:6px;
-	background-color:white;
-	padding:10px;
-	border:1px solid #ddd;	
-}
-.box-title {
-	color:#55A4F2; font-size:14px; font-weight:bold;
-}
-.box-title:hover {
-	color:#1071D1;
-}
-.box-text {
-	color:#999;
-	font-size:12px;
-}
-.box-loc {
-	background-image: url(loc_ico.png) 1px 1px no-repeat;
-}
-</style>
-
-<div style="float:right;">
-	Welcome <%=@user.first_name%>
-	<% if @user.role == User::ROLE_GUEST %>
-		<a href='#' onclick="fb_login(); return false;">LOGIN</a>
-	<% else %>
-		<a href='<%=logout_users_path()%>'>Logout</a>
-	<% end %>
-</div>
-<br style="clear:both;" />
-
-<div>
-	<h1 style="color:#FDA000;">Sredi Svoj Grad</h1>
-</div>
-
-<div id="container">
+<div id="issues_left_column">
 	<% @issues.each do |issue| %>
-		<div class="box">
-			<div style="background-color:#FDA000; color:white; margin-bottom:10px; display:inline-block; height: 20px; line-height:20px; font-weight:bold;">
-				Parking
-			</div><br/>
-			<span style="color:gray; font-size:12px;">by <%="#{issue.user.first_name} #{issue.user.last_name}"%> on <%=issue.created_at%></span><br/><br/>
-			<% issue.attachments.each do |attachment| %>
-			<img src="<%=attachment.URL%>" style="width:100%;">
-			<% end %>
-			<span class="box-title">Parking papak</span>
-			<p class="box-text"><%=issue.description%></p>
-			<div>
-				<span style="float:right; color:gray;">Sarajevo</span>
-			</div>
-			<div style="clear:both; border-top:1px solid black;">
-				<ul style="list-style:none; padding:0px;">
-					<% issue.issue_updates.each do |update| %>
-						<li style="height:50px; font-size:10px; color:gray;">
-							<div style="width:50px; height:50px; overflow:hidden; float:left;">
-								<img src="https://fbcdn-profile-a.akamaihd.net/hprofile-ak-snc4/157975_325449757489210_2125760443_q.jpg" align="top" height="45"/>
-							</div>
-							<div style="width:250px; height:50px; overflow:hidden; float:left;">
-								<%=update.description%>
-							</div>
-						</li>
-					<% end %>
-				</ul>
-				<br style="clear:both;">
-			</div>
-		</div>	
+	<div class="issue">
+		<div>
+			<a href="<%=issue_path(issue.id)%>"><span style="background-color:yellow; padding:2px;"><%=issue.category.name%></span></a>
+			 - <%=issue.user.display_name%> <%=link_to '(follow)', follow_user_path(issue.user.id)%><br/><br/>
+			<b><%=issue.title%></b><br/>
+			<a href="<%=issue_path(issue.id)%>">
+				<% if issue.images.length > 0 %>
+					<%=image_tag issue.images.first.file.url(:thumb), :style => 'width:225px;'%>
+				<% end %>
+			</a>
+			<hr/>
+			<%=issue.description%>
+			<hr/>
+			<%=link_to 'VOTE', vote_issue_path(issue.id), { :remote => true, :method => :post }%> | 
+			<%=link_to 'FOLLOW', follow_issue_path(issue.id) %>
+		</div>
+	</div>
 	<% end %>
-<div>
-
-<br style="clear:both;"/>
-
-<script>
-var $cont = $('#container');
-$cont.imagesLoaded(function() {
-	$cont.masonry({
-		itemSelector : '.box',
-		isFitWidth: true
-	});	
-});
 	
+	<% if @issues.length == 0 %>
+	<div class="issue">
+		BUDI PRVI KOJI CE PRIJAVITI PROBLEM
+	</div>
+	<% end %>
+	
+</div>
 
-function fb_login(){
-	var  screenX     = 	typeof window.screenX != 'undefined' ? window.screenX : window.screenLeft;
-	var  screenY     = 	typeof window.screenY != 'undefined' ? window.screenY : window.screenTop;
-	var  outerWidth  = 	typeof window.outerWidth != 'undefined' ? window.outerWidth : document.body.clientWidth;
-	var  outerHeight = 	typeof window.outerHeight != 'undefined' ? window.outerHeight : (document.body.clientHeight - 22);
-	var  width    = 500;
-	var  height   = 280;
-	var  left     = parseInt(screenX + ((outerWidth - width) / 2), 10);
-	var  top      = parseInt(screenY + ((outerHeight - height) / 2.5), 10);
-	var  features = 'width=' + width + ',height=' + height + ',left=' + left + ',top=' + top + ',title=' + 'Facebook login page' + ',background-color:' + '#000000';
-	var newwindow = window.open('https://www.facebook.com/dialog/oauth?client_id=' + '<%=Config::get(:fb, :application_id)%>' +'&redirect_uri=' + escape('<%=fb_login_users_url()%>') + '&scope=' + '<%=Config::get(:fb, :scope)%>' + '&state=4&display=popup', 'Facebook', features);
-	if (window.focus) {
-		newwindow.focus();
-	}
-	return false;
-}
-// FB dialog will call this to redirect
-function goto_url(url){
-	window.location.href = url;
-}
-</script>
+<%= render :partial => 'right_menu' %>
+

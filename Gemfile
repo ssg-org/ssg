@@ -9,6 +9,7 @@ gem 'sqlite3'
 gem 'execjs'
 # gem 'therubyracer'
 gem 'oauth2'
+gem 'paperclip'
 
 gem 'koala', '>= 1.5.0'
 

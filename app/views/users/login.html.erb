@@ -1,0 +1,13 @@
+<div style="margin:20px;">
+	Facebook : 
+	<a href='#' onclick="fb_login('<%=Config::get(:fb, :application_id)%>', escape('<%=fb_login_users_url()%>'), '<%=Config::get(:fb, :scope)%>'); return false;">LOGIN</a>
+
+	<br/><br/>OR<br/><br/>
+	<%=form_tag verify_login_users_path() do %>
+		<%= label_tag :username %>
+		<%= text_field_tag :username %><br/>
+		<%= label_tag :password %>
+		<%= password_field_tag :password %><br/>
+		<%= submit_tag :login %>
+	<% end %>
+</div>

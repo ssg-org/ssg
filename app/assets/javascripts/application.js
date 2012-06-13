@@ -12,6 +12,5 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require_tree ./jquery.ssg
-//= require masonry
 //= require common
+//= require fb

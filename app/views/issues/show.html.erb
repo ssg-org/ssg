@@ -1,0 +1,16 @@
+<div id="issues_left_column">
+	<span style="background-color:yellow; padding:2px;"><%=@issue.category.name%></span>
+	 - <%=@issue.user.display_name%> <%=link_to '(follow)', follow_user_path(@issue.user.id)%><br/><br/>
+	<b><%=@issue.title%></b><br/>
+	<% if @issue.images.length > 0 %>
+		<%=image_tag @issue.images.first.file.url(:medium) %>
+	<% end %>
+	<hr/>
+	<%=@issue.description%>
+	<hr/>
+	<%=link_to 'VOTE', vote_issue_path(@issue.id), { :remote => true, :method => :post }%> | 
+	<%=link_to 'FOLLOW', follow_issue_path(@issue.id) %>
+</div>
+
+<%= render :partial => 'right_menu' %>
+

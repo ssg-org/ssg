@@ -4,11 +4,10 @@ class ApplicationController < ActionController::Base
   before_filter :check_login
   
   def check_login
-    if (session[:id])
+   if (session[:id])
       @user = User.find_by_id(session[:id])
-    end
+   end
     # Guest if not from session
     @user ||= User.guest_user
-    
   end
 end

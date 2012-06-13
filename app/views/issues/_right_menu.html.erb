@@ -1,0 +1,25 @@
+<div id="issues_right_column">
+	Favorites
+	<ul>
+		<li>Moji Problemi</li>
+		<li>Zanimljivi</li>
+	
+		<% @user.get_follows.each do |follow|%>
+			<% if follow.class == FollowUser%>
+				<li><%=follow.follow_user.display_name%></li>
+			<% else %>
+			<li><%=link_to follow.follow_issue.title, issue_path(follow.follow_issue.id)%></li>
+			<% end %>
+		<% end %>
+	</ul>
+	
+	Kategorije
+	<ul>
+		<% User.get_categories.each do |cat|%>
+			<li><%=link_to cat.name, issues_path(:category => cat.id)%></li>
+		<% end %>
+		<li><%=link_to 'Sve kategorije', issues_path()%></li>
+	</ul>
+</div>
+
+<div style="clear:both;"></div>
