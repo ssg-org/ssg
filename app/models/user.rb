@@ -86,6 +86,15 @@ class User < ActiveRecord::Base
   def self.fb_client
     return OAuth2::Client.new(Config::get(:fb, :application_id), Config::get(:fb, :secret_key), :site => Config::get(:fb, :site_url))
   end
+
+  def self.twitter_client
+    Twitter.configure do |config|
+      config.consumer_key = Config::get(:twitter, :consumer_key)
+      config.consumer_secret = Config::get(:twitter, :consumer_secret)
+      config.oauth_token = Config::get(:twitter, :oauth_token)
+      config.oauth_token_secret = Config::get(:twitter, :ouath_secret)
+    end
+  end
     
   def self.create_fb_user(token, email, fb_id, last_name, first_name, is_active = true, role = User::ROLE_USER)
     user = User.new

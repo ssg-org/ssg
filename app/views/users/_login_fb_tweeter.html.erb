@@ -1,0 +1,6 @@
+<div style="float:right;">
+	<a href='#' onclick="fb_login('<%=Config::get(:fb, :application_id)%>', escape('<%=fb_login_users_url()%>'), '<%=Config::get(:fb, :scope)%>'); return false;">Login with Facebook</a>
+	<br/><br/>
+    <a href='#' onclick="twitter_login(escape('<%=fb_login_users_url()%>'), '<%=Config::get(:twitter, :consumer_key)%>'); return false;">Login with Twitter</a>
+    <br/><br/>
+</div>
