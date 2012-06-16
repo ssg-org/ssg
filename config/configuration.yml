@@ -1,6 +1,11 @@
 development:
     fb:
-        application_id:                     129964973740367
-        secret_key:                         f17a0872a1a7e1235010eaa3f8feb1b8
+        application_id:                     405433926167269
+        secret_key:                         55c18f536a040d04430d414f4fe77787
         site_url:                           https://graph.facebook.com
         scope:                              "email,user_photos"
+    twitter:
+        consumer_key:                       W0yVfbLShEu6YgR0zrtdew
+        consumer_secret:                    TbXoj23VzqFcpfte5ClFrW7BVn55bkeUzRvmCbeqRc
+        oauth_token:                        402304280-1eYdogoLqnd1JQWR25xZzDM7eMHRR58dssM2uZeR
+        ouath_secret:                       EfG6ZnBvgaeM0bA3hxErGS5hafQkZH1jz4NksSlxEA
