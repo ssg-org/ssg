@@ -15,3 +15,4 @@
 //= require_tree ./jquery.ssg
 //= require google-analytics
 //= require common
+//= require jquery-nivo-slider
