@@ -23,69 +23,33 @@
 }
 
 html, body {
+	text-align: center;
 	margin: 0px;
 	padding: 0px;
 	height:100%;
 	font-family: MyriadPro;
 	color:white;
-	background-color:#213540;
+	background-color:#CFCFCF;
 }
+
 a {
 	cursor: hand; /*IE*/
 	cursor: pointer; /*Rest*/
 	color:white;
 }
 
-/*COLORS*/
-.menu-grayish {
-	background-color:#213540;
-}
-.menu-blueish {
-	background-color:#02486c;
-}
-.menu-orangeish {
-	background-color:#f34e21;
-}
-.menu-greenish {
-	background-color:#a1cb29;
-}
-.menu-yellowish {
-	background-color:#ffc801;
-}
-.menu-brownish {
-	background-color:#693c15;
-}
-.menu-lightgrayish {
-	background-color:#cccccc;
+.centered {
+    margin: 0 auto;
+    text-align: left;
+    width:990px;
 }
 
-/*Left Menu*/
-.left-menu {
-	float:left; 
-	width:50px; 
-	padding-top:150px;
-}
-.left-menu div {
-	height:50px; 
-	line-height:50px; 
-	text-align:center;
+.nivoSlider {
+	margin-left: auto;
+	margin-right: auto;
 }
 
-.left-menu-label {
-	position:absolute; 
-	z-index:2; 
-	width:50px; 
-	height:50px; 
-	left:0px;
-}
-.left-menu-description {
-	position:absolute; 
-	z-index:1; 
-	height:50px; 
-	padding:0 15px 0 15px; 
-	left:-100px;
-}
-
-.left-menu-active {
-	left:50px;
+.nivo-slice {
+	margin-left: auto;
+	margin-right: auto;
 }

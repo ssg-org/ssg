@@ -1,0 +1,26 @@
+/*
+ * jQuery Nivo Slider v3.0.1
+ * http://nivo.dev7studios.com
+ *
+ * Copyright 2012, Dev7studios
+ * Free to use and abuse under the MIT license.
+ * http://www.opensource.org/licenses/mit-license.php
+ */
+ 
+/* The Nivo Slider styles 
+.nivo-controlNav {
+	display: none;
+}
+*/
+/* Must use !important to override
+.nivo-directionNav {
+    display: none;
+}
+ */
+.nivoSlider {
+    width:990px;
+}
+
+.nivoSlider img {
+    width:990px;
+}
