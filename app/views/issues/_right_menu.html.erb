@@ -2,13 +2,13 @@
 	
 	<div class="filter">
 		<span class="font-black font-bold">DATE</span><br/>
-		<%=link_to 'Today', issues_path()%><br/>
-		<%=link_to 'This week', issues_path()%><br/>
-		<%=link_to 'This month', issues_path()%><br/>
-		<%=link_to 'All time', issues_path()%><br/>
+		<%=link_to 'Today', issues_path(clear_params({:date => :today})) %><br/>
+		<%=link_to 'This week', issues_path(clear_params({:date => :week})) %><br/>
+		<%=link_to 'This month', issues_path(clear_params({:date => :month})) %><br/>
+		<%=link_to 'All time', issues_path(clear_params({:date => :all})) %><br/>
 	</div>
 	<div class="filter">
-		<span class="font-black font-bold">FEATURED</span><br/>
+		<span class="font-black font-bold">Cities</span><br/>
 		<%=link_to 'Today', issues_path()%><br/>
 		<%=link_to 'This week', issues_path()%><br/>
 		<%=link_to 'This month', issues_path()%><br/>
@@ -19,14 +19,14 @@
 	<div class="filter">
 		<span class="font-black font-bold">CATEGORIES</span><br/>
 		<% User.get_categories.each do |cat|%>
-			<%=link_to cat.name, issues_path()%><br/>
+			<%=link_to cat.name, issues_path(clear_params({:category => cat.id}))%><br/>
 		<% end %>
 	</div>
 	<div class="filter">
 		<span class="font-black font-bold">RESOLUTION</span><br/>
-		<%=link_to 'Open', issues_path()%><br/>
-		<%=link_to 'In progress', issues_path()%><br/>
-		<%=link_to 'Fixed', issues_path()%><br/>
+		<%=link_to 'Open', issues_path(clear_params({:status => Issue::OPEN}))%><br/>
+		<%=link_to 'In progress', issues_path(clear_params({:status => Issue::IN_PROGRESS}))%><br/>
+		<%=link_to 'Fixed', issues_path(clear_params({:status => Issue::FIXED}))%><br/>
 	</div>
 </div>
 
