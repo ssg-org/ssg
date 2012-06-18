@@ -29,8 +29,7 @@ html, body {
 	height:100%;
 	font-family: MyriadPro;
 	color:white;
-	/*background-color:#CFCFCF;*/
-	background-color:#333;
+	background-color:#CFCFCF;
 	
 }
 
@@ -38,6 +37,13 @@ a {
 	cursor: hand; /*IE*/
 	cursor: pointer; /*Rest*/
 	color:white;
+}
+
+#header {
+    margin: 0 auto;
+	margin-top:10px;
+    text-align: left;
+    width:990px;
 }
 
 .centered {
@@ -49,9 +55,28 @@ a {
 .nivoSlider {
 	margin-left: auto;
 	margin-right: auto;
+	margin-top:auto 15px;
 }
 
 .nivo-slice {
 	margin-left: auto;
 	margin-right: auto;
+}
+
+.footer {
+    margin: 0 auto;
+    text-align: center;
+    width:990px;
+	height:90px;
+	background-color:#000;
+	display:block;
+	
+}
+
+.footer p {
+	padding-top:40px;	
+	font-family:Arial;
+	font-size:11px;
+	font-weight:normal;
+	color:#444;
 }
