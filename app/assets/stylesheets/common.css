@@ -29,7 +29,9 @@ html, body {
 	height:100%;
 	font-family: MyriadPro;
 	color:white;
-	background-color:#CFCFCF;
+	/*background-color:#CFCFCF;*/
+	background-color:#333;
+	
 }
 
 a {
