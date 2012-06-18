@@ -1,6 +1,59 @@
-<ul style="margin:0 auto; width: 500px; display:block; list-style:none; line-height:20px;">
-	<li style="float:left;padding:5px;"><%=link_to 'SSG', issues_path() %></li>
-	<li style="float:left;padding:5px;"><%=link_to 'Prijavi problem', new_issue_path() %></li>
-	<li style="float:left;padding:5px;">Gradovi</li>
-	<li style="float:left;padding:5px;"><form><input type="text" name="srch"/><input type="submit"/></form></li>
-</ul>
+<div style="float:left; padding: 22px;">
+	<div class="asset-logo">
+	</div>
+</div>
+
+<div style="float:left;">
+	<div style="margin-top:30px;">
+		<span style="float:left; font-size:14px;">
+			<strong>What is SSG?</strong> We are social community that wants to provide its citizens life in nicer environment&nbsp;&nbsp;&nbsp;&nbsp;
+		</span>
+		<div style="float:left;" class="asset-learn-more"></div>
+	</div>
+	
+	<% puts "#{params[:controller]}   #{params[:action]}"%>
+	<% selection = {
+		:issues => params[:controller] == 'issues' && params[:action] != 'new',
+		:cities => params[:controller] == 'cities',
+		:report => params[:controller] == 'issues' && params[:action] == 'new',
+		:blog => params[:controller] == 'blog',
+		:help => params[:controller] == 'help',
+		:signup => params[:controller] == 'users' && params[:action] == 'login',
+		:login => params[:controller] == 'users' && params[:action] == 'login'
+	}%>
+	<% puts selection.inspect%>
+	
+	<div style="margin-top:50px;">
+		<ul id="menu-list">
+			<li>
+				<%=link_to 'ISSUES', issues_path(), :class => "font-black font-bold #{'menu-selected' if selection[:issues]}"%><br/>
+				<span class="font-gray">DISCOVER ALL</span><br/>
+			</li>
+			<li>
+				<%=link_to 'CITIES', issues_path(), :class => "font-black font-bold #{'menu-selected' if selection[:cities]}"%><br/>
+				<span class="font-gray">COUNTRY WIDE</span><br/>
+			</li>
+			<li>
+				<%=link_to 'REPORT', new_issue_path(), :class => "font-black font-bold #{'menu-selected' if selection[:report]}"%><br/>
+				<span class="font-gray">YOUR PROBLEM</span><br/>
+			</li>
+			<li style="width:220px;">
+				<input type="text"/>
+			</li>
+			<li>
+				<%=link_to 'BLOG', new_issue_path(), :class => "font-bold font-gray #{'menu-selected' if selection[:blog]}"%><br/>
+			</li>
+			<li>
+				<%=link_to 'HELP', new_issue_path(), :class => "font-bold  font-gray #{'menu-selected' if selection[:help]}"%><br/>
+			</li>
+			<li>
+				<%=link_to 'SIGNUP', login_users_path(), :class => "font-bold  font-gray #{'menu-selected' if selection[:signup]}"%><br/>
+			</li>
+			<li>
+				<%=link_to 'LOGIN', login_users_path(), :class => "font-bold  font-gray #{'menu-selected' if selection[:signup]}"%>
+			</li>
+			
+		</ul>
+	</div>
+</div>
+
