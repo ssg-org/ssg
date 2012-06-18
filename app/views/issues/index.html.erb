@@ -8,7 +8,7 @@
 					<%=image_tag issue.images.first.file.url(:thumb), :border => '0' %>
 				<% end %>
 			</div>
-			<div style="height:5px; background-color:#9ecc3b;"></div>
+			<div style="height:5px; background-color:#<%=issue.category.color%>;"></div>
 		</div>
 
 		<div class="issue-info-part">
