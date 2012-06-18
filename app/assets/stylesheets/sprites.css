@@ -1,0 +1,35 @@
+.asset-logo {
+	background: url(sprites.png) 0px -33px no-repeat;
+	width:95px;
+	height:95px;
+	float:left;
+	display:block;
+}
+.asset-learn-more {
+	background: url(sprites.png) 0px -16px no-repeat;
+	width:92px;
+	height:17px;
+	float:left;
+	display:block;
+}
+.asset-location {
+	background: url(sprites.png) -34px 0px no-repeat;
+	width:13px;
+	height:15px;
+	float:left;
+	display:block;
+}
+.asset-heart {
+	background: url(sprites.png) -16px 0px no-repeat;
+	width:17px;
+	height:15px;
+	float:left;
+	display:block;
+}
+.asset-eye {
+	background: url(sprites.png) 0px 0px no-repeat;
+	width:17px;
+	height:15px;
+	float:left;
+	display:block;
+}

@@ -4,7 +4,7 @@ class Issue < ActiveRecord::Base
 	FIXED		= 3
 
   belongs_to 	:user
-  belongs_to  	:category
+  belongs_to  :category
   belongs_to	:city
 
   has_many		:comments

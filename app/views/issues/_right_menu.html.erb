@@ -1,43 +1,33 @@
-<div id="issues_right_column">
-	Favorites
-	<ul>
-		<li>Moji Problemi</li>
-		<li>Zanimljivi</li>
+<div id="issues_right_column" style="clear:right;">
 	
-		<% @user.get_follows.each do |follow|%>
-			<% if follow.class == FollowUser%>
-				<li><%=follow.follow_user.display_name%></li>
-			<% else %>
-			<li><%=link_to follow.follow_issue.title, issue_path(follow.follow_issue.id)%></li>
-			<% end %>
-		<% end %>
-	</ul>
+	<div class="filter">
+		<span class="font-black font-bold">DATE</span><br/>
+		<%=link_to 'Today', issues_path()%><br/>
+		<%=link_to 'This week', issues_path(), :class => 'font-12'%><br/>
+		<%=link_to 'This month', issues_path(), :class => 'font-12'%><br/>
+		<%=link_to 'All time', issues_path(), :class => 'font-12'%><br/>
+	</div>
+	<div class="filter">
+		<span class="font-black font-bold">FEATURED</span><br/>
+		<%=link_to 'Today', issues_path(), :class => 'font-12'%><br/>
+		<%=link_to 'This week', issues_path(), :class => 'font-12'%><br/>
+		<%=link_to 'This month', issues_path(), :class => 'font-12'%><br/>
+		<%=link_to 'All time', issues_path(), :class => 'font-12'%><br/>
+	</div>
+	<br style="clear:both;">
 	
-	Kategorije
-	<ul>
+	<div class="filter">
+		<span class="font-black font-bold">CATEGORIES</span><br/>
 		<% User.get_categories.each do |cat|%>
-			<li><%=link_to cat.name, issues_path(:category => cat.id)%></li>
+			<%=link_to cat.name, issues_path(), :class => 'font-12'%><br/>
 		<% end %>
-		<li><%=link_to 'Sve kategorije', issues_path()%></li>
-	</ul>
-
-	Gradovi
-	<ul>
-		<% User.get_cities.each do |city|%>
-			<li><%=link_to city.name, issues_path(:city => city.id)%></li>
-		<% end %>
-		<li><%=link_to 'Svi gradovi', issues_path()%></li>
-	</ul>
-
-
-	Statusi
-	<ul>
-		<li><%=link_to "Open", issues_path(:status => Issue::OPEN)%></li>
-		<li><%=link_to "In progress", issues_path(:status => Issue::IN_PROGRESS)%></li>
-		<li><%=link_to "Fixed", issues_path(:status => Issue::FIXED)%></li>
-		<li><%=link_to 'Svi statusi', issues_path()%></li>
-	</ul>
-
+	</div>
+	<div class="filter">
+		<span class="font-black font-bold">RESOLUTION</span><br/>
+		<%=link_to 'Open', issues_path(), :class => 'font-12'%><br/>
+		<%=link_to 'In progress', issues_path(), :class => 'font-12'%><br/>
+		<%=link_to 'Fixed', issues_path(), :class => 'font-12'%><br/>
+	</div>
 </div>
 
 <div style="clear:both;"></div>
