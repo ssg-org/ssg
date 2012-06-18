@@ -28,6 +28,13 @@ hr{
 	border-right: none;
 	border-left: none;
 }
+input[type="text"] {
+	border:1px solid #a2a2a2;
+	height:20px;
+	line-height:20px;
+	font-size:12px;
+	color:#a2a2a2;
+}
 .font-green {
 	color:#9ecc3b;
 }
@@ -68,6 +75,11 @@ hr{
 }
 .menu-selected {
 	color:#9ecc3b;
+	font-weight:bold;
+}
+.r-menu-selected {
+	color:#9ecc3b;
+	font-weight:bold;
 }
 #main {
 	margin: 10px auto 0 auto;
@@ -125,11 +137,20 @@ hr{
 	position:relative; 
 	left:10px; 
 	top:5px;	
+	height:15px;
+	width:180px;
+	overflow:hidden;
+	white-space:nowrap;
+	
 }
 .issue-info-name {
 	position:relative; 
 	left:10px; 
 	top:5px;
+	height:15px;
+	width:180px;
+	overflow:hidden;
+	white-space:nowrap;
 }
 .issue-info-loc {
 	position:relative; 

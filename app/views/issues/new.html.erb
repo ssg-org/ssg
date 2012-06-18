@@ -1,4 +1,4 @@
-<div id="issues_left_column">
+<div style="padding:20px;">
 <% if @user.guest? %>
 	<%=link_to 'Logirajte se prvo', login_users_path() %>
 <% else %>
@@ -43,7 +43,3 @@
 	<% end %>
 <% end %>
 </div>
-
-
-<%= render :partial => 'right_menu' %>
-
