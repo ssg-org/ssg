@@ -1,8 +1,13 @@
 <div id="issues_left_column">
 	<% @issues.each do |issue| %>
 	<div class="issue">
+		
 		<div class="issue-img-part">
-			<div style="height:155px; width:198px;"><%=image_tag issue.images.first.file.url(:thumb), :border => '0' %></div>
+			<div style="height:155px; width:198px;">
+				<% if  issue.images.length > 0 %>
+					<%=image_tag issue.images.first.file.url(:thumb), :border => '0' %>
+				<% end %>
+			</div>
 			<div style="height:5px; background-color:#9ecc3b;"></div>
 		</div>
 
