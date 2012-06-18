@@ -27,7 +27,6 @@ hr{
 	border-bottom: none;
 	border-right: none;
 	border-left: none;
-
 }
 .font-green {
 	color:#9ecc3b;
@@ -106,4 +105,34 @@ hr{
 	margin:7px;
 	box-shadow:0px 0px 5px #ccc;
 	background-color:white;
+}
+.issue-img-part {
+	padding:3px;
+}
+.issue-info-part {
+	height:66px;
+}
+
+.issue-category-part {
+	height:31px;
+}
+.issue-share-part {
+	padding:7px; 
+	background-color:#f6f6f6; 
+	height:20px;	
+}
+.issue-info-title {
+	position:relative; 
+	left:10px; 
+	top:5px;	
+}
+.issue-info-name {
+	position:relative; 
+	left:10px; 
+	top:5px;
+}
+.issue-info-loc {
+	position:relative; 
+	left:10px; 
+	top:16px;	
 }
