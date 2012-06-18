@@ -1,32 +1,32 @@
-<div id="issues_right_column" style="clear:right;">
+<div id="issues_right_column" class="font-12" style="clear:right;">
 	
 	<div class="filter">
 		<span class="font-black font-bold">DATE</span><br/>
 		<%=link_to 'Today', issues_path()%><br/>
-		<%=link_to 'This week', issues_path(), :class => 'font-12'%><br/>
-		<%=link_to 'This month', issues_path(), :class => 'font-12'%><br/>
-		<%=link_to 'All time', issues_path(), :class => 'font-12'%><br/>
+		<%=link_to 'This week', issues_path()%><br/>
+		<%=link_to 'This month', issues_path()%><br/>
+		<%=link_to 'All time', issues_path()%><br/>
 	</div>
 	<div class="filter">
 		<span class="font-black font-bold">FEATURED</span><br/>
-		<%=link_to 'Today', issues_path(), :class => 'font-12'%><br/>
-		<%=link_to 'This week', issues_path(), :class => 'font-12'%><br/>
-		<%=link_to 'This month', issues_path(), :class => 'font-12'%><br/>
-		<%=link_to 'All time', issues_path(), :class => 'font-12'%><br/>
+		<%=link_to 'Today', issues_path()%><br/>
+		<%=link_to 'This week', issues_path()%><br/>
+		<%=link_to 'This month', issues_path()%><br/>
+		<%=link_to 'All time', issues_path()%><br/>
 	</div>
 	<br style="clear:both;">
 	
 	<div class="filter">
 		<span class="font-black font-bold">CATEGORIES</span><br/>
 		<% User.get_categories.each do |cat|%>
-			<%=link_to cat.name, issues_path(), :class => 'font-12'%><br/>
+			<%=link_to cat.name, issues_path()%><br/>
 		<% end %>
 	</div>
 	<div class="filter">
 		<span class="font-black font-bold">RESOLUTION</span><br/>
-		<%=link_to 'Open', issues_path(), :class => 'font-12'%><br/>
-		<%=link_to 'In progress', issues_path(), :class => 'font-12'%><br/>
-		<%=link_to 'Fixed', issues_path(), :class => 'font-12'%><br/>
+		<%=link_to 'Open', issues_path()%><br/>
+		<%=link_to 'In progress', issues_path()%><br/>
+		<%=link_to 'Fixed', issues_path()%><br/>
 	</div>
 </div>
 

@@ -1,6 +1,5 @@
 class IssuesController < ApplicationController
   def index
-   
     @issues = Issue.get_issues(params, 9, 0) 
   end
   

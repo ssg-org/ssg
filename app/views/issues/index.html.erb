@@ -1,18 +1,19 @@
 <div id="issues_left_column">
 	<% @issues.each do |issue| %>
 	<div class="issue">
-		<div style="padding:3px;">
+		<div class="issue-img-part">
 			<div style="height:155px; width:198px;"><%=image_tag issue.images.first.file.url(:thumb), :border => '0' %></div>
 			<div style="height:5px; background-color:#9ecc3b;"></div>
 		</div>
-		<div style="height:66px;">
-			<div style="position:relative; left:10px; top:5px;" class="font-bold font-14">
+
+		<div class="issue-info-part">
+			<div class="font-bold font-14 issue-info-title">
 				<%=issue.title%>
 			</div>
-			<div class="font-gray font-12" style="position:relative; left:10px; top:5px;">
+			<div class="font-gray font-12 issue-info-name">
 				by <%=issue.user.display_name%>
 			</div>
-			<div style="position:relative; left:10px; top:16px;">
+			<div class="issue-info-loc">
 				<span class="asset-location" ></span>
 				<span class="font-gray" style="line-height:16px;">&nbsp;<%=issue.city.name%></span>
 			</div>
@@ -20,36 +21,18 @@
 		
 		<hr style="margin-top:3px;"/>
 		
-		<div style="height:31px;">
+		<div class="issue-category-part" >
 			<span class="font-gray font-12" style="line-height:31px;">&nbsp;&nbsp;&nbsp;&nbsp;<%=issue.category.name%></span>
 		</div>
 		
 		<hr/>
 		
-		<div style="padding:7px; background-color:#f6f6f6; height:20px;">
-			
+		<div class="issue-share-part">
 			<span class="asset-heart"></span><span style="float:left;" class="font-bold font-14">&nbsp;&nbsp;59&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
 			<span class="asset-eye"></span><span style="float:left;" class="font-bold font-14">&nbsp;&nbsp;861</span>
 			<span style="float:right;" class="font-gray">Share</span>
 		</div>
 	</div>
-	
-	
-	<!-- <a href="<%=issue_path(issue.id)%>"><span style="background-color:yellow; padding:2px;"><%=issue.category.name%></span></a>
-	 - <%=issue.user.display_name%> <%=link_to '(follow)', follow_user_path(issue.user.id)%><br/><br/>
-	<b><%=issue.title%></b><br/>
-	<a href="<%=issue_path(issue.id)%>">
-		<% if issue.images.length > 0 %>
-			<%=image_tag issue.images.first.file.url(:thumb), :style => 'width:225px;'%>
-		<% end %>
-	</a>
-	<hr/>
-	<%=issue.description%>
-	<hr/>
-	<%=link_to 'VOTE', vote_issue_path(issue.id), { :remote => true, :method => :post }%> | 
-	<%=link_to 'FOLLOW', follow_issue_path(issue.id) %> -->
-	
-	
 	<% end %>
 	
 	<% if @issues.length == 0 %>
