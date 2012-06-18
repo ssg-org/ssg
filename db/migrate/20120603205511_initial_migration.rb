@@ -22,10 +22,13 @@ class InitialMigration < ActiveRecord::Migration
       t.references  :category,  :null => false
       t.string      :title,     :null => false
       t.text        :description, :null => false
-      
+      t.string      :slug
       
       t.timestamps
     end
+    
+    add_index :issues, :slug, unique: true
+    
     
     create_table  :images do |t|
       t.references  :issue,   :null => false
@@ -46,6 +49,7 @@ class InitialMigration < ActiveRecord::Migration
     create_table :categories do |t|
       t.string  :name,        :null => false
       t.text    :description
+      t.string  :color,       :limit => 6
       
       t.timestamps
     end

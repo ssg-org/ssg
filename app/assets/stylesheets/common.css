@@ -133,6 +133,9 @@ input[type="text"] {
 	background-color:#f6f6f6; 
 	height:20px;	
 }
+.info-link:hover {
+	text-decoration:none;
+}
 .issue-info-title {
 	position:relative; 
 	left:10px; 
