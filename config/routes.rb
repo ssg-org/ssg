@@ -69,6 +69,8 @@ Ssg::Application.routes.draw do
   end
   resources  :areas
   
+  resources :cities
+  
   
   root :to => 'issues#index'
 

@@ -1,4 +1,6 @@
 class Issue < ActiveRecord::Base
+  extend FriendlyId
+
 	OPEN 		= 1
 	IN_PROGRESS	= 2
 	FIXED		= 3
@@ -8,9 +10,11 @@ class Issue < ActiveRecord::Base
   belongs_to	:city
 
   has_many		:comments
-  has_many    	:images
-  has_many    	:votes
-
+  has_many    :images
+  has_many    :votes
+  
+  friendly_id :title, :use => [:slugged]
+  
   def self.get_issues(params, limit=9, offset=0)
   	query = Hash.new
 

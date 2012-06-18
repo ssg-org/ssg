@@ -10,6 +10,7 @@ gem 'execjs'
 # gem 'therubyracer'
 gem 'oauth2', '= 0.4.1'
 gem 'paperclip'
+gem 'friendly_id', '4.0.1'
 
 # gem 'koala', '>= 1.5.0'
 gem 'twitter'

@@ -3,25 +3,32 @@
 	<div class="issue">
 		
 		<div class="issue-img-part">
-			<div style="height:155px; width:198px;">
-				<% if  issue.images.length > 0 %>
-					<%=image_tag issue.images.first.file.url(:thumb), :border => '0' %>
-				<% end %>
-			</div>
+			<a class="info-link" href="<%=issue_path(issue.friendly_id)%>">
+				<div style="height:155px; width:198px;">
+					<% if  issue.images.length > 0 %>
+						<%=image_tag issue.images.first.file.url(:thumb), :border => '0' %>
+					<% end %>
+				</div>
+			</a>
 			<div style="height:5px; background-color:#<%=issue.category.color%>;"></div>
 		</div>
 
 		<div class="issue-info-part">
-			<div class="font-bold font-14 issue-info-title">
-				<%=issue.title%>
-			</div>
-			<div class="font-gray font-12 issue-info-name">
-				by <%=issue.user.display_name%>
-			</div>
-			<div class="issue-info-loc">
-				<span class="asset-location" ></span>
-				<span class="font-gray" style="line-height:16px;">&nbsp;<%=issue.city.name%></span>
-			</div>
+			<a class="info-link" href="<%=issue_path(issue.friendly_id)%>">
+				<div class="font-bold font-14 issue-info-title">
+					<%=issue.title%>
+				</div>
+				<div class="font-gray font-12 issue-info-name">
+					by <%=issue.user.display_name%>
+				</div>
+			</a>
+			
+			<a class="info-link" href="<%=city_path(issue.city.id)%>">
+				<div class="issue-info-loc">
+					<span class="asset-location" ></span>
+					<span class="font-gray" style="line-height:16px;">&nbsp;<%=issue.city.name%></span>
+				</div>
+			</a>
 		</div>
 		
 		<hr style="margin-top:3px;"/>
