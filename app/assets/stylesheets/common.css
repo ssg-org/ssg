@@ -65,6 +65,7 @@ input[type="text"] {
 	width:990px;
 	height:140px;
 	background-color:#f9f9f9;
+	box-shadow:0px 0px 10px #999;
 }
 #menu-list {
 	list-style:none;
@@ -85,12 +86,27 @@ input[type="text"] {
 	margin: 10px auto 0 auto;
 	background-color:#f9f9f9;
 	width:990px;
+	box-shadow:0px 0px 10px #999;
 }
 #footer {
-	margin: 10px auto 0 auto;
+	margin: 3px auto 0 auto;
+	background-color:#040500;
 	width:990px;
-	height: 180px;
+	height: 100px;
 	border-top:1px solid black;
+	box-shadow:0px 0px 10px #999;
+}
+
+.footer-menu {
+	margin-top:30px;
+	list-style:none;
+	color:#9ecc3b;
+	margin:0 auto;
+	width: 500px;
+}
+.footer-menu li {
+	float:left;
+	padding:5px 10px 5px 10px;
 }
 
 #issues_left_column {
@@ -138,6 +154,9 @@ input[type="text"] {
 }
 .issue-info-title {
 	position:relative; 
+	overflow:hidden;
+	white-space:nowrap;
+	width:180px;
 	left:10px; 
 	top:5px;	
 	height:15px;
@@ -148,6 +167,9 @@ input[type="text"] {
 }
 .issue-info-name {
 	position:relative; 
+	overflow:hidden;
+	white-space:nowrap;
+	width:180px;
 	left:10px; 
 	top:5px;
 	height:15px;

@@ -49,7 +49,7 @@ class InitialMigration < ActiveRecord::Migration
     create_table :categories do |t|
       t.string  :name,        :null => false
       t.text    :description
-      t.string  :color,       :limit => 6
+  	  t.string  :color, :limit => 6, :null => false
       
       t.timestamps
     end
