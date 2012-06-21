@@ -2,4 +2,18 @@
 # See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 en:
-  hello: "Hello world"
+    shared:
+        menu:
+            what:   'What is SSG?'
+            we_are: 'We are social community that wants to provide its citizens life in nicer environment'
+            issues: 'ISSUES'
+            discover:   'DISCOVER ALL'
+            cities:     'CITIES'
+            country:    'COUNTRY WIDE'
+            report:     'REPORT'
+            create_problem: 'YOUR PROBLEM'
+            blog:       'BLOG'
+            help:       'HELP'
+            signup:     'SIGNUP'
+            login:      'LOGIN'
+    hello: "Hello world"

@@ -36,14 +36,15 @@
   $.fn.scrollPagination.loadContent = function(obj, opts){
 	 var target = opts.scrollTarget;
 	 var mayLoadContent = $(target).scrollTop()+opts.heightOffset >= $(document).height() - $(target).height();
-	 if (mayLoadContent){
+	 if (mayLoadContent && !opts.loading){
+		 opts.loading = true;
 		 if (opts.beforeLoad != null){
 			opts.beforeLoad(); 
 		 }
 		 $(obj).children().attr('rel', 'loaded');
 		 $.ajax({
 			  type: opts.method,
-			  url: opts.contentPage,
+			  url: opts.contentCallback(),
 			  data: opts.contentData,
 			  success: function(data){
 				$(obj).append(data); 
@@ -52,6 +53,8 @@
 				if (opts.afterLoad != null){
 					opts.afterLoad(objectsRendered);	
 				}
+				opts.loading = false;
+				
 			  },
 			  dataType: 'html'
 		 });
@@ -83,6 +86,7 @@
 		 'afterLoad': null	,
 		 'scrollTarget': null,
 		 'heightOffset': 0,
-		 'method' : 'GET'
+		 'method' : 'GET',
+		 'loading' : false
  };	
 })( jQuery );

@@ -13,21 +13,22 @@
 
 <%= render :partial => 'right_menu' %>
 
+<div class="font-dp-bold font-15 loading" style="margin:0 auto; width:300px; height:50px; line-height:50px;">Loading ...</div>
+
+
 <script>
 $(function(){
 	var page_no = 1;
    $('#issues_left_column').scrollPagination({
-       'contentPage': '<%=more_issues_path()%>?offset=' + (page_no*9), // the page where you are searching for results
+       'contentCallback': function() {return '<%=more_issues_path()%>?offset=' + (page_no*12) }, // the page where you are searching for results
        'contentData': {}, 				// you can pass the children().size() to know where is the pagination
        'scrollTarget': $(window), 		// who gonna scroll? in this example, the full window
-       'heightOffset': 10, 				// how many pixels before reaching end of the page would loading start? positives numbers only please
+       'heightOffset': 50, 				// how many pixels before reaching end of the page would loading start? positives numbers only please
        'beforeLoad': function(){ 		// before load, some function, maybe display a preloader div
-//           alert('Loading ...');
+			$('.font-dp-bold').show();
        },
        'afterLoad': function(elementsLoaded){ // after loading, some function to animate results and hide a preloader div
-            // $('.loading').fadeOut();
-            var i = 0;
-            $(elementsLoaded).fadeInWithDelay();
+			$('.font-dp-bold').hide();
             if ($('#content').children().size() > 100){ 	// if more than 100 results loaded stop pagination (only for test)
                $('#content').stopScrollPagination();
             }
@@ -39,7 +40,7 @@ $(function(){
    $.fn.fadeInWithDelay = function(){
        var delay = 0;
        return this.each(function(){
-           $(this).delay(delay).animate({opacity:1}, 200);
+           $(this).delay(delay).animate({opacity:1}, 1000);
            delay += 100;
        });
    };
