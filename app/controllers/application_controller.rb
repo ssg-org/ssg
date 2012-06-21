@@ -10,4 +10,9 @@ class ApplicationController < ActionController::Base
     # Guest if not from session
     @user ||= User.guest_user
   end
+  
+  def self.disable_layout_for_ajax(layout_name = 'application')
+    layout Proc.new { |controller| controller.request.xhr? ? nil : layout_name }    
+  end
+  
 end

@@ -1,51 +1,7 @@
-<div id="issues_left_column">
-	<% @issues.each do |issue| %>
-	<div class="issue">
-		
-		<div class="issue-img-part">
-			<a class="info-link" href="<%=issue_path(issue.friendly_id)%>">
-				<div style="height:155px; width:198px;">
-					<% if  issue.images.length > 0 %>
-						<%=image_tag issue.images.first.file.url(:thumb), :border => '0' %>
-					<% end %>
-				</div>
-			</a>
-			<div style="height:5px; background-color:#<%=issue.category.color%>;"></div>
-		</div>
 
-		<div class="issue-info-part">
-			<a class="info-link" href="<%=issue_path(issue.friendly_id)%>">
-				<div class="font-bold font-14 issue-info-title">
-					<%=issue.title%>
-				</div>
-				<div class="font-gray font-12 issue-info-name">
-					by <%=issue.user.display_name%>
-				</div>
-			</a>
-			
-			<a class="info-link" href="<%=city_path(issue.city.id)%>">
-				<div class="issue-info-loc">
-					<span class="asset-location" ></span>
-					<span class="font-gray" style="line-height:16px;">&nbsp;<%=issue.city.name%></span>
-				</div>
-			</a>
-		</div>
-		
-		<hr style="margin-top:3px;"/>
-		
-		<div class="issue-category-part" >
-			<span class="font-gray font-12" style="line-height:31px;">&nbsp;&nbsp;&nbsp;&nbsp;<%=issue.category.name%></span>
-		</div>
-		
-		<hr/>
-		
-		<div class="issue-share-part">
-			<span class="asset-heart"></span><span style="float:left;" class="font-bold font-14">&nbsp;&nbsp;59&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-			<span class="asset-eye"></span><span style="float:left;" class="font-bold font-14">&nbsp;&nbsp;861</span>
-			<span style="float:right;" class="font-gray">Share</span>
-		</div>
-	</div>
-	<% end %>
+
+<div id="issues_left_column">
+	<%= render :partial => 'issue', :collection => @issues %>
 	
 	<% if @issues.length == 0 %>
 	<div class="issue">
@@ -57,3 +13,36 @@
 
 <%= render :partial => 'right_menu' %>
 
+<script>
+$(function(){
+	var page_no = 1;
+   $('#issues_left_column').scrollPagination({
+       'contentPage': '<%=more_issues_path()%>?offset=' + (page_no*9), // the page where you are searching for results
+       'contentData': {}, 				// you can pass the children().size() to know where is the pagination
+       'scrollTarget': $(window), 		// who gonna scroll? in this example, the full window
+       'heightOffset': 10, 				// how many pixels before reaching end of the page would loading start? positives numbers only please
+       'beforeLoad': function(){ 		// before load, some function, maybe display a preloader div
+//           alert('Loading ...');
+       },
+       'afterLoad': function(elementsLoaded){ // after loading, some function to animate results and hide a preloader div
+            // $('.loading').fadeOut();
+            var i = 0;
+            $(elementsLoaded).fadeInWithDelay();
+            if ($('#content').children().size() > 100){ 	// if more than 100 results loaded stop pagination (only for test)
+               $('#content').stopScrollPagination();
+            }
+			page_no ++;
+       }
+   });
+   
+   // code for fade in element by element with delay
+   $.fn.fadeInWithDelay = function(){
+       var delay = 0;
+       return this.each(function(){
+           $(this).delay(delay).animate({opacity:1}, 200);
+           delay += 100;
+       });
+   };
+          
+});
+</script>
