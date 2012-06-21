@@ -4,7 +4,7 @@ class IssuesController < ApplicationController
   
   def index
     params[:offset] ||= 0
-    @issues = Issue.get_issues(params, 9, params[:offset].to_i) 
+    @issues = Issue.get_issues(params, 12, params[:offset].to_i) 
   end
   
   def more
