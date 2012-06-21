@@ -1,14 +1,14 @@
-<div id="issues_right_column" class="font-12" style="clear:right;">
+<div id="issues_right_column" class="font-13" style="clear:right;">
 	
 	<div class="filter">
-		<span class="font-black font-bold">DATE</span><br/>
+		<span class="font-black font-dp-bold">DATE</span><br/>
 		<%=link_to 'All time', issues_path(clear_params({:date => nil})), { :class => "#{'r-menu-selected' if params[:date].blank? }"} %><br/>
 		<%=link_to 'Today', issues_path(clear_params({:date => :today})), { :class => "#{'r-menu-selected' if params[:date] == 'today' }"} %><br/>
 		<%=link_to 'This week', issues_path(clear_params({:date => :week})), { :class => "#{'r-menu-selected' if params[:date] == 'week' }"} %><br/>
 		<%=link_to 'This month', issues_path(clear_params({:date => :month})), { :class => "#{'r-menu-selected' if params[:date] == 'month' }"} %><br/>
 	</div>
 	<div class="filter">
-		<span class="font-black font-bold">FEATURED</span><br/>
+		<span class="font-black font-dp-bold">FEATURED</span><br/>
 		<%=link_to 'All time', issues_path(clear_params(:featured => nil)), { :class => "#{'r-menu-selected' if params[:featured].blank? }"} %><br/>
 		<%=link_to 'Most viewed', issues_path(clear_params(:featured => :viewed)), { :class => "#{'r-menu-selected' if params[:featured] == 'viewed' }"} %><br/>
 		<%=link_to 'Most votes', issues_path(clear_params(:featured => :votes)), { :class => "#{'r-menu-selected' if params[:featured] == 'votes' }"} %><br/>
@@ -17,14 +17,14 @@
 	<br style="clear:both;">
 	
 	<div class="filter">
-		<span class="font-black font-bold">CATEGORIES</span><br/>
+		<span class="font-black font-dp-bold">CATEGORIES</span><br/>
 		<%=link_to 'All categories', issues_path(clear_params({:category => nil})), { :class => "#{'r-menu-selected' if params[:category].blank? }"} %><br/>
 		<% User.get_categories.each do |cat|%>
 			<%=link_to cat.name, issues_path(clear_params({:category => cat.id})), { :class => "#{'r-menu-selected' if params[:category] == cat.id.to_s }"} %><br/>
 		<% end %>
 	</div>
 	<div class="filter">
-		<span class="font-black font-bold">RESOLUTION</span><br/>
+		<span class="font-black font-dp-bold">RESOLUTION</span><br/>
 		<%=link_to 'All', issues_path(clear_params({:status => nil})), { :class => "#{'r-menu-selected' if params[:status].blank? }"} %><br/>
 		<%=link_to 'Open', issues_path(clear_params({:status => Issue::OPEN})), { :class => "#{'r-menu-selected' if params[:status] == Issue::OPEN.to_s }"} %><br/>
 		<%=link_to 'In progress', issues_path(clear_params({:status => Issue::IN_PROGRESS})), { :class => "#{'r-menu-selected' if params[:status] == Issue::IN_PROGRESS.to_s }"} %><br/>

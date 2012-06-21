@@ -1,6 +1,14 @@
 class IssuesController < ApplicationController
+  
+  disable_layout_for_ajax
+  
   def index
-    @issues = Issue.get_issues(params, 9, 0) 
+    params[:offset] ||= 0
+    @issues = Issue.get_issues(params, 9, params[:offset].to_i) 
+  end
+  
+  def more
+    index
   end
   
   def new

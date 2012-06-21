@@ -26,22 +26,22 @@
 	<div style="margin-top:70px;">
 		<ul id="menu-list">
 			<li>
-				<%=link_to 'ISSUES', issues_path(), :class => "font-black font-bold #{'menu-selected' if selection[:issues]}"%><br/>
-				<span class="font-gray">DISCOVER ALL</span><br/>
+				<%=link_to 'ISSUES', issues_path(), :class => "font-dp-bold font-black #{'menu-selected' if selection[:issues]}"%><br/>
+				<span class="font-gray font-dp-medium">DISCOVER ALL</span><br/>
 				<% if selection[:issues]%>
 					<div style="margin-top:5px;height:1px; background-color:#9ecc3b"></div>
 				<% end %>
 			</li>
 			<li>
-				<%=link_to 'CITIES', cities_path(), :class => "font-black font-bold #{'menu-selected' if selection[:cities]}"%><br/>
-				<span class="font-gray">COUNTRY WIDE</span><br/>
+				<%=link_to 'CITIES', cities_path(), :class => "font-dp-bold font-black #{'menu-selected' if selection[:cities]}"%><br/>
+				<span class="font-gray font-dp-medium">COUNTRY WIDE</span><br/>
 				<% if selection[:cities]%>
 					<div style="margin-top:5px;height:1px; background-color:#9ecc3b"></div>
 				<% end %>
 			</li>
 			<li>
-				<%=link_to 'REPORT', new_issue_path(), :class => "font-black font-bold #{'menu-selected' if selection[:report]}"%><br/>
-				<span class="font-gray">YOUR PROBLEM</span><br/>
+				<%=link_to 'REPORT', new_issue_path(), :class => "font-dp-bold font-black #{'menu-selected' if selection[:report]}"%><br/>
+				<span class="font-gray font-dp-medium">YOUR PROBLEM</span><br/>
 				<% if selection[:report]%>
 					<div style="margin-top:5px;height:1px; background-color:#9ecc3b"></div>
 				<% end %>
@@ -50,16 +50,16 @@
 				<input type="text"/>
 			</li>
 			<li>
-				<%=link_to 'BLOG', new_issue_path(), :class => "font-bold font-gray", :style => 'line-height:25px;' %><br/>
+				<%=link_to 'BLOG', new_issue_path(), :class => "font-dp-bold font-gray", :style => 'line-height:25px;' %><br/>
 			</li>
 			<li>
-				<%=link_to 'HELP', new_issue_path(), :class => "font-bold  font-gray", :style => 'line-height:25px;' %><br/>
+				<%=link_to 'HELP', new_issue_path(), :class => "font-dp-bold  font-gray", :style => 'line-height:25px;' %><br/>
 			</li>
 			<li>
-				<%=link_to 'SIGNUP', login_users_path(), :class => "font-bold  font-gray", :style => 'line-height:25px;' %><br/>
+				<%=link_to 'SIGNUP', login_users_path(), :class => "font-dp-bold  font-gray", :style => 'line-height:25px;' %><br/>
 			</li>
 			<li>
-				<%=link_to 'LOGIN', login_users_path(), :class => "font-bold  font-gray", :style => 'line-height:25px;' %>
+				<%=link_to 'LOGIN', login_users_path(), :class => "font-dp-bold  font-gray", :style => 'line-height:25px;' %>
 			</li>
 			
 		</ul>

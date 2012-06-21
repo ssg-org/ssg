@@ -64,7 +64,10 @@ Ssg::Application.routes.draw do
   resources  :issues do 
     member do
       post  :vote
-      get  :follow
+      get   :follow
+    end
+    collection do 
+      get   :more
     end
   end
   resources  :areas
