@@ -1,8 +1,7 @@
 module ApplicationHelper
-    def clear_params (new_map)
+    def clear_params(new_map = {}, del_params = [ :action, :controller ])
         cleared = params.clone
-        cleared.delete(:action)       
-        cleared.delete(:controller)
+        del_params.each { |param| cleared.delete(param) }
         return cleared.merge(new_map)
     end
 end
