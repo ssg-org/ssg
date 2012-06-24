@@ -31,10 +31,12 @@ class Issue < ActiveRecord::Base
       query[:city_id] = params[:city]
     end
 
+    puts "Q : #{query}"
+
     if (query.empty?)
   		@issues_relation = Issue
-	 else
-		@issues_relation = Issue.where(query)
+	  else
+		  @issues_relation = Issue.where(query)
     end
     
     return @issues_relation.includes([:images, :category]).limit(limit).offset(offset)

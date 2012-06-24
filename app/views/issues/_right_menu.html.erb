@@ -30,6 +30,57 @@
 		<%=link_to 'In progress', issues_path(clear_params({:status => Issue::IN_PROGRESS})), { :class => "#{'r-menu-selected' if params[:status] == Issue::IN_PROGRESS.to_s }"} %><br/>
 		<%=link_to 'Fixed', issues_path(clear_params({:status => Issue::FIXED})), { :class => "#{'r-menu-selected' if params[:status] == Issue::FIXED.to_s }"} %><br/>
 	</div>
+
+	<br style="clear:both;">
+	
+	<div class="filter">
+		<span class="font-black font-dp-bold">CITIES</span><br/>
+		<input type="text" id="cities_search" />
+	</div>
+	
 </div>
 
 <div style="clear:both;"></div>
+
+<script>
+	var __cities = <%=City.for_search.to_json(:only => [:id, :name], :methods => [:friendly_id_link]).html_safe%>;
+	$(document).ready(function() {
+		$('#cities_search').autocomplete({
+			source : function(request, callback){
+				var text = $('#cities_search').val();
+				var matcher = new RegExp('\\b' + text, 'i') ;
+				var responses = $.grep(__cities, function(value) {
+					return matcher.test(value.name);
+				}).slice(0, 100);
+				callback(responses);
+			},
+			change: function( event, ui ) {
+				if ( !ui.item ) {
+					var matcher = new RegExp('\\b' + text, 'i') ;
+						valid = false;
+					select.children( "option" ).each(function() {
+						if ( $( this ).text().match( matcher ) ) {
+							this.selected = valid = true;
+							return false;
+						}
+					});
+					if ( !valid ) {
+						// remove invalid value, as it didn't match anything
+						$( this ).val( "" );
+						select.val( "" );
+						input.data( "autocomplete" ).term = "";
+						return false;
+					}
+				}
+			},
+			select : function( event, ui ) {
+				window.location.href = "cities/" + ui.item.friendly_id_link;
+			}		
+		}).data( "autocomplete" )._renderItem = function( ul, item ) {
+			return $( "<li></li>" )
+				.data( "item.autocomplete", item )
+				.append( "<a>" + item.name)
+				.appendTo( ul );
+		};
+	});
+</script>

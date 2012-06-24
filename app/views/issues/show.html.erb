@@ -8,7 +8,15 @@
 	<hr/>
 	<%=@issue.description%>
 	<hr/>
-	<%=link_to 'VOTE', vote_issue_path(@issue.id), { :remote => true, :method => :post }%> | 
-	<%=link_to 'FOLLOW', follow_issue_path(@issue.id) %>
+	
+	
+	<% if @user.guest? %>
+		Login before Vote or follow
+	<% else %>
+		<% if @issue.user_id != @user.id%>
+			<%=link_to 'VOTE', vote_issue_path(@issue.id), { :remote => true, :method => :post }%> | 
+			<%=link_to 'FOLLOW', follow_issue_path(@issue.id) %>
+		<% end %>
+	<% end  %>
 </div>
 

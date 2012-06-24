@@ -30,10 +30,17 @@ class User < ActiveRecord::Base
   end
   
   def vote_for(issue_id)
-    issue = Issue.find(issue_id)
-    vote = Vote.where(:user_id => self.id, :issue_id => issue.id).first
-    if (issue && vote.nil?)
-      Vote.create(:user => self, :issue => issue)
+    ActiveRecord::Base.transaction do
+      issue = Issue.find(issue_id)
+      # You can't vote for your issues
+      if (issue.user_id != self.id)
+        vote = Vote.where(:user_id => self.id, :issue_id => issue.id).first
+        if (issue && vote.nil?)
+          Vote.create(:user => self, :issue => issue)
+        end
+        issue.vote_count += 1
+        issue.save
+      end
     end
   end
   

@@ -11,4 +11,5 @@
  *= require_self
  *= require common
  *= require sprites
+ *= require smoothness/jquery-ui
 */

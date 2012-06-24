@@ -21,7 +21,15 @@ class IssuesController < ApplicationController
   end
   
   def show
-    @issue = Issue.find(params[:id])
+    ActiveRecord::Base.transaction do
+      @issue = Issue.find(params[:id])
+      # Can't update View Count if this is your issue
+      # TODO Refactor this
+      if (@issue.user_id != @user.id)
+        @issue.view_count += 1
+        @issue.save
+      end
+    end
   end
   
   def vote
