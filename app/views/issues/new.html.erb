@@ -1,45 +1,84 @@
-<div style="padding:20px;">
-<% if @user.guest? %>
-	<%=link_to 'Logirajte se prvo', login_users_path() %>
-<% else %>
-	<%= form_tag issues_path() , :multipart => true do %>
-	<table>
-		<tr>
-			<td><%= label_tag :title, 'Problem'%> </td>
-			<td><%= text_field_tag :title%></td>
-		</tr>
-		<tr>
-			<td><%= label_tag :category, 'Ketegorija'%> </td>
-			<td>
-				<select name="category">
-					<%User.get_categories.each do |cat|%>
-						<option value="<%=cat.id%>"><%=cat.name%></option>
-					<% end %>
-				</select>
-			</td>
-		</tr>
-		<tr>
-			<td><%= label_tag :city, 'Grad'%> </td>
-			<td>
-				<select name="city">
-					<%User.get_cities.each do |city|%>
-						<option value="<%=city.id%>"><%=city.name%></option>
-					<% end %>
-				</select>
-			</td>
-		</tr>
-		<tr>
-			<td><%= label_tag :description, 'Opis problema'%> </td>
-			<td><%= text_area_tag :description%></td>
-		</tr>
-		<tr>
-			<td><%= label_tag :file, 'Slika'%> </td>
-			<td><%= file_field_tag :file%></td>
-		</tr>
-		<tr>
-			<td><%= submit_tag 'Kreiraj'%> </td>
-		</tr>
-	</table>
-	<% end %>
-<% end %>
+<div style="padding:20px; position:relative;">
+	
+	<div id="form-div" style="position:absolute; z-index:1000; left:40px; top:20px; background-color:#9ecc3a; height:550px;">
+		<%= form_tag issues_path() , :multipart => true do %>
+			<table>
+				<tr>
+					<td><%= label_tag :title, 'Problem'%> </td>
+					<td><%= text_field_tag :title%></td>
+				</tr>
+				<tr>
+					<td><%= label_tag :category, 'Ketegorija'%> </td>
+					<td>
+						<select name="category">
+							<%User.get_categories.each do |cat|%>
+								<option value="<%=cat.id%>"><%=cat.name%></option>
+							<% end %>
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td><%= label_tag :city, 'Grad'%> </td>
+					<td>
+						<select name="city">
+							<%User.get_cities.each do |city|%>
+								<option value="<%=city.id%>"><%=city.name%></option>
+							<% end %>
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td><%= label_tag :description, 'Opis problema'%> </td>
+					<td><%= text_area_tag :description%></td>
+				</tr>
+				<tr>
+					<td><%= label_tag :file, 'Slika'%> </td>
+					<td><%= file_field_tag :file%></td>
+				</tr>
+				<tr>
+					<td><%= submit_tag 'Kreiraj'%> </td>
+				</tr>
+			</table>
+		<% end %>
+	</div>
+	
+	<div id="map" style="height:550px;">
+		
+	</div>
 </div>
+
+
+<script src="http://open.mapquestapi.com/sdk/js/v7.0.s/mqa.toolkit.js"></script> 
+<script type="text/javascript"> 
+
+    /*An example of using the MQA.EventUtil to hook into the window load event and execute defined function 
+    passed in as the last parameter. You could alternatively create a plain function here and have it 
+    executed whenever you like (e.g. <body onload="yourfunction">).*/ 
+
+    MQA.EventUtil.observe(window, 'load', function() {
+	
+      /*Create an object for options*/ 
+      var options={
+        elt:document.getElementById('map'),       /*ID of element on the page where you want the map added*/ 
+        zoom:13,                                  /*initial zoom level of the map*/ 
+        latLng:{lat:43.84769, lng:18.36},   /*center of map in latitude/longitude */ 
+        mtype:'osm',                              /*map type (osm)*/ 
+        bestFitMargin:0,                          /*margin offset from the map viewport when applying a bestfit on shapes*/ 
+        zoomOnDoubleClick:true                    /*zoom in when double-clicking on map*/ 
+      };
+
+      /*Construct an instance of MQA.TileMap with the options object*/ 
+      window.map = new MQA.TileMap(options);
+
+	MQA.withModule('largezoom', function() {
+
+	    map.addControl(
+	      new MQA.LargeZoom(),
+	      new MQA.MapCornerPlacement(MQA.MapCorner.TOP_RIGHT, new MQA.Size(5,5))
+	    );
+
+	  });
+
+    });
+
+  </script>
