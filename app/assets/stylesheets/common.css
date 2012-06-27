@@ -80,3 +80,59 @@ a {
 	font-weight:normal;
 	color:#444;
 }
+
+.subscribe {
+    margin: 0 auto;
+    padding: 20px;
+    text-align: left;
+    width:950px;
+    height:50px;
+    background-color:#000;
+    display:block;
+}
+
+.subscribe p {
+	float: right;
+    font-size: 18px;
+    font-family:Arial;
+}
+
+.subscribe a {
+	color: transparent;
+}
+
+.invite_confirmation {
+	margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+    width:950px;
+    height:50px;
+    background-color:#000;
+	color: 9ecc3b;
+    display:block;
+    font-size: 18px;
+    font-family:Arial;
+}
+
+#email {
+	float: left;
+	margin-right: 20px;
+    font-size: 20px;
+    font-family:Arial;
+    color: #838383;
+    
+    height:40px;
+    width:465px;
+}
+
+#change_lang_btn {
+	float: right;
+	margin-left: 20px;
+}
+
+#change_lang_lbl {
+	float: right;
+    font-size: 18px;
+    font-family:Arial;
+    color: #838383;
+}

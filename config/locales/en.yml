@@ -2,4 +2,7 @@
 # See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 en:
-  hello: "Hello world"
+  email_lbl: "Your email address"
+  change_lang_lbl: "Change language"
+  footer_lbl: "All Rights Reserved. Copyright 2012 SREDI SVOJ GRAD - SSG."
+  invite_ok: "Thank you for registering to SSG. We will notify you as soon as private beta version is available."

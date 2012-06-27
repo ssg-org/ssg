@@ -1,0 +1,8 @@
+# Sample localization file for English. Add more files in this directory for other locales.
+# See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
+
+bs:
+  email_lbl: "Vaša email adresa"
+  change_lang_lbl: "Promijenite jezik"
+  footer_lbl: "Sva prava zadržana. Copyright 2012 SREDI SVOJ GRAD - SSG."
+  invite_ok: "Hvala Vam na prijavi. Mi ćemo vas kontaktirati čim privatna beta verzija bude dostupna."

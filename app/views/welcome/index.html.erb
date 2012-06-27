@@ -1,22 +1,38 @@
 <div id="header">
-	<%= image_tag('tour/tour-header.jpg')%>
+	<%= image_tag("tour/#{I18n.locale}/tour-header.jpg")%>
 </div>
 
 <div id="wrapper">
     <div class="slider-wrapper">
         <div id="slider" class="nivoSlider">
-            <%= image_tag 'tour/tour-slide1.jpg'%>
-            <%= image_tag 'tour/tour-slide2.jpg'%>
-            <%= image_tag 'tour/tour-slide3.jpg'%>
-            <%= image_tag 'tour/tour-slide4.jpg'%>
-            <%= image_tag 'tour/tour-slide5.jpg'%>
-			<%= image_tag 'tour/tour-slide6.jpg'%>
+            <%= image_tag "tour/#{I18n.locale}/tour-slide1.jpg"%>
+            <%= image_tag "tour/#{I18n.locale}/tour-slide2.jpg"%>
+            <%= image_tag "tour/#{I18n.locale}/tour-slide3.jpg"%>
+            <%= image_tag "tour/#{I18n.locale}/tour-slide4.jpg"%>
+            <%= image_tag "tour/#{I18n.locale}/tour-slide5.jpg"%>
+			<%= image_tag "tour/#{I18n.locale}/tour-slide6.jpg" if (I18n.locale == 'en')%>
         </div>
     </div>
 </div>
 
+<% if (flash[:subscribed] == true) %>
+<div class="invite_confirmation">
+    <p><%=t(:invite_ok)%></p>
+</div>
+<% else %>
+<div class="subscribe">
+    <%= form_tag subscribe_path() do %>
+        <%= hidden_field_tag "locale", I18n.locale %>
+        <%= email_field_tag :email, t(:email_lbl), :onFocus => "this.value=''"%>
+        <%= image_submit_tag "tour/#{I18n.locale}/invite-btn.png" %>
+        <%= link_to (image_tag "tour/#{:en == I18n.locale ? :bs : :en}/flag.png", :id => "change_lang_btn"), "?locale=#{:en == I18n.locale ? :bs : :en}" %>
+        <p><%=t(:change_lang_lbl)%></p>
+    <% end %>
+</div>
+<% end %>
+
 <div class="footer">
-    <p>All Rights Reserved. Copyright 2012 SREDI SVOJ GRAD - SSG.</p>
+    <p><%= t(:footer_lbl)%></p>
 </div>
 
 <script type="text/javascript">
