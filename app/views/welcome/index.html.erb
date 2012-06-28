@@ -25,7 +25,7 @@
         <%= hidden_field_tag "locale", I18n.locale %>
         <%= email_field_tag :email, t(:email_lbl), :onFocus => "this.value=''"%>
         <%= image_submit_tag "tour/#{I18n.locale}/invite-btn.png" %>
-        <%= link_to (image_tag "tour/#{:en == I18n.locale ? :bs : :en}/flag.png", :id => "change_lang_btn"), "?locale=#{:en == I18n.locale ? :bs : :en}" %>
+        <%= link_to (image_tag "tour/#{:en == I18n.locale ? :bs : :en}/flag-s.png", :id => "change_lang_btn"), "?locale=#{:en == I18n.locale ? :bs : :en}" %>
         <p><%=t(:change_lang_lbl)%></p>
     <% end %>
 </div>

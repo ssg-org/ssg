@@ -93,8 +93,9 @@ a {
 
 .subscribe p {
 	float: right;
-    font-size: 18px;
+    font-size: 16px;
     font-family:Arial;
+	line-height:15px;
 }
 
 .subscribe a {
@@ -120,14 +121,15 @@ a {
     font-size: 20px;
     font-family:Arial;
     color: #838383;
-    
-    height:40px;
+    height:38px;
     width:465px;
+	text-indent:10px;
 }
 
 #change_lang_btn {
 	float: right;
 	margin-left: 20px;
+	margin-top:8px;
 }
 
 #change_lang_lbl {
@@ -135,4 +137,6 @@ a {
     font-size: 18px;
     font-family:Arial;
     color: #838383;
+	line-height:10px;
+	height:15px;
 }
