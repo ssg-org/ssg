@@ -1,14 +1,24 @@
-<div style="padding:20px; position:relative;">
-	
-	<div id="form-div" style="position:absolute; z-index:1000; left:40px; top:20px; background-color:#9ecc3a; height:550px;">
-		<%= form_tag issues_path() , :multipart => true do %>
+
+<div style="position:relative;">
+	<div id="form-div" style="position:absolute; z-index:1000; left:30px; background-color:#9ecc3a; height:550px; width:460px; padding:30px;">
+		<span class="font-dp-bold" style="font-size:26px; color:white;">REPORT A PROBLEM</span><br/>
+		<span style="color:white;">Click on map to set location</span><br/>
+		
+		<%= form_tag issues_path(), :id => 'report_form',  :multipart => true do %>
 			<table>
 				<tr>
-					<td><%= label_tag :title, 'Problem'%> </td>
-					<td><%= text_field_tag :title%></td>
+					<td><%= text_field_tag :title, :style => 'height:100%;' %></td>
 				</tr>
 				<tr>
-					<td><%= label_tag :category, 'Ketegorija'%> </td>
+					<td>
+						<select name="city" >
+							<%User.get_cities.each do |city|%>
+								<option value="<%=city.id%>"><%=city.name%></option>
+							<% end %>
+						</select>
+					</td>
+				</tr>
+				<tr>
 					<td>
 						<select name="category">
 							<%User.get_categories.each do |cat|%>
@@ -18,67 +28,38 @@
 					</td>
 				</tr>
 				<tr>
-					<td><%= label_tag :city, 'Grad'%> </td>
-					<td>
-						<select name="city">
-							<%User.get_cities.each do |city|%>
-								<option value="<%=city.id%>"><%=city.name%></option>
-							<% end %>
-						</select>
-					</td>
-				</tr>
-				<tr>
-					<td><%= label_tag :description, 'Opis problema'%> </td>
-					<td><%= text_area_tag :description%></td>
+					<td><%= text_area_tag :description, :style => 'height:100%;'%></td>
 				</tr>
 				<tr>
 					<td><%= label_tag :file, 'Slika'%> </td>
 					<td><%= file_field_tag :file%></td>
 				</tr>
-				<tr>
-					<td><%= submit_tag 'Kreiraj'%> </td>
-				</tr>
 			</table>
 		<% end %>
+		<%=ssg_button 'REPORT', {:onclick => '$(\'#report_form\').submit()', :href => '#' }%>
 	</div>
+	
 	
 	<div id="map" style="height:550px;">
 		
 	</div>
 </div>
 
+<script>
+$(document).ready(function() {
+	// initialize the map on the "map" div
+	map = new L.Map('map');
 
-<script src="http://open.mapquestapi.com/sdk/js/v7.0.s/mqa.toolkit.js"></script> 
-<script type="text/javascript"> 
+	// create a CloudMade tile layer with style #997 (or use other provider of your choice)
+	var cloudmade = new L.TileLayer('http://{s}.tile.cloudmade.com/10a3c88ad1f14f18a611c6ebc2300e35/997/256/{z}/{x}/{y}.png', {
+	    attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://cloudmade.com">CloudMade</a>',
+	    maxZoom: 18
+	});
 
-    /*An example of using the MQA.EventUtil to hook into the window load event and execute defined function 
-    passed in as the last parameter. You could alternatively create a plain function here and have it 
-    executed whenever you like (e.g. <body onload="yourfunction">).*/ 
+	// add the CloudMade layer to the map set the view to a given center and zoom
+	map.addLayer(cloudmade).setView(new L.LatLng(43.855078, 18.395748), 13);
 
-    MQA.EventUtil.observe(window, 'load', function() {
-	
-      /*Create an object for options*/ 
-      var options={
-        elt:document.getElementById('map'),       /*ID of element on the page where you want the map added*/ 
-        zoom:13,                                  /*initial zoom level of the map*/ 
-        latLng:{lat:43.84769, lng:18.36},   /*center of map in latitude/longitude */ 
-        mtype:'osm',                              /*map type (osm)*/ 
-        bestFitMargin:0,                          /*margin offset from the map viewport when applying a bestfit on shapes*/ 
-        zoomOnDoubleClick:true                    /*zoom in when double-clicking on map*/ 
-      };
 
-      /*Construct an instance of MQA.TileMap with the options object*/ 
-      window.map = new MQA.TileMap(options);
+});	
+</script>
 
-	MQA.withModule('largezoom', function() {
-
-	    map.addControl(
-	      new MQA.LargeZoom(),
-	      new MQA.MapCornerPlacement(MQA.MapCorner.TOP_RIGHT, new MQA.Size(5,5))
-	    );
-
-	  });
-
-    });
-
-  </script>

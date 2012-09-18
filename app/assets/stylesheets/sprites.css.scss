@@ -1,0 +1,23 @@
+@mixin sprite-mixin($left, $top, $width, $height) {
+	background: url(sprites.png) $left $top no-repeat;
+	width:$width;
+	height:$height;
+	float:left;
+	display:block;
+}
+
+.asset-logo {
+	@include sprite-mixin(0px, -33px, 95px, 95px)
+}
+.asset-learn-more {
+	@include sprite-mixin(0px, -16px, 92px, 17px)
+}
+.asset-location {
+	@include sprite-mixin(-34px, 0px, 13px, 15px)
+}
+.asset-heart {
+	@include sprite-mixin(-16px, 0px, 17px, 15px)
+}
+.asset-eye {
+	@include sprite-mixin(0px, 0px, 17px, 15px)
+}
