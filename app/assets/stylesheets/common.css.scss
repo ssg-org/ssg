@@ -2,55 +2,63 @@
 @font-face {
 	font-family: 'Conv_DINPro-Bold';
 	src: url('fonts/DINPro-Bold.eot');
-	src: local('‚ò∫'), url('fonts/DINPro-Bold.woff') format('woff'), url('fonts/DINPro-Bold.ttf') format('truetype'), url('fonts/DINPro-Bold.svg') format('svg');
+	src: url('fonts/DINPro-Bold.woff') format('woff'), url('fonts/DINPro-Bold.ttf') format('truetype'), url('fonts/DINPro-Bold.svg') format('svg');
 	font-weight: normal;
 	font-style: normal;
 }
 @font-face {
 	font-family: 'Conv_DINPro-Black';
 	src: url('fonts/DINPro-Black.eot');
-	src: local('‚ò∫'), url('fonts/DINPro-Black.woff') format('woff'), url('fonts/DINPro-Black.ttf') format('truetype'), url('fonts/DINPro-Black.svg') format('svg');
+	src: url('fonts/DINPro-Black.woff') format('woff'), url('fonts/DINPro-Black.ttf') format('truetype'), url('fonts/DINPro-Black.svg') format('svg');
 	font-weight: normal;
 	font-style: normal;
 }
 @font-face {
 	font-family: 'Conv_DINPro-Light';
 	src: url('fonts/DINPro-Light.eot');
-	src: local('‚ò∫'), url('fonts/DINPro-Light.woff') format('woff'), url('fonts/DINPro-Light.ttf') format('truetype'), url('fonts/DINPro-Light.svg') format('svg');
+	src:url('fonts/DINPro-Light.woff') format('woff'), url('fonts/DINPro-Light.ttf') format('truetype'), url('fonts/DINPro-Light.svg') format('svg');
 	font-weight: normal;
 	font-style: normal;
 }
 @font-face {
 	font-family: 'Conv_DINPro-Medium';
 	src: url('fonts/DINPro-Light.eot');
-	src: local('‚ò∫'), url('fonts/DINPro-Medium.woff') format('woff'), url('fonts/DINPro-Medium.ttf') format('truetype'), url('fonts/DINPro-Medium.svg') format('svg');
+	src: url('fonts/DINPro-Medium.woff') format('woff'), url('fonts/DINPro-Medium.ttf') format('truetype'), url('fonts/DINPro-Medium.svg') format('svg');
 	font-weight: normal;
 	font-style: normal;
 }
 @font-face {
 	font-family: 'Conv_DINPro-Regular';
 	src: url('fonts/DINPro-Light.eot');
-	src: local('‚ò∫'), url('fonts/DINPro-Regular.woff') format('woff'), url('fonts/DINPro-Regular.ttf') format('truetype'), url('fonts/DINPro-Regular.svg') format('svg');
+	src: url('fonts/DINPro-Regular.woff') format('woff'), url('fonts/DINPro-Regular.ttf') format('truetype'), url('fonts/DINPro-Regular.svg') format('svg');
 	font-weight: normal;
 	font-style: normal;
 }
+
+$font-family : 'Arial';
+$font-size   : 12px;
+
+$background-color : #cfcfcf;
+$color-green : #9ecc3b;
+$color-gray  : #a2a2a2;
 
 html, body {
 	margin: 0px;
 	padding: 0px;
 	height:100%;
-	font-family: 'Arial';
+	font-family: $font-family;
 	color:black;
-	font-size:12px;
-	background-color:#cfcfcf;
+	font-size: $font-size;
+	background-color: $background-color;
 }
 a {
 	cursor: hand; /*IE*/
 	cursor: pointer; /*Rest*/
 	text-decoration:none;
-}
-a:hover {
-	text-decoration: underline; 
+
+	&:hover {
+		text-decoration: underline; 
+	}
 }
 ul {
 	padding:0px;
@@ -66,11 +74,11 @@ hr{
 	border-left: none;
 }
 input[type="text"] {
-	border:1px solid #a2a2a2;
+	border:1px solid $color-gray;
 	height:20px;
 	line-height:20px;
 	font-size:13px;
-	color:#a2a2a2;
+	color:#6d6d6d;
 }
 .font-green {
 	color:#9ecc3b;
@@ -79,7 +87,7 @@ input[type="text"] {
 	color:black;
 }
 .font-gray {
-	color:#a2a2a2;
+	color:$color-gray;
 }
 .font-bold {
 	font-weight:bold;
@@ -101,6 +109,9 @@ input[type="text"] {
 }
 .font-17 {
 	font-size:17px;
+}
+.font-18 {
+	font-size:18px;
 }
 .font-dp-regular {
 	font-family:'Conv_DINPro-Regular';
@@ -126,17 +137,19 @@ input[type="text"] {
 }
 #menu-list {
 	list-style:none;
+	
+	li {
+		float:left;
+		padding:8px;
+	}
 }
-#menu-list li {
-	float:left;
-	padding:8px;
-}
+
 .menu-selected {
-	color:#9ecc3b;
+	color: $color-green;
 	font-weight:bold;
 }
 .r-menu-selected {
-	color:#9ecc3b;
+	color: $color-green;
 	font-weight:bold;
 }
 #main {
@@ -157,7 +170,7 @@ input[type="text"] {
 .footer-menu {
 	margin-top:30px;
 	list-style:none;
-	color:#9ecc3b;
+	color: $color-green;
 	margin:0 auto;
 	width: 500px;
 }
@@ -237,4 +250,16 @@ input[type="text"] {
 	position:relative; 
 	left:10px; 
 	top:16px;	
+}
+
+.btn_green {
+	height:36px;
+	line-height:36px;
+	padding:0 30px 0 30px;
+	border:1px solid white;
+	background-color:#9ecc3a;
+	font-family:'Conv_DINPro-Black';
+	font-size:14px;
+	color:white;
+	float:left;
 }

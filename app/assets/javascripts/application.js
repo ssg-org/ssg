@@ -16,3 +16,4 @@
 //= require common
 //= require fb
 //= require scrollpagination
+//= require leaflet
