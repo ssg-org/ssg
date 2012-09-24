@@ -3,7 +3,7 @@
 		<a class="info-link" href="<%=issue_path(issue.friendly_id)%>">
 			<div style="height:155px; width:198px;">
 				<% if  issue.images.length > 0 %>
-					<%=image_tag issue.images.first.file.url(:thumb), :border => '0' %>
+					<%=image_tag issue.images.first.image.thumb, :border => '0' %>
 				<% end %>
 			</div>
 		</a>

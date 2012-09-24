@@ -31,9 +31,9 @@ class InitialMigration < ActiveRecord::Migration
     
     
     create_table  :images do |t|
-      t.references  :issue,   :null => false
+      t.references  :issue
 
-      t.has_attached_file :file
+      t.text      :image
       
       t.timestamps
     end

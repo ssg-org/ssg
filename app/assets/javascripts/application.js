@@ -12,8 +12,9 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require jquery-ui.min
 //= require common
 //= require fb
 //= require scrollpagination
 //= require leaflet
+//= require jquery-fileupload/basic
+//= require jquery.validate.min
