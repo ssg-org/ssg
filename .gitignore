@@ -7,4 +7,5 @@ tmp
 public/system/**/*
 public/assets
 db/schema.rb
+public/uploads
 

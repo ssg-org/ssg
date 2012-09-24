@@ -60,15 +60,16 @@ class User < ActiveRecord::Base
     end
   end
   
-  def create_issue(title, category_id, city_id, descripion, file_desc)
+  def create_issue(title, category_id, city_id, descripion, image_ids)
     ActiveRecord::Base.transaction do
-      category = Category.find_by_id(category_id)
-      city = City.find_by_id(city_id)
+      category = Category.find(category_id)
+      city = City.find(city_id)
 
-      issue = Issue.create({ :user => self, :title => title, :description => descripion, :category => category, :city => city })
-      if (file_desc)
-        Image.create({ :issue => issue, :file => file_desc })
-      end
+      issue = Issue.new({ :user => self, :title => title, :description => descripion, :category => category, :city => city })
+      issue.save
+
+      Image.update_all({ :issue_id => issue.id}, { :id => image_ids })
+
       return issue
     end
   end

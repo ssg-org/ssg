@@ -12,10 +12,24 @@ class IssuesController < ApplicationController
   end
   
   def new
+    @issue = Issue.new
+
+    respond_to do |format|
+      format.html # new.html.erb
+      format.json { render json: @issue }
+    end
+    
   end
   
   def create
-    @user.create_issue(params[:title], params[:category], params[:city], params[:description], params[:file])
+    # parse image params
+    image_count = params[:image_count].to_i
+    image_ids = []
+    (0..image_count-1).each do |i|
+      image_ids << params["image_#{i}"]
+    end
+
+    @user.create_issue(params[:issue][:title], params[:issue][:category_id], params[:issue][:city_id], params[:issue][:description], image_ids)
     
     redirect_to issues_path()
   end

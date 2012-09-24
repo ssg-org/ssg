@@ -1,9 +1,13 @@
 class Issue < ActiveRecord::Base
   extend FriendlyId
 
+
+
 	OPEN 		= 1
 	IN_PROGRESS	= 2
 	FIXED		= 3
+
+  attr_accessible :title, :category, :city, :description, :user
 
   belongs_to 	:user
   belongs_to  :category
@@ -30,8 +34,6 @@ class Issue < ActiveRecord::Base
     if (!params[:city].nil?)
       query[:city_id] = params[:city]
     end
-
-    puts "Q : #{query}"
 
     if (query.empty?)
   		@issues_relation = Issue

@@ -1,42 +1,54 @@
 
 <div style="position:relative;">
-	<div id="form-div" style="position:absolute; z-index:1000; left:30px; background-color:#9ecc3a; height:550px; width:460px; padding:30px;">
+	<div id="form-div" style="position:absolute; z-index:1000; left:30px; background-color:#9ecc3a; height:490px; width:350px; padding:30px;">
 		<span class="font-dp-bold" style="font-size:26px; color:white;">REPORT A PROBLEM</span><br/>
 		<span style="color:white;">Click on map to set location</span><br/>
 		
-		<%= form_tag issues_path(), :id => 'report_form',  :multipart => true do %>
-			<table>
-				<tr>
-					<td><%= text_field_tag :title, :style => 'height:100%;' %></td>
-				</tr>
-				<tr>
-					<td>
-						<select name="city" >
-							<%User.get_cities.each do |city|%>
-								<option value="<%=city.id%>"><%=city.name%></option>
-							<% end %>
-						</select>
+		<%= form_for @issue, :html => { :multipart => true, :id => 'fileupload' }  do |f|%>
+			<table style="width:340px;">
+				<tr >
+					<td colspan="2">
+						<%= f.text_field :title, :style => 'width:100%;' %>
 					</td>
 				</tr>
 				<tr>
 					<td>
-						<select name="category">
-							<%User.get_categories.each do |cat|%>
-								<option value="<%=cat.id%>"><%=cat.name%></option>
-							<% end %>
-						</select>
+						<%= f.collection_select(:city_id, User.get_cities, :id, :name) %>
 					</td>
 				</tr>
 				<tr>
-					<td><%= text_area_tag :description, :style => 'height:100%;'%></td>
+					<td>
+						<%= f.collection_select(:category_id, User.get_categories, :id, :name) %>
+					</td>
 				</tr>
 				<tr>
-					<td><%= label_tag :file, 'Slika'%> </td>
-					<td><%= file_field_tag :file%></td>
+					<td colspan="2">
+						<%= f.text_area :description, :style => 'width:100%; height:80px;' %>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<input id="fileupload" type="file" name="image" multiple/>
+						<span id="gallery_inputs">
+							<input type="hidden" id="image_count" name="image_count" value="0" />
+						</span>
+             	</td>
+				</tr>
+				<tr>
+					<td>
+						<div id="progress" style="width:0%; height:5px; background-color:white; margin-bottom:15px;"></div>
+						<ul id="gallery" style="list-style:none">
+						</ul>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<%= f.submit %>
+					</td>
 				</tr>
 			</table>
 		<% end %>
-		<%=ssg_button 'REPORT', {:onclick => '$(\'#report_form\').submit()', :href => '#' }%>
+
 	</div>
 	
 	
@@ -46,7 +58,10 @@
 </div>
 
 <script>
-$(document).ready(function() {
+$(function () {
+
+	// MAP
+
 	// initialize the map on the "map" div
 	map = new L.Map('map');
 
@@ -60,6 +75,28 @@ $(document).ready(function() {
 	map.addLayer(cloudmade).setView(new L.LatLng(43.855078, 18.395748), 13);
 
 
+	// UPLOAD SETUP
+	$('#fileupload').fileupload({
+		url : '<%= images_path()%>',
+		progressall : function(e, data) {
+			$('#progress').css('width',  parseInt(data.loaded / data.total * 100, 10) + '%');
+		},
+		success : function() {
+			$('#progress').css('width', '0%');
+		},
+		fail : function() {
+			alert("Error during upload. Please refresh your browser and try again!!!");
+		}
+	});
+
+	// VALIDATE
+	$('#fileupload').validate({
+		rules : {
+			issue_title :  {
+				required : true
+			}
+		}
+	});
 });	
 </script>
 
