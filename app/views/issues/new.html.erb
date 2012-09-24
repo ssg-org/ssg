@@ -1,4 +1,3 @@
-
 <div style="position:relative;">
 	<div id="form-div" style="position:absolute; z-index:1000; left:30px; background-color:#9ecc3a; height:490px; width:350px; padding:30px;">
 		<span class="font-dp-bold" style="font-size:26px; color:white;">REPORT A PROBLEM</span><br/>
@@ -8,7 +7,7 @@
 			<table style="width:340px;">
 				<tr >
 					<td colspan="2">
-						<%= f.text_field :title, :style => 'width:100%;' %>
+						<%= f.text_field :title, :style => 'width:100%;', :autocomplete=> :off  %>
 					</td>
 				</tr>
 				<tr>
@@ -52,12 +51,16 @@
 	</div>
 	
 	
-	<div id="map" style="height:550px;">
+	<div id="map" style="height:550px; float:right; width:550px;">
 		
 	</div>
 </div>
+<br style="clear:both;"/>
 
 <script>
+var cities = <%=User.get_cities.to_json(:only => [:id, :lat, :long]).html_safe%>;
+
+
 $(function () {
 
 	// MAP
@@ -72,7 +75,17 @@ $(function () {
 	});
 
 	// add the CloudMade layer to the map set the view to a given center and zoom
-	map.addLayer(cloudmade).setView(new L.LatLng(43.855078, 18.395748), 13);
+	map.addLayer(cloudmade).setView(new L.LatLng(43.855078, 18.395748), 7);
+
+	$('#issue_city_id').change(function() {
+		var city_id = $(this).val();
+		for (var i=0; i<cities.length; ++i) {
+			if (cities[i].id == city_id) {
+				map.addLayer(cloudmade).setView(new L.LatLng(cities[i].lat, cities[i].long), 13);				
+				return;
+			}
+		}
+	});
 
 
 	// UPLOAD SETUP
@@ -90,13 +103,28 @@ $(function () {
 	});
 
 	// VALIDATE
+	$.validator.addMethod(
+		"images_validator", 
+		function(value) {
+			return $('.upload-preview').length > 0;
+		}, 
+		'Image is required!'
+	);
+
 	$('#fileupload').validate({
 		rules : {
-			issue_title :  {
-				required : true
-			}
+			'issue[title]' :  {
+				required : true,
+				minlength : 10
+			},
+			'issue[description]' : {
+				required : true,
+				minlength : 10
+			},
+			'image' : 'images_validator'
 		}
 	});
+
 });	
 </script>
 

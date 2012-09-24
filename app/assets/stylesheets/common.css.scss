@@ -73,12 +73,21 @@ hr{
 	border-right: none;
 	border-left: none;
 }
-input[type="text"] {
+.input-texts {
 	border:1px solid $color-gray;
 	height:20px;
 	line-height:20px;
 	font-size:13px;
-	color:#6d6d6d;
+	color:#6d6d6d;	
+}
+input[type="text"] {
+	@extend .input-texts;
+}
+input[type="password"] {
+	@extend .input-texts;
+}
+textarea {
+	@extend .input-texts;	
 }
 .font-green {
 	color:#9ecc3b;
@@ -262,4 +271,9 @@ input[type="text"] {
 	font-size:14px;
 	color:white;
 	float:left;
+}
+// upload
+.upload-preview {
+	float:left; 
+	margin-right:2px; 
 }

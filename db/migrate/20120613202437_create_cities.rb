@@ -3,7 +3,8 @@ class CreateCities < ActiveRecord::Migration
     create_table :cities do |t|
       t.string :name,	:null => false
       t.string      :slug
-
+      t.decimal     :lat
+      t.decimal     :long
 
       t.timestamps
     end
