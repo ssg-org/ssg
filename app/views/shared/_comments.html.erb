@@ -1,0 +1,25 @@
+<span style="font-size:20px;margin-top:20px;">Discuss this issue (<%=comments.count%> comments)</span><br/><br/>
+<hr/>
+<% if @user.guest? %>
+	<span style="font-size:12px;">You can log in to join conversation</span>
+<% else %>
+	<div id="comment_editor" style="padding:25px 0 25px 0; overflow:auto;">
+			<%= image_tag @user.avatar, :style => 'width: 50px; float:left; margin-right:10px;' %>
+			<%= form_tag comments_path(), :id => 'comment_form', :remote => true do |f| %>
+				<%= text_field_tag :text, nil, :style => 'width:300px;' %>
+				<input type="hidden" name="issue_id" value="<%=issue.id%>" />
+				<%= ssg_button('Comment', { :onclick => "$('\#comment_form').submit();"}, { :style => 'height:23px; line-height:23px;' }) %>
+			<% end %>
+	</div>
+<% end %>
+
+<% comments.each do |comment|%>
+	<hr/>
+	<div style="padding:25px 0 25px 0; overflow:auto;">
+		<%= image_tag comment.user.avatar, :style => 'width: 50px; float:left;' %>
+		<div style="float:left; margin-left:10px; width:500px;">
+			<span class="font-15"><%= comment.user.display_name %></span> <span class="font-gray"> - <%=distance_of_time_in_words_to_now(comment.created_at)%></span><br/><br/>
+			<%= comment.text%>
+		</div>
+	</div>
+<% end %>

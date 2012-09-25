@@ -1,25 +1,32 @@
-<div style="padding:20px;">
+<div style="padding:25px;">
 	<div style="font-size:14px; margin-bottom:10px;">
 		SSG / ISSUES / <span class="font-green"><%=@issue.title.upcase%></span>
 	</div>
 
 	<div class="issue-container">
-		<div style="margin-bottom:10px;">
-			<span style="font-size:24px; font-style:italic; "><%=@issue.title.upcase%></span><br/>
-			<span class="font-12"><%=@issue.category.name%>, <%=@issue.city.name%></span><br/>
+		<div class="issue-container-green">
+			<div class="issue-cell">
+				<span style="font-size:24px; font-style:italic; "><%=@issue.title.upcase%></span><br/>
+				<span class="font-12"><%=@issue.category.name%>, <%=@issue.city.name%></span><br/>
+			</div>
+			<div class="issue-cell">
+				<p><%=@issue.description%></p>
+			</div>
+			<div  class="issue-cell">
+				<% @issue.images.each do |img| %>
+					<%= image_tag img.image, :style=> 'margin-bottom:20px;'%><br/>
+				<% end %>
+			</div>
+
 		</div>
-		<div style="margin-bottom:10px;">
-			<p><%=@issue.description%></p>
-		</div>
-		<div>
-			<% @issue.images.each do |img| %>
-				<%= image_tag img.image, :style=> 'margin-bottom:20px;'%><br/>
-			<% end %>
+
+		<div style="margin-top:15px;">
+			<%= render :partial => 'shared/comments', :locals => { :comments => @issue.comments.order('created_at desc'), :issue => @issue }%>
 		</div>
 	</div>
 
 
-	<div style="float:left; margin-left:20px; width:265px;">
+	<div style="float:left; margin-left:20px; width:240px;">
 		<div style="margin-bottom:10px; overflow:auto;">
 			<img src="<%=@issue.user.avatar%>" style="float:left;"/>
 			<span style="float:left;" class="font-18"><%=@issue.user.display_name%></span>
@@ -34,23 +41,26 @@
 			<div style="float:left; width:70px; padding:10px;">
 				<%=@issue.view_count%><br/>
 				views<br/>
-				0<br/>
+				<%=@issue.comments.count%><br/>
 				comments
 			</div>
 		</div>
 
 		<br style="clear:both;"/>
 
-		<% if @issue.user_id != @user.id && !@user.guest?%>
 		<div style="margin-bottom:10px; overflow:auto;">
-			<% if @already_voted %>
-				<%= ssg_button('&nbsp;&nbsp;&nbsp;&nbsp;Unvote&nbsp;&nbsp;&nbsp;&nbsp;', { :onclick => 'unvote()' })%>
-			<% else %>
-				<%= ssg_button('&nbsp;&nbsp;&nbsp;&nbsp;Give this one vote&nbsp;&nbsp;&nbsp;&nbsp;', { :onclick => 'vote()' })%>
+		<% if !@user.guest? %>
+			<% if @issue.user_id != @user.id%>
+				<% if @already_voted %>
+					<%= ssg_button('&nbsp;&nbsp;&nbsp;&nbsp;Unvote&nbsp;&nbsp;&nbsp;&nbsp;', { :onclick => 'unvote()' })%>
+				<% else %>
+					<%= ssg_button('&nbsp;&nbsp;&nbsp;&nbsp;Give this one vote&nbsp;&nbsp;&nbsp;&nbsp;', { :onclick => 'vote()' })%>
+				<% end %>
 			<% end %>
-
-		</div>
+		<% else %>
+			<span class="font-green font-20">Login to give vote</span>
 		<% end %>
+		</div>
 
 		<br style="clear:both;"/>
 
@@ -84,7 +94,7 @@ function vote() {
 		url : '<%=vote_issue_path(@issue.id)%>',
 		type : 'post',
 		success : function() {
-			alert('OK');
+			window.location = '<%=issue_path(params[:id])%>';
 		}
 	});
 }
@@ -94,7 +104,7 @@ function unvote() {
 		url : '<%=unvote_issue_path(@issue.id)%>',
 		type : 'post',
 		success : function() {
-			alert('OK');
+			window.location = '<%=issue_path(params[:id])%>';
 		}
 	});
 }

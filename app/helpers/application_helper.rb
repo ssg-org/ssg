@@ -5,14 +5,14 @@ module ApplicationHelper
         return cleared.merge(new_map)
     end
     
-    def ssg_button(label, attrs = {})
+    def ssg_button(label, attrs = {}, sattrs={})
       a_atrs = ""
+      s_atrs = ""
       
       # attrs[:class] = "#{attrs[:class]} btn_green"
-      attrs.map { |k,v| 
-        a_atrs << "#{k.to_s}=\"#{v.to_s}\" "
-      }
+      attrs.map { |k,v| a_atrs << "#{k.to_s}=\"#{v.to_s}\" " }
+      sattrs.map { |k,v| s_atrs << "#{k.to_s}=\"#{v.to_s}\" " }
       puts a_atrs
-      return "<a #{a_atrs}><div class=\"btn_green\">#{label}</div></a>".html_safe;
+      return "<a #{a_atrs}><span class=\"btn_green\"  #{s_atrs}>#{label}</span></a>".html_safe;
     end
 end

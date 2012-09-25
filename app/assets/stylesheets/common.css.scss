@@ -55,10 +55,6 @@ a {
 	cursor: hand; /*IE*/
 	cursor: pointer; /*Rest*/
 	text-decoration:none;
-
-	&:hover {
-		text-decoration: underline; 
-	}
 }
 ul {
 	padding:0px;
@@ -276,7 +272,7 @@ textarea {
 	font-family:'Conv_DINPro-Black';
 	font-size:14px;
 	color:white;
-	float:left;
+	display:inline-block;
 }
 // upload
 .upload-preview {
@@ -285,9 +281,14 @@ textarea {
 }
 // Issue show
 .issue-container {
-	background-color:$color-green;
-	padding:30px;
 	float:left; 
-	width:600px;
+	width:595;
+}
+.issue-container-green {
+	padding:40px;	
+	background-color:$color-green;
 	color:white;
+}
+.issue-cell {
+	margin-bottom:10px;
 }
