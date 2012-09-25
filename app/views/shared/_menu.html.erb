@@ -40,7 +40,9 @@
 				<% end %>
 			</li>
 			<li>
-				<%=link_to t('shared.menu.report'), new_issue_path(), :class => "font-dp-bold font-black #{'menu-selected' if selection[:report]}"%><br/>
+				<% path = @user.guest? ?  login_users_path() : new_issue_path() %>
+
+				<%=link_to t('shared.menu.report'), path, :class => "font-dp-bold font-black #{'menu-selected' if selection[:report]}"%><br/>
 				<span class="font-gray font-dp-medium"><%=t('shared.menu.create_problem')%></span><br/>
 				<% if selection[:report]%>
 					<div style="margin-top:5px;height:1px; background-color:#9ecc3b"></div>

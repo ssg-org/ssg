@@ -1,22 +1,111 @@
-<div style="padding:20px;">
-	<%=@issue.city.name%>/<span style="background-color:yellow; padding:2px;"><%=@issue.category.name%></span>
-	 - <%=@issue.user.display_name%> <%=link_to '(follow)', follow_user_path(@issue.user.id)%><br/><br/>
-	<b><%=@issue.title%></b><br/>
-	<% if @issue.images.length > 0 %>
-		<%=image_tag @issue.images.first.image %>
-	<% end %>
-	<hr/>
-	<%=@issue.description%>
-	<hr/>
-	
-	
-	<% if @user.guest? %>
-		Login before Vote or follow
-	<% else %>
-		<% if @issue.user_id != @user.id%>
-			<%=link_to 'VOTE', vote_issue_path(@issue.id), { :remote => true, :method => :post }%> | 
-			<%=link_to 'FOLLOW', follow_issue_path(@issue.id) %>
-		<% end %>
-	<% end  %>
-</div>
+<div style="padding:25px;">
+	<div style="font-size:14px; margin-bottom:10px;">
+		SSG / ISSUES / <span class="font-green"><%=@issue.title.upcase%></span>
+	</div>
 
+	<div class="issue-container">
+		<div class="issue-container-green">
+			<div class="issue-cell">
+				<span style="font-size:24px; font-style:italic; "><%=@issue.title.upcase%></span><br/>
+				<span class="font-12"><%=@issue.category.name%>, <%=@issue.city.name%></span><br/>
+			</div>
+			<div class="issue-cell">
+				<p><%=@issue.description%></p>
+			</div>
+			<div  class="issue-cell">
+				<% @issue.images.each do |img| %>
+					<%= image_tag img.image, :style=> 'margin-bottom:20px;'%><br/>
+				<% end %>
+			</div>
+
+		</div>
+
+		<div style="margin-top:15px;">
+			<%= render :partial => 'shared/comments', :locals => { :comments => @issue.comments.order('created_at desc'), :issue => @issue }%>
+		</div>
+	</div>
+
+
+	<div style="float:left; margin-left:20px; width:240px;">
+		<div style="margin-bottom:10px; overflow:auto;">
+			<img src="<%=@issue.user.avatar%>" style="float:left;"/>
+			<span style="float:left;" class="font-18"><%=@issue.user.display_name%></span>
+		</div>
+
+		<br style="clear:both;"/>
+
+		<div style="margin-bottom:10px; overflow:auto;">
+			<div style="float:left; width:120px; padding:10px">
+				Likes <%=@issue.vote_count%>
+			</div>
+			<div style="float:left; width:70px; padding:10px;">
+				<%=@issue.view_count%><br/>
+				views<br/>
+				<%=@issue.comments.count%><br/>
+				comments
+			</div>
+		</div>
+
+		<br style="clear:both;"/>
+
+		<div style="margin-bottom:10px; overflow:auto;">
+		<% if !@user.guest? %>
+			<% if @issue.user_id != @user.id%>
+				<% if @already_voted %>
+					<%= ssg_button('&nbsp;&nbsp;&nbsp;&nbsp;Unvote&nbsp;&nbsp;&nbsp;&nbsp;', { :onclick => 'unvote()' })%>
+				<% else %>
+					<%= ssg_button('&nbsp;&nbsp;&nbsp;&nbsp;Give this one vote&nbsp;&nbsp;&nbsp;&nbsp;', { :onclick => 'vote()' })%>
+				<% end %>
+			<% end %>
+		<% else %>
+			<span class="font-green font-20">Login to give vote</span>
+		<% end %>
+		</div>
+
+		<br style="clear:both;"/>
+
+		<div id="mini_map" style="height:260px;">
+		</div>
+
+	</div>
+
+	<br style="clear:both;" />
+</div>
+<script>
+$(function () {
+
+	// MAP
+	// initialize the map on the "map" div
+	map = new L.Map('mini_map');
+
+	// create a CloudMade tile layer with style #997 (or use other provider of your choice)
+	var cloudmade = new L.TileLayer('http://{s}.tile.cloudmade.com/10a3c88ad1f14f18a611c6ebc2300e35/997/256/{z}/{x}/{y}.png', {
+	    attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://cloudmade.com">CloudMade</a>',
+	    maxZoom: 18
+	});
+
+	// add the CloudMade layer to the map set the view to a given center and zoom
+	marker = L.marker([<%=@issue.lat%>, <%=@issue.long%>]).addTo(map);
+	map.addLayer(cloudmade).setView(new L.LatLng(<%=@issue.lat%>, <%=@issue.long%>), 15);
+});
+
+function vote() {
+	$.ajax({
+		url : '<%=vote_issue_path(@issue.id)%>',
+		type : 'post',
+		success : function() {
+			window.location = '<%=issue_path(params[:id])%>';
+		}
+	});
+}
+
+function unvote() {
+	$.ajax({
+		url : '<%=unvote_issue_path(@issue.id)%>',
+		type : 'post',
+		success : function() {
+			window.location = '<%=issue_path(params[:id])%>';
+		}
+	});
+}
+</script>

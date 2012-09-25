@@ -23,6 +23,8 @@ class InitialMigration < ActiveRecord::Migration
       t.string      :title,     :null => false
       t.text        :description, :null => false
       t.string      :slug
+      t.decimal     :lat
+      t.decimal     :long
       
       t.timestamps
     end
