@@ -1,5 +1,5 @@
 <div style="position:relative;">
-	<div id="form-div" style="position:absolute; z-index:1000; left:30px; background-color:#9ecc3a; height:490px; width:350px; padding:30px;">
+	<div id="form-div" style="position:absolute; z-index:1000;  background-color:#9ecc3a; height:490px; width:380px; padding:30px;">
 		<span class="font-dp-bold" style="font-size:26px; color:white;">REPORT A PROBLEM</span><br/>
 		<span style="color:white;">Click on map to set location</span><br/>
 		
@@ -26,8 +26,16 @@
 					</td>
 				</tr>
 				<tr>
-					<td>
-						<input id="fileupload" type="file" name="image" multiple/>
+					<td><%= f.label :lat, 'Latitude'%></td>
+					<td><%= f.text_field :lat, :readonly => 'readonly' %></td>
+				</tr>
+				<tr>
+					<td><%= f.label :long, 'Longitude'%></td>
+					<td><%= f.text_field :long, :readonly => 'readonly' %></td>
+				</tr>
+				<tr>
+					<td colspan="2">
+						<input id="fileupload" type="file" name="image" style="width:90px;" multiple/>
 						<span id="gallery_inputs">
 							<input type="hidden" id="image_count" name="image_count" value="0" />
 						</span>
@@ -59,7 +67,7 @@
 
 <script>
 var cities = <%=User.get_cities.to_json(:only => [:id, :lat, :long]).html_safe%>;
-
+var marker = null;
 
 $(function () {
 
@@ -76,6 +84,21 @@ $(function () {
 
 	// add the CloudMade layer to the map set the view to a given center and zoom
 	map.addLayer(cloudmade).setView(new L.LatLng(43.855078, 18.395748), 7);
+
+	map.on('click', function(e) {
+		var lat = e.latlng.lat;
+		var lng = e.latlng.lng;
+		if (marker == null) {
+			marker = L.marker([lat, lng]).addTo(map);
+		}
+		else {
+			marker.setLatLng(e.latlng);
+		}
+
+		$('#issue_lat').val(lat);
+		$('#issue_long').val(lng);
+
+	});
 
 	$('#issue_city_id').change(function() {
 		var city_id = $(this).val();
@@ -120,6 +143,12 @@ $(function () {
 			'issue[description]' : {
 				required : true,
 				minlength : 10
+			},
+			'issue[lat]' : { 
+				required : true 
+			},
+			'issue[long]' : { 
+				required : true 
 			},
 			'image' : 'images_validator'
 		}

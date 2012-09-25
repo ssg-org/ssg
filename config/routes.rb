@@ -65,6 +65,7 @@ Ssg::Application.routes.draw do
   resources  :issues do 
     member do
       post  :vote
+      post  :unvote
       get   :follow
     end
     collection do 
@@ -73,6 +74,8 @@ Ssg::Application.routes.draw do
   end
 
   resources :images, :only => [:create]
+
+  resources :comments, :only => [:create]
 
   resources  :areas
 

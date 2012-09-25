@@ -20,6 +20,10 @@ class User < ActiveRecord::Base
   def self.get_cities
     return City.all
   end
+
+  def fbuser?
+    return !self.fb_id.nil?
+  end
   
   def display_name
     fname = "#{self.first_name} #{self.last_name}"
@@ -28,7 +32,19 @@ class User < ActiveRecord::Base
     end
     return fname
   end
+
+  def avatar
+    fbuser? ? "http://graph.facebook.com/#{fb_id}/picture" : '/assets/no_avatar.png'
+  end
   
+  def comment_on_issue(issue_id, text)
+    ActiveRecord::Base.transaction do    
+      issue = Issue.find(issue_id)
+      issue.comments << Comment.new(:text => text, :user => self)
+      issue.save
+    end
+  end
+
   def vote_for(issue_id)
     ActiveRecord::Base.transaction do
       issue = Issue.find(issue_id)
@@ -39,6 +55,24 @@ class User < ActiveRecord::Base
           Vote.create(:user => self, :issue => issue)
         end
         issue.vote_count += 1
+        issue.save
+      end
+    end
+  end
+
+  def unvote_for(issue_id)
+    ActiveRecord::Base.transaction do
+      issue = Issue.find(issue_id)
+      # You can't vote for your issues
+      if (issue.user_id != self.id)
+        vote = Vote.where(:user_id => self.id, :issue_id => issue.id).first
+        if (vote)
+          vote.destroy
+        end
+        issue.vote_count -= 1
+        if (issue.vote_count < 0)
+          issue.vote_count = 0
+        end
         issue.save
       end
     end
@@ -60,12 +94,20 @@ class User < ActiveRecord::Base
     end
   end
   
-  def create_issue(title, category_id, city_id, descripion, image_ids)
+  def create_issue(title, category_id, city_id, descripion, lat, long, image_ids)
     ActiveRecord::Base.transaction do
       category = Category.find(category_id)
       city = City.find(city_id)
 
-      issue = Issue.new({ :user => self, :title => title, :description => descripion, :category => category, :city => city })
+      issue = Issue.new({ 
+        :user => self, 
+        :title => title, 
+        :description => descripion, 
+        :category => category, 
+        :city => city,
+        :lat => lat,
+        :long => long
+      })
       issue.save
 
       Image.update_all({ :issue_id => issue.id}, { :id => image_ids })
