@@ -17,3 +17,18 @@ en:
             signup:     'SIGNUP'
             login:      'LOGIN'
     hello: "Hello world"
+    users:
+        login:
+            login:      'LOGIN'
+            login_message: 'If you are already SSG member?'
+            username:   'Username'
+            password:   'Password' 
+            stay_logged:    'Stay logged in'
+            register:   'NOT A MEMBER OF SSG?'
+            register_message:   'Fill out the form to join us today.'
+            register_choose_location: 'Choose your location'
+            register_email:      'Email address'
+            register_repeat_password: 'Repeate password'
+            register_agree_tou: 'I agree to terms of use'            
+            quick_sign_in:  'QUICK SIGN IN'
+            quick_sign_in_message: 'Quick and Painless.'
