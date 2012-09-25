@@ -1,13 +1,11 @@
 class Issue < ActiveRecord::Base
   extend FriendlyId
 
-
-
 	OPEN 		= 1
 	IN_PROGRESS	= 2
 	FIXED		= 3
 
-  attr_accessible :title, :category, :city, :description, :user
+  attr_accessible :title, :category, :city, :description, :user, :lat, :long
 
   belongs_to 	:user
   belongs_to  :category
