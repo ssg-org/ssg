@@ -37,6 +37,14 @@ class User < ActiveRecord::Base
     fbuser? ? "http://graph.facebook.com/#{fb_id}/picture" : '/assets/no_avatar.png'
   end
   
+  def comment_on_issue(issue_id, text)
+    ActiveRecord::Base.transaction do    
+      issue = Issue.find(issue_id)
+      issue.comments << Comment.new(:text => text, :user => self)
+      issue.save
+    end
+  end
+
   def vote_for(issue_id)
     ActiveRecord::Base.transaction do
       issue = Issue.find(issue_id)

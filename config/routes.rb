@@ -75,6 +75,8 @@ Ssg::Application.routes.draw do
 
   resources :images, :only => [:create]
 
+  resources :comments, :only => [:create]
+
   resources  :areas
 
 
