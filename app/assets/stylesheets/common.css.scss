@@ -75,15 +75,19 @@ hr{
 }
 .input-texts {
 	border:1px solid $color-gray;
-	height:20px;
+	width: 100%;
 	line-height:20px;
 	font-size:13px;
-	color:#6d6d6d;	
+	color:#6d6d6d;
+	margin: 10px 0 10px 0;
+	padding: 0 0 0 20px;
 }
 input[type="text"] {
+	height: 30px;
 	@extend .input-texts;
 }
 input[type="password"] {
+	height: 30px;
 	@extend .input-texts;
 }
 textarea {

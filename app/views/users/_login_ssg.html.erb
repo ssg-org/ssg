@@ -1,9 +1,0 @@
-<div style="margin:20px;float:left">
-	<%=form_tag verify_login_users_path() do %>
-		<%= text_field_tag :username, nil, :placeholder => 'Username' %><br/>
-		<%= password_field_tag :password, nil, :placeholder => 'Password' %><br/>
-		<%= check_box_tag 'remember_login' %>
-		<%= label_tag 'Stay logged in' %><br/>
-		<%= submit_tag :login %>
-	<% end %>
-</div>
