@@ -296,3 +296,16 @@ textarea {
 .issue-cell {
 	margin-bottom:10px;
 }
+
+.login-container {
+	float:left;
+	width:278px;
+	padding: 40px 25px 0 25px;
+	height:470px;
+
+	#register-wrapper {
+		background-color:$color-green;
+		padding: 20px 30px 10px 30px;
+		color: white;
+	}
+}
