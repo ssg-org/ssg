@@ -13,11 +13,11 @@ class User < ActiveRecord::Base
     return self.follows.order(:type)
   end
   
-  def self.get_categories
+  def get_categories
     return Category.all
   end
 
-  def self.get_cities
+  def get_cities
     return City.all
   end
 

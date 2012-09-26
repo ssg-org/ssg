@@ -1,12 +1,12 @@
 <div style="padding:25px;">
-	<div style="font-size:14px; margin-bottom:10px;">
-		SSG / ISSUES / <span class="font-green"><%=@issue.title.upcase%></span>
+	<div class="breadcrumb-container">
+		SSG / ISSUES / <span><%=@issue.title.upcase%></span>
 	</div>
 
 	<div class="issue-container">
 		<div class="issue-container-green">
 			<div class="issue-cell">
-				<span style="font-size:24px; font-style:italic; "><%=@issue.title.upcase%></span><br/>
+				<span class="issue-cell-title"><%=@issue.title.upcase%></span><br/>
 				<span class="font-12"><%=@issue.category.name%>, <%=@issue.city.name%></span><br/>
 			</div>
 			<div class="issue-cell">

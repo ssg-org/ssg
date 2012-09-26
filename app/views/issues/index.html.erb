@@ -1,4 +1,8 @@
 <div id="issues_left_column">
+  <div class="breadcrumb-container">
+    SSG / <span>ISSUES</span>
+  </div>
+
 	<%= render :partial => 'issue', :collection => @issues %>
 	
 	<% if @issues.length == 0 %>

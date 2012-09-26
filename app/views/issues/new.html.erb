@@ -11,13 +11,13 @@
 					</td>
 				</tr>
 				<tr>
-					<td>
-						<%= f.collection_select(:city_id, User.get_cities, :id, :name) %>
+					<td colspan="2">
+						<%= f.collection_select(:city_id, @user.get_cities, :id, :name) %>
 					</td>
 				</tr>
 				<tr>
-					<td>
-						<%= f.collection_select(:category_id, User.get_categories, :id, :name) %>
+					<td colspan="2">
+						<%= f.collection_select(:category_id, @user.get_categories, :id, :name) %>
 					</td>
 				</tr>
 				<tr>
@@ -68,7 +68,7 @@
 <br style="clear:both;"/>
 
 <script>
-var cities = <%=User.get_cities.to_json(:only => [:id, :lat, :long]).html_safe%>;
+var cities = <%=@user.get_cities.to_json(:only => [:id, :lat, :long]).html_safe%>;
 var marker = null;
 
 $(function () {
