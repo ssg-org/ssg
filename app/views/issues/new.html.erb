@@ -42,8 +42,10 @@
              	</td>
 				</tr>
 				<tr>
-					<td>
-						<div id="progress" style="width:0%; height:5px; background-color:white; margin-bottom:15px;"></div>
+					<td colspan="2">
+						<div id="progress">
+    						<div class="bar"  style="width: 0%;"></div>
+						</div>
 						<ul id="gallery" style="list-style:none">
 						</ul>
 					</td>
@@ -113,10 +115,11 @@ $(function () {
 
 	// UPLOAD SETUP
 	$('#fileupload').fileupload({
-		url : '<%= images_path()%>',
-		progressall : function(e, data) {
-			$('#progress').css('width',  parseInt(data.loaded / data.total * 100, 10) + '%');
-		},
+		url : '<%= images_path() %>',
+	   progressall: function (e, data) {
+	      var progress = parseInt(data.loaded / data.total * 100, 10);
+	      $('#progress .bar').css('width', progress + '%');
+	   },
 		success : function() {
 			$('#progress').css('width', '0%');
 		},
