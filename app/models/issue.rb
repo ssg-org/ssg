@@ -39,6 +39,6 @@ class Issue < ActiveRecord::Base
 		  @issues_relation = Issue.where(query)
     end
     
-    return @issues_relation.includes([:images, :category]).limit(limit).offset(offset)
+    return @issues_relation.includes([:images, :category]).limit(limit).offset(offset).order('created_at desc').includes([:user, :city, :category])
   end
 end

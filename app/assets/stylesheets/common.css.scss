@@ -296,3 +296,16 @@ textarea {
 .issue-cell {
 	margin-bottom:10px;
 }
+.issue-cell-title {
+	font-size:24px; 
+	font-style:italic; 
+}
+// breadcrumbs
+.breadcrumb-container {
+	font-size:14px; 
+	margin-bottom:10px;
+}
+.breadcrumb-container span {
+	color: $color-green;
+}
+

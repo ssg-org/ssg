@@ -19,7 +19,7 @@
 	<div class="filter">
 		<span class="font-black font-dp-bold">CATEGORIES</span><br/>
 		<%=link_to 'All categories', issues_path(clear_params({:category => nil})), { :class => "#{'r-menu-selected' if params[:category].blank? }"} %><br/>
-		<% User.get_categories.each do |cat|%>
+		<% @user.get_categories.each do |cat|%>
 			<%=link_to cat.name, issues_path(clear_params({:category => cat.id})), { :class => "#{'r-menu-selected' if params[:category] == cat.id.to_s }"} %><br/>
 		<% end %>
 	</div>
