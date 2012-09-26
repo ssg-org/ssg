@@ -1,1 +1,44 @@
-<embed src="assets/bih.svg" type="image/svg+xml" style="width:400px;"/> 
+<div style="padding:25px;">
+	<div class="breadcrumb-container">
+		SSG / <span>CITIES</span>
+	</div>
+
+	<div style="float:left; width:235px;">
+		<ul>
+			<% @cities.each do |city|%>
+				<li><a href="#"><%=city.name%></a></li>
+			<% end %>
+		</ul>
+	</div>
+
+
+	<div id="mini_map" style="width:700px;  height:500px; float:left;">
+	</div>
+
+	<br style="clear:both;" />
+</div>
+<script>
+
+var issues = <%=@issues.to_json.html_safe%>;
+$(function () {
+
+	// MAP
+	// initialize the map on the "map" div
+	map = new L.Map('mini_map');
+
+	// create a CloudMade tile layer with style #997 (or use other provider of your choice)
+	var cloudmade = new L.TileLayer('http://{s}.tile.cloudmade.com/10a3c88ad1f14f18a611c6ebc2300e35/997/256/{z}/{x}/{y}.png', {
+	    attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://cloudmade.com">CloudMade</a>',
+	    maxZoom: 18
+	});
+
+
+	// add the CloudMade layer to the map set the view to a given center and zoom
+	map.addLayer(cloudmade).setView(new L.LatLng(43.855078, 18.305748), 7);	
+
+	for (var i=0; i<issues.length; i++) {
+		L.marker([issues[i].lat, issues[i].long]).addTo(map);
+	}
+
+});
+</script>
