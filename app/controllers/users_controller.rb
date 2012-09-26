@@ -20,7 +20,7 @@ class UsersController < ApplicationController
   end
   
   def login
-    @cities = User.get_cities
+    @cities = @user.get_cities
 
     type = params[:type]
 
