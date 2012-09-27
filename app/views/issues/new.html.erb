@@ -12,12 +12,12 @@
 				</tr>
 				<tr>
 					<td colspan="2">
-						<%= f.collection_select(:city_id, @user.get_cities, :id, :name, {:include_blank => 'Please select city'}) %>
+						<%= f.collection_select(:city_id, @user.get_cities, :id, :name) %>
 					</td>
 				</tr>
 				<tr>
 					<td colspan="2">
-						<%= f.collection_select(:category_id, @user.get_categories, :id, :name, {:include_blank => 'Please select category'}) %>
+						<%= f.collection_select(:category_id, @user.get_categories, :id, :name) %>
 					</td>
 				</tr>
 				<tr>
@@ -162,10 +162,6 @@ $(function () {
 			'image' : 'images_validator'
 		}
 	});
-
-
-	// COMBO BOXES
-	$('#issue_city_id').selectbox();
 
 });	
 </script>

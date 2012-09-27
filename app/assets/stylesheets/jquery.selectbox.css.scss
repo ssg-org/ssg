@@ -6,7 +6,7 @@
 	font-weight: normal;
 	height: 30px;
 	position: relative;
-	width: 200px;
+	width: 100%;
 }
 .sbHolder:focus .sbSelector{
 	
@@ -21,7 +21,7 @@
 	position: absolute;
 	text-indent: 10px;
 	top: 0;
-	width: 170px;
+	width: 100%;
 }
 .sbSelector:link, .sbSelector:visited, .sbSelector:hover{
 	color: #4d4d4d;
@@ -66,7 +66,7 @@
 	padding: 0;
 	position: absolute;
 	top: 30px;
-	width: 200px;
+	width: 100%;
 	z-index: 1;
 	overflow-y: auto;
 }
