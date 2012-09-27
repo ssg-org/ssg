@@ -13,6 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery-ui.min
+//= require jquery.selectbox-0.2
 //= require common
 //= require fb
 //= require scrollpagination
