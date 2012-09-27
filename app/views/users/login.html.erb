@@ -14,7 +14,7 @@
 		<span class='font-dp-bold font-18'><%=t('users.login.register') %></span><br>
 		<span class='font-dp-regular'><%=t('users.login.register_message') %></span>
 		<%= form_tag sign_up_users_path(), :id => "register_form" do %>
-			<%= collection_select(:city, :id, @cities, :id, :name, options ={:prompt => t('users.login.register_choose_location')}, :class => "font-dp-regular") %><br/>
+			<%= collection_select(:city, :id, @cities, :id, :name, {:prompt => t('users.login.register_choose_location')}, :class => "font-dp-regular") %><br/>
 			<%= text_field_tag :username, nil, :placeholder => t('users.login.username'), :class => "input-texts" %><br/>
 			<%= text_field_tag :email, nil, :placeholder => t('users.login.register_email'), :class => "font-dp-regular" %><br/>
 			<%= password_field_tag :password, nil, :placeholder => t('users.login.password'), :class => "font-dp-regular" %><br/>
