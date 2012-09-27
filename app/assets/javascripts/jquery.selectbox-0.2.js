@@ -150,7 +150,7 @@
 			
 			$target.children().each(function(i) {
 				var that = $(this), li, config = {};
-				if (that.is("option")) {
+				if (that.is("option") && that.attr('value')) {
 					getOptions(that);
 				} else if (that.is("optgroup")) {
 					li = $("<li>");
