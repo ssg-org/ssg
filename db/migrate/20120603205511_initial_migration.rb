@@ -3,6 +3,7 @@ class InitialMigration < ActiveRecord::Migration
     create_table  :users do |t|
       t.string  :email
       t.string  :password_hash
+      t.string  :uuid
       t.string  :fb_id
       t.string  :fb_token
       t.string  :first_name

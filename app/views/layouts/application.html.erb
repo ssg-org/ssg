@@ -15,6 +15,10 @@
 	<div id="main-menu">
 		<%= render  :partial => 'shared/menu' %>
 	</div>
+
+	<div id="messages">
+		<%= render  :partial => 'shared/messages' %>
+	</div>
 	
 	<div id="main">
 		<%= yield %>
@@ -25,6 +29,12 @@
 	</div>
 	
 	<script>
+
+	$(function () {
+		$('select').selectbox();
+	});
+
+
 	var _gaq = _gaq || [];
 	_gaq.push(['_setAccount', 'UA-30569816-1']);
 	_gaq.push(['_trackPageview']);
