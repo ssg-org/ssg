@@ -21,30 +21,31 @@ class UsersController < ApplicationController
   
   def login
     @cities = @user.get_cities
-
-    type = params[:type]
-
-    if (type = 'facebook')
-      puts "----------- Logging via Facebook"
-    elsif (type = 'twitter')
-      puts "----------- Logging via Twitter"
-    elsif (type = 'ssg')
-      puts "----------- Logging via Twitter"
-    end
   end
 
-  def sign_up
-  end
-  
   def verify_login
-    user = User.exists?(params[:username], params[:password])
-    if user
+    user = User.exists?(params[:email], params[:password])
+    if user && user.active
       session[:id] = user.id
       redirect_to issues_path()
     else
       redirect_to login_users_path()
     end
-  end 
+  end
+
+  def register
+    # Check this!!!
+    user = User.find_by_email(params[:email])
+   
+    if (user && user.active == true)
+      flash[:error] = 'User already exists'
+      redirect_to login_users_path()
+    else
+      @user = User.register(params[:email], params[:password1])
+      flash[:notice] = 'Verification email sent'
+      redirect_to login_users_path()
+    end
+  end
 
   def fb_login
     # Get access token

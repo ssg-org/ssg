@@ -12,12 +12,12 @@
 				</tr>
 				<tr>
 					<td colspan="2">
-						<%= f.collection_select(:city_id, @user.get_cities, :id, :name) %>
+						<%= f.collection_select(:city_id, @user.get_cities, :id, :name, {:include_blank => 'Please select city'}) %>
 					</td>
 				</tr>
 				<tr>
 					<td colspan="2">
-						<%= f.collection_select(:category_id, @user.get_categories, :id, :name) %>
+						<%= f.collection_select(:category_id, @user.get_categories, :id, :name, {:include_blank => 'Please select category'}) %>
 					</td>
 				</tr>
 				<tr>
@@ -146,6 +146,12 @@ $(function () {
 			'issue[description]' : {
 				required : true,
 				minlength : 10
+			},
+			'issue[city_id]' : {
+				required : true
+			},
+			'issue[category_id]' : {
+				required : true
 			},
 			'issue[lat]' : { 
 				required : true 

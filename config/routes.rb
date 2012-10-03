@@ -55,7 +55,7 @@ Ssg::Application.routes.draw do
       get :logout
       get :login
       post :verify_login
-      post :sign_up
+      post :register
     end
     member do
       get :follow

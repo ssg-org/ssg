@@ -17,7 +17,7 @@ gem 'friendly_id', '4.0.1'
 
 # gem 'koala', '>= 1.5.0'
 gem 'twitter'
-
+gem 'uuidtools'
 
 # Gems used only for assets and not required
 # in production environments by default.
