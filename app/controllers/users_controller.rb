@@ -1,9 +1,39 @@
 class UsersController < ApplicationController
 
-
   def follow
     @user.follow_user(params[:id])
     redirect_to issues_path()
+  end
+
+  #
+  # Login, logout, signup actions
+  #
+  def signup
+    user = User.create_ssg_user(params[:email], params[:password1])
+    puts "User #{user.inspect}"
+
+    if user.nil?
+        redirect_to(login_users_path(), :alert => 'User already exists')
+    else
+      if user.save
+        UserMailer.verification_email(user).deliver
+
+        redirect_to(issues_path(), :notice => 'User was sucessfully created. Email sent')
+      else
+        redirect_to(login_users_path(), :alert => 'Error creating user')
+      end
+    end
+  end
+
+  def verify
+    user = User.verify(params[:id], params[:uuid])
+
+    if (!user.nil?)
+      session[:id] = user.id
+      redirect_to(issues_path(), :notice => "Thank you")
+    else
+      redirect_to(login_users_path(), :alert => "Error verifying user")
+    end
   end
 
   def redirect_uri()
@@ -19,31 +49,13 @@ class UsersController < ApplicationController
     redirect_to issues_path()
   end
   
-  def login
-    @cities = @user.get_cities
-  end
-
-  def verify_login
+  def ssg_login
     user = User.exists?(params[:email], params[:password])
     if user && user.active
       session[:id] = user.id
       redirect_to issues_path()
     else
-      redirect_to login_users_path()
-    end
-  end
-
-  def register
-    # Check this!!!
-    user = User.find_by_email(params[:email])
-   
-    if (user && user.active == true)
-      flash[:error] = 'User already exists'
-      redirect_to login_users_path()
-    else
-      @user = User.register(params[:email], params[:password1])
-      flash[:notice] = 'Verification email sent'
-      redirect_to login_users_path()
+      redirect_to(login_users_path(), :alert => 'Invalid email or password')
     end
   end
 

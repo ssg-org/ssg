@@ -16,6 +16,9 @@ en:
             help:       'HELP'
             signup:     'SIGNUP'
             login:      'LOGIN'
+            profile:    'PROFILE'
+            settings:   'SETTINGS'
+            logout:     'LOGOUT'
     hello: "Hello world"
     users:
         login:
@@ -32,3 +35,5 @@ en:
             register_button:    'REGISTER'
             quick_sign_in:  'QUICK SIGN IN'
             quick_sign_in_message: 'Quick and Painless.'
+        verify:
+            email_subject:  '[SSG] Please verify your email'

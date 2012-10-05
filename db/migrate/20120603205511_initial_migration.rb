@@ -1,7 +1,7 @@
 class InitialMigration < ActiveRecord::Migration
   def up
     create_table  :users do |t|
-      t.string  :email
+      t.string  :email,     :null => false, :uniqueness => true
       t.string  :password_hash
       t.string  :uuid
       t.string  :fb_id

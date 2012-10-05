@@ -1,6 +1,6 @@
 development:
+    ssg:
+        email_address:                      "no-reply@sredisvojgrad.com"
     fb:
-        application_id:                     405433926167269
-        secret_key:                         55c18f536a040d04430d414f4fe77787
         site_url:                           https://graph.facebook.com
         scope:                              "email,user_photos"

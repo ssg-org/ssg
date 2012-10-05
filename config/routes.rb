@@ -51,13 +51,14 @@ Ssg::Application.routes.draw do
   
   resources  :users do
     collection do
-      get :fb_login
-      get :logout
-      get :login
-      post :verify_login
-      post :register
+      get   :fb_login
+      post  :ssg_login
+      post  :signup
+      get   :login
+      get   :verify
     end
     member do
+      get :logout
       get :follow
     end
   end
