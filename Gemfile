@@ -7,7 +7,7 @@ gem 'rails', '3.2.6'
 
 gem 'sqlite3'
 gem 'execjs'
-# gem 'therubyracer'
+gem 'therubyracer'
 gem 'oauth2', '= 0.4.1'
 
 gem 'carrierwave'
