@@ -30,6 +30,11 @@ GEM
       multi_json (~> 1.0)
     addressable (2.2.8)
     arel (3.0.2)
+    aws-ses (0.4.4)
+      builder
+      mail (> 2.2.5)
+      mime-types
+      xml-simple
     builder (3.0.3)
     carrierwave (0.6.2)
       activemodel (>= 3.2.0)
@@ -129,6 +134,7 @@ GEM
       execjs (>= 0.3.0)
       multi_json (~> 1.0, >= 1.0.2)
     uuidtools (2.1.3)
+    xml-simple (1.1.1)
     yajl-ruby (0.7.9)
 
 PLATFORMS
@@ -136,6 +142,7 @@ PLATFORMS
   x86-mingw32
 
 DEPENDENCIES
+  aws-ses
   carrierwave
   coffee-rails (~> 3.2.1)
   execjs

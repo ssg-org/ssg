@@ -1,8 +1,34 @@
 module Config
-  APP_CONFIG = YAML.load_file("#{Rails.root}/config/configuration.yml")[Rails.env]
+  class Configuration
+    
+	def self.reload(server)
+		@@cache = YAML::load(File.read('config/configuration.yml'))
+		@@server = server
+
+		# check if per-developer configuration exists (this is not included in git!!!!!)
+		if (File.exist?('config/configuration.local.yml'))
+		  locale = YAML::load(File.read('config/configuration.local.yml'))
+
+		  # copy local -> @@cache with overwrite
+		  locale.each do |k1, v1|
+		    v1.each do |k2, v2|
+		      v2.each do |k3, v3|
+		      	@@cache[k1] = v1 		if @@cache[k1].nil?
+		      	@@cache[k1][k2] = v2 	if @@cache[k1][k2].nil?
+		      	@@cache[k1][k2][k3] = v3
+		      end
+		    end
+		  end
+		end
+	end
+    
+    def self.get(group, name, default="")    	
+      return @@cache[@@server][group.to_s][name.to_s] || default
+    end
+    
+    def self.get_root(server)
+      return @@cache[server]
+    end
   
-  def self.get(section, name, default='')
-    return APP_CONFIG[section.to_s][name.to_s] || default
   end
-  
 end

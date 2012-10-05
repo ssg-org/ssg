@@ -20,6 +20,15 @@ Ssg::Application.configure do
   # Generate digests for assets URLs
   config.assets.digest = true
 
+  # Use Amazon SES for sending emails
+  config.action_mailer.delivery_method = :ses
+
+  # Define url for mailer
+  config.action_mailer.default_url_options = {
+    :host => 'www.sredisvojgrad.com'
+  }
+
+
   # Defaults to Rails.root.join("public/assets")
   # config.assets.manifest = YOUR_PATH
 

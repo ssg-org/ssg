@@ -1,7 +1,7 @@
 <div class="login-container">
 	<span class='font-dp-bold font-18'><%=t('users.login.login') %></span><br>
 	<span class='font-dp-regular'><%=t('users.login.login_message') %></span>
-	<%=form_tag verify_login_users_path(), :id => "login_form" do %>
+	<%=form_tag ssg_login_users_path(), :id => "login_form" do %>
 		<%= text_field_tag :email, nil, :placeholder => t('users.login.email') %><br/>
 		<%= password_field_tag :password, nil, :placeholder => t('users.login.password') %><br/>
 		<%= ssg_button t('users.login.login_button'), {:onclick => "$('\#login_form').submit();"}%>
@@ -11,7 +11,7 @@
 	<div id="register-wrapper">
 		<span class='font-dp-bold font-18'><%=t('users.login.register') %></span><br>
 		<span class='font-dp-regular'><%=t('users.login.register_message') %></span>
-		<%= form_tag register_users_path(), :id => "register_form" do %>
+		<%= form_tag signup_users_path(), :id => "register_form" do %>
 			<%= text_field_tag :email, nil, :placeholder => t('users.login.email'), :class => "font-dp-regular" %><br/>
 			<%= password_field_tag :password1, nil, :placeholder => t('users.login.password'), :class => "font-dp-regular" %><br/>
 			<%= password_field_tag :password2, nil, :placeholder => t('users.login.register_repeat_password'), :class => "font-dp-regular" %><br/>
@@ -29,7 +29,7 @@
 
 <script type="text/javascript">
 	$('#fb-login-link').click(function(event) {
-		fb_login('<%=Config::get(:fb, :application_id)%>', escape('<%=fb_login_users_url()%>'), '<%=Config::get(:fb, :scope)%>'); 
+		fb_login('<%=Config::Configuration.get(:fb, :application_id)%>', escape('<%=fb_login_users_url()%>'), '<%=Config::Configuration.get(:fb, :scope)%>'); 
 		return false;
 	});
 
@@ -57,7 +57,7 @@
 			},
 			'password1': {
 				required: true,
-      			rangelength: [3, 5]
+      			rangelength: [5, 50]
 			},
 			'password2': {
 				required: true,
@@ -65,6 +65,4 @@
 			}
 		}
 	});
-
-
 </script>
