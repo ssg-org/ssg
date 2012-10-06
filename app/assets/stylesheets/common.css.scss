@@ -36,11 +36,11 @@
 }
 
 $font-family : 'Conv_DINPro-Medium';
-$font-size   : 12px;
+$font-size   : 14px;
 
 $background-color : #cfcfcf;
 $color-green : #9ecc3b;
-$color-gray  : #c2c2c2;
+$color-gray  : #a2a2a2;
 
 html, body {
 	margin: 0px;
@@ -291,7 +291,7 @@ textarea {
 // Issue show
 .issue-container {
 	float:left; 
-	width:595;
+	width:680px;
 }
 .issue-container-green {
 	padding:40px;	
@@ -325,3 +325,30 @@ textarea {
 .breadcrumb-container span {
 	color: $color-green;
 }
+
+
+.qtip .qtip-content {
+    padding: 10px;
+    overflow: hidden;
+}
+
+.qtip .qtip-content .qtip-title,
+   .qtip-cream .qtip-content .qtip-title {
+    background-color: #F0DE7D;
+}
+
+.qtip-light .qtip-content .qtip-title {
+    background-color: #f1f1f1;
+}
+
+.qtip-dark .qtip-content .qtip-title {
+    background-color: #404040;
+}
+
+.qtip-red .qtip-content .qtip-title {
+    background-color: #F28279;
+}
+
+.qtip-green .qtip-content .qtip-title {
+    background-color: #B9DB8C;
+} 

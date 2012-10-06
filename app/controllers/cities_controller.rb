@@ -1,6 +1,17 @@
 class CitiesController < ApplicationController
 	def index
-		@cities = @user.get_cities
-		@issues = Issue.order('created_at desc').limit(100);
+		@center_lat = 43.90
+		@center_long = 17.70
+		@center_zoom = 8
+		@categories = @user.get_categories
+	end
+
+	def zoom
+		@issues = Issue.get_geo_issues(
+			{:lat => params[:sw_lat], :long => params[:sw_long]}, 
+			{:lat => params[:ne_lat], :long => params[:ne_long]},
+			5
+		)
+		render :json => @issues
 	end
 end

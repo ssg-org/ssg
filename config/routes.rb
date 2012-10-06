@@ -80,7 +80,11 @@ Ssg::Application.routes.draw do
   resources  :areas
 
 
-  resources :cities
+  resources :cities do
+    collection do
+      get 'zoom'
+    end
+  end
   
   
   root :to => 'issues#index'

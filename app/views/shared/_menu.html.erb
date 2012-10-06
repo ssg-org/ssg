@@ -41,7 +41,6 @@
 			</li>
 			<li>
 				<% path = @user.guest? ?  login_users_path() : new_issue_path() %>
-
 				<%=link_to t('shared.menu.report'), path, :class => "font-dp-bold font-black #{'menu-selected' if selection[:report]}"%><br/>
 				<span class="font-gray font-dp-medium"><%=t('shared.menu.create_problem')%></span><br/>
 				<% if selection[:report]%>
@@ -58,7 +57,11 @@
 				<%=link_to t('shared.menu.help'), new_issue_path(), :class => "font-dp-bold  font-gray", :style => 'line-height:25px;' %><br/>
 			</li>
 			<li>
-				<%=link_to t('shared.menu.login'), login_users_path(), :class => "font-dp-bold  font-gray", :style => 'line-height:25px;' %>
+				<% if @user.guest? %>
+					<%=link_to t('shared.menu.login'), login_users_path(), :class => "font-dp-bold  font-gray", :style => 'line-height:25px;' %>
+				<% else %>
+					<img src="<%=@user.avatar%>" style="height:30px;" /> <%=@user.display_name%>
+				<% end %>
 			</li>			
 		</ul>
 	</div>

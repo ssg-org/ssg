@@ -27,6 +27,17 @@
 	<script>
 
 	$(function () {
+		// VALIDATE
+
+		$.validator.addMethod(
+			"images_validator", 
+			function(value) {
+				return $('.upload-preview').length > 0;
+			}, 
+			'Image is required!'
+		);
+
+		// convert all <select> elements	to selectbox
 		$('select').selectbox();
 	});
 

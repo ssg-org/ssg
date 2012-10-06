@@ -20,3 +20,5 @@
 //= require leaflet
 //= require jquery-fileupload/basic
 //= require jquery.validate.min
+//= require ssg_map
+

@@ -16,6 +16,16 @@ class Issue < ActiveRecord::Base
   has_many    :votes
   
   friendly_id :title, :use => [:slugged]
+
+  def self.get_geo_issues(south_west_geo, north_east_geo, limit)
+    sw_lat = south_west_geo[:lat]
+    sw_long = south_west_geo[:long]
+    ne_lat = north_east_geo[:lat]
+    ne_long = north_east_geo[:long]
+
+
+    return Issue.where('lat > ? AND lat < ? AND long > ? AND long < ?', sw_lat, ne_lat, sw_long, ne_long).limit(limit)  
+  end
   
   def self.get_issues(params, limit=9, offset=0)
   	query = Hash.new
