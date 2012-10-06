@@ -31,8 +31,8 @@ User.create({
 })
 
 
-Category.create({ :name => 'Parkiranje', :color => '44A8D6' })
-Category.create({ :name => 'Fasade',  :color => 'E23408' })
-Category.create({ :name => 'Okolina', :color => '9ecc3b' })
-Category.create({ :name => 'Rasvjeta', :color => 'ffc80c' })
-Category.create({ :name => 'Putevi',  :color => '683b17' })
+Category.create({ :name => 'Parkiranje', :color => '44A8D6', :icon => 'parkiranje.png' })
+Category.create({ :name => 'Fasade',  :color => 'E23408', :icon => 'fasade.png'  })
+Category.create({ :name => 'Okolina', :color => '9ecc3b', :icon => 'okolina.png'  })
+Category.create({ :name => 'Rasvjeta', :color => 'ffc80c', :icon => 'rasvjeta.png'  })
+Category.create({ :name => 'Putevi',  :color => '683b17', :icon => 'putevi.png'  })
