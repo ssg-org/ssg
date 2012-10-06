@@ -73,20 +73,15 @@
 </div>
 <script>
 $(function () {
-
-	// MAP
-	// initialize the map on the "map" div
-	map = new L.Map('mini_map');
-
-	// create a CloudMade tile layer with style #997 (or use other provider of your choice)
-	var cloudmade = new L.TileLayer('http://{s}.tile.cloudmade.com/10a3c88ad1f14f18a611c6ebc2300e35/997/256/{z}/{x}/{y}.png', {
-	    attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://cloudmade.com">CloudMade</a>',
-	    maxZoom: 18
+	$('#mini_map').SSGMap({
+		lat : <%=@issue.lat%>, 
+		lng : <%=@issue.long%>,
+		zoom : 15
 	});
-
-	// add the CloudMade layer to the map set the view to a given center and zoom
-	marker = L.marker([<%=@issue.lat%>, <%=@issue.long%>]).addTo(map);
-	map.addLayer(cloudmade).setView(new L.LatLng(<%=@issue.lat%>, <%=@issue.long%>), 15);
+	$('#mini_map').SSGMap('drawIssue', {
+		lat : <%=@issue.lat%>, 
+		lng : <%=@issue.long%>
+	});
 });
 
 function vote() {

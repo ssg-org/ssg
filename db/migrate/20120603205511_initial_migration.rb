@@ -52,6 +52,7 @@ class InitialMigration < ActiveRecord::Migration
       t.string  :name,        :null => false
       t.text    :description
   	  t.string  :color, :limit => 6, :null => false
+      t.string  :icon, :limit => 32, :null => false
       
       t.timestamps
     end

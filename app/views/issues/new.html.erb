@@ -7,7 +7,7 @@
 			<table style="width:340px;">
 				<tr >
 					<td colspan="2">
-						<%= f.text_field :title, :style => 'width:100%;', :autocomplete=> :off  %>
+						<%= f.text_field :title, :style => 'width:100%;', :autocomplete=> :off , :placeholder => 'Problem subject' %>
 					</td>
 				</tr>
 				<tr>
@@ -22,7 +22,7 @@
 				</tr>
 				<tr>
 					<td colspan="2">
-						<%= f.text_area :description, :style => 'width:100%; height:80px;' %>
+						<%= f.text_area :description, :style => 'width:100%; height:80px;', :placeholder => 'Describe your Problem' %>
 					</td>
 				</tr>
 				<tr>
@@ -67,6 +67,10 @@
 </div>
 <br style="clear:both;"/>
 
+<style>
+label.error {  color: red; font-size:10px;}
+</style>
+
 <script>
 var cities = <%=@user.get_cities.to_json(:only => [:id, :lat, :long]).html_safe%>;
 var marker = null;
@@ -75,31 +79,23 @@ $(function () {
 
 	// MAP
 
-	// initialize the map on the "map" div
-	map = new L.Map('map');
+	$('#map').SSGMap({
+		lat : 43.855078, 
+		lng : 18.395748,
+		zoom : 7,
+		click : function(e) {
+			var lat = e.latlng.lat;
+			var lng = e.latlng.lng;
+			if (marker == null) {
+				marker = L.marker([lat, lng]).addTo($('#map').data('ssg_map').map);
+			}
+			else {
+				marker.setLatLng(e.latlng);
+			}
 
-	// create a CloudMade tile layer with style #997 (or use other provider of your choice)
-	var cloudmade = new L.TileLayer('http://{s}.tile.cloudmade.com/10a3c88ad1f14f18a611c6ebc2300e35/997/256/{z}/{x}/{y}.png', {
-	    attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://cloudmade.com">CloudMade</a>',
-	    maxZoom: 18
-	});
-
-	// add the CloudMade layer to the map set the view to a given center and zoom
-	map.addLayer(cloudmade).setView(new L.LatLng(43.855078, 18.395748), 7);
-
-	map.on('click', function(e) {
-		var lat = e.latlng.lat;
-		var lng = e.latlng.lng;
-		if (marker == null) {
-			marker = L.marker([lat, lng]).addTo(map);
+			$('#issue_lat').val(lat);
+			$('#issue_long').val(lng);
 		}
-		else {
-			marker.setLatLng(e.latlng);
-		}
-
-		$('#issue_lat').val(lat);
-		$('#issue_long').val(lng);
-
 	});
 
 	$('#issue_city_id').change(function() {
@@ -128,16 +124,10 @@ $(function () {
 		}
 	});
 
-	// VALIDATE
-	$.validator.addMethod(
-		"images_validator", 
-		function(value) {
-			return $('.upload-preview').length > 0;
-		}, 
-		'Image is required!'
-	);
+
 
 	$('#fileupload').validate({
+		ignore: null,
 		rules : {
 			'issue[title]' :  {
 				required : true,
