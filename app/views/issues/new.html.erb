@@ -102,7 +102,7 @@ $(function () {
 		var city_id = $(this).val();
 		for (var i=0; i<cities.length; ++i) {
 			if (cities[i].id == city_id) {
-				map.addLayer(cloudmade).setView(new L.LatLng(cities[i].lat, cities[i].long), 13);				
+				$('#map').SSGMap('setView', cities[i].lat, cities[i]['long'], 13);				
 				return;
 			}
 		}
