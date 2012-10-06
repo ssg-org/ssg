@@ -119,10 +119,10 @@ class User < ActiveRecord::Base
   def guest?
     return self.role & ROLE_GUEST == ROLE_GUEST
   end
-  
+
   def self.exists?(email, pwd)
     usr = User.find_by_email(email)
-    if (usr && usr.password_hash = Digest::SHA256.hexdigest(pwd))
+    if (usr && usr.password_hash == Digest::SHA256.hexdigest(pwd))
       return usr
     end
     
@@ -133,22 +133,17 @@ class User < ActiveRecord::Base
     return GUEST_USER
   end
   
+  #
+  # Login/Signup/Signout methods
+  #
   def self.fb_client
-    return OAuth2::Client.new(Config::get(:fb, :application_id), Config::get(:fb, :secret_key), :site => Config::get(:fb, :site_url))
+    return OAuth2::Client.new(Config::Configuration.get(:fb, :application_id), Config::Configuration.get(:fb, :secret_key), :site => Config::Configuration.get(:fb, :site_url))
   end
-
-  def self.twitter_client
-    Twitter.configure do |config|
-      config.consumer_key = Config::get(:twitter, :consumer_key)
-      config.consumer_secret = Config::get(:twitter, :consumer_secret)
-      config.oauth_token = Config::get(:twitter, :oauth_token)
-      config.oauth_token_secret = Config::get(:twitter, :ouath_secret)
-    end
-  end
-    
+ 
   def self.create_fb_user(token, email, fb_id, last_name, first_name, is_active = true, role = User::ROLE_USER)
     user = User.new
     user.email = email
+    user.uuid = UUIDTools::UUID.random_create.to_s
     user.fb_id = fb_id
     user.fb_token = token
     user.last_name = last_name
@@ -159,5 +154,41 @@ class User < ActiveRecord::Base
     
     return user
   end
-  
+
+  def self.create_ssg_user (email, pwd)
+
+    user = User.find_by_email(email)
+
+    # New user
+    if user.nil?
+      user = User.new(:active => false)
+      puts user.inspect
+    end
+
+    # Inactive user - send email again
+    if(user.active == false)
+      user.email = email
+      user.password_hash = Digest::SHA256.hexdigest(pwd)
+      user.uuid = UUIDTools::UUID.random_create.to_s
+      user.active = false
+      user.role = ROLE_USER
+
+      return user
+    # Active user
+    else
+      return nil
+    end
+  end
+
+  def self.verify(id, uuid)
+    user = User.where("id = ? and uuid = ?", id, uuid).first
+    # Only inactive users can be activated
+    if (!user.nil? && user.active == false)
+      user.active = true;
+      user.save
+      return user
+    else
+      return nil
+    end
+  end
 end
