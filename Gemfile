@@ -7,7 +7,7 @@ gem 'rails', '3.2.6'
 
 gem 'sqlite3'
 gem 'execjs'
-# gem 'therubyracer'
+gem 'therubyracer'
 gem 'oauth2', '= 0.4.1'
 
 gem 'carrierwave'
@@ -17,7 +17,9 @@ gem 'friendly_id', '4.0.1'
 
 # gem 'koala', '>= 1.5.0'
 gem 'twitter'
+gem 'uuidtools'
 
+gem 'aws-ses', :require => 'aws/ses'
 
 # Gems used only for assets and not required
 # in production environments by default.

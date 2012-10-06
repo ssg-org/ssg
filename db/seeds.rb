@@ -13,6 +13,7 @@ City.create({ :name => 'Sarajevo', :lat =>  43.854528, :long => 18.392787 })
 User.create({  
   :email => 'test@test.com',
   :password_hash => Digest::SHA256.hexdigest('test'),
+  :uuid => UUIDTools::UUID.random_create.to_s,
   :first_name => 'Niko',
   :last_name => 'Nikic',
   :anonymous => false,
@@ -23,6 +24,7 @@ User.create({
 User.create({  
   :email => 'test2@test.com',
   :password_hash => Digest::SHA256.hexdigest('test'),
+  :uuid => UUIDTools::UUID.random_create.to_s,
   :first_name => 'John',
   :last_name => 'Doe',
   :anonymous => false,
