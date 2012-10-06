@@ -4,3 +4,7 @@ development:
     fb:
         site_url:                           https://graph.facebook.com
         scope:                              "email,user_photos"
+    aws:
+        access_key:                         ""
+        secret_key:                         ""
+ 

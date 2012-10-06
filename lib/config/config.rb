@@ -1,9 +1,10 @@
 module Config
   class Configuration
     
-	def self.reload(server)
+	def self.reload()
+		puts "Starting with #{Rails.env} configuration :"
+
 		@@cache = YAML::load(File.read('config/configuration.yml'))
-		@@server = server
 
 		# check if per-developer configuration exists (this is not included in git!!!!!)
 		if (File.exist?('config/configuration.local.yml'))
@@ -22,8 +23,8 @@ module Config
 		end
 	end
     
-    def self.get(group, name, default="")    	
-      return @@cache[@@server][group.to_s][name.to_s] || default
+    def self.get(group, name, default="")  
+      return @@cache[Rails.env][group.to_s][name.to_s] || default
     end
     
     def self.get_root(server)
