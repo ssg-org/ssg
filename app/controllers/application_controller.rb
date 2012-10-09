@@ -4,6 +4,15 @@ class ApplicationController < ActionController::Base
   # Only run this filter if in production mode, as don't want to enter password in development
   before_filter :check_access if Rails.env == "production"
   before_filter :check_login
+  before_filter :set_locale
+
+  def default_url_options(options={})
+    { :locale => I18n.locale }
+  end
+
+  def set_locale
+    I18n.locale = params[:locale] || I18n.default_locale
+  end
 
   def check_login
     if (session[:id])
@@ -12,7 +21,7 @@ class ApplicationController < ActionController::Base
     # Guest if not from session
     @user ||= User.guest_user
       
-    I18n.locale = 'en'# || I18n.default_locale    
+    I18n.locale = I18n.default_locale    
   end
   
   def self.disable_layout_for_ajax(layout_name = 'application')
