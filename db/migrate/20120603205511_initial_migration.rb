@@ -11,6 +11,7 @@ class InitialMigration < ActiveRecord::Migration
       t.boolean :anonymous, :null => false,  :default => false
       t.boolean :active,    :null => false
       t.integer :role,      :null => false
+      t.string  :locale,    :null => false
 
       t.timestamps
     end
