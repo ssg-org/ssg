@@ -61,18 +61,29 @@
 				<%=link_to t('shared.menu.login'), login_users_path(), :class => "font-dp-bold  font-gray", :style => 'line-height:25px;' %>
 			</li>
 			<% else %>
-			<li>
-				<ul class="dd_menu">
-					<li>
-						<img src="<%=@user.avatar%>" style="float:left;height:25px;"/>
-						<%=link_to(@user.display_name, '#', :class => "font-dp-bold  font-gray", :style => 'line-height:25px;') %>
-						<ul>
-							<li><%=link_to t('shared.menu.profile'), user_path(@user) %></li>
-							<li><%=link_to t('shared.menu.settings'), '#' %></li>
-							<li><%=link_to t('shared.menu.logout'), logout_user_path(@user) %></li>
-						</ul>
-					</li>
-				</ul>
+			<li id="bar">
+				<div id="menu">
+					<ul>
+						<li>
+							<img src="<%=@user.avatar%>" style="float:left;height:25px;"/>
+							<span class="submenu"><%= @user.display_name%></span>
+
+							<div class="container ui-widget-content ui-corner-bottom">
+                              <dl class="ui-widget">
+                                    <dd>
+                                        <%=link_to t('shared.menu.profile'), user_path(@user) %>
+                                    </dd>
+                                    <dd>
+                                        <%=link_to t('shared.menu.settings'), user_path(@user) %>
+                                    </dd>                                    
+                                    <dd>
+										<%=link_to t('shared.menu.logout'), logout_user_path(@user) %>
+                                    </dd>
+                              </dl>
+                        	</div>
+						</li>
+					</ul>
+				</div>
 			</li>
 			<% end -%>
 		</ul>
