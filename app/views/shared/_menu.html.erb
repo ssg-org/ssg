@@ -4,6 +4,7 @@
 </div>
 
 <div style="float:left;">
+
 	<div style="margin-top:30px;">
 		<div style="float:right;" class="asset-learn-more"></div>
 		<span style="float:right;">
@@ -26,39 +27,39 @@
 	<div style="margin-top:70px;">
 		<ul id="menu-list">
 			<li>
-				<%=link_to t('shared.menu.issues'), issues_path(), :class => "font-dp-bold font-black #{'menu-selected' if selection[:issues]}"%><br/>
-				<span class="font-gray font-dp-medium"><%=t('shared.menu.discover')%></span><br/>
+				<%=link_to t('shared.menu.issues'), issues_path(), :class => "value_strip() font-black #{'menu-selected' if selection[:issues]}"%><br/>
+				<span class="font-gray"><%=t('shared.menu.discover')%></span><br/>
 				<% if selection[:issues]%>
-					<div style="margin-top:5px;height:1px; background-color:#9ecc3b"></div>
+					<div class="selection"></div>
 				<% end %>
 			</li>
+
 			<li>
-				<%=link_to t('shared.menu.cities'), cities_path(), :class => "font-dp-bold font-black #{'menu-selected' if selection[:cities]}"%><br/>
-				<span class="font-gray font-dp-medium"><%=t('shared.menu.country')%></span><br/>
+				<%=link_to t('shared.menu.cities'), cities_path(), :class => "value_strip() font-black #{'menu-selected' if selection[:cities]}"%><br/>
+				<span class="font-gray "><%=t('shared.menu.country')%></span><br/>
 				<% if selection[:cities]%>
-					<div style="margin-top:5px;height:1px; background-color:#9ecc3b"></div>
+					<div class="selection"></div>
 				<% end %>
 			</li>
+			
 			<li>
 				<% path = @user.guest? ?  login_users_path() : new_issue_path() %>
-				<%=link_to t('shared.menu.report'), path, :class => "font-dp-bold font-black #{'menu-selected' if selection[:report]}"%><br/>
-				<span class="font-gray font-dp-medium"><%=t('shared.menu.create_problem')%></span><br/>
+				<%=link_to t('shared.menu.report'), path, :class => "value_strip() font-black #{'menu-selected' if selection[:report]}"%><br/>
+				<span class="font-gray "><%=t('shared.menu.create_problem')%></span><br/>
 				<% if selection[:report]%>
-					<div style="margin-top:5px;height:1px; background-color:#9ecc3b"></div>
+					<div class="selection"></div>
 				<% end %>
 			</li>
-			<li style="width:200px;">
-				<input type="text"/>
+			<li>
+				<%=link_to t('shared.menu.blog'), new_issue_path(), :class => "value_strip() font-gray", :style => 'line-height:25px;' %><br/>
 			</li>
 			<li>
-				<%=link_to t('shared.menu.blog'), new_issue_path(), :class => "font-dp-bold font-gray", :style => 'line-height:25px;' %><br/>
+				<%=link_to t('shared.menu.help'), new_issue_path(), :class => "value_strip()  font-gray", :style => 'line-height:25px;' %><br/>
 			</li>
-			<li>
-				<%=link_to t('shared.menu.help'), new_issue_path(), :class => "font-dp-bold  font-gray", :style => 'line-height:25px;' %><br/>
-			</li>
+
 			<% if @user.guest? %>
 			<li>
-				<%=link_to t('shared.menu.login'), login_users_path(), :class => "font-dp-bold  font-gray", :style => 'line-height:25px;' %>
+				<%=link_to t('shared.menu.login'), login_users_path(), :class => "value_strip()  font-gray", :style => 'line-height:25px;' %>
 			</li>
 			<% else %>
 			<li id="bar">
