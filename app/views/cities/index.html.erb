@@ -19,7 +19,7 @@ $(function () {
 		lng :  <%=@center_long%>,
 		zoom :  <%=@center_zoom%>
 	});
-	
+
 	 loadMoreIssues();
 });
 
@@ -55,8 +55,6 @@ function loadMoreIssues() {
 		}
 	});
 }
-
-
 
 function drawIssues(issue_array) {
 	for (var i in issue_array) {
