@@ -86,8 +86,13 @@ Ssg::Application.routes.draw do
       get 'zoom'
     end
   end
-  
-  
+
+  # Static redirect
+  get '/faq'      => 'documents#faq' 
+  get '/help'     => 'documents#help'
+  get '/contact'  => 'documents#contact' 
+  get '/terms'    => 'documents#terms' 
+
   root :to => 'issues#index'
 
   # See how all your routes lay out with "rake routes"

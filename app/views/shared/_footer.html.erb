@@ -1,6 +1,5 @@
 <ul class="footer-menu">
-	<li><%=t('shared.footer.tos')%></li>
-	<li><%=t('shared.footer.help')%></li>
-	<li><%=t('shared.footer.advertise')%></li>
-	<li class="last"><%=t('shared.footer.contact')%></li>
+	<li><%= link_to(t('shared.footer.tos'), terms_path)%></li>
+	<li><%= link_to(t('shared.footer.help'), faq_path) %></li>
+	<li class="last"><%= link_to(t('shared.footer.contact'), contact_path)%></li>
 </ul>
