@@ -1,0 +1,21 @@
+#bar {cursor:pointer; height:30px; white-space:nowrap;}
+#menu {height:30px; padding:0 0 0 10px; position:relative; z-index:1000;}
+#menu ul {list-style:none; margin:0; padding:0;}
+#menu ul li {display:inline-block;}
+#menu ul li a {display:block; padding:0 15px; line-height:30px; text-decoration:none; color: black; background-color: red;}
+#menu ul li span {display:block; padding:0 15px; line-height:30px; text-decoration: none; }
+#menu ul li div.container {left:-9999px; padding:5px; position:absolute; }
+#menu ul li:hover {position:relative;}
+#menu ul li a:hover {position:relative; color: red; background-color: black;}
+#menu ul li a.submenu:hover {position:relative;}
+#menu ul li span:hover {position:relative;}
+#menu ul li span.submenu:hover {position:relative;}
+#menu ul li:hover > a {position:relative;}
+#menu ul li:hover a.submenu {position:relative;}
+#menu ul li:hover > span {position:relative;}
+#menu ul li:hover span.submenu {position:relative;}
+#menu ul :hover div.container {left:0px; position:absolute; top:30px; }
+#menu ul dl {list-style:none; margin:0; padding:0; width:auto;}
+#menu ul dl dt {margin:5px 0 0 0; padding:2px;}
+#menu ul dl dd {display:block; margin:0; padding:2px;}
+#menu ul dd a {display:block; font-weight:normal; margin:0; padding:0 10px; text-align:left;}

@@ -1,7 +1,7 @@
-<span style="font-size:20px;margin-top:20px;">Discuss this issue (<%=comments.count%> comments)</span><br/><br/>
+<span style="font-size:20px;margin-top:20px;"><%=t('shared.comments.discuss')%> (<%=comments.count%> <%=t('shared.comments.comments')%>)</span><br/><br/>
 <hr/>
 <% if @user.guest? %>
-	<span style="font-size:12px;">You can log in to join conversation</span>
+	<span style="font-size:12px;"><%=t('shared.comments.log_in')%></span>
 <% else %>
 	<div id="comment_editor" style="padding:25px 0 25px 0; overflow:auto;">
 			<%= image_tag @user.avatar, :style => 'width: 50px; float:left; margin-right:10px;' %>

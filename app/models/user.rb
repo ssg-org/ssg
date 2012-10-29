@@ -2,7 +2,7 @@ class User < ActiveRecord::Base
   ROLE_GUEST  = 1
   ROLE_USER   = 2
   
-  GUEST_USER = User.new(:role => ROLE_GUEST, :first_name => 'Guest')
+  GUEST_USER = User.new(:role => ROLE_GUEST, :first_name => 'Guest', :locale => I18n.locale)
 
   has_many  :issues
   has_many  :votes
@@ -150,6 +150,7 @@ class User < ActiveRecord::Base
     user.first_name = first_name
     user.active = is_active
     user.role = role
+    user.locale = I18n.default_locale
     user.save
     
     return user
@@ -162,7 +163,6 @@ class User < ActiveRecord::Base
     # New user
     if user.nil?
       user = User.new(:active => false)
-      puts user.inspect
     end
 
     # Inactive user - send email again
@@ -172,6 +172,7 @@ class User < ActiveRecord::Base
       user.uuid = UUIDTools::UUID.random_create.to_s
       user.active = false
       user.role = ROLE_USER
+      user.locale = I18n.default_locale
 
       return user
     # Active user

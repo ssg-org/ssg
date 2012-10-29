@@ -1,0 +1,47 @@
+# Sample localization file for English. Add more files in this directory for other locales.
+# See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
+
+bs:
+    shared:
+        menu:
+            what:   'Šta je SSG?'
+            we_are: ' Mi smo društvena zajednica koja želi obezbijediti građanima život u ljepšem okruženju'
+            issues: 'PROBLEMI'
+            discover:   'OTKRIJ SVE'
+            cities:     'GRADOVI'
+            country:    'ŠIROM DRŽAVE'
+            report:     'PRIJAVI'
+            create_problem: 'PROBLEM'
+            blog:       'BLOG'
+            help:       'POMOĆ'
+            signup:     'SIGNUP'
+            login:      'PRIJAVA'
+            profile:    'PROFIL'
+            settings:   'PODEŠAVANJA'
+            logout:     'ODJAVA'
+        footer:
+            tos:        'Uslovi korištenja i privatnosti'
+            help:       'Pomoć i FAQ'
+            advertise:  'Reklamiranje'
+            contact:    'Kontakt'
+        comments:
+            comments:   'komentar'
+            discuss:    'Komentarišite problem'
+            log_in:     'Morate se prijaviti da bi komentarisali problem'
+    users:
+        login:
+            login:      'PRIJAVA'
+            login_message: 'Da li ste već član SSG?'
+            email:   'Email'
+            password:   'Lozinka' 
+            login_button:   'PRIJAVITE SE ODMAH'
+            register:   'NISTE ČLAN SSG-a?'
+            register_message:   'Popunite formu i pridružite nam se danas.'
+            register_choose_location: 'Odaberite vaš grad'
+            register_repeat_password: 'Ponovite lozinku'
+            register_agree_tou: 'Slažem se uslovima korištenja'
+            register_button:    'REGISTRUJTE SE'
+            quick_sign_in:  'BRZA PRIJAVA'
+            quick_sign_in_message: 'Brzo i bezbolno.'
+        verify:
+            email_subject:  '[SSG] Molimo potvrdite vašu email adresu. '

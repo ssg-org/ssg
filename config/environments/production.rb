@@ -25,7 +25,8 @@ Ssg::Application.configure do
 
   # Define url for mailer
   config.action_mailer.default_url_options = {
-    :host => 'www.sredisvojgrad.com'
+    :host => Config::Configuration.get(:ssg, :host),
+    :port => Config::Configuration.get(:ssg, :port)
   }
 
 
