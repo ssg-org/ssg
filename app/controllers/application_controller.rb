@@ -21,6 +21,7 @@ class ApplicationController < ActionController::Base
   
   private
   def check_access
+    puts " #{Config::Configuration.get(:ssg, :auth_enabled).class}"
     authenticate_or_request_with_http_basic do |user_name, password|
       # Change these to username and password required
       user_name == Config::Configuration.get(:ssg, :auth_username) && password == Config::Configuration.get(:ssg, :auth_password)

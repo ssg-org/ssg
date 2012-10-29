@@ -6,6 +6,8 @@ module Config
 
 		@@cache = YAML::load(File.read('config/configuration.yml'))
 
+		puts "config :  #{@@cache}"
+
 		# check if per-developer configuration exists (this is not included in git!!!!!)
 		if (File.exist?('config/configuration.local.yml'))
 		  locale = YAML::load(File.read('config/configuration.local.yml'))
@@ -24,7 +26,11 @@ module Config
 	end
     
     def self.get(group, name, default="")  
-      return @@cache[Rails.env][group.to_s][name.to_s] || default
+      rval = @@cache[Rails.env][group.to_s][name.to_s]
+      if (rval.nil?)
+      	return default
+      end
+      return rval
     end
     
     def self.get_root(server)
