@@ -98,8 +98,9 @@ textarea {
 }
 #menu-list {
 	list-style:none;
-	
-	li {
+	width:810px;
+
+	.menu-sub {
 		float:left;
 		padding:8px;
 		font-weight:bold;
@@ -285,76 +286,66 @@ textarea {
 	color: $color-green;
 }
 
-// Drop down menu
-.dd_menu {
-	background:green; 
-	padding:0px; 
-	margin:0; 
-	list-style-type:none; 
-	height:30px;
-}
-.dd_menu li {
-	float:left; 
-	height:30px; 
-	border-right: 
-	solid 1px white;
-}
-.dd_menu li a {
-	padding:9px 20px; 
-	display:block; 
-	color:#fff; 
-	text-decoration:none; 
-	font:12px arial, 
-	verdana, 
-	sans-serif; 
-	font-weight: bold;
-}
-.dd_menu li:hover a {
-	text-decoration:underline;
-}
-
-.dd_menu ul {
-	position:absolute; 
-	left:-9999px; 
-	top:-9999px; 
-	list-style-type:none;
-}
-.dd_menu li:hover {
-	position:relative; 
-	background:red;
-}
-.dd_menu li:hover ul {
-	left:0px; 
-	top:30px; 
-	background:lavender; 
-	padding:3px; 
-	border:1px solid grey; 
-	width:160px;
-}
-.dd_menu li:hover ul li {
-	height:18px; 
-	border:none;
-}
-.dd_menu li:hover ul li a {
-	height:18px; 
-	padding:0px; 
-	display:block; 
-	font-size:11px; 
-	width:158px; 
-	line-height:18px; 
-	text-indent:5px; 
-	color:#444; 
-	background-color:lavender; 
-	text-decoration:none; 
-	border:1px solid transparent;
-}
-.dd_menu li:hover ul li a:hover {
-	height:18px; 
-	background:silver; 
-	color:#000; 
-	border:solid 1px #444;
-}
-
 .documents {
 	padding: 30px;
+}
+
+// Drop down menu
+.dropdown {
+	margin: 3px -22px 0 0;
+	width: 103px;
+	position: relative;
+	height: 17px;
+	text-align:left;
+}
+.submenu {
+	background: #fff;
+	position: absolute;
+	top: -12px;
+	left: -20px;
+	z-index: 100;
+	width: 135px;
+	display: none;
+	margin-left: 10px;
+	padding: 40px 0 5px;
+	border-radius: 6px;
+	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.45);
+}
+.dropdown li a {
+	color: #555555;
+	display: block;
+	font-family: arial;
+	font-weight: bold;
+	cursor: pointer;
+	text-decoration:none;
+	height:27px;
+	line-height:27px;
+	padding:6px 15px;
+}
+
+.dropdown li a:hover {
+	background:#9ecc3b;
+	color: #FFFFFF;
+	text-decoration: none;
+}
+a.account  {
+	line-height: 16px;
+	position: absolute;
+	z-index: 110;
+	color: $color-gray;
+	display: block;
+	padding: 12px 0 0 20px;
+	height: 28px;
+	width: 121px;
+	margin: -11px 0 0 -10px;
+	text-decoration: none;
+	/*background: url(icons/arrow.png) 116px 17px no-repeat;*/
+	cursor:pointer;
+}
+.root {
+	list-style:none;
+	margin:0px;
+	padding:0px;
+	padding: 11px 0 0 0px;
+	border-top:1px solid #dedede;
 }
