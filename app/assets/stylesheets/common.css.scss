@@ -1,5 +1,5 @@
 $font-family : 'Arial';
-$font-size   : 14px;
+$font-size   : 12px;
 
 $background-color : #cfcfcf;
 $color-green : #9ecc3b;
@@ -102,6 +102,13 @@ textarea {
 	li {
 		float:left;
 		padding:8px;
+		font-weight:bold;
+	}
+
+	.selection {
+		margin-top:5px;
+		height:1px; 
+		background-color:#9ecc3b;
 	}
 }
 
