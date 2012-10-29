@@ -141,10 +141,15 @@ textarea {
 	color: $color-green;
 	margin:0 auto;
 	width: 500px;
-}
-.footer-menu li {
-	float:left;
-	padding:5px 10px 5px 10px;
+
+	li {
+		float:left;
+		padding:5px 10px 5px 10px;
+
+		a {
+			color: $color-green;		
+		}
+	}
 }
 
 #issues_left_column {
@@ -348,4 +353,8 @@ textarea {
 	background:silver; 
 	color:#000; 
 	border:solid 1px #444;
+}
+
+.documents {
+	padding: 30px;
 }
