@@ -28,27 +28,65 @@ class Issue < ActiveRecord::Base
   end
   
   def self.get_issues(params, limit=9, offset=0)
-  	query = Hash.new
+  	query = Array.new
+    values = Hash.new
+
+    # Order
+    order_by = 'created_at desc'
 
     # Get category, status and city params
-    if (!params[:category].nil?)
-      query[:category_id] = params[:category]
+    if (!params[:category].blank?)
+      query << 'category_id = :category_id'
+      values[:category_id] = params[:category]
     end
 
-    if (!params[:status].nil?)
-      query[:status] = params[:status]
+    if (!params[:status].blank?)
+      query << 'status = :status'
+      values[:status] = params[:status]
     end
 
-    if (!params[:city].nil?)
-      query[:city_id] = params[:city]
+    if (!params[:city].blank?)
+      query << 'city_id = :city_id'
+      values[:city_id] = params[:city]
+    end
+
+    if (!params[:date].blank?)
+      date = params[:date]
+
+      if (date == 'today')
+        start_time = Time.now.beginning_of_day
+        end_time = Time.now.end_of_day
+      elsif (date == 'week')
+        start_time = Time.now.beginning_of_week
+        end_time = Time.now.end_of_week
+      elsif (date == 'month')
+        start_time = Time.now.beginning_of_month
+        end_time = Time.now.end_of_month
+      end
+
+      query << '(created_at > :start_time AND created_at < :end_time)'
+      values[:start_time] = start_time
+      values[:end_time] = end_time 
+    end
+
+    if (!params[:featured].blank?)
+      sort_by = params[:featured]
+
+      if (sort_by == 'viewed')
+        order_by = 'view_count desc'
+      elsif (sort_by == 'votes')
+        order_by = 'vote_count desc'
+      elsif (sort_by == 'discussed')
+        order_by = 'comment_count desc'
+      end
     end
 
     if (query.empty?)
   		@issues_relation = Issue
 	  else
-		  @issues_relation = Issue.where(query)
+		  @issues_relation = Issue.where(query.join(' AND '), values)
     end
     
-    return @issues_relation.includes([:images, :category]).limit(limit).offset(offset).order('created_at desc').includes([:user, :city, :category])
+    return @issues_relation.limit(limit).offset(offset).order(order_by).includes([:user, :city, :category, :images, :category])
   end
 end
