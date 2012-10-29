@@ -1,0 +1,10 @@
+development:
+    ssg:
+        host:                   "localhost"
+        port:                   "3000"
+    fb:
+        application_id:
+        secret_key:                         
+    aws:
+        access_key:                         
+        access_secret:                      

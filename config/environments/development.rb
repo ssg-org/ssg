@@ -21,8 +21,8 @@ Ssg::Application.configure do
 
   # Define url for mailer
   config.action_mailer.default_url_options = {
-    :host => 'localhost',
-    :port => 3000
+    :host => Config::Configuration.get(:ssg, :host),
+    :port => Config::Configuration.get(:ssg, :port)
   }
 
   # Print deprecation notices to the Rails logger

@@ -1,10 +1,10 @@
 development:
     ssg:
         email_address:                      "no-reply@sredisvojgrad.com"
+        auth_enabled:						true
+        auth_username:						"username"
+        auth_password:						"pass"
     fb:
         site_url:                           https://graph.facebook.com
         scope:                              "email,user_photos"
-    aws:
-        access_key:                         ""
-        secret_key:                         ""
  

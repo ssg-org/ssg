@@ -19,7 +19,15 @@ en:
             profile:    'PROFILE'
             settings:   'SETTINGS'
             logout:     'LOGOUT'
-    hello: "Hello world"
+        footer:
+            tos:        'Terms of Service & Privacy'
+            help:       'Help & FAQ'
+            advertise:  'Advertise'
+            contact:    'Contact'
+        comments:
+            comments:   'comments'
+            discuss:    'Discuss this issue'
+            log_in:     'You can log in to join conversation'
     users:
         login:
             login:      'LOG IN'

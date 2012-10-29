@@ -18,7 +18,8 @@ User.create({
   :last_name => 'Nikic',
   :anonymous => false,
   :active => true,
-  :role => User::ROLE_USER
+  :role => User::ROLE_USER,
+  :locale => 'en'
 })
 
 User.create({  
@@ -29,7 +30,8 @@ User.create({
   :last_name => 'Doe',
   :anonymous => false,
   :active => true,
-  :role => User::ROLE_USER
+  :role => User::ROLE_USER,
+  :locale => 'bs'
 })
 
 
