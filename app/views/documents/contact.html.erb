@@ -1,3 +1,9 @@
-<div class="documents">
-	<p>Contact info</p>
+<div class="contact-form">
+<div class="breadcrumb-container">SSG / <span>CONTACT</span></div>
+		<p>Please add comments/remarks/questions below</p>
+		<div id="contact-details">
+			<%= text_field_tag :email, nil, :placeholder => t('users.login.email') %><br/>
+			<%= text_field_tag :email, nil, :placeholder => t('users.login.email') %><br/>
+			<%= ssg_button t('users.login.register_button'), {:onclick => "$('\#register_form').submit();"}%>
+		</div
 </div>

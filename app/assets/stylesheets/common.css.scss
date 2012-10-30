@@ -324,6 +324,21 @@ textarea {
 	}
 }
 
+.contact-form {
+	padding: 30px;
+	display: inline-block;
+
+	#contact-details {
+		float:center;
+		width:524px;
+		padding: 10px;
+		height:470px;
+		background-color:$color-green;
+		color: white;
+	}
+}
+
+
 // Drop down menu
 .dropdown {
 	margin: 3px -22px 0 0;
