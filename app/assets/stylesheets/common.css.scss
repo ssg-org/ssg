@@ -60,7 +60,7 @@ textarea {
 	color:$color-gray;
 }
 .font-bold {
-	fomt-weight:bold;
+	font-weight:bold;
 }
 .font-11 {
 	font-size:11px;
@@ -288,6 +288,40 @@ textarea {
 
 .documents {
 	padding: 30px;
+	display: inline-block;
+
+	.header {
+		color: $color-green;
+		font-size:18px; 
+		font-weight:bold;
+	}
+
+	.question {
+		font-size:12px; 
+		font-weight:bold;
+	}
+
+	.answer {
+	}
+	
+	.list {
+		font-size: 16px;
+		font-weight: bold;
+		color:white;
+	}
+	
+	#content {
+		width: 70%;
+		padding: 30px;
+		float: left;
+	}
+
+	#table-of-contents {
+		padding: 30px;
+		background: $color-green;
+		float: left;
+
+	}
 }
 
 // Drop down menu
