@@ -7,4 +7,7 @@ class DocumentsController < ApplicationController
 
 	def terms
 	end
+
+	def learn
+	end
 end

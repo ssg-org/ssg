@@ -6,7 +6,9 @@
 <div style="float:left;">
 
 	<div style="margin-top:30px;">
-		<div style="float:right;" class="asset-learn-more"></div>
+		<%= link_to(learn_path) do %>
+			<div style="float:right;" class="asset-learn-more"></div>
+		<% end %>
 		<span style="float:right;">
 			<strong><%=t('shared.menu.what')%></strong> <%=t('shared.menu.we_are')%>&nbsp;&nbsp;&nbsp;&nbsp;
 		</span>
