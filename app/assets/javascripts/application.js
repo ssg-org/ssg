@@ -20,5 +20,6 @@
 //= require leaflet
 //= require jquery-fileupload/basic
 //= require jquery.validate.min
+//= require jquery-nivo-slider
 //= require ssg_map
 
