@@ -1,9 +1,13 @@
 <div class="contact-form">
 <div class="breadcrumb-container">SSG / <span>CONTACT</span></div>
-		<p>Please add comments/remarks/questions below</p>
+		<p><span>If you have any questions, please send us them with this form.<span></p>
 		<div id="contact-details">
-			<%= text_field_tag :email, nil, :placeholder => t('users.login.email') %><br/>
-			<%= text_field_tag :email, nil, :placeholder => t('users.login.email') %><br/>
-			<%= ssg_button t('users.login.register_button'), {:onclick => "$('\#register_form').submit();"}%>
+			<%= form_tag '#', :id=>"contact_form" do %>
+				<%= text_field_tag :question, nil, :placeholder => t('documents.contact.question') %><br/>
+				<textarea id="textarea-styled" <%= text_field_tag :details, nil, :placeholder => t('documents.contact.details') %></textarea><br/>
+				<%= text_field_tag :name, nil, :placeholder => t('documents.contact.name') %><br/>
+				<%= text_field_tag :email, nil, :placeholder => t('documents.contact.email') %><br/>
+				<%= ssg_button t('documents.contact.send_button'), {:onclick => "$('\#register_form').submit();"}%>
+			<%end%>
 		</div
 </div>

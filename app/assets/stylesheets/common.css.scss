@@ -302,6 +302,7 @@ textarea {
 	}
 
 	.answer {
+		font-size:12px; 
 	}
 	
 	.list {
@@ -335,6 +336,11 @@ textarea {
 		height:470px;
 		background-color:$color-green;
 		color: white;
+	}
+	#textarea-styled {
+		height: 240px;
+		font-family: arial;
+		
 	}
 }
 
