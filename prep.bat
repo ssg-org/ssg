@@ -1,3 +1,3 @@
 del db\development.sqlite3
-rake db:migrate
-rake db:seed
+rake db:migrate --trace
+rake db:seed --trace

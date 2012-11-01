@@ -10,7 +10,7 @@ class CitiesController < ApplicationController
 		@issues = Issue.get_geo_issues(
 			{:lat => params[:sw_lat], :long => params[:sw_long]}, 
 			{:lat => params[:ne_lat], :long => params[:ne_long]},
-			5
+			20
 		)
 		render :json => @issues
 	end
