@@ -84,7 +84,8 @@
 </div>
 
 
-<script type="text/javascript" >
+<%=content_for :javascript do %>
+<script>
 $(document).ready(function()
 {
 
@@ -125,3 +126,4 @@ $(".account").attr('id', '');
 });
 });
 </script>
+<% end %>

@@ -9,7 +9,6 @@
   <!--[if lte IE 8]>
       <link rel="stylesheet" href="assets/leaflet.ie.css" />
   <![endif]-->
-  <%= javascript_include_tag "application" %>
 </head>
 <body alink="#000" vlink="#000" link="#000">
 	<div id="main-menu">
@@ -28,11 +27,10 @@
 		<%= render  :partial => 'shared/footer' %>
 	</div>
 	
+  <%= javascript_include_tag "application" %>
 	<script>
-
 	$(function () {
 		// VALIDATE
-
 		$.validator.addMethod(
 			"images_validator", 
 			function(value) {
@@ -45,7 +43,6 @@
 		$('select').selectbox();
 	});
 
-
 	var _gaq = _gaq || [];
 	_gaq.push(['_setAccount', 'UA-30569816-1']);
 	_gaq.push(['_trackPageview']);
@@ -57,5 +54,6 @@
 	
 	function goto_url(url){ window.location.href = url; }
 	</script>
+	<%= yield :javascript %>
 </body>
 </html>

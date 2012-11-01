@@ -8,8 +8,9 @@
 
 	<br style="clear:both;" />
 </div>
-<script>
 
+<% content_for :javascript do %>
+<script>
 $(function () {
 
 	$('#mini_map').SSGMap({
@@ -69,3 +70,4 @@ function drawIssues(issue_array) {
 	}
 }
 </script>
+<% end %>

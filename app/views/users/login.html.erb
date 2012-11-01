@@ -27,7 +27,8 @@
 </div>
 <br style="clear:both">
 
-<script type="text/javascript">
+<% content_for :javascript do %>
+<script>
 	$('#fb-login-link').click(function(event) {
 		fb_login('<%=Config::Configuration.get(:fb, :application_id)%>', escape('<%=fb_login_users_url()%>'), '<%=Config::Configuration.get(:fb, :scope)%>'); 
 		return false;
@@ -66,3 +67,4 @@
 		}
 	});
 </script>
+<% end %>
