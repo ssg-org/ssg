@@ -60,7 +60,7 @@ textarea {
 	color:$color-gray;
 }
 .font-bold {
-	fomt-weight:bold;
+	font-weight:bold;
 }
 .font-11 {
 	font-size:11px;
@@ -288,7 +288,62 @@ textarea {
 
 .documents {
 	padding: 30px;
+	display: inline-block;
+
+	.header {
+		color: $color-green;
+		font-size:18px; 
+		font-weight:bold;
+	}
+
+	.question {
+		font-size:12px; 
+		font-weight:bold;
+	}
+
+	.answer {
+		font-size:12px; 
+	}
+	
+	.list {
+		font-size: 16px;
+		font-weight: bold;
+		color:white;
+	}
+	
+	#content {
+		width: 70%;
+		padding: 30px;
+		float: left;
+	}
+
+	#table-of-contents {
+		padding: 30px;
+		background: $color-green;
+		float: left;
+
+	}
 }
+
+.contact-form {
+	padding: 30px;
+	display: inline-block;
+
+	#contact-details {
+		float:center;
+		width:524px;
+		padding: 10px;
+		height:470px;
+		background-color:$color-green;
+		color: white;
+	}
+	#textarea-styled {
+		height: 240px;
+		font-family: arial;
+		
+	}
+}
+
 
 // Drop down menu
 .dropdown {

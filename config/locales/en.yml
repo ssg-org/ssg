@@ -44,4 +44,11 @@ en:
             quick_sign_in:  'QUICK SIGN IN'
             quick_sign_in_message: 'Quick and Painless.'
         verify:
-            email_subject:  '[SSG] Please verify your email'
+            email_subject:  '[SSG] Please verify your email.'
+    documents:
+        contact:    
+            question:       'Question'
+            details:        'Details'
+            name:           'Name'
+            email:          'Email'
+            send_button:    'SEND'

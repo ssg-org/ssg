@@ -41,6 +41,7 @@ class User < ActiveRecord::Base
     ActiveRecord::Base.transaction do    
       issue = Issue.find(issue_id)
       issue.comments << Comment.new(:text => text, :user => self)
+      issue.comment_count += 1
       issue.save
     end
   end
