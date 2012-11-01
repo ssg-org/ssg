@@ -1,0 +1,23 @@
+<div id="wrapper">
+    <div class="slider-wrapper">
+        <div id="slider" class="nivoSlider">
+            <%= image_tag "tour/#{I18n.locale}/tour-slide1.jpg"%>
+            <%= image_tag "tour/#{I18n.locale}/tour-slide2.jpg"%>
+            <%= image_tag "tour/#{I18n.locale}/tour-slide3.jpg"%>
+            <%= image_tag "tour/#{I18n.locale}/tour-slide4.jpg"%>
+            <%= image_tag "tour/#{I18n.locale}/tour-slide5.jpg"%>
+			<%= image_tag "tour/#{I18n.locale}/tour-slide6.jpg" if (I18n.locale == 'en')%>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(window).load(function() {
+    $('#slider').nivoSlider({
+        pauseOnHover: false,        // Does not stop when mouse is over
+        directionNav:false,         // No next and prev arrows
+        controlNav: false,          // No thummbs
+        pauseTime: 5000,            // 5 seconds wait
+        effect: 'slideInLeft'});
+});
+</script>

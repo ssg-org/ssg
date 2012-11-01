@@ -6,7 +6,9 @@
 <div style="float:left;">
 
 	<div style="margin-top:30px;">
-		<div style="float:right;" class="asset-learn-more"></div>
+		<%= link_to(learn_path) do %>
+			<div style="float:right;" class="asset-learn-more"></div>
+		<% end %>
 		<span style="float:right;">
 			<strong><%=t('shared.menu.what')%></strong> <%=t('shared.menu.we_are')%>&nbsp;&nbsp;&nbsp;&nbsp;
 		</span>
@@ -76,7 +78,7 @@
 				<%=link_to t('shared.menu.blog'), new_issue_path(), :class => "value_strip() font-gray", :style => 'line-height:25px;' %><br/>
 			</li>
 			<li  class="menu-sub" style="float:right;">
-				<%=link_to t('shared.menu.help'), new_issue_path(), :class => "value_strip()  font-gray", :style => 'line-height:25px;' %><br/>
+				<%=link_to t('shared.menu.help'), faq_path(), :class => "value_strip()  font-gray", :style => 'line-height:25px;' %><br/>
 			</li>
 
 		</ul>

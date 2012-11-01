@@ -45,3 +45,10 @@ bs:
             quick_sign_in_message: 'Brzo i bezbolno.'
         verify:
             email_subject:  '[SSG] Molimo potvrdite vašu email adresu. '
+    documents:
+        contact:    
+            question:       'Pitanje'
+            details:        'Detalji'
+            name:           'Ime'
+            email:          'Email'
+            send_button:    'POŠALJI'
