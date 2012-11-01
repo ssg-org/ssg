@@ -1,5 +1,5 @@
 <div id="wrapper">
-    <div class="slider-wrapper">
+    <div class="slider-wrapper theme-default">
         <div id="slider" class="nivoSlider">
             <%= image_tag "tour/#{I18n.locale}/tour-slide1.jpg"%>
             <%= image_tag "tour/#{I18n.locale}/tour-slide2.jpg"%>
@@ -11,13 +11,15 @@
     </div>
 </div>
 
+<% content_for :javascript do %>
 <script type="text/javascript">
 $(window).load(function() {
     $('#slider').nivoSlider({
         pauseOnHover: false,        // Does not stop when mouse is over
-        directionNav:false,         // No next and prev arrows
-        controlNav: false,          // No thummbs
+        directionNav:true,         // No next and prev arrows
+        controlNav: true,          // No thummbs
         pauseTime: 5000,            // 5 seconds wait
         effect: 'slideInLeft'});
 });
 </script>
+<% end %>
