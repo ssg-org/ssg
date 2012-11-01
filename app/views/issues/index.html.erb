@@ -18,6 +18,7 @@
 <div class="value_strip() font-15 loading" style="margin:0 auto; width:300px; height:50px; line-height:50px;">Loading ...</div>
 
 
+<% content_for :javascript do %>
 <script>
 $(function(){
    var page_no = 1;
@@ -49,3 +50,4 @@ $(function(){
           
 });
 </script>
+<% end %>

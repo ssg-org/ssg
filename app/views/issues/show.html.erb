@@ -71,6 +71,8 @@
 
 	<br style="clear:both;" />
 </div>
+
+<% content_for :javascript do %>
 <script>
 $(function () {
 	$('#mini_map').SSGMap({
@@ -104,3 +106,4 @@ function unvote() {
 	});
 }
 </script>
+<% end %>

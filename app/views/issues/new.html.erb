@@ -71,6 +71,7 @@
 label.error {  color: red; font-size:10px;}
 </style>
 
+<% content_for :javascript do %>
 <script>
 var cities = <%=@user.get_cities.to_json(:only => [:id, :lat, :long]).html_safe%>;
 var marker = null;
@@ -156,3 +157,4 @@ $(function () {
 });	
 </script>
 
+<% end %>
