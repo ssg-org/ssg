@@ -1,3 +1,5 @@
+require 'config/config'
+
 class Issue < ActiveRecord::Base
   extend FriendlyId
 
@@ -14,8 +16,30 @@ class Issue < ActiveRecord::Base
   has_many		:comments
   has_many    :images
   has_many    :votes
+  has_many    :unique_views
   
   friendly_id :title, :use => [:slugged]
+
+
+  def mark_as_viewed(user_uniq_cookie_id) 
+    uniq_view = self.unique_views.where(:session => user_uniq_cookie_id).first
+
+    if (uniq_view)
+      # count if 1hour diff (config file)
+      if (Config::Configuration.get(:misc, :unique_view_epsilon).to_f < (Time.now - uniq_view.viewed_at))
+        self.session_view_count += 1
+        uniq_view.viewed_at = Time.now
+        uniq_view.save!
+      end
+    else
+      UniqueView.create({:session => user_uniq_cookie_id, :issue_id => self.id, :viewed_at => Time.now })
+      self.session_view_count += 1
+    end
+
+    # Non unique view count
+    self.view_count += 1
+    self.save!
+  end
 
   def self.get_geo_issues(south_west_geo, north_east_geo, limit)
     sw_lat = south_west_geo[:lat]

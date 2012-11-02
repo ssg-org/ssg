@@ -10,6 +10,12 @@ class ApplicationController < ActionController::Base
 
   private
   def check_login
+    # Assing uniq seed for 'view counting'
+    if (cookies[:unique].blank?)
+      # TODO - DB sequence maybe ? uuid is too space consuming
+      cookies[:unique] = Random.new.rand(1..999999999)
+    end
+
     if (session[:id])
       @user = User.find_by_id(session[:id])
     else
