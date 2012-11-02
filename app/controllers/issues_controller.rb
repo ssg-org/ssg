@@ -39,9 +39,7 @@ class IssuesController < ApplicationController
       @issue = Issue.find(params[:id])
       # Can't update View Count if this is your issue
       # TODO Refactor this
-      if (@issue.user_id != @user.id)
-        @issue.mark_as_viewed(cookies[:unique])
-      end
+      @issue.mark_as_viewed(cookies[:unique])
 
       @already_voted = !(@issue.votes.where(:user_id => @user.id).first.nil?)
     end
