@@ -10,7 +10,7 @@
 				<span class="font-12"><%=@issue.category.name%>, <%=@issue.city.name%></span><br/>
 			</div>
 			<div class="issue-cell">
-				<p><%=@issue.description%></p>
+				<p><%=@issue.description.html_safe%></p>
 			</div>
 			<div  class="issue-cell">
 				<% @issue.images.each do |img| %>

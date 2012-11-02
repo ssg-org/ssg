@@ -22,7 +22,7 @@
 				</tr>
 				<tr>
 					<td colspan="2">
-						<%= f.text_area :description, :style => 'width:100%; height:80px;', :placeholder => 'Describe your Problem' %>
+						<%= f.text_area :description, :style => 'width:100%; height:80px;', :placeholder => 'Describe your Problem', :id => 'description_ta' %>
 					</td>
 				</tr>
 				<tr>
@@ -72,11 +72,19 @@ label.error {  color: red; font-size:10px;}
 </style>
 
 <% content_for :javascript do %>
-<script>
+
+<script type="text/javascript">
+
 var cities = <%=@user.get_cities.to_json(:only => [:id, :lat, :long]).html_safe%>;
 var marker = null;
 
 $(function () {
+
+	// WYSIWYG Editor
+	new nicEditor({
+		buttonList : ['bold','italic','underline','strikeThrough','hr','left','center','right'],
+		iconsPath : '<%= asset_path 'nicEditorIcons.gif' %>'
+	}).panelInstance('description_ta');
 
 	// MAP
 
