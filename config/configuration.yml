@@ -12,3 +12,5 @@ development:
   aws:
     access_key:             # REQUIRED  
     access_secret:          # REQUIRED
+  misc:
+    unique_view_epsilon:    3600
