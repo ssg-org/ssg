@@ -20,7 +20,8 @@ bs:
             settings:   'PODEŠAVANJA'
             logout:     'ODJAVA'
         footer:
-            tos:        'Uslovi korištenja i privatnosti'
+            privacy:     'Izjava o privatnosti'
+            tos:        'Uslovi korištenja'
             help:       'Pomoć i FAQ'
             advertise:  'Reklamiranje'
             contact:    'Kontakt'
