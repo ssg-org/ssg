@@ -93,7 +93,7 @@ Ssg::Application.routes.draw do
   get '/help'     => 'documents#help'
   get '/contact'  => 'documents#contact' 
   get '/terms'    => 'documents#terms' 
-  get  '/learn'   => 'documents#learn'
+  get '/learn'    => 'documents#learn'
 
   root :to => 'issues#index'
 
