@@ -23,3 +23,18 @@
 		</div>
 	</div>
 <% end %>
+
+<% content_for :javascript do %>
+<script>
+	$(function () {
+		// Validation
+		$('#comment_form').validate({
+			rules : {
+				'text': {
+					required: true
+				}
+			}
+		});		
+	});
+</script>
+<% end %>
