@@ -18,11 +18,9 @@ class IssuesController < ApplicationController
       format.html # new.html.erb
       format.json { render json: @issue }
     end
-    
   end
   
   def create
-    # parse image params
     image_count = params[:image_count].to_i
     image_ids = []
     (0..image_count-1).each do |i|
@@ -30,7 +28,6 @@ class IssuesController < ApplicationController
     end
 
     @user.create_issue(params[:issue][:title], params[:issue][:category_id], params[:issue][:city_id], params[:issue][:description], params[:issue][:lat], params[:issue][:long],image_ids)
-    
     redirect_to issues_path()
   end
   
@@ -43,6 +40,19 @@ class IssuesController < ApplicationController
 
       @already_voted = !(@issue.votes.where(:user_id => @user.id).first.nil?)
     end
+  end
+
+  def destroy
+    issue = Issue.find(params[:id])
+    if @user.id == issue.user_id
+      issue.status = Issue::DELETED
+      issue.save!
+      flash[:info] = 'Uspjesno izbrisan'
+    else
+      flash[:error] = 'Neuspjesno brisanje!'
+    end
+
+    redirect_to issues_url()
   end
   
   def vote

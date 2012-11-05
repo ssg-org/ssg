@@ -3,9 +3,12 @@ require 'config/config'
 class Issue < ActiveRecord::Base
   extend FriendlyId
 
-	OPEN 		= 1
-	IN_PROGRESS	= 2
-	FIXED		= 3
+  OPEN          = 1
+  IN_PROGRESS   = 2
+  FIXED         = 3
+  DELETED       = 4
+
+  default_scope where('status <> 4')
 
   attr_accessible :title, :category, :city, :description, :user, :lat, :long
 
@@ -13,10 +16,10 @@ class Issue < ActiveRecord::Base
   belongs_to  :category
   belongs_to	:city
 
-  has_many		:comments
-  has_many    :images
-  has_many    :votes
-  has_many    :unique_views
+  has_many		:comments, :dependent => :destroy
+  has_many    :images, :dependent => :destroy
+  has_many    :votes, :dependent => :destroy
+  has_many    :unique_views, :dependent => :destroy
   
   friendly_id :title, :use => [:slugged]
 
