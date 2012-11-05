@@ -88,7 +88,8 @@ Ssg::Application.routes.draw do
   end
 
   # Static redirect
-  get '/faq'      => 'documents#faq' 
+  get '/faq'      => 'documents#faq'
+  get '/privacy'  => 'documents#privacy'
   get '/help'     => 'documents#help'
   get '/contact'  => 'documents#contact' 
   get '/terms'    => 'documents#terms' 

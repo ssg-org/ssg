@@ -1,4 +1,7 @@
 class DocumentsController < ApplicationController
+	def privacy
+	end
+	
 	def faq
 	end
 
