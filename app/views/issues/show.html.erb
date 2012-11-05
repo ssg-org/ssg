@@ -4,13 +4,16 @@
 	</div>
 
 	<div class="issue-container">
+		<div>
+			<%= link_to 'x', issue_path(@issue.id), :style => 'float:right; margin:10px;', :method => :delete, :confirm => 'Da li stvarno zelite obrisati?' %>
+		</div>
 		<div class="issue-container-green">
 			<div class="issue-cell">
 				<span class="issue-cell-title"><%=@issue.title.upcase%></span><br/>
 				<span class="font-12"><%=@issue.category.name%>, <%=@issue.city.name%></span><br/>
 			</div>
 			<div class="issue-cell">
-				<p><%=@issue.description.gsub(/(?:\n\r?|\r\n?)/, '<br>').html_safe%></p>
+				<p><%=@issue.description.gsub(/(?:\n\r?|\r\n?)/, '<br/>').html_safe%></p>
 			</div>
 			<div  class="issue-cell">
 				<% @issue.images.each do |img| %>
