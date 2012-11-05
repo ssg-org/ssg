@@ -80,14 +80,7 @@ var marker = null;
 
 $(function () {
 
-	// WYSIWYG Editor
-	new nicEditor({
-		buttonList : ['bold','italic','underline','strikeThrough','hr','left','center','right'],
-		iconsPath : '<%= asset_path 'nicEditorIcons.gif' %>'
-	}).panelInstance('description_ta');
-
 	// MAP
-
 	$('#map').SSGMap({
 		lat : 43.855078, 
 		lng : 18.395748,

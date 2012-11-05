@@ -22,5 +22,4 @@
 //= require jquery.validate.min
 //= require jquery.nivo.slider
 //= require ssg_map
-//= require nicEdit
 
