@@ -20,7 +20,8 @@ en:
             settings:   'SETTINGS'
             logout:     'LOGOUT'
         footer:
-            tos:        'Terms of Service & Privacy'
+            privacy:    'Privacy policy'
+            tos:        'Terms of use'
             help:       'Help & FAQ'
             advertise:  'Advertise'
             contact:    'Contact'
