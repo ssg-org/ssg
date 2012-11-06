@@ -8,7 +8,7 @@
 			<%= form_tag comments_path(), :id => 'comment_form', :remote => true do |f| %>
 				<%= text_field_tag :text, nil, :style => 'width:300px;' %>
 				<input type="hidden" name="issue_id" value="<%=issue.id%>" />
-				<%= ssg_button('Comment', { :onclick => "$('\#comment_form').submit();"}, { :style => 'height:23px; line-height:23px;' }) %>
+				<%= ssg_button(t('shared.comments.comment'), { :onclick => "$('\#comment_form').submit();"}, { :style => 'height:23px; line-height:23px;' }) %>
 			<% end %>
 	</div>
 <% end %>
@@ -32,6 +32,11 @@
 			rules : {
 				'text': {
 					required: true
+				}
+			},
+			messages: {
+				text: {
+					required: I18n.t('validation.messages.required')
 				}
 			}
 		});		
