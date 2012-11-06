@@ -15,7 +15,7 @@
 			<%= text_field_tag :email, nil, :placeholder => t('users.login.email'), :class => "" %><br/>
 			<%= password_field_tag :password1, nil, :placeholder => t('users.login.password'), :class => "" %><br/>
 			<%= password_field_tag :password2, nil, :placeholder => t('users.login.register_repeat_password'), :class => "" %><br/>
-			<%= check_box_tag :terms_of_use %><%= label_tag t('users.login.register_agree_tou') %><br>
+			<%= check_box_tag :terms_of_use %><%= link_to t('users.login.register_agree_tou'), terms_path %><br>
 			<%= ssg_button t('users.login.register_button'), {:onclick => "$('\#register_form').submit();"}%>
 		<%end%>
 	</div>
