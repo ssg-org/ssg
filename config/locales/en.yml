@@ -53,3 +53,20 @@ en:
             name:           'Name'
             email:          'Email'
             send_button:    'SEND'
+    issues:
+        new:
+            report:         'REPORT A PROBLEM'
+            set_location:   'Click on map to set location'
+            issue_title:  'Problem title'
+            select_city:    'Please select city'
+            select_category: 'Please select category'
+            issue_desc:     'Describe your Problem'
+            upload_error:   'Error during upload. Please refresh your browser and try again'
+    validation:
+        messages:
+            required:       'This field is required.'
+            email:          'Please enter a valid email address.'
+            rangelength:    'Please enter a value between {0} and {1} characters long.'
+            equalTo:        'Please enter the same value again.'
+            minlength:      'Please enter at least {0} characters.'
+            imageRequired:  'Image is required'
