@@ -22,4 +22,5 @@
 //= require jquery.validate.min
 //= require jquery.nivo.slider
 //= require ssg_map
-
+//= require i18n
+//= require i18n/translations
