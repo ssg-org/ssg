@@ -26,6 +26,7 @@ bs:
             advertise:  'Reklamiranje'
             contact:    'Kontakt'
         comments:
+            comment:    'Komentar'
             comments:   'komentar'
             discuss:    'Komentarišite problem'
             log_in:     'Morate se prijaviti da bi komentarisali problem'
@@ -54,6 +55,9 @@ bs:
             email:          'Email'
             send_button:    'POŠALJI'
     issues:
+        index:
+            issues:         'PROBLEMI'
+            loading:        'Učitavanje'
         new:
             report:         'PRIJAVITE PROBLEM'
             set_location:   'Odaberite lokaciju na mapi'
@@ -62,6 +66,36 @@ bs:
             select_category: 'Molimo odaberite kategoriju'
             upload_error:   'Greška pri uploadu slike. Molimo vas da osvježite stranicu i pokušate ponovo'
             issue_desc:     'Opišite problem'
+        show:
+            issues:         'PROBLEMI'
+            delete_confirm: 'Da li stvarno želite obrisati ovaj problem?'
+            likes:          'Sviđanja'
+            views:          'Pregleda'
+            comments:       'Komentara'
+            unvote:         'Poništite svoj glas'
+            vote:           'Dajte svoj glas'
+            login_to_vote:  'Molimo da se prijavite da bi ste glasali'
+        right_menu:
+            date:           'DATUM'
+            featured:       'ISTAKNUTI'
+            categories:     'KATEGORIJE'
+            resolution:     'STATUS'
+            cities:         'GRADOVI'
+            all_time:       'Svo vrijeme'
+            today:          'Danas'
+            this_week:      'Ove sedmice'
+            this_month:     'Ovaj mjesec'
+            most_viewed:    'Najviše pregleda'
+            most_voted:     'Najviše glasova'
+            most_discussed: 'Najviše komentara'
+            all_categories: 'Sve kategorije'
+            all:            'Sve'
+            open:           'Prijavljeni'
+            in_progress:    'U izradi'
+            fixed:          'Popravljeni'
+    cities:
+        index:
+            cities: 'GRADOVI'
     validation:
         messages:
             required:       'Ovo polje je obavezno.'

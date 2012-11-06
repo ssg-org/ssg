@@ -26,6 +26,7 @@ en:
             advertise:  'Advertise'
             contact:    'Contact'
         comments:
+            comment:    'Comment'
             comments:   'comments'
             discuss:    'Discuss this issue'
             log_in:     'You can log in to join conversation'
@@ -54,6 +55,9 @@ en:
             email:          'Email'
             send_button:    'SEND'
     issues:
+        index:
+            issues:         'ISSUES'
+            loading:        'Loading'
         new:
             report:         'REPORT A PROBLEM'
             set_location:   'Click on map to set location'
@@ -62,6 +66,36 @@ en:
             select_category: 'Please select category'
             issue_desc:     'Describe your Problem'
             upload_error:   'Error during upload. Please refresh your browser and try again'
+        show:
+            issues:         'ISSUES'
+            delete_confirm: 'Do you really want to delete this issue?'
+            likes:          'Likes'
+            views:          'Views'
+            comments:       'Comments'
+            unvote:         'Unvote'
+            vote:           'Give this issue your vote'
+            login_to_vote:  'Please login to give your vote'
+        right_menu:
+            date:           'DATE'
+            featured:       'FEATURED'
+            categories:     'CATEGORIES'
+            resolution:     'RESOLUTION'
+            cities:         'CITIES'
+            all_time:       'All time'
+            today:          'Today'
+            this_week:      'This week'
+            this_month:     'This month'
+            most_viewed:    'Most viewed'
+            most_voted:     'Most voted'
+            most_discussed: 'Most discussed'
+            all_categories: 'All categories'
+            all:            'All'
+            open:           'Open'
+            in_progress:    'In progress'
+            fixed:          'Fixed'
+    cities:
+        index:
+            cities: 'CITIES'
     validation:
         messages:
             required:       'This field is required.'

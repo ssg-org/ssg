@@ -2,39 +2,39 @@
 	
 	<div class="filter">
 		<span class="font-black value_strip()">DATE</span><br/>
-		<%=link_to 'All time', issues_path(clear_params({:date => nil})), { :class => "#{'r-menu-selected' if params[:date].blank? }"} %><br/>
-		<%=link_to 'Today', issues_path(clear_params({:date => :today})), { :class => "#{'r-menu-selected' if params[:date] == 'today' }"} %><br/>
-		<%=link_to 'This week', issues_path(clear_params({:date => :week})), { :class => "#{'r-menu-selected' if params[:date] == 'week' }"} %><br/>
-		<%=link_to 'This month', issues_path(clear_params({:date => :month})), { :class => "#{'r-menu-selected' if params[:date] == 'month' }"} %><br/>
+		<%=link_to t('issues.right_menu.all_time'), issues_path(clear_params({:date => nil})), { :class => "#{'r-menu-selected' if params[:date].blank? }"} %><br/>
+		<%=link_to t('issues.right_menu.today'), issues_path(clear_params({:date => :today})), { :class => "#{'r-menu-selected' if params[:date] == 'today' }"} %><br/>
+		<%=link_to t('issues.right_menu.this_week'), issues_path(clear_params({:date => :week})), { :class => "#{'r-menu-selected' if params[:date] == 'week' }"} %><br/>
+		<%=link_to t('issues.right_menu.this_month'), issues_path(clear_params({:date => :month})), { :class => "#{'r-menu-selected' if params[:date] == 'month' }"} %><br/>
 	</div>
 	<div class="filter">
 		<span class="font-black value_strip()">FEATURED</span><br/>
-		<%=link_to 'All time', issues_path(clear_params(:featured => nil)), { :class => "#{'r-menu-selected' if params[:featured].blank? }"} %><br/>
-		<%=link_to 'Most viewed', issues_path(clear_params(:featured => :viewed)), { :class => "#{'r-menu-selected' if params[:featured] == 'viewed' }"} %><br/>
-		<%=link_to 'Most votes', issues_path(clear_params(:featured => :votes)), { :class => "#{'r-menu-selected' if params[:featured] == 'votes' }"} %><br/>
-		<%=link_to 'Most discussed', issues_path(clear_params(:featured => :discussed)), { :class => "#{'r-menu-selected' if params[:featured] == 'discussed' }"} %><br/>
+		<%=link_to t('issues.right_menu.all_time'), issues_path(clear_params(:featured => nil)), { :class => "#{'r-menu-selected' if params[:featured].blank? }"} %><br/>
+		<%=link_to t('issues.right_menu.most_viewed'), issues_path(clear_params(:featured => :viewed)), { :class => "#{'r-menu-selected' if params[:featured] == 'viewed' }"} %><br/>
+		<%=link_to t('issues.right_menu.most_voted'), issues_path(clear_params(:featured => :votes)), { :class => "#{'r-menu-selected' if params[:featured] == 'votes' }"} %><br/>
+		<%=link_to t('issues.right_menu.most_discussed'), issues_path(clear_params(:featured => :discussed)), { :class => "#{'r-menu-selected' if params[:featured] == 'discussed' }"} %><br/>
 	</div>
 	<br style="clear:both;">
 	
 	<div class="filter">
-		<span class="font-black value_strip()">CATEGORIES</span><br/>
-		<%=link_to 'All categories', issues_path(clear_params({:category => nil})), { :class => "#{'r-menu-selected' if params[:category].blank? }"} %><br/>
+		<span class="font-black value_strip()"><%= t('issues.right_menu.categories')%></span><br/>
+		<%=link_to t('issues.right_menu.all_categories'), issues_path(clear_params({:category => nil})), { :class => "#{'r-menu-selected' if params[:category].blank? }"} %><br/>
 		<% @user.get_categories.each do |cat|%>
 			<%=link_to cat.name, issues_path(clear_params({:category => cat.id})), { :class => "#{'r-menu-selected' if params[:category] == cat.id.to_s }"} %><br/>
 		<% end %>
 	</div>
 	<div class="filter">
-		<span class="font-black value_strip()">RESOLUTION</span><br/>
-		<%=link_to 'All', issues_path(clear_params({:status => nil})), { :class => "#{'r-menu-selected' if params[:status].blank? }"} %><br/>
-		<%=link_to 'Open', issues_path(clear_params({:status => Issue::OPEN})), { :class => "#{'r-menu-selected' if params[:status] == Issue::OPEN.to_s }"} %><br/>
-		<%=link_to 'In progress', issues_path(clear_params({:status => Issue::IN_PROGRESS})), { :class => "#{'r-menu-selected' if params[:status] == Issue::IN_PROGRESS.to_s }"} %><br/>
-		<%=link_to 'Fixed', issues_path(clear_params({:status => Issue::FIXED})), { :class => "#{'r-menu-selected' if params[:status] == Issue::FIXED.to_s }"} %><br/>
+		<span class="font-black value_strip()"><%= t('issues.right_menu.resolution')%></span><br/>
+		<%=link_to t('issues.right_menu.all'), issues_path(clear_params({:status => nil})), { :class => "#{'r-menu-selected' if params[:status].blank? }"} %><br/>
+		<%=link_to t('issues.right_menu.open'), issues_path(clear_params({:status => Issue::OPEN})), { :class => "#{'r-menu-selected' if params[:status] == Issue::OPEN.to_s }"} %><br/>
+		<%=link_to t('issues.right_menu.in_progress'), issues_path(clear_params({:status => Issue::IN_PROGRESS})), { :class => "#{'r-menu-selected' if params[:status] == Issue::IN_PROGRESS.to_s }"} %><br/>
+		<%=link_to t('issues.right_menu.fixed'), issues_path(clear_params({:status => Issue::FIXED})), { :class => "#{'r-menu-selected' if params[:status] == Issue::FIXED.to_s }"} %><br/>
 	</div>
 
 	<br style="clear:both;">
 	
 	<div class="filter">
-		<span class="font-black value_strip()">CITIES</span><br/>
+		<span class="font-black value_strip()"><%= t('issues.right_menu.cities')%></span><br/>
 		<input type="text" id="cities_search" />
 	</div>
 	
