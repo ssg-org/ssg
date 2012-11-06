@@ -1,37 +1,35 @@
 <div style="position:relative;">
 	<div id="form-div" style="position:absolute; z-index:1000;  background-color:#9ecc3a; height:490px; width:380px; padding:30px;">
-		<span class="value_strip()" style="font-size:26px; color:white;">REPORT A PROBLEM</span><br/>
-		<span style="color:white;">Click on map to set location</span><br/>
+		<span class="value_strip()" style="font-size:26px; color:white;"><%= t('issues.new.report')%></span><br/>
+		<span style="color:white;"><%= t('issues.new.set_location')%></span><br/>
 		
 		<%= form_for @issue, :html => { :multipart => true, :id => 'fileupload' }  do |f|%>
 			<table style="width:340px;">
 				<tr >
 					<td colspan="2">
-						<%= f.text_field :title, :style => 'width:100%;', :autocomplete=> :off , :placeholder => 'Problem subject' %>
+						<%= f.text_field :title, :style => 'width:100%;', :autocomplete=> :off , :placeholder => t('issues.new.issue_title') %>
 					</td>
 				</tr>
 				<tr>
 					<td colspan="2">
-						<%= f.collection_select(:city_id, @user.get_cities, :id, :name, {:include_blank => 'Please select city'}) %>
+						<%= f.collection_select(:city_id, @user.get_cities, :id, :name, {:include_blank => t('issues.new.select_city')}) %>
 					</td>
 				</tr>
 				<tr>
 					<td colspan="2">
-						<%= f.collection_select(:category_id, @user.get_categories, :id, :name, {:include_blank => 'Please select category'}) %>
+						<%= f.collection_select(:category_id, @user.get_categories, :id, :name, {:include_blank => t('issues.new.select_category')}) %>
 					</td>
 				</tr>
 				<tr>
 					<td colspan="2">
-						<%= f.text_area :description, :style => 'width:100%; height:80px;', :placeholder => 'Describe your Problem', :id => 'description_ta' %>
+						<%= f.text_area :description, :style => 'width:100%; height:80px;', :placeholder => t('issues.new.issue_desc'), :id => 'description_ta' %>
 					</td>
 				</tr>
 				<tr>
-					<td><%= f.label :lat, 'Latitude'%></td>
-					<td><%= f.text_field :lat, :readonly => 'readonly' %></td>
-				</tr>
-				<tr>
-					<td><%= f.label :long, 'Longitude'%></td>
-					<td><%= f.text_field :long, :readonly => 'readonly' %></td>
+					<td colspan="2">
+						<%= f.text_field :lat, :hidden => 'hidden' %>
+						<%= f.text_field :long, :hidden => 'hidden' %>
+					</td>
 				</tr>
 				<tr>
 					<td colspan="2">
@@ -39,7 +37,7 @@
 						<span id="gallery_inputs">
 							<input type="hidden" id="image_count" name="image_count" value="0" />
 						</span>
-             	</td>
+	             	</td>
 				</tr>
 				<tr>
 					<td colspan="2">
@@ -122,7 +120,7 @@ $(function () {
 			$('#progress').css('width', '0%');
 		},
 		fail : function() {
-			alert("Error during upload. Please refresh your browser and try again!!!");
+			alert(I18n.t('issues.new.upload_error'));
 		}
 	});
 
@@ -145,13 +143,23 @@ $(function () {
 			'issue[category_id]' : {
 				required : true
 			},
-			'issue[lat]' : { 
-				required : true 
-			},
-			'issue[long]' : { 
-				required : true 
-			},
 			'image' : 'images_validator'
+		},
+		messages: {
+			'issue[title]': {
+				required: I18n.t('validation.messages.required'),
+				minlength: jQuery.validator.format(I18n.t('validation.messages.minlength'))
+			},
+			'issue[description]': {
+				required: I18n.t('validation.messages.required'),
+				minlength: jQuery.validator.format(I18n.t('validation.messages.minlength'))
+			},
+			'issue[city_id]': {
+				required: I18n.t('validation.messages.required')
+			},
+			'issue[category_id]': {
+				required: I18n.t('validation.messages.required')
+			}		
 		}
 	});
 
@@ -160,8 +168,8 @@ $(function () {
 		"images_validator", 
 		function(value) {
 			return $('.upload-preview').length > 0;
-		}, 
-		'Image is required!'
+		},
+		I18n.t('validation.messages.imageRequired')
 	);
 });	
 </script>

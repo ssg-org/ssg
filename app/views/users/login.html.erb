@@ -36,13 +36,22 @@
 
 	// Validation
 	$('#login_form').validate({
-		rules : {
-			'email': {
+		rules: {
+			email: {
 				required: true,
 				email: true
 			},
-			'password': {
+			password: {
 				required: true
+			}
+		},
+		messages: {
+			email: {
+				required: I18n.t('validation.messages.required'),
+				email: I18n.t('validation.messages.email')
+			},
+			password: {
+				required: I18n.t('validation.messages.required')
 			}
 		}
 	});
@@ -52,19 +61,36 @@
 			'city[id]' : {
 				required: true
 			},
-			'email': {
+			email: {
 				required: true,
 				email: true
 			},
-			'password1': {
+			password1: {
 				required: true,
       			rangelength: [5, 50]
 			},
-			'password2': {
+			password2: {
 				required: true,
 				equalTo: '#password1'
 			}
-		}
+		},
+		messages: {
+			'city[id]': {
+				required: I18n.t('validation.messages.required')
+			},
+			email: {
+				required: I18n.t('validation.messages.required'),
+				email: I18n.t('validation.messages.email')
+			},
+			password1: {
+				required: I18n.t('validation.messages.required'),
+				rangelength: jQuery.validator.format(I18n.t('validation.messages.rangelength'))
+			},
+			password2: {
+				required: I18n.t('validation.messages.required'),
+				equalTo: I18n.t('validation.messages.equalTo')
+			}
+		}		
 	});
 </script>
 <% end %>

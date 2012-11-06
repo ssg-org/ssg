@@ -53,3 +53,20 @@ bs:
             name:           'Ime'
             email:          'Email'
             send_button:    'POŠALJI'
+    issues:
+        new:
+            report:         'PRIJAVITE PROBLEM'
+            set_location:   'Odaberite lokaciju na mapi'
+            issue_title:    'Naziv problema'
+            select_city:    'Molimo odaberite grad'
+            select_category: 'Molimo odaberite kategoriju'
+            upload_error:   'Greška pri uploadu slike. Molimo vas da osvježite stranicu i pokušate ponovo'
+            issue_desc:     'Opišite problem'
+    validation:
+        messages:
+            required:       'Ovo polje je obavezno.'
+            email:          'Molimo unesite ispravnu email adresu.'
+            rangelength:    'Molimo unesite vrijednost između {0} i {1} slova.'
+            equalTo:        'Molimo unesite istu vrijednost ponovo.'
+            minlength:      'Molimo unesite minimalno {0} slova.'
+            imageRequired:  'Slika je obavezna.'
