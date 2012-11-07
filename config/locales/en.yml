@@ -104,3 +104,5 @@ en:
             equalTo:        'Please enter the same value again.'
             minlength:      'Please enter at least {0} characters.'
             imageRequired:  'Image is required'
+            locationRequired: 'Please select location on the map'
+            locationTooFar: 'Selected location is too far from city centar'

@@ -29,6 +29,7 @@
 					<td colspan="2">
 						<%= f.text_field :lat, :hidden => 'hidden' %>
 						<%= f.text_field :long, :hidden => 'hidden' %>
+						<%= hidden_field_tag :distance %>
 					</td>
 				</tr>
 				<tr>
@@ -75,6 +76,9 @@ label.error {  color: red; font-size:10px;}
 
 var cities = <%=@user.get_cities.to_json(:only => [:id, :lat, :long]).html_safe%>;
 var marker = null;
+var city_radius = 30;
+var city_lat = null;
+var city_long = null;
 
 $(function () {
 
@@ -93,6 +97,12 @@ $(function () {
 				marker.setLatLng(e.latlng);
 			}
 
+			var dist = distance(lat, lng, city_lat, city_long, "K");
+
+			if (dist) {
+				$('#distance').val(dist);
+			}
+
 			$('#issue_lat').val(lat);
 			$('#issue_long').val(lng);
 		}
@@ -102,7 +112,10 @@ $(function () {
 		var city_id = $(this).val();
 		for (var i=0; i<cities.length; ++i) {
 			if (cities[i].id == city_id) {
-				$('#map').SSGMap('setView', cities[i].lat, cities[i]['long'], 13);				
+				city_lat = cities[i].lat;
+				city_long = cities[i]['long'];
+
+				$('#map').SSGMap('setView', city_lat, city_long, 13);
 				return;
 			}
 		}
@@ -143,6 +156,12 @@ $(function () {
 			'issue[category_id]' : {
 				required : true
 			},
+			'issue[lat]' : {
+				required : true
+			},
+			'distance' : {
+				max : city_radius
+			},
 			'image' : 'images_validator'
 		},
 		messages: {
@@ -159,7 +178,13 @@ $(function () {
 			},
 			'issue[category_id]': {
 				required: I18n.t('validation.messages.required')
-			}		
+			},
+			'issue[lat]': {
+				required: I18n.t('validation.messages.locationRequired')
+			},
+			'distance': {
+				max: I18n.t('validation.messages.locationTooFar')
+			}
 		}
 	});
 

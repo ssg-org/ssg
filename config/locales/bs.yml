@@ -104,3 +104,5 @@ bs:
             equalTo:        'Molimo unesite istu vrijednost ponovo.'
             minlength:      'Molimo unesite minimalno {0} slova.'
             imageRequired:  'Slika je obavezna.'
+            locationRequired: 'Molimo odaberite lokaciju na mapi'
+            locationTooFar: 'Odabrana lokacija je previše udaljena'
