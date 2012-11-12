@@ -15,6 +15,9 @@ gem 'mini_magick'
 
 gem 'friendly_id', '4.0.1'
 
+# Email related gems
+gem 'mail_view', :git => 'https://github.com/37signals/mail_view.git'
+
 # gem 'koala', '>= 1.5.0'
 gem 'twitter'
 gem 'uuidtools'
