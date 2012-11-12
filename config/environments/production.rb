@@ -29,6 +29,8 @@ Ssg::Application.configure do
     :port => Config::Configuration.get(:ssg, :port)
   }
 
+  # This is requred to create full URL for assets used in email
+  config.action_mailer.asset_host = "http://#{Config::Configuration.get(:ssg, :host)}:#{Config::Configuration.get(:ssg, :port)}"
 
   # Defaults to Rails.root.join("public/assets")
   # config.assets.manifest = YOUR_PATH

@@ -17,13 +17,16 @@ Ssg::Application.configure do
   config.action_mailer.delivery_method = :ses
 
   # Don't care if the mailer can't send
-  config.action_mailer.raise_delivery_errors = false
+  config.action_mailer.raise_delivery_errors = true
 
   # Define url for mailer
   config.action_mailer.default_url_options = {
     :host => Config::Configuration.get(:ssg, :host),
     :port => Config::Configuration.get(:ssg, :port)
   }
+
+  # This is requred to create full URL for assets used in email
+  config.action_mailer.asset_host = "http://#{Config::Configuration.get(:ssg, :host)}:#{Config::Configuration.get(:ssg, :port)}"
 
   # Print deprecation notices to the Rails logger
   config.active_support.deprecation = :log
@@ -45,4 +48,8 @@ Ssg::Application.configure do
   config.assets.debug = true
   
   config.assets.logger = false
+
+  # Added to avoid restarting server after change in mailer code
+  config.action_view.cache_template_loading = false
+
 end
