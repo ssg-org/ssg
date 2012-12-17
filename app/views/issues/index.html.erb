@@ -1,21 +1,15 @@
 <div id="issues_left_column">
   <div class="breadcrumb-container">
-    SSG / <span>ISSUES</span>
+    SSG / <span><%= t('issues.index.issues')%></span>
   </div>
 
 	<%= render :partial => 'issue', :collection => @issues %>
-	
-	<% if @issues.length == 0 %>
-	<div class="issue">
-		  BUDI PRVI KOJI CE PRIJAVITI PROBLEM
-	</div>
-	<% end %>
 	
 </div>
 
 <%= render :partial => 'right_menu' %>
 
-<div class="value_strip() font-15 loading" style="margin:0 auto; width:300px; height:50px; line-height:50px;">Loading ...</div>
+<div class="value_strip() font-15 loading" style="margin:0 auto; width:300px; height:50px; line-height:50px;"><%= t('issues.index.loading')%>...</div>
 
 
 <% content_for :javascript do %>

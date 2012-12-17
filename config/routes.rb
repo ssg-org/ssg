@@ -48,6 +48,10 @@ Ssg::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
+
+  if Rails.env.development?
+    mount UserMailer::Preview => 'mail_view'
+  end
   
   resources  :users do
     collection do
@@ -93,7 +97,7 @@ Ssg::Application.routes.draw do
   get '/help'     => 'documents#help'
   get '/contact'  => 'documents#contact' 
   get '/terms'    => 'documents#terms' 
-  get  '/learn'   => 'documents#learn'
+  get '/learn'    => 'documents#learn'
 
   root :to => 'issues#index'
 

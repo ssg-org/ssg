@@ -1,11 +1,11 @@
 <div style="padding:25px;">
 	<div class="breadcrumb-container">
-		SSG / ISSUES / <span><%=@issue.title.upcase%></span>
+		SSG / <%= t('issues.show.issues')%> / <span><%=@issue.title.upcase%></span>
 	</div>
 
 	<div class="issue-container">
 		<div>
-			<%= link_to 'x', issue_path(@issue.id), :style => 'float:right; margin:10px;', :method => :delete, :confirm => 'Da li stvarno zelite obrisati?' %>
+			<%= link_to 'x', issue_path(@issue.id), :style => 'float:right; margin:10px;', :method => :delete, :confirm => t('issues.show.delete_confirm') %>
 		</div>
 		<div class="issue-container-green">
 			<div class="issue-cell">
@@ -39,13 +39,13 @@
 
 		<div style="margin-bottom:10px; overflow:auto;">
 			<div style="float:left; width:120px; padding:10px">
-				Likes <%=@issue.vote_count%>
+				<%= "#{t('issues.show.likes')} #{@issue.vote_count}" %>
 			</div>
 			<div style="float:left; width:70px; padding:10px;">
-				<%=@issue.session_view_count%><br/>
-				views<br/>
-				<%=@issue.comments.count%><br/>
-				comments
+				<%= @issue.session_view_count%><br/>
+				<%= t('issues.show.views')%><br/>
+				<%= @issue.comments.count%><br/>
+				<%= t('issues.show.comments')%>
 			</div>
 		</div>
 
@@ -55,13 +55,13 @@
 		<% if !@user.guest? %>
 			<% if @issue.user_id != @user.id%>
 				<% if @already_voted %>
-					<%= ssg_button('&nbsp;&nbsp;&nbsp;&nbsp;Unvote&nbsp;&nbsp;&nbsp;&nbsp;', { :onclick => 'unvote()' })%>
+					<%= ssg_button("&nbsp;&nbsp;&nbsp;&nbsp;#{t('issues.show.unvote')}&nbsp;&nbsp;&nbsp;&nbsp;", { :onclick => 'unvote()' })%>
 				<% else %>
-					<%= ssg_button('&nbsp;&nbsp;&nbsp;&nbsp;Give this one vote&nbsp;&nbsp;&nbsp;&nbsp;', { :onclick => 'vote()' })%>
+					<%= ssg_button("&nbsp;&nbsp;&nbsp;&nbsp;#{t('issues.show.vote')}&nbsp;&nbsp;&nbsp;&nbsp;", { :onclick => 'vote()' })%>
 				<% end %>
 			<% end %>
 		<% else %>
-			<span class="font-green font-20">Login to give vote</span>
+			<span class="font-green font-20"><%= t('issues.show.login_to_vote')%></span>
 		<% end %>
 		</div>
 

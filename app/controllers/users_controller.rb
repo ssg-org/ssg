@@ -16,7 +16,7 @@ class UsersController < ApplicationController
         redirect_to(login_users_path(), :alert => 'User already exists')
     else
       if user.save
-        UserMailer.verification_email(user).deliver
+        UserMailer.verify(user).deliver
 
         redirect_to(issues_path(), :notice => 'User was sucessfully created. Email sent')
       else
