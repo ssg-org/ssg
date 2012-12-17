@@ -14,12 +14,12 @@
 //= require jquery_ujs
 //= require jquery-ui.min
 //= require jquery.selectbox-0.2
-//= require common
+//= require ssg_map
 //= require fb
 //= require scrollpagination
 //= require leaflet
 //= require jquery-fileupload/basic
 //= require jquery.validate.min
 //= require jquery.nivo.slider
-//= require ssg_map
+//= require common
 
