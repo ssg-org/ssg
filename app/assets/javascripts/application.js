@@ -21,5 +21,7 @@
 //= require jquery-fileupload/basic
 //= require jquery.validate.min
 //= require jquery.nivo.slider
+//= require i18n
+//= require i18n/translations
 //= require common
 

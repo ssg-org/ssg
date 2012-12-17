@@ -4,7 +4,7 @@ gem 'rails', '3.2.6'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
-
+gem 'i18n-js'
 gem 'sqlite3'
 #gem 'execjs'
 #gem 'therubyracer'
@@ -14,6 +14,9 @@ gem 'carrierwave'
 gem 'mini_magick'
 
 gem 'friendly_id', '4.0.1'
+
+# Email related gems
+gem 'mail_view', :git => 'https://github.com/37signals/mail_view.git'
 
 # gem 'koala', '>= 1.5.0'
 gem 'twitter'
