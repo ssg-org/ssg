@@ -78,8 +78,9 @@ label.error {  color: red; font-size:10px;}
 var cities = <%=@user.get_cities.to_json(:only => [:id, :lat, :long]).html_safe%>;
 var marker = null;
 
-$(function () {
 
+
+$(function () {
 	// MAP
 	$('#map').SSGMap({
 		lat : 43.855078, 
