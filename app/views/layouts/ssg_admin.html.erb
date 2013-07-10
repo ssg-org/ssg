@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>SSG :: Admin</title>
+  <%= csrf_meta_tags %>
+  <%= stylesheet_link_tag    "ssg_admin", :media => "all" %>
+</head>
+<body>
+  <div id="main" class="container">
+    <%= yield %>
+  </div>
+  <%= javascript_include_tag "ssg_admin" %>
+  <%= yield :javascript %>
+</body>
+</html>

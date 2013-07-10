@@ -59,13 +59,27 @@ class UsersController < ApplicationController
     end
   end
 
+  def ssg_admin_login
+    user = User.user_ssg_admin?(params[:email], params[:password])
+    if user
+      session[:id] = user.id
+      redirect_to admin_path()
+    else
+      redirect_to(admin_login_path(), :alert => 'Invalid email or password')
+    end
+  end
+
   def fb_login
     # Get access token
     puts "*** #{params[:code]}"
     
     if (params[:code])
       fb_client = User.fb_client()
-      access_token = fb_client.web_server.get_access_token(params[:code], {:redirect_uri => redirect_uri(), :ssl => true})
+      access_token = fb_client.auth_code.get_token(params[:code], {:redirect_uri => redirect_uri(), :ssl => true})
+
+      require 'ap'
+      ap 'works'
+      ap access_token
       
       # check fo user by access_token (fast'n'dirty check)
       user = User.find_by_fb_token(access_token.token)
