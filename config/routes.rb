@@ -57,6 +57,7 @@ Ssg::Application.routes.draw do
     collection do
       get   :fb_login
       post  :ssg_login
+      post  :ssg_admin_login
       post  :signup
       get   :login
       get   :verify
@@ -98,6 +99,11 @@ Ssg::Application.routes.draw do
   get '/contact'  => 'documents#contact' 
   get '/terms'    => 'documents#terms' 
   get '/learn'    => 'documents#learn'
+
+  # SSG Admin
+  get '/admin/login' => 'ssg_admin#login'
+  get '/admin/'      => 'ssg_admin#index'
+
 
   root :to => 'issues#index'
 

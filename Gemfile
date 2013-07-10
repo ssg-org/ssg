@@ -6,12 +6,16 @@ gem 'rails', '3.2.6'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 gem 'i18n-js'
 gem 'sqlite3'
+gem 'pg'
+#
+gem 'awesome_print'
 #gem 'execjs'
 #gem 'therubyracer'
-gem 'oauth2', '= 0.4.1'
+#gem 'oauth2', '= 0.4.1'
+gem 'oauth2'
 
 gem 'carrierwave'
-gem 'mini_magick'
+#gem 'mini_magick'
 
 gem 'friendly_id', '4.0.1'
 

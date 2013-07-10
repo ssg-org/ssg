@@ -1,12 +1,13 @@
 class User < ActiveRecord::Base
-  ROLE_GUEST  = 1
-  ROLE_USER   = 2
+  ROLE_GUEST            = 1
+  ROLE_USER             = 2
+  ROLE_COMMUNITY_ADMIN  = 3
+  ROLE_SSG_ADMIN        = 4
   
   GUEST_USER = User.new(:role => ROLE_GUEST, :first_name => 'Guest', :locale => I18n.locale)
 
   has_many  :issues
   has_many  :votes
-  
   has_many  :follows
   
   def get_follows
@@ -23,6 +24,10 @@ class User < ActiveRecord::Base
 
   def fbuser?
     return !self.fb_id.nil?
+  end
+
+  def ssg_admin?
+    return (self.role == ROLE_SSG_ADMIN)
   end
   
   def display_name
@@ -129,6 +134,14 @@ class User < ActiveRecord::Base
     
     return nil
   end
+
+  #
+  # Returns user only with ssg admin
+  #
+  def self.user_ssg_admin?(email, pwd)
+    usr = exists?(email, pwd)
+    usr && usr.active && usr.ssg_admin? ? usr : nil
+  end
   
   def self.guest_user
     return GUEST_USER
@@ -140,7 +153,7 @@ class User < ActiveRecord::Base
   def self.fb_client
     return OAuth2::Client.new(Config::Configuration.get(:fb, :application_id), Config::Configuration.get(:fb, :secret_key), :site => Config::Configuration.get(:fb, :site_url))
   end
- 
+
   def self.create_fb_user(token, email, fb_id, last_name, first_name, is_active = true, role = User::ROLE_USER)
     user = User.new
     user.email = email
@@ -157,7 +170,7 @@ class User < ActiveRecord::Base
     return user
   end
 
-  def self.create_ssg_user (email, pwd)
+  def self.create_ssg_user(email, pwd)
 
     user = User.find_by_email(email)
 
@@ -167,7 +180,7 @@ class User < ActiveRecord::Base
     end
 
     # Inactive user - send email again
-    if(user.active == false)
+    if (user.active == false)
       user.email = email
       user.password_hash = Digest::SHA256.hexdigest(pwd)
       user.uuid = UUIDTools::UUID.random_create.to_s

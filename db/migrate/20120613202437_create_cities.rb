@@ -13,7 +13,7 @@ class CreateCities < ActiveRecord::Migration
     	t.references				:city, :default => 1, :null => false 
     end
 
-    change_column	:issues, :city_id, :integer, :default => :null 
+    #change_column	:issues, :city_id, :integer, :default => :null 
 
   end
 end
