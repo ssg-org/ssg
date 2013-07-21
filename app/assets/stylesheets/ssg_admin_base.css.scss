@@ -1,1 +1,27 @@
 .spacer200 { height: 200px; }
+
+.form-cover {
+    background-color: #FFFFFF;
+    border: 1px solid #DDDDDD;
+    border-radius: 4px 4px 4px 4px;
+    margin: 15px 0;
+    padding: 39px 19px 14px;
+    position: relative;
+}
+.form-cover:after {
+    background-color: #F5F5F5;
+    border: 1px solid #DDDDDD;
+    border-radius: 4px 0 4px 0;
+    color: #9DA0A4;
+    font-size: 12px;
+    font-weight: bold;
+    left: -1px;
+    padding: 3px 7px;
+    position: absolute;
+    top: -1px;
+}
+
+.form-cover-city-create:after { content: "Kreiraj / Uredi Grad" }
+.form-cover-city-list:after { content: "Lista Gradova" }
+.form-cover-category-create:after { content: "Kreiraj / Uredi Kategoriju" }
+.form-cover-category-list:after { content: "Lista Kategorija" }

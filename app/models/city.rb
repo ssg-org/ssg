@@ -12,5 +12,18 @@ class City < ActiveRecord::Base
   def friendly_id_link
     return self.friendly_id
   end
+
+  #
+  # Returns true if created, false if edited
+  #
+  def self.create_or_edit(params)
+    city = (city_id = params[:city_id]).empty? ? City.new : City.find(city_id)
+    city.name = params[:city_name]
+    city.lat  = params[:lat]
+    city.long = params[:lon]
+    city.save!
+
+    return city_id.empty?
+  end
   
 end
