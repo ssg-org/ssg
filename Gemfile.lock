@@ -83,7 +83,6 @@ GEM
       faraday (~> 0.7)
       multi_json (~> 1.0)
     pg (0.14.1)
-    pg (0.14.1-x86-mingw32)
     polyglot (0.3.3)
     rack (1.4.5)
     rack-cache (1.2)
@@ -136,8 +135,6 @@ GEM
     uuidtools (2.1.4)
     xml-simple (1.1.2)
 
-PLATFORMS
-  x86-mingw32
 
 DEPENDENCIES
   awesome_print
