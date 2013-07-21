@@ -6,7 +6,7 @@ module Config
 
 		@@cache = YAML::load(File.read('config/configuration.yml'))
 
-		puts "config :  #{@@cache}"
+		#puts "config :  #{@@cache}"
 
 		# check if per-developer configuration exists (this is not included in git!!!!!)
 		if (File.exist?('config/configuration.local.yml'))
