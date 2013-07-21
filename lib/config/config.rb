@@ -25,17 +25,20 @@ module Config
 		end
 	end
     
-    def self.get(group, name, default="")  
-      rval = @@cache[Rails.env][group.to_s][name.to_s]
-      if (rval.nil?)
-      	return default
-      end
-      return rval
+  def self.get(group, name, default="")
+
+    return unless @@cache[Rails.env] 
+
+    rval = @@cache[Rails.env][group.to_s][name.to_s]
+    if (rval.nil?)
+    	return default
     end
-    
-    def self.get_root(server)
-      return @@cache[server]
-    end
-  
+    return rval
   end
+  
+  def self.get_root(server)
+    return @@cache[server]
+  end
+
+end
 end
