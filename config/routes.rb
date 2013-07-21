@@ -49,6 +49,9 @@ Ssg::Application.routes.draw do
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
 
+  # Assets redirect
+  get '/img/:name', to: redirect {|params, req| "/assets/#{params[:name]}.#{params[:format]}" }
+
   if Rails.env.development?
     mount UserMailer::Preview => 'mail_view'
   end
@@ -80,11 +83,22 @@ Ssg::Application.routes.draw do
   end
 
   resources :images, :only => [:create]
-
   resources :comments, :only => [:create]
-
   resources  :areas
 
+  namespace :ssg_admin do
+    resources :cities, :only => [:index, :destroy] do
+      collection do
+        post :create_or_edit
+      end
+    end
+
+    resources :categories, :only => [:index, :destroy] do
+      collection do
+        post :create_or_edit
+      end
+    end
+  end
 
   resources :cities do
     collection do
@@ -101,8 +115,8 @@ Ssg::Application.routes.draw do
   get '/learn'    => 'documents#learn'
 
   # SSG Admin
-  get '/admin/login' => 'ssg_admin#login'
-  get '/admin/'      => 'ssg_admin#index'
+  get '/ssg_admin/login' => 'ssg_admin#login'
+  get '/ssg_admin/'      => 'ssg_admin#index'
 
 
   root :to => 'issues#index'

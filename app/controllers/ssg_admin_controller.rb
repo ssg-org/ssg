@@ -20,7 +20,7 @@ class SsgAdminController < ActionController::Base
       return if @user.ssg_admin?
     end
     
-    redirect_to admin_login_path
+    redirect_to ssg_admin_login_path
   end
 
 end

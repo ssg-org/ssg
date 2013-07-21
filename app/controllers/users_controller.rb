@@ -63,9 +63,9 @@ class UsersController < ApplicationController
     user = User.user_ssg_admin?(params[:email], params[:password])
     if user
       session[:id] = user.id
-      redirect_to admin_path()
+      redirect_to ssg_admin_path()
     else
-      redirect_to(admin_login_path(), :alert => 'Invalid email or password')
+      redirect_to(ssg_admin_login_path(), :alert => 'Invalid email or password')
     end
   end
 
