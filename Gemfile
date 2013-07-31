@@ -13,7 +13,6 @@ gem 'pg'
 gem 'awesome_print'
 #gem 'execjs'
 #gem 'therubyracer'
-#gem 'oauth2', '= 0.4.1'
 gem 'oauth2'
 
 gem 'carrierwave'
@@ -35,6 +34,7 @@ gem 'aws-ses', :require => 'aws/ses'
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
+  gem 'bootstrap-sass', '~> 2.3.1.0'
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
   # gem 'therubyracer'
   gem 'uglifier', '>= 1.0.3'

@@ -3,7 +3,7 @@
 var methods = {
 	init : function( options ) { 
 		var $this = $(this);
-      var data = $this.data('ssg_map');
+    var data = $this.data('ssg_map');
 
       // first time initialize
 		var map = new L.Map($this.attr('id'), data.opts.map_options);
@@ -54,7 +54,6 @@ var methods = {
 
 
 $.fn.SSGMap = function(method) {
-
 
 	// Method calling logic
 	if ( methods[method] ) {		
