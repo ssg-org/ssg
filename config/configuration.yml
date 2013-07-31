@@ -9,10 +9,10 @@ development:
   fb:
     site_url:               "https://graph.facebook.com"
     scope:                  "email,user_photos"
-    application_id:         
-    secret_key:             
+    application_id:         463608053690571
+    secret_key:             dbe6240714c1699358c828ddb741dfab
   aws:
-    access_key:             
-    access_secret:          
+    access_key:             AKIAIDBQTR4BEK6W5XTQ
+    access_secret:          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        
   misc:
     unique_view_epsilon:    3600
