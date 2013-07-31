@@ -6,38 +6,48 @@
   <%= stylesheet_link_tag    "ssg_admin", :media => "all" %>
   <%= javascript_include_tag "application" %>
 </head>
-<body>
-  <div id="main" class="container-fluid">
+<body class="admin">
+  <div id="page_container" class="container-fluid admin">
     <% if @user && @user.ssg_admin? %>
+      <div class="row-fluid">
+        <div class="span5">
+          <a href='<%= ssg_admin_path %>'>
+            <%= image_tag 'logo.png', :class => 'logo-header' %>
+          </a>
+        </div>        
+        <div class="span5 userinfo-header pull-right">
+          <a class="pull-right" href="<%= logout_user_path(@user.id) %>">Odjava</a>
+          <span class="pull-right"> Dobrodošli, <b><%= @user.display_name %></b> </span>
+        </div>
+      </div>
       <div class="navbar">
         <div class="navbar-inner">
-          <a class="brand" href="<%= ssg_admin_path %>">SSG Admin</a>
-          <ul class="nav">
-            <li><a href="<%= ssg_admin_cities_path() %>">Gradovi</a></li>
-            <li><a href="<%= ssg_admin_categories_path() %>">Kategorije</a></li>
-            <li><a href="#settings">Korisnici</a></li>
-          </ul>
-          <ul class="nav pull-right">
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                <%= @user.display_name %>
-                <b class="caret"></b>
-              </a>
-              <ul class="dropdown-menu">
-                <li>
-                  <a href="#"><%=link_to 'Odjava', logout_user_path(@user.id)%></a>
-                </li>
-              </ul>
-            </li>
-          </ul>
+          <div class="container">
+            <ul class="nav" id="admin_tab_select">                   
+              <li><a data-toggle="tab" href="<%= ssg_admin_cities_path() %>">Gradovi</a></li>
+              <li><a data-toggle="tab" href="<%= ssg_admin_categories_path() %>">Kategorije</a></li>
+              <li><a data-toggle="tab" href="#settings">Korisnici</a></li>
+            </ul>
+          </div>
         </div>
       </div>
     <% end %>
+    <br />
+    <br />
+    <!-- CONTENT -->
     <div class="row-fluid">
       <%= yield %>
     </div>
   </div>
   <%= javascript_include_tag "ssg_admin" %>
   <%= yield :javascript %>
+  <script>        
+    $(document).ready(function(){
+      $("#admin_tab_select a").click(function(e) {
+        e.preventDefault();
+        window.location = this.href;
+      });
+    });
+  </script>
 </body>
 </html>

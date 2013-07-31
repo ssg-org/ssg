@@ -1,0 +1,287 @@
+.spacer200 { height: 200px; }
+
+.form-cover {
+    background-color: #FFFFFF;
+    border: 1px solid #DDDDDD;
+    border-radius: 4px 4px 4px 4px;
+    margin: 15px 0;
+    padding: 39px 19px 14px;
+    position: relative;
+}
+.form-cover:after {
+    background-color: #F5F5F5;
+    border: 1px solid #DDDDDD;
+    border-radius: 4px 0 4px 0;
+    color: #9DA0A4;
+    font-size: 12px;
+    font-weight: bold;
+    left: -1px;
+    padding: 3px 7px;
+    position: absolute;
+    top: -1px;
+}
+
+.colorpicker {
+  top: 420px;
+}
+
+.margin20 {
+    margin-left: 20px;
+}
+
+.form-cover-city-create:after { content: "Kreiraj / Uredi Grad" }
+.form-cover-city-list:after { content: "Lista Gradova" }
+.form-cover-category-create:after { content: "Kreiraj / Uredi Kategoriju" }
+.form-cover-category-list:after { content: "Lista Kategorija" }
+
+
+#page_container {
+    margin: 0;
+    padding: 0;
+    position: relative;
+}
+
+#page_container.admin {  
+  height: auto;
+  min-height: 100%;
+  width: 80%;
+  margin: 0 auto;
+}
+
+#page_container.admin {
+  
+  .navbar {    
+    margin: 1em 2em 0;
+    
+    .navbar-inner {
+      padding: 0;  
+    }    
+  
+    .container {
+      margin: 0 auto;      
+    }
+   
+    .nav {
+      margin: 0;
+      display: table;
+      width: 100%;
+      
+      li {
+        display: table-cell;
+        width: auto;
+        float: none;   
+        
+        a {
+          font-weight: bold;
+          text-align: center;
+          border-left: 1px solid rgba(255,255,255,.75);
+          border-right: 1px solid rgba(0,0,0,.1);
+        }             
+      }            
+      
+      li:first-child a {
+          border-left: 0;
+          border-radius: 3px 0 0 3px;
+      }
+    }
+  }    
+  
+  .grid {
+    background: #fff;
+    border: 1px solid #c9c9c9;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+  }
+  
+  .grid.profile-images {
+    margin-top: 10px;
+    
+    #img_delete_anim {
+      width: 16px;
+      height: 16px;
+      display:block;
+      margin-top: 8px;
+      margin-right: 10px;
+      display: none;
+    }
+  }
+  
+  .grid-title {
+    height: 35px;
+    background: #fafafa;
+    background: -moz-linear-gradient(top, #fafafa 0%, #e9e9e9 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#fafafa), color-stop(100%,#e9e9e9));
+    background: -webkit-linear-gradient(top, #fafafa 0%,#e9e9e9 100%);
+    background: -o-linear-gradient(top, #fafafa 0%,#e9e9e9 100%);
+    background: -ms-linear-gradient(top, #fafafa 0%,#e9e9e9 100%);
+    background: linear-gradient(to bottom, #fafafa 0%,#e9e9e9 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fafafa', endColorstr='#e9e9e9',GradientType=0 );
+    border-bottom: 1px solid #c9c9c9;
+    overflow: hidden;
+    -webkit-border-radius: 0px;
+    -webkit-border-top-left-radius: 3px;
+    -webkit-border-top-right-radius: 3px;
+    -moz-border-radius: 0px;
+    -moz-border-radius-topleft: 3px;
+    -moz-border-radius-topright: 3px;
+    border-radius: 0px;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    
+    .pull-left {
+      .setup-icon {
+        padding-right: 10px;
+        padding-left: 10px;
+        border-right: 1px solid #c9c9c9;
+        height: 30px;
+        margin-top: -2px;
+        margin-right: 8px;
+        padding-top: 12px;
+        float: left;
+        color: #5f5f5f;
+      }
+      
+      span {
+        color: #5f5f5f;
+        font-size: 14px;
+        font-weight: bold;
+        height: 14px;
+        display: block;
+        padding-top: 8px;
+        width: 200px;
+      }
+    }
+  }
+  
+  .grid-content {
+    padding: 10px;
+  }
+
+  .place-form {  
+    ul.thumbnails {         
+      clear: both;
+      
+      li {
+        position: relative;
+        margin-bottom: 0;
+        margin-top: 20px;
+        
+        span {
+          background: #000;
+          display: block;
+        }
+      }
+                  
+      .p_actions {
+        width: 18px;
+        position: absolute;
+        top: 0px;
+        right: 0px;
+        opacity: 0;
+        -moz-transition: opacity 0.3s ease-in-out;                       
+        
+        a.p_delete {
+          width: 100%;          
+          display: block;          
+          color: white;  
+          text-decoration: none;  
+          font-size: 18px;      
+        }                
+      }
+    }        
+    
+    ul.thumbnails > li {
+      float: left;
+      margin-bottom: 20px;
+      margin-left: 30px;
+    }        
+    ul.thumbnails > li:hover .p_actions {
+      opacity: 1
+    }
+    
+    .thumbnail {
+      display: block;
+      padding: 4px;
+      line-height: 20px;
+      border: 1px solid #ddd;
+      -webkit-border-radius: 4px;
+      -moz-border-radius: 4px;
+      border-radius: 4px;
+      -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.055);
+      -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.055);
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.055);
+      -webkit-transition: all 0.2s ease-in-out;
+      -moz-transition: all 0.2s ease-in-out;
+      -o-transition: all 0.2s ease-in-out;
+      transition: all 0.2s ease-in-out;
+    }
+  }
+    
+  .dataTables_wrapper {
+    position: relative;
+    clear: both;
+    zoom: 1;
+  }
+  
+  .dataTables_filter {
+    width: 50%;
+    float: right;
+    text-align: right;
+    color: #5f5f5f;
+  }     
+  
+  table {
+  
+    .table-mod-2 {
+      background-color: #fbfbfb;
+    }
+    
+    thead, tbody, tr {
+      margin: 0;
+      padding: 0;
+      border: 0;
+      outline: 0;
+      vertical-align: baseline;
+      background: transparent;
+    }
+    
+    td {
+      vertical-align: middle;
+      overflow: hidden;
+    }
+    
+    td.admin-list-toolbar-cell {
+      width: 80px;
+    }
+
+    td [class*="icon-"] {
+      margin-top: 3px;
+    }
+
+    td.admin-list-toolbar-cell div.btn-toolbar {
+      margin: 0;
+    }        
+  }
+
+  .category-item {
+    .inline-toolbar {
+      margin-right: 10px;
+      display: inline;  
+    }
+
+    font-size: 14px;
+    line-height: 30px;
+  }
+  
+  #create_map {
+    height: 800px;
+    position: relative;
+    border: 15px solid #ffffff;
+    margin-left: 50px;
+  }
+  
+  #create_map.street-form {
+    height: 410px;
+  }  
+}
