@@ -13,7 +13,7 @@ gem 'pg'
 gem 'awesome_print'
 #gem 'execjs'
 #gem 'therubyracer'
-gem 'oauth2'
+gem 'oauth2', '0.4.1'
 
 gem 'carrierwave'
 #gem 'mini_magick'
@@ -24,7 +24,7 @@ gem 'friendly_id', '4.0.1'
 gem 'mail_view', :git => 'https://github.com/37signals/mail_view.git'
 
 # gem 'koala', '>= 1.5.0'
-gem 'twitter'
+# gem 'twitter'
 gem 'uuidtools'
 
 gem 'aws-ses', :require => 'aws/ses'
