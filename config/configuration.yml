@@ -9,8 +9,8 @@ development:
   fb:
     site_url:               "https://graph.facebook.com"
     scope:                  "email,user_photos"
-    application_id:         463608053690571
-    secret_key:             dbe6240714c1699358c828ddb741dfab
+    application_id:         406627376123935
+    secret_key:             26e2f01970429c27a1cdf56121b7376d
   aws:
     access_key:             AKIAIDBQTR4BEK6W5XTQ
     access_secret:          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        
@@ -28,8 +28,8 @@ production:
   fb:
     site_url:               "https://graph.facebook.com"
     scope:                  "email,user_photos"
-    application_id:         463608053690571
-    secret_key:             dbe6240714c1699358c828ddb741dfab
+    application_id:         406627376123935
+    secret_key:             26e2f01970429c27a1cdf56121b7376d
   aws:
     access_key:             AKIAIDBQTR4BEK6W5XTQ
     access_secret:          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        
