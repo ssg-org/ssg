@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+
   ROLE_GUEST            = 1
   ROLE_USER             = 2
   ROLE_COMMUNITY_ADMIN  = 3
@@ -6,9 +7,10 @@ class User < ActiveRecord::Base
   
   GUEST_USER = User.new(:role => ROLE_GUEST, :first_name => 'Guest', :locale => I18n.locale)
 
-  has_many  :issues
-  has_many  :votes
-  has_many  :follows
+  has_many    :issues
+  has_many    :votes
+  has_many    :follows
+  belongs_to  :city
   
   def get_follows
     return self.follows.order(:type)
@@ -31,6 +33,8 @@ class User < ActiveRecord::Base
   end
   
   def display_name
+    return self.username
+    
     fname = "#{self.first_name} #{self.last_name}"
     if fname.blank?
       fname = self.email
@@ -126,8 +130,8 @@ class User < ActiveRecord::Base
     return self.role & ROLE_GUEST == ROLE_GUEST
   end
 
-  def self.exists?(email, pwd)
-    usr = User.find_by_email(email)
+  def self.exists?(username, pwd)
+    usr = User.find_by_username(username)
     if (usr && usr.password_hash == Digest::SHA256.hexdigest(pwd))
       return usr
     end
@@ -170,9 +174,9 @@ class User < ActiveRecord::Base
     return user
   end
 
-  def self.create_ssg_user(email, pwd)
+  def self.create_ssg_user(username, email, pwd, city_id)
 
-    user = User.find_by_email(email)
+    user = User.find_by_username(username)
 
     # New user
     if user.nil?
@@ -181,11 +185,13 @@ class User < ActiveRecord::Base
 
     # Inactive user - send email again
     if (user.active == false)
+      user.username = username
       user.email = email
       user.password_hash = Digest::SHA256.hexdigest(pwd)
       user.uuid = UUIDTools::UUID.random_create.to_s
       user.active = false
       user.role = ROLE_USER
+      user.city_id = city_id
       user.locale = I18n.default_locale
 
       return user

@@ -1,28 +1,67 @@
+<style type="text/css">
+	.tou {
+		color: white;
+		font-family: 'Arial';
+	}
+
+	.tou_link {
+		text-decoration: underline;
+	}
+</style>
+
+<br />
 <div class="login-container">
-	<span class='value_strip() font-18'><%=t('users.login.login') %></span><br>
-	<span class=''><%=t('users.login.login_message') %></span>
+	<span class='value_strip() font-18 din-font'><%=t('users.login.login') %></span>
+	<br />
+	<div class="sub-text-container">
+		<span><%=t('users.login.login_message') %></span>
+	</div>
 	<%=form_tag ssg_login_users_path(), :id => "login_form" do %>
-		<%= text_field_tag :email, nil, :placeholder => t('users.login.email') %><br/>
+		<%= text_field_tag :username, nil, :placeholder => t('users.login.username') %><br/>
 		<%= password_field_tag :password, nil, :placeholder => t('users.login.password') %><br/>
+
+		<label class="checkbox">
+      <input type="checkbox" value="1" name="remember"> Zapamti me
+    </label>
+    <br />
+    <br />
 		<%= ssg_button t('users.login.login_button'), {:onclick => "$('\#login_form').submit();"}%>
 	<% end %>
 </div>
-<div class="login-container">
+
+<div class="login-container-center">
 	<div id="register-wrapper">
-		<span class='value_strip() font-18'><%=t('users.login.register') %></span><br>
-		<span class=''><%=t('users.login.register_message') %></span>
+		<span class='value_strip() font-18 din-font'><%=t('users.login.register') %></span><br>
+		<div class="sub-text-container" style="color: white;">
+			<span class=''><%=t('users.login.register_message') %></span>
+		</div>
+		<br />
 		<%= form_tag signup_users_path(), :id => "register_form" do %>
+			<%= select_tag :city_id, options_for_select(@city_names), { :id => 'city_select'} %><br />
+			<%= text_field_tag :username, nil, :placeholder => t('users.login.username'), :class => "" %><br/>
 			<%= text_field_tag :email, nil, :placeholder => t('users.login.email'), :class => "" %><br/>
 			<%= password_field_tag :password1, nil, :placeholder => t('users.login.password'), :class => "" %><br/>
 			<%= password_field_tag :password2, nil, :placeholder => t('users.login.register_repeat_password'), :class => "" %><br/>
-			<%= check_box_tag :terms_of_use %><%= link_to t('users.login.register_agree_tou'), terms_path %><br>
-			<%= ssg_button t('users.login.register_button'), {:onclick => "$('\#register_form').submit();"}%>
+
+			<input type="checkbox" value="1" name="terms_of_use" id="terms_of_use">
+			<span class="tou"><%= t('users.login.register_agree_tou') %> 
+				<a href="<%= terms_path %>" class="tou_link tou"><%= t('users.login.register_agree_tou2') %></a>
+			</span>
+			<br />
+			<br />
+			<br />
+			<div style="padding-left: 35px;">
+				<%= ssg_button t('users.login.register_button'), {:onclick => "$('\#register_form').submit();"} %>
+			</div>
 		<%end%>
 	</div>
 </div>
-<div class="login-container">
-	<span class='value_strip() font-18'><%=t('users.login.quick_sign_in') %></span><br>
-	<span class=''><%=t('users.login.quick_sign_in_message') %></span><br>
+<div class="login-container-right">
+	<span class='value_strip() font-18 din-font'><%=t('users.login.quick_sign_in') %></span><br>
+	<div class="sub-text-container">
+		<span class=''><%=t('users.login.quick_sign_in_message') %></span>
+	</div>
+	<br />
 	<%= link_to image_tag('fb_login_en.png'), '#', :id => 'fb-login-link' %> 
 </div>
 <br style="clear:both">

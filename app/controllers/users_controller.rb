@@ -9,11 +9,11 @@ class UsersController < ApplicationController
   # Login, logout, signup actions
   #
   def signup
-    user = User.create_ssg_user(params[:email], params[:password1])
+    user = User.create_ssg_user(params[:username], params[:email], params[:password1], params[:city_id])
     puts "User #{user.inspect}"
 
     if user.nil?
-        redirect_to(login_users_path(), :alert => 'User already exists')
+      redirect_to(login_users_path(), :alert => 'User already exists')
     else
       if user.save
         UserMailer.verify(user).deliver
@@ -23,6 +23,12 @@ class UsersController < ApplicationController
         redirect_to(login_users_path(), :alert => 'Error creating user')
       end
     end
+  end
+
+  def login
+    cities = City.all.sort { |a,b| a.name <=> b.name }
+    @city_names = cities.collect { |c| [c.name, c.id ] }
+    @city_names.unshift( [I18n.t('users.login.choose_city'), 0])
   end
 
   def verify
@@ -50,7 +56,7 @@ class UsersController < ApplicationController
   end
   
   def ssg_login
-    user = User.exists?(params[:email], params[:password])
+    user = User.exists?(params[:username], params[:password])
     if user && user.active
       session[:id] = user.id
       redirect_to issues_path()
