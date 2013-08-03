@@ -53,6 +53,7 @@
 			<div style="padding-left: 35px;">
 				<%= ssg_button t('users.login.register_button'), {:onclick => "$('\#register_form').submit();"} %>
 			</div>
+			<br />
 		<%end%>
 	</div>
 </div>
@@ -68,6 +69,11 @@
 
 <% content_for :javascript do %>
 <script>
+
+  $(document).ready(function() {
+  		$('#city_select').selectbox();
+  });
+
 	$('#fb-login-link').click(function(event) {
 		fb_login('<%=Config::Configuration.get(:fb, :application_id)%>', escape('<%=fb_login_users_url()%>'), '<%=Config::Configuration.get(:fb, :scope)%>'); 
 		return false;
