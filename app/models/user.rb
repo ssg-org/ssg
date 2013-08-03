@@ -34,7 +34,7 @@ class User < ActiveRecord::Base
   
   def display_name
     return self.username
-    
+
     fname = "#{self.first_name} #{self.last_name}"
     if fname.blank?
       fname = self.email
@@ -142,8 +142,8 @@ class User < ActiveRecord::Base
   #
   # Returns user only with ssg admin
   #
-  def self.user_ssg_admin?(email, pwd)
-    usr = exists?(email, pwd)
+  def self.user_ssg_admin?(username, pwd)
+    usr = exists?(username, pwd)
     usr && usr.active && usr.ssg_admin? ? usr : nil
   end
   
