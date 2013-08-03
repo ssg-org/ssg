@@ -1,0 +1,37 @@
+development:
+  ssg:
+    email_address:          "no-reply@sredisvojgrad.com"
+    auth_enabled:           False
+    auth_username:          "username"
+    auth_password:          "pass"
+    host:                   "localhost"
+    port:                   "3000"
+  fb:
+    site_url:               "https://graph.facebook.com"
+    scope:                  "email,user_photos"
+    application_id:         
+    secret_key:             
+  aws:
+    access_key:             
+    access_secret:                  
+  misc:
+    unique_view_epsilon:    3600
+
+production:
+  ssg:
+    email_address:          "no-reply@sredisvojgrad.com"
+    auth_enabled:           False
+    auth_username:          "username"
+    auth_password:          "pass"
+    host:                   "http://ssg-dev.herokuapp.com"
+    port:                   "3000"
+  fb:
+    site_url:               "https://graph.facebook.com"
+    scope:                  "email,user_photos"
+    application_id:         
+    secret_key:             
+  aws:
+    access_key:             
+    access_secret:                  
+  misc:
+    unique_view_epsilon:    3600
