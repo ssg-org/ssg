@@ -66,7 +66,7 @@ class UsersController < ApplicationController
   end
 
   def ssg_admin_login
-    user = User.user_ssg_admin?(params[:email], params[:password])
+    user = User.user_ssg_admin?(params[:username], params[:password])
     if user
       session[:id] = user.id
       redirect_to ssg_admin_path()
