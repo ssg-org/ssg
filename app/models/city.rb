@@ -2,6 +2,7 @@ class City < ActiveRecord::Base
   extend FriendlyId
   
 	has_many :issues
+  has_many :users
 	
   friendly_id :name, :use => [:slugged]
 	

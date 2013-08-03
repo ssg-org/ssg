@@ -38,4 +38,4 @@ Category.create({ :name => 'Okolina', :color => '9ecc3b', :icon => 'okolina.png'
 Category.create({ :name => 'Rasvjeta', :color => 'ffc80c', :icon => 'rasvjeta.png'  })
 Category.create({ :name => 'Putevi',  :color => '683b17', :icon => 'putevi.png'  })
 
-User.create({ :email => 'admin@ssg.com', :password_hash => Digest::SHA256.hexdigest('admin'), :uuid => UUIDTools::UUID.random_create.to_s, :active => true, :role => User::ROLE_SSG_ADMIN, :locale => :bs })
+User.create({ :email => 'admin@ssg.com', :username => 'admin_ssg', :password_hash => Digest::SHA256.hexdigest('admin'), :uuid => UUIDTools::UUID.random_create.to_s, :active => true, :role => User::ROLE_SSG_ADMIN, :locale => :bs })
