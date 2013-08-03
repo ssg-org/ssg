@@ -90,6 +90,12 @@ input[type="password"] {
 	@extend .input-texts;
 }
 
+label{
+	.error {
+		display: none;
+	}
+}
+
 input[type="checkbox"] {
 }
 
