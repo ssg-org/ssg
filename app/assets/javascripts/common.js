@@ -1,5 +1,11 @@
 L.Icon.Default.imagePath = '/assets/images';
 
+<<<<<<< HEAD
+=======
+// convert all <select> elements	to selectbox
+//$('select').selectbox();
+
+>>>>>>> c486060c527df43565d93d44af96bd1af630a605
 // Google tracker
 var _gaq = _gaq || [];
 _gaq.push(['_setAccount', 'UA-30569816-1']);
