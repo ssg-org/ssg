@@ -53,10 +53,7 @@
 			<div style="padding-left: 35px;">
 				<%= ssg_button t('users.login.register_button'), {:onclick => "$('\#register_form').submit();"} %>
 			</div>
-<<<<<<< HEAD
 			<br />
-=======
->>>>>>> c486060c527df43565d93d44af96bd1af630a605
 		<%end%>
 	</div>
 </div>
@@ -72,14 +69,10 @@
 
 <% content_for :javascript do %>
 <script>
-<<<<<<< HEAD
-
   $(document).ready(function() {
   		$('#city_select').selectbox();
   });
 
-=======
->>>>>>> c486060c527df43565d93d44af96bd1af630a605
 	$('#fb-login-link').click(function(event) {
 		fb_login('<%=Config::Configuration.get(:fb, :application_id)%>', escape('<%=fb_login_users_url()%>'), '<%=Config::Configuration.get(:fb, :scope)%>'); 
 		return false;

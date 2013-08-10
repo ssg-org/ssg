@@ -6,7 +6,7 @@
   <%= stylesheet_link_tag    "ssg_admin", :media => "all" %>
   <%= javascript_include_tag "application" %>
 </head>
-<<<<<<< HEAD
+
 <style type="text/css">
   .row-m20 {
     margin-top: 20px;
@@ -32,30 +32,13 @@
         <div class="span5 userinfo-header pull-right userinfo-pos">
           <span class="pull-right"> Dobrodošli, <b><%= @user.display_name %></b> </span><br />
           <a class="pull-right" href="<%= logout_user_path(@user.id) %>">Odjava</a>
-=======
-<body class="admin">
-  <div id="page_container" class="container-fluid admin">
-    <% if @user && @user.ssg_admin? %>
-      <div class="row-fluid">
-        <div class="span5">
-          <a href='<%= ssg_admin_path %>'>
-            <%= image_tag 'logo.png', :class => 'logo-header' %>
-          </a>
-        </div>        
-        <div class="span5 userinfo-header pull-right">
-          <a class="pull-right" href="<%= logout_user_path(@user.id) %>">Odjava</a>
-          <span class="pull-right"> Dobrodošli, <b><%= @user.display_name %></b> </span>
->>>>>>> c486060c527df43565d93d44af96bd1af630a605
         </div>
       </div>
       <div class="navbar">
         <div class="navbar-inner">
           <div class="container">
             <ul class="nav" id="admin_tab_select">                   
-<<<<<<< HEAD
               <li><a data-toggle="tab" href="<%= ssg_admin_path() %>">Dashboard</a></li>
-=======
->>>>>>> c486060c527df43565d93d44af96bd1af630a605
               <li><a data-toggle="tab" href="<%= ssg_admin_cities_path() %>">Gradovi</a></li>
               <li><a data-toggle="tab" href="<%= ssg_admin_categories_path() %>">Kategorije</a></li>
               <li><a data-toggle="tab" href="#settings">Korisnici</a></li>
