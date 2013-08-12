@@ -5,8 +5,10 @@ class Issue < ActiveRecord::Base
 
   OPEN          = 1
   IN_PROGRESS   = 2
+  ACCEPTED      = 3
   FIXED         = 3
   DELETED       = 4
+  RE_OPENED     = 5
 
   default_scope where('status <> 4')
 

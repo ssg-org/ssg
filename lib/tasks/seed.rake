@@ -12,6 +12,7 @@ namespace :seed do
 			puts "Creating user : #{i}"
 			User.create({  
 			  :email => "test#{i}@test.com",
+			  :username => "test#{i}",
 			  :password_hash => Digest::SHA256.hexdigest('test'),
 			  :uuid => UUIDTools::UUID.random_create.to_s,
 			  :first_name => "Testni_#{i}",
