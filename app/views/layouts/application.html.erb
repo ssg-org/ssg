@@ -9,6 +9,7 @@
   <!--[if lte IE 8]>
       <link rel="stylesheet" href="assets/leaflet.ie.css" />
   <![endif]-->
+  <%= javascript_include_tag "application" %>
 </head>
 <body alink="#000" vlink="#000" link="#000">
 	<div id="main-menu">
@@ -21,13 +22,13 @@
 	
 	<div id="main">
 		<%= yield %>
+    <!-- MAIN -->
 	</div>
 	
 	<div id="footer">
 		<%= render  :partial => 'shared/footer' %>
 	</div>
 	
-	<%= javascript_include_tag "application" %>
 	<script>
 		I18n.locale = "<%= I18n.locale %>";
 	</script>

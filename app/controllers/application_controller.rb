@@ -4,6 +4,8 @@ class ApplicationController < ActionController::Base
   before_filter :check_access if Config::Configuration.get(:ssg, :auth_enabled)
   before_filter :check_login
 
+  include ApplicationHelper
+
   def self.disable_layout_for_ajax(layout_name = 'application')
     layout Proc.new { |controller| controller.request.xhr? ? nil : layout_name }    
   end

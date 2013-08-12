@@ -16,7 +16,7 @@ gem 'awesome_print'
 gem 'oauth2', '0.4.1'
 
 gem 'carrierwave'
-#gem 'mini_magick'
+gem 'mini_magick', '3.5.0'
 
 gem 'friendly_id', '4.0.1'
 
@@ -28,6 +28,12 @@ gem 'mail_view', :git => 'https://github.com/37signals/mail_view.git'
 gem 'uuidtools'
 
 gem 'aws-ses', :require => 'aws/ses'
+
+group :development do
+  gem 'better_errors'
+  gem 'seed_dump'
+  gem 'binding_of_caller'
+end
 
 # Gems used only for assets and not required
 # in production environments by default.

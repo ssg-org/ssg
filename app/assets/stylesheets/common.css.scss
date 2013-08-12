@@ -123,16 +123,24 @@ textarea {
 	box-shadow:0px 0px 10px #999;
 }
 .footer-menu {
-	margin-top:25px;
 	list-style:none;
 	color: $color-green;
-	margin: 20px auto 5px auto;
+	margin: 5px auto;
 	width: 400px;
 	
+	li {
+		float:left;
+		padding:5px 10px 5px 10px;
+
+		a {
+			color: $color-green;		
+		}
+	}
+
 	a {
 		color: $color-green;		
 	}
-	
+
 	span {
 		color: white;
 		margin-left: 10px;
@@ -140,8 +148,9 @@ textarea {
 	}
 }
 
+
 .copyright-menu {
-	margin: 0px auto;
+	margin: 5px auto;
 	width: 320px;
 	span {
 		color: $color-gray;
@@ -238,6 +247,8 @@ textarea {
 	background-color:#f9f9f9;
 	width:990px;
 	box-shadow:0px 0px 10px #999;
+	padding-top: 5px;
+	min-height: 520px;
 }
 
 #footer {
@@ -249,23 +260,6 @@ textarea {
 	box-shadow:0px 0px 10px #999;
 }
 
-.footer-menu {
-	margin-top:30px;
-	list-style:none;
-	color: $color-green;
-	margin:0 auto;
-	width: 500px;
-
-	li {
-		float:left;
-		padding:5px 10px 5px 10px;
-
-		a {
-			color: $color-green;		
-		}
-	}
-}
->>>>>>> c486060c527df43565d93d44af96bd1af630a605
 
 #issues_left_column {
 	float:left; 
@@ -274,14 +268,22 @@ textarea {
 }
 #issues_right_column {
 	float:left; 
-	width:200px; 
-	padding:20px;
+	width:240px; 
+	padding: 20px 10px 20px 10px;
 }
 .filter {
-	width:95px;
+	width:118px;
 	float:left;
 	margin-top:10px;
 	font-size:13px;
+	font: Helvetica;
+
+	.title {
+		font-weight: bold;
+		color: black;
+		display: inline-block;
+		margin-bottom: 5px;
+	}
 }
 
 .issue {
@@ -320,8 +322,9 @@ textarea {
 	width:180px;
 	overflow:hidden;
 	white-space:nowrap;
-	
+	font-weight: bold;	
 }
+
 .issue-info-name {
 	position:relative; 
 	overflow:hidden;
@@ -421,10 +424,13 @@ textarea {
 	font-size:24px; 
 	font-style:italic; 
 }
-// breadcrumbs
+
 .breadcrumb-container {
-	font-size:14px; 
-	margin-bottom:10px;
+	/*font-family: 'Conv_DINPro-Regular';*/
+	font-family: 'Arial';
+	font-size:15px; 
+	margin-top: 10px;
+	margin-left: 35px;
 }
 .breadcrumb-container span {
 	color: $color-green;

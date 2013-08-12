@@ -4,7 +4,8 @@ class IssuesController < ApplicationController
   
   def index
     params[:offset] ||= 0
-    @issues = Issue.get_issues(params, 12, params[:offset].to_i) 
+    @issues = Issue.get_issues(params, 12, params[:offset].to_i)
+    @city_names = collect_city_names() unless @city_names
   end
   
   def more

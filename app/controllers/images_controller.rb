@@ -1,5 +1,6 @@
 class ImagesController < ApplicationController
 	def create
+  
     @image = Image.new()
     @image.image = params[:image]
     @image.save!

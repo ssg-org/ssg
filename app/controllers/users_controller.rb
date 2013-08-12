@@ -22,12 +22,12 @@ class UsersController < ApplicationController
       else
         redirect_to(login_users_path(), :alert => 'Error creating user')
       end
+      
     end
   end
 
   def login
-    cities = City.all.sort { |a,b| a.name <=> b.name }
-    @city_names = cities.collect { |c| [c.name, c.id ] }
+    @city_names = collect_city_names()
     @city_names.unshift( [I18n.t('users.login.choose_city'), 0])
   end
 

@@ -1,12 +1,19 @@
+$color-selected-font : #9ECC3B;
+$color-font : #333333;
+$color-back : #F3F3F3;
+$color-back-options : #F3F3F3;
+$color-border : #CECECE;
+
+@CHARSET "UTF-8";
 .sbHolder{
-	background-color: white;
-	border: solid 1px #C2C2C2;
+	background-color: $color-back;
+	border: solid 1px $color-border;
 	font-family: Arial, sans-serif;
 	font-size: 12px;
 	font-weight: normal;
 	height: 30px;
 	position: relative;
-	width: 100%;
+	width: 200px;
 }
 .sbHolder:focus .sbSelector{
 	
@@ -21,10 +28,10 @@
 	position: absolute;
 	text-indent: 10px;
 	top: 0;
-	width: 100%;
+	width: 170px;
 }
 .sbSelector:link, .sbSelector:visited, .sbSelector:hover{
-	color: #4d4d4d;
+	color: $color-selected-font;
 	outline: none;
 	text-decoration: none;
 }
@@ -49,7 +56,7 @@
 }
 .sbHolderDisabled{
 	background-color: #3C3C3C;
-	border: solid 1px #515151;
+	border: solid 1px $color-border;
 }
 .sbHolderDisabled .sbHolder{
 	
@@ -58,47 +65,48 @@
 	
 }
 .sbOptions{
-	background-color: white;
-	border: solid 1px #C2C2C2;
+	background-color: $color-back-options;
+	border: solid 1px $color-border;
 	list-style: none;
 	left: -1px;
 	margin: 0;
 	padding: 0;
 	position: absolute;
 	top: 30px;
-	width: 100%;
+	width: 200px;
 	z-index: 1;
 	overflow-y: auto;
-	padding:7px 0 7px 0;
 }
 .sbOptions li{
 	padding: 0 7px;
 }
 .sbOptions a{
+	border-bottom: dotted 1px $color-border;
 	display: block;
 	outline: none;
 	padding: 7px 0 7px 3px;
 }
 .sbOptions a:link, .sbOptions a:visited{
-	color: #4d4d4d;
+	color: $color-font;
 	text-decoration: none;
 }
 .sbOptions a:hover,
 .sbOptions a:focus,
 .sbOptions a.sbFocus{
-	background-color:#dddddd;
+	color: $color-selected-font;
 }
 .sbOptions li.last a{
 	border-bottom: none;
 }
 .sbOptions .sbDisabled{
+	border-bottom: dotted 1px $color-border;
 	color: #999;
 	display: block;
 	padding: 7px 0 7px 3px;
 }
 .sbOptions .sbGroup{
-	border-bottom: dotted 1px #515151;
-	color: #EBB52D;
+	border-bottom: dotted 1px $color-border;
+	color: $color-selected-font;
 	display: block;
 	font-weight: bold;
 	padding: 7px 0 7px 3px;
