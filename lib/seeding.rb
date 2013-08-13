@@ -1,4 +1,5 @@
 require 'lorem'
+require 'open-uri'
 
 class Seeding
 
@@ -13,12 +14,20 @@ class Seeding
 	  image_ids = []
 	  image_paths.each do |path|
 	    image = Image.new()
+	    #image.image = open(path)
 	    image.image = File.new(path)
 	    image.save!
 	    image_ids << image.id
 	  end
 
-	  user.create_issue(title, category.id, city.id, description, lat, long, image_ids)
+	  user.create_issue_seed(title, category.id, city.id, description, lat, long, image_ids, 
+	  	Random.new.rand(1..5),
+	  	random_date(),
+	  	Random.new.rand(0..100),
+	  	Random.new.rand(0..1000),
+	  	Random.new.rand(0..50),
+	  	Random.new.rand(0..150)
+	  	)
 	end
 
 	def self.random_issues(count)
@@ -29,15 +38,26 @@ class Seeding
 
 	  (1..count).each do |i|
 	    puts "Crating issue : #{i}"
+
+
 	    create_issue(
 	      users[Random.new.rand(0..users.length-1)], 
 	      Lorem::Base.new('words', Random.new.rand(2..5)).output,
 	      Lorem::Base.new('paragraphs', Random.new.rand(1..3)).output,
 	      categories[Random.new.rand(0..categories.length-1)],
 	      cities[Random.new.rand(0..cities.length-1)],
-	      [images[Random.new.rand(0..images.length-1)]]
+	      #RandomImages::Images.get(Random.new.rand(1..3))
+	      images
 	    )
 	  end
-	end	
+	end
+
+	private
+
+	def self.random_date()
+		date2 = DateTime.now
+		date1 = DateTime.now - 1.month
+		Time.at((date2.to_f - date1.to_f)*rand + date1.to_f)
+	end
 
 end

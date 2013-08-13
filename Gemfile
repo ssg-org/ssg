@@ -26,6 +26,7 @@ gem 'mail_view', :git => 'https://github.com/37signals/mail_view.git'
 # gem 'koala', '>= 1.5.0'
 # gem 'twitter'
 gem 'uuidtools'
+gem 'random_images'
 
 gem 'aws-ses', :require => 'aws/ses'
 

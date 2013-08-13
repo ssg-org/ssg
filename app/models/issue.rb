@@ -12,7 +12,7 @@ class Issue < ActiveRecord::Base
 
   default_scope where('status <> 4')
 
-  attr_accessible :title, :category, :city, :description, :user, :lat, :long
+  attr_accessible :title, :category, :city, :description, :user, :lat, :long, :status, :vote_count, :view_count, :comment_count, :share_count, :created_at
 
   belongs_to 	:user
   belongs_to  :category

@@ -125,6 +125,34 @@ class User < ActiveRecord::Base
       return issue
     end
   end
+
+  def create_issue_seed(title, category_id, city_id, descripion, lat, long, image_ids, status, created_ts, vote_c, view_c, comments_c, share_c)
+    ActiveRecord::Base.transaction do
+      category = Category.find(category_id)
+      city = City.find(city_id)
+
+      issue = Issue.new({ 
+        :user => self, 
+        :title => title, 
+        :description => descripion, 
+        :category => category, 
+        :city => city,
+        :lat => lat,
+        :long => long,
+        :status => status,
+        :vote_count => vote_c,
+        :view_count => view_c,
+        :comment_count => comments_c,
+        :share_count => share_c,
+        :created_at => created_ts
+      })
+      issue.save
+
+      Image.update_all({ :issue_id => issue.id}, { :id => image_ids })
+
+      return issue
+    end
+  end
   
   def guest?
     return self.role & ROLE_GUEST == ROLE_GUEST
