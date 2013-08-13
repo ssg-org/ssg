@@ -15,7 +15,7 @@ class Seeding
 	  image_ids = []
 	  image_paths.each do |path|
 	 	  image = Image.new()
-
+=begin
 	 	  extension = EXTENSIONS.select { |e| path.include? e }
 
 	 	  return if extension.nil? || extension.first.nil?
@@ -33,7 +33,8 @@ class Seeding
 
 
 	    image.image = tempfile
-	    #image.image = File.new(path)
+=end
+	    image.image = File.new(path)
 	    image.save!
 	    image_ids << image.id
 	  end
@@ -64,8 +65,8 @@ class Seeding
 	      Lorem::Base.new('paragraphs', Random.new.rand(1..3)).output,
 	      categories[Random.new.rand(0..categories.length-1)],
 	      cities[Random.new.rand(0..cities.length-1)],
-	      RandomImages::Images.get(Random.new.rand(1..3))
-	      #images
+	      #RandomImages::Images.get(Random.new.rand(1..3))
+	      [images[Random.new.rand(0..images.length-1)]]
 	    )
 	  end
 	end
