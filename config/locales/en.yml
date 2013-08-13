@@ -81,6 +81,7 @@ en:
             categories:     'CATEGORIES'
             resolution:     'RESOLUTION'
             cities:         'CITIES'
+            counties:       'COUNTIES'
             all_time:       'All time'
             today:          'Today'
             this_week:      'This week'
@@ -94,6 +95,15 @@ en:
             open:           'Open'
             in_progress:    'In progress'
             fixed:          'Fixed'
+            all_counties:   'All counties'
+        status:
+            none:           'Not set'
+            open:           'Opened'
+            in_progress:    'In progress'
+            accepted:       'Accepted'
+            fixed:          'Fixed'
+            deleted:        'Deleted'
+            re_opened:      'Re-opened'
     cities:
         index:
             cities: 'CITIES'

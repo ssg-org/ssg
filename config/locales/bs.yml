@@ -85,6 +85,7 @@ bs:
             categories:     'KATEGORIJE'
             resolution:     'STATUS'
             cities:         'GRADOVI'
+            counties:       'OPŠTINE'
             all_time:       'Sve vrijeme'
             today:          'Danas'
             this_week:      'Ove sedmice'
@@ -98,6 +99,15 @@ bs:
             open:           'Prijavljeni'
             in_progress:    'U izradi'
             fixed:          'Popravljeni'
+            all_counties:   'Sve opštine'
+        status:
+            none:           'Nepoznato'
+            open:           'Prijavljen'
+            in_progress:    'U izradi'
+            accepted:       'Prihvaćen'
+            fixed:          'Popravljen'
+            deleted:        'Obrisan'
+            re_opened:      'Ponovo otvoren'
     cities:
         index:
             cities: 'GRADOVI'

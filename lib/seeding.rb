@@ -3,6 +3,7 @@ require 'open-uri'
 
 class Seeding
 
+	EXTENSIONS = ['.jpg','.jpeg','.gif','.png','.bmp']
 	#
 	# e.g.:
 	#     create_issue(@user1, 'Smece svuda po gradu', 'Smece se nalazi svuda po gradu.', @cat_okolina, @city_sa, ['test/images/1.jpg'])
@@ -13,9 +14,26 @@ class Seeding
 
 	  image_ids = []
 	  image_paths.each do |path|
-	    image = Image.new()
-	    #image.image = open(path)
-	    image.image = File.new(path)
+	 	  image = Image.new()
+
+	 	  extension = EXTENSIONS.select { |e| path.include? e }
+
+	 	  return if extension.nil? || extension.first.nil?
+
+	 	  begin
+		    tempfile = Tempfile.new(['temp',extension.first]).tap do |file|
+				  file.binmode # must be in binary mode
+				  file.write open(path).read
+				  file.rewind
+				end
+			rescue Exception => e
+				puts "Error reading file #{e.message}"
+				return
+			end
+
+
+	    image.image = tempfile
+	    #image.image = File.new(path)
 	    image.save!
 	    image_ids << image.id
 	  end
@@ -46,8 +64,8 @@ class Seeding
 	      Lorem::Base.new('paragraphs', Random.new.rand(1..3)).output,
 	      categories[Random.new.rand(0..categories.length-1)],
 	      cities[Random.new.rand(0..cities.length-1)],
-	      #RandomImages::Images.get(Random.new.rand(1..3))
-	      images
+	      RandomImages::Images.get(Random.new.rand(1..3))
+	      #images
 	    )
 	  end
 	end

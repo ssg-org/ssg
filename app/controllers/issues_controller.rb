@@ -6,6 +6,7 @@ class IssuesController < ApplicationController
     params[:offset] ||= 0
     @issues = Issue.get_issues(params, 12, params[:offset].to_i)
     @city_names = collect_city_names() unless @city_names
+    @city_names.unshift([I18n.t('issues.right_menu.all_counties'), 0])
   end
   
   def more

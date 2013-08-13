@@ -4,6 +4,7 @@ $font-size   : 12px;
 $background-color : #cfcfcf;
 $color-green : #9ecc3b;
 $color-gray  : #CECECE;
+$color-dark-gray  : #999999;
 
 html, body {
 	margin: 0px;
@@ -178,6 +179,9 @@ textarea {
 .font-gray {
 	color:$color-gray;
 }
+.font-gray-dark {
+	color: $color-dark-gray;
+}
 .font-bold {
 	font-weight:bold;
 }
@@ -291,7 +295,7 @@ textarea {
 	width:204px;
 	height: 302px;
 	margin:12px;
-	box-shadow:0px 0px 5px #ccc;
+	box-shadow:0px 0px 5px #999999;
 	background-color:white;
 }
 .issue-img-part {

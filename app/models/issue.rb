@@ -10,6 +10,8 @@ class Issue < ActiveRecord::Base
   DELETED       = 4
   RE_OPENED     = 5
 
+  TRANS_KEYS = ['none','open','in_progress', 'accepted','fixed','deleted','re_opened']
+
   default_scope where('status <> 4')
 
   attr_accessible :title, :category, :city, :description, :user, :lat, :long, :status, :vote_count, :view_count, :comment_count, :share_count, :created_at
@@ -54,6 +56,11 @@ class Issue < ActiveRecord::Base
 
 
     return Issue.where('lat > ? AND lat < ? AND long > ? AND long < ?', sw_lat, ne_lat, sw_long, ne_long).limit(limit)  
+  end
+
+  def get_status
+    trans_key = TRANS_KEYS[self.status]
+    I18n.t("issues.status.#{trans_key}")
   end
   
   def self.get_issues(params, limit=9, offset=0)

@@ -15,7 +15,7 @@
 			<div class="font-14 issue-info-title">
 				<%=issue.title%>
 			</div>
-			<div class="font-gray font-12 issue-info-name">
+			<div class="font-gray-dark font-12 issue-info-name">
 				by <%=issue.user.display_name%>
 			</div>
 		</a>
@@ -23,7 +23,7 @@
 		<a class="info-link" href="<%=city_path(issue.city.id)%>">
 			<div class="issue-info-loc">
 				<span class="asset-location" ></span>
-				<span class="font-gray" style="line-height:16px;">&nbsp;<%=issue.city.name%></span>
+				<span class="font-gray-dark" style="line-height:16px;">&nbsp;<%=issue.city.name%></span>
 			</div>
 		</a>
 	</div>
@@ -31,7 +31,8 @@
 	<hr style="margin-top:3px;"/>
 	
 	<div class="issue-category-part" >
-		<span class="font-gray font-13" style="line-height:31px;">&nbsp;&nbsp;&nbsp;&nbsp;<%=issue.category.name%></span>
+		<span class="font-gray-dark font-12" style="line-height:31px;"><b>&nbsp;&nbsp;&nbsp;&nbsp;<%=issue.get_status %></b></span>
+		<span class="font-gray-dark font-13" style="line-height:31px; float: right; margin-right: 10px;">&nbsp;&nbsp;&nbsp;&nbsp;<%=issue.category.name%></span>
 	</div>
 	
 	<hr/>
@@ -39,5 +40,6 @@
 	<div class="issue-share-part">
 		<span class="asset-heart"></span><span style="float:left;" class="font-bold font-14">&nbsp;&nbsp;<%=issue.vote_count%>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
 		<span class="asset-eye"></span><span style="float:left;" class="font-bold font-14">&nbsp;&nbsp;<%=issue.session_view_count%></span>
+		<span style="float:right; margin-top: 2px; cursor: pointer;" class="font-13 font-gray-dark">Share</span> 
 	</div>
 </div>

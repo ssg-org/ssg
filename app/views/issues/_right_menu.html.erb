@@ -30,22 +30,24 @@
 			<%=link_to cat.name, issues_path(clear_params({:category => cat.id})), { :class => "#{'r-menu-selected' if params[:category] == cat.id.to_s }"} %><br/>
 		<% end %>
 	</div>
+
 	<div class="filter">
 		<span class="title value_strip()"><%= t('issues.right_menu.resolution')%></span><br/>
 		<%=link_to t('issues.right_menu.all'), issues_path(clear_params({:status => nil})), { :class => "#{'r-menu-selected' if params[:status].blank? }"} %><br/>
-		<%=link_to t('issues.right_menu.open'), issues_path(clear_params({:status => Issue::OPEN})), { :class => "#{'r-menu-selected' if params[:status] == Issue::OPEN.to_s }"} %><br/>
-		<%=link_to t('issues.right_menu.in_progress'), issues_path(clear_params({:status => Issue::IN_PROGRESS})), { :class => "#{'r-menu-selected' if params[:status] == Issue::IN_PROGRESS.to_s }"} %><br/>
-		<%=link_to t('issues.right_menu.fixed'), issues_path(clear_params({:status => Issue::FIXED})), { :class => "#{'r-menu-selected' if params[:status] == Issue::FIXED.to_s }"} %><br/>
+		<% Issue::TRANS_KEYS.each_with_index do |status, i| %>
+			<% next if i == 0 # we skip first one since it is 'none' %>
+			<%=link_to t("issues.status.#{status}"), issues_path(clear_params({:status => i })), { :class => "#{'r-menu-selected' if params[:status] == i.to_s }"} %><br/>
+		<% end %>
 	</div>
+
 
 	<br style="clear:both;">
 	<br />
 	
 	<div class="filter">
-		<span class="title value_strip()"><%= t('issues.right_menu.cities')%></span><br/>
-		<%= select_tag :city_id, options_for_select(@city_names), { :id => 'city_select'} %><br />
+		<span class="title value_strip()"><%= t('issues.right_menu.counties')%></span><br/>
+		<%= select_tag :city_id, options_for_select(@city_names), { :id => 'city_select' } %><br />
 	</div>
-
 	
 </div>
 
@@ -54,6 +56,22 @@
 
 <script type="text/javascript">
 	$(document).ready(function() {
+
+		<% if params[:city] %>
+			$("select").val(<%= params[:city].to_i %>);
+		<% end %>
+
 	  $('select').selectbox();
+
+	  var url = '<%= issues_path(clear_params({:city => nil})) %>';
+
+		$('select').on('change', function() {
+			if (this.value == 0) {
+				window.location.href = url;
+			} else {
+		  	window.location.href = url + "&city=" + this.value;
+		  }
+		});
 	});
+
 </script>
