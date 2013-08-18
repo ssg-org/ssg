@@ -1,25 +1,62 @@
-<span style="font-size:20px;margin-top:20px;"><%=t('shared.comments.discuss')%> (<%=comments.count%> <%=t('shared.comments.comments')%>)</span><br/><br/>
+<style type="text/css">
+	.comments-title {
+		font-size: 18px;
+		font-weight: bold;
+		margin-top: 20px;
+		color: #3b3b3b;
+	}
+	.comments-guest {
+		font-size: 13px;
+		font-weight: bold;
+		color: #3b3b3b;
+		display: block;
+		padding: 15px 0px 15px 0px;
+	}
+	.comment-name {
+		font-size: 14px;
+		font-weight: bold;
+	}
+	.comment-time {
+		color: #adadad;
+		font-size: 12px;
+	}
+	.comment-text {
+		font-size: 15px;
+		display: inline-block;
+		margin-top: 3px;
+	}
+</style>
+<br />
+<span class="comments-title"><%=t('shared.comments.discuss')%> (<%=comments.count%> <%=t('shared.comments.comments')%>)</span>
+<br/>
+<br/>
 <hr/>
 <% if @user.guest? %>
-	<span style="font-size:12px;"><%=t('shared.comments.log_in')%></span>
+	<span class="comments-guest"><%=t('shared.comments.log_in')%></span>
 <% else %>
 	<div id="comment_editor" style="padding:25px 0 25px 0; overflow:auto;">
 			<%= image_tag @user.avatar, :style => 'width: 50px; float:left; margin-right:10px;' %>
 			<%= form_tag comments_path(), :id => 'comment_form', :remote => true do |f| %>
 				<%= text_field_tag :text, nil, :style => 'width:300px;' %>
 				<input type="hidden" name="issue_id" value="<%=issue.id%>" />
-				<%= ssg_button(t('shared.comments.comment'), { :onclick => "$('\#comment_form').submit();"}, { :style => 'height:23px; line-height:23px;' }) %>
+				<%= ssg_button(t('shared.comments.comment'), { :onclick => "$('\#comment_form').submit();"}, { :style => 'height:32px; line-height:30px;' }) %>
 			<% end %>
 	</div>
 <% end %>
+<hr/>
 
 <% comments.each do |comment|%>
 	<hr/>
 	<div style="padding:25px 0 25px 0; overflow:auto;">
 		<%= image_tag comment.user.avatar, :style => 'width: 50px; float:left;' %>
 		<div style="float:left; margin-left:10px; width:500px;">
-			<span class="font-15"><%= comment.user.display_name %></span> <span class="font-gray"> - <%=distance_of_time_in_words_to_now(comment.created_at)%></span><br/><br/>
-			<%= comment.text%>
+			<div style="margin-top: 3px;">
+				<span class="comment-name"><%= comment.user.full_name %>  </span>&nbsp;&nbsp;
+				<span class="comment-time"> - &nbsp;&nbsp;<%=distance_of_time_in_words_to_now(comment.created_at)%></span>
+			</div>
+			<span class="comment-text">
+				<%= comment.text%>
+			</span>
 		</div>
 	</div>
 <% end %>

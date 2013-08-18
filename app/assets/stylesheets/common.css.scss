@@ -361,6 +361,13 @@ textarea {
 		border:1px solid #dddddd;
 	}
 }
+
+.btn_green_v2 {
+	@extend .btn_green;
+	width: -moz-available;
+	background: url('/assets/btn-v2-back.png'); 
+}
+
 // upload
 .upload-preview {
 	float:left; 
@@ -376,13 +383,33 @@ textarea {
 	width:680px;
 }
 .issue-container-green {
-	padding:40px;	
+	padding: 30px;	
 	background-color:$color-green;
 	color:white;
 }
 .issue-cell {
 	margin-bottom:10px;
+
+	p {
+		text-align: justify;
+		font-size: 14px;
+	}
 }
+
+.issue-cell-title {
+	font-size:30px; 
+	font-style:italic;
+	font-family: 'Conv_DINPro-Bold';
+	letter-spacing: -1px;
+}
+
+.issue-cell-subtitle {
+	font-size: 15px;
+	font-weight: bold;
+	letter-spacing: 1px;
+}
+
+
 .login-container {
 	float:left;
 	width:268px;
@@ -423,10 +450,6 @@ textarea {
 		padding: 20px 30px 10px 30px;
 		color: white;
 	}
-}
-.issue-cell-title {
-	font-size:24px; 
-	font-style:italic; 
 }
 
 .breadcrumb-container {

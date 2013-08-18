@@ -1,20 +1,78 @@
-<div style="padding:25px;">
-	<div class="breadcrumb-container">
-		SSG / <%= t('issues.show.issues')%> / <span><%=@issue.title.upcase%></span>
-	</div>
 
+
+	<style type="text/css">
+		.show-container {
+			padding: 15px 25px 25px 25px;
+		}
+		.issue-info-display-name {
+			float: left;
+			font-size: 16px;
+			font-weight: bold;
+			display: inline-block;
+			margin-bottom: 5px;
+		}
+
+		.issue-info-person {
+			margin-left: 20px;
+			margin-top: 10px;
+			display: inline-block;
+		}
+
+		.issue-info-city {
+			display: inline-block;
+			margin-left: 7px;
+		}
+
+		.issue-info-heart {
+			background: url('/assets/green-heart.png') no-repeat;
+			display: block;
+			float: left;
+			width: 50px;
+			height: 35px;
+		}
+		.issue-info-vote-count {
+			color: #A4D43C;
+			font-weight: bold;
+			font-size: 28px;
+		}
+		.issue-info-count {
+			font-weight: bold;
+			font-size: 14px;
+		}
+		.issue-info-count-title {
+			font-size: 10px;
+		}
+		.issue-info-heart-container {
+			float:left; 
+			width:105px; 
+			padding:10px; 
+			margin: 20px 0px 0px 5px;
+			display: block;
+		}
+	</style>
+
+
+
+<div class="breadcrumb-container">
+	SSG / <%= t('issues.show.issues')%> / <span><%=@issue.title.upcase%></span>
+</div>
+
+<div class="show-container">
 	<div class="issue-container">
+		<!--
 		<div>
 			<%= link_to 'x', issue_path(@issue.id), :style => 'float:right; margin:10px;', :method => :delete, :confirm => t('issues.show.delete_confirm') %>
 		</div>
+	--> 
 		<div class="issue-container-green">
 			<div class="issue-cell">
 				<span class="issue-cell-title"><%=@issue.title.upcase%></span><br/>
-				<span class="font-12"><%=@issue.category.name%>, <%=@issue.city.name%></span><br/>
+				<span class="issue-cell-subtitle"><%=@issue.category.name%>, <%=@issue.city.name%></span><br/>
 			</div>
 			<div class="issue-cell">
 				<p><%=@issue.description.gsub(/(?:\n\r?|\r\n?)/, '<br/>').html_safe%></p>
 			</div>
+			<br />
 			<div  class="issue-cell">
 				<% @issue.images.each do |img| %>
 					<%= image_tag img.image, :style=> 'margin-bottom:20px;'%><br/>
@@ -28,24 +86,28 @@
 		</div>
 	</div>
 
-
 	<div style="float:left; margin-left:20px; width:240px;">
 		<div style="margin-bottom:10px; overflow:auto;">
-			<img src="<%=@issue.user.avatar%>" style="float:left;"/>
-			<span style="float:left;" class="font-18"><%=@issue.user.display_name%></span>
+			<img src="<%= @issue.user.avatar %>" style="float:left;"/>
+			<div class="issue-info-person">
+				<span class="issue-info-display-name"><%= @issue.user.full_name %></span><br />
+				<span class="asset-location-black" ></span>
+				<span class="issue-info-city"><%= @issue.city.name %></span>
+			</div>
 		</div>
 
 		<br style="clear:both;"/>
 
 		<div style="margin-bottom:10px; overflow:auto;">
-			<div style="float:left; width:120px; padding:10px">
-				<%= "#{t('issues.show.likes')} #{@issue.vote_count}" %>
+			<div class="issue-info-heart-container">
+				<div class="issue-info-heart"></div>
+				<span class="issue-info-vote-count"><%= @issue.vote_count %></span>
 			</div>
 			<div style="float:left; width:70px; padding:10px;">
-				<%= @issue.session_view_count%><br/>
-				<%= t('issues.show.views')%><br/>
-				<%= @issue.comments.count%><br/>
-				<%= t('issues.show.comments')%>
+				<span class="issue-info-count"><%= @issue.session_view_count%></spam><br/>
+				<span class="issue-info-count-title"><%= t('issues.show.views')%></spam><br/>
+				<span class="issue-info-count"><%= @issue.comments.count%></spam><br/>
+				<span class="issue-info-count-title"><%= t('issues.show.comments')%></spam>
 			</div>
 		</div>
 
@@ -55,13 +117,13 @@
 		<% if !@user.guest? %>
 			<% if @issue.user_id != @user.id%>
 				<% if @already_voted %>
-					<%= ssg_button("&nbsp;&nbsp;&nbsp;&nbsp;#{t('issues.show.unvote')}&nbsp;&nbsp;&nbsp;&nbsp;", { :onclick => 'unvote()' })%>
+					<%= ssg_button_v2("&nbsp;&nbsp;&nbsp;&nbsp;#{t('issues.show.unvote')}&nbsp;&nbsp;&nbsp;&nbsp;", { :onclick => 'unvote()' } )%>
 				<% else %>
-					<%= ssg_button("&nbsp;&nbsp;&nbsp;&nbsp;#{t('issues.show.vote')}&nbsp;&nbsp;&nbsp;&nbsp;", { :onclick => 'vote()' })%>
+					<%= ssg_button_v2("&nbsp;&nbsp;&nbsp;&nbsp;#{t('issues.show.vote')}&nbsp;&nbsp;&nbsp;&nbsp;", { :onclick => 'vote()' })%>
 				<% end %>
 			<% end %>
 		<% else %>
-			<span class="font-green font-20"><%= t('issues.show.login_to_vote')%></span>
+			<p class="font-green font-18" style="text-align: center;"><%= t('issues.show.login_to_vote')%></p>
 		<% end %>
 		</div>
 

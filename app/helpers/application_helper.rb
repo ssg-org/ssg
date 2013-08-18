@@ -12,8 +12,19 @@ module ApplicationHelper
       # attrs[:class] = "#{attrs[:class]} btn_green"
       attrs.map { |k,v| a_atrs << "#{k.to_s}=\"#{v.to_s}\" " }
       sattrs.map { |k,v| s_atrs << "#{k.to_s}=\"#{v.to_s}\" " }
-      puts a_atrs
+      
       return "<a #{a_atrs}><span class=\"btn_green\"  #{s_atrs}>#{label}</span></a>".html_safe;
+    end
+
+    def ssg_button_v2(label, attrs = {}, sattrs={})
+      a_atrs = ""
+      s_atrs = ""
+      
+      # attrs[:class] = "#{attrs[:class]} btn_green"
+      attrs.map { |k,v| a_atrs << "#{k.to_s}=\"#{v.to_s}\" " }
+      sattrs.map { |k,v| s_atrs << "#{k.to_s}=\"#{v.to_s}\" " }
+      puts a_atrs
+      return "<a #{a_atrs}><span class=\"btn_green_v2\"  #{s_atrs}>#{label}</span></a>".html_safe;
     end
 
     def collect_city_names()

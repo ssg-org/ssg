@@ -34,7 +34,10 @@ class User < ActiveRecord::Base
   
   def display_name
     return self.username
+  end
 
+  def full_name
+    return "Edin Deljkic"
     fname = "#{self.first_name} #{self.last_name}"
     if fname.blank?
       fname = self.email
