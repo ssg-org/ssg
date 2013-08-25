@@ -23,6 +23,10 @@ class User < ActiveRecord::Base
     self.city.nil? ? DEF_ZOOM_LVL : CITY_ZOOM
   end
 
+  def get_city_id
+    self.city.nil? ? -1 : self.city.id
+  end
+
   def get_follows
     return self.follows.order(:type)
   end

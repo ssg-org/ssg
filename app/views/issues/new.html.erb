@@ -37,7 +37,7 @@
 				</tr>
 				<tr>
 					<td colspan="2">
-						<%= f.collection_select(:city_id, @user.get_cities, :id, :name, {:include_blank => t('issues.new.select_city'), @user.city.nil? ? '' : :selected=>@user.city.id } ) %>
+						<%= f.collection_select(:city_id, @user.get_cities, :id, :name, {:include_blank => t('issues.new.select_city'), :selected=>@user.get_city_id } ) %>
 					</td>
 				</tr>
 				<tr>
