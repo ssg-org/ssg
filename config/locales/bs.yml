@@ -19,6 +19,7 @@ bs:
             profile:    'PROFIL'
             settings:   'PODEŠAVANJA'
             logout:     'ODJAVA'
+            error:      'Molimo Vas popunite sva obavezna polja i ponovo prijavite Vaš problem.'
         footer:
             privacy:     'Izjava o privatnosti'
             tos:        'Uslovi korištenja'
@@ -58,6 +59,9 @@ bs:
             name:           'Ime'
             email:          'Email'
             send_button:    'POŠALJI'
+            bread_title:   'KONTAKT'
+            title:          'KONTAKT FORMA'
+            sub_title:      'Ako imate pitanje, molimo Vas iskoristite ovu formu da nas kontaktirate.'
     issues:
         index:
             issues:         'PROBLEMI'
@@ -66,10 +70,12 @@ bs:
             report:         'PRIJAVITE PROBLEM'
             set_location:   'Odaberite lokaciju na mapi'
             issue_title:    'Naziv problema'
-            select_city:    'Molimo odaberite grad'
+            select_city:    'Molimo odaberite opštinu'
             select_category: 'Molimo odaberite kategoriju'
             upload_error:   'Greška pri uploadu slike. Molimo vas da osvježite stranicu i pokušate ponovo'
             issue_desc:     'Opišite problem'
+            btn:            'PRIJAVI'
+            add_img:        'Dodaj sliku'
         show:
             issues:         'PROBLEMI'
             delete_confirm: 'Da li stvarno želite obrisati ovaj problem?'
@@ -121,3 +127,33 @@ bs:
             imageRequired:  'Slika je obavezna.'
             locationRequired: 'Molimo odaberite lokaciju na mapi'
             locationTooFar: 'Odabrana lokacija je previše udaljena'
+        new_issue:
+            title:          'Naziv problema je obavezano polje.'
+            title_l:        'Naziv problema treba da bude duži od 10 karaktera.'
+            description:    'Opis problem je obavezano polje.'
+            description_l:  'Opis problem treba da bude duži od 10 karaktera.'
+            city:           'Opština u kojem se nalazi problem je obavezan.'
+            category:       'Kategorija problema je obavezano polje.'
+            point:          'Kliknite na mapu da označite lokaciju problema.'
+            radius:         'Problem je previše udaljen od izabrane opštine.'
+            image:          'Potrebno je dodati sliku za Vaš problem.'
+        login:
+            username:       'Korisničko ime je obavezno.'
+            password:       'Šifra je obavezna.'
+        register:
+            username:       'Molimo Vas unesite korisničko ime.'
+            city:           'Opština je obavezno polje, izaberite Vašu opštinu.'
+            email:          'Molimo Vas unesite Vašu email adresu.'
+            email_f:        'Vaša email adresa nije odgovarajućeg formata.'
+            password1:      'Molimo Vas unesite šifru.'
+            password2:      'Molimo Vas ponovo unesite šifru.'
+            password_l:     'Šifra mora da sadržava više od 4 karaktera.'
+            password_match: 'Unesene šifre se ne podudaraju.'
+            tos:            'Potrebno je da pristane na uslove korištenja.'
+        contact:
+            question:       'Unesite naziv pitanja.'
+            description:    'Unesite pitanje.'
+            name:           'Unesite Vaše ime.'
+            email:          'Unesite Vašu email adresu.'
+            email_f:        'Email adresa je u pogrešnom formatu.'
+

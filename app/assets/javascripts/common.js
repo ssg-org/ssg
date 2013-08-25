@@ -58,5 +58,30 @@ function distance(lat1, lon1, lat2, lon2, unit) {
 	if (unit=="K") { dist = dist * 1.609344 }
 	if (unit=="N") { dist = dist * 0.8684 }
 	return dist
-}                                                                           
+};
+
+function submitForm(form_id_selector) {
+	$('#form-error-div ul').empty();
+	return $(form_id_selector).submit();
+};                                                                    
+
+jQuery.validator.setDefaults({
+    errorPlacement: function(error, element) {
+    		$('#form-error-div').show();
+    		html = $('#form-error-div ul').html();
+
+    		if (html.indexOf(error.text()) >= 0) {
+    			return;
+    		}
+
+    		// add error class to select box
+    		if (element.is("select")) {
+    			var id_selectbox = '.sbHolder_' + element.attr('id');
+    			$(id_selectbox).addClass('error');
+    		}
+
+        //error.appendTo(element.prev());
+        $('#form-error-div ul').append('<li>' + error.text() + '</li>');
+    }
+});
 

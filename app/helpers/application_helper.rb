@@ -5,7 +5,7 @@ module ApplicationHelper
         return cleared.merge(new_map)
     end
     
-    def ssg_button(label, attrs = {}, sattrs={})
+    def ssg_button(label, attrs = {}, sattrs={}, extend_class="")
       a_atrs = ""
       s_atrs = ""
       
@@ -13,10 +13,10 @@ module ApplicationHelper
       attrs.map { |k,v| a_atrs << "#{k.to_s}=\"#{v.to_s}\" " }
       sattrs.map { |k,v| s_atrs << "#{k.to_s}=\"#{v.to_s}\" " }
       
-      return "<a #{a_atrs}><span class=\"btn_green\"  #{s_atrs}>#{label}</span></a>".html_safe;
+      return "<a #{a_atrs}><span class=\"btn_green #{extend_class}\"  #{s_atrs}>#{label}</span></a>".html_safe;
     end
 
-    def ssg_button_v2(label, attrs = {}, sattrs={})
+    def ssg_button_v2(label, attrs = {}, sattrs={}, extend_class="")
       a_atrs = ""
       s_atrs = ""
       
@@ -24,7 +24,7 @@ module ApplicationHelper
       attrs.map { |k,v| a_atrs << "#{k.to_s}=\"#{v.to_s}\" " }
       sattrs.map { |k,v| s_atrs << "#{k.to_s}=\"#{v.to_s}\" " }
       puts a_atrs
-      return "<a #{a_atrs}><span class=\"btn_green_v2\"  #{s_atrs}>#{label}</span></a>".html_safe;
+      return "<a #{a_atrs}><span class=\"btn_green_v2 #{extend_class}\"  #{s_atrs}>#{label}</span></a>".html_safe;
     end
 
     def collect_city_names()

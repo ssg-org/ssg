@@ -103,7 +103,7 @@
       
       sbHolder = $("<div>", {
         "id": "sbHolder_" + inst.uid,
-        "class": inst.settings.classHolder,
+        "class": inst.settings.classHolder + ' sbHolder_' + $(target).attr('id'),
         "tabindex": $target.attr("tabindex")
       });
       

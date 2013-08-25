@@ -19,6 +19,7 @@ en:
             profile:    'PROFILE'
             settings:   'SETTINGS'
             logout:     'LOGOUT'
+            error:      'Please fill in all requested fields and then submit your issue.'
         footer:
             privacy:    'Privacy policy'
             tos:        'Terms of use'
@@ -54,6 +55,9 @@ en:
             name:           'Name'
             email:          'Email'
             send_button:    'SEND'
+            bread_title:    'CONTACT'
+            title:          'CONTACT FORM'
+            sub_title:      'If you have any questions, please send us them with this form.'
     issues:
         index:
             issues:         'ISSUES'
@@ -61,11 +65,13 @@ en:
         new:
             report:         'REPORT A PROBLEM'
             set_location:   'Click on map to set location'
-            issue_title:  'Problem title'
-            select_city:    'Please select city'
+            issue_title:    'Problem title'
+            select_city:    'Please select county'
             select_category: 'Please select category'
             issue_desc:     'Describe your Problem'
             upload_error:   'Error during upload. Please refresh your browser and try again'
+            btn:            'REPORT'
+            add_img:        'Choose image'
         show:
             issues:         'ISSUES'
             delete_confirm: 'Do you really want to delete this issue?'
@@ -117,3 +123,33 @@ en:
             imageRequired:  'Image is required'
             locationRequired: 'Please select location on the map'
             locationTooFar: 'Selected location is too far from city centar'
+        new_issue:
+            title:          'Issue title is required.'
+            title_l:        'Issue title should be 10 characters long.'
+            description:    'Issue description is required.'
+            description_l:  'Issue description should be 10 characters long.'
+            city:           'Issue county is required.'
+            category:       'Issue category is required.'
+            point:          'Please click on the map to mark location of issue.'
+            radius:         'Issue is too far from selected county.'
+            image:          'Picture of the image is required.'
+        login:
+            username:       'Username is required.'
+            password:       'Password is required.'
+        register:
+            username:       'Please enter your username.'
+            city:           'County needs to be selected, please select county.'
+            email:          'Please enter your email address.'
+            email_f:        'Entered email has invalid format.'
+            password1:      'Please enter your password.'
+            password2:      'Please repeat your entered password.'
+            password_l:     'Password needs to be longer that 4 characters.'
+            password_match: 'Password fields do not match.'
+            tos:            'You need to agree to Terms of Use.'
+        contact:
+            question:       'Enter title of your question.'
+            description:    'Enter your question.'
+            name:           'Enter your name.'
+            email:          'Enter your contact email address.'
+            email_f:        'Provided email has incorrect format.'
+

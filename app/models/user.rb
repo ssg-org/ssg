@@ -11,7 +11,18 @@ class User < ActiveRecord::Base
   has_many    :votes
   has_many    :follows
   belongs_to  :city
+
+  DEF_LAT, DEF_LON, DEF_ZOOM_LVL, CITY_ZOOM = 43.855078, 18.395748, 10, 13
   
+
+  def users_lat_long
+    self.city.nil? ? [DEF_LAT, DEF_LON] : [self.city.lat.to_f, self.city.long.to_f]
+  end
+
+  def users_zoom
+    self.city.nil? ? DEF_ZOOM_LVL : CITY_ZOOM
+  end
+
   def get_follows
     return self.follows.order(:type)
   end
@@ -37,7 +48,6 @@ class User < ActiveRecord::Base
   end
 
   def full_name
-    return "Edin Deljkic"
     fname = "#{self.first_name} #{self.last_name}"
     if fname.blank?
       fname = self.email

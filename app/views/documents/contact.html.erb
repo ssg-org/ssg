@@ -1,13 +1,58 @@
-<div class="contact-form">
-<div class="breadcrumb-container">SSG / <span>CONTACT</span></div>
-		<p><span>If you have any questions, please send us them with this form.<span></p>
-		<div id="contact-details">
-			<%= form_tag '#', :id=>"contact_form" do %>
-				<%= text_field_tag :question, nil, :placeholder => t('documents.contact.question') %><br/>
-				<textarea id="textarea-styled" <%= text_field_tag :details, nil, :placeholder => t('documents.contact.details') %></textarea><br/>
-				<%= text_field_tag :name, nil, :placeholder => t('documents.contact.name') %><br/>
-				<%= text_field_tag :email, nil, :placeholder => t('documents.contact.email') %><br/>
-				<%= ssg_button t('documents.contact.send_button'), {:onclick => "$('\#register_form').submit();"}%>
-			<%end%>
-		</div
+<div class="breadcrumb-container">
+  SSG / <span> <%= t('documents.contact.bread_title') %> </span>
 </div>
+<div class="contact-form">
+	<span class="value_strip() din-font" style="font-size:26px; color:white;"><%= t('documents.contact.title') %></span><br/>
+	<span class="din-font" style="color:white;"><%= t('documents.contact.sub_title') %></span>
+	<br />
+	<br />
+
+	<div id="contact-details">
+		<%= form_tag '#', :id=>"contact_form" do %>
+			<%= text_field_tag :question, nil, :placeholder => t('documents.contact.question') %><br/>
+			<%= text_area_tag :description, nil, :style => 'height:200px;', :placeholder => t('documents.contact.details') %>
+			<%= text_field_tag :name, nil, :placeholder => t('documents.contact.name') %><br/>
+			<%= text_field_tag :email, nil, :placeholder => t('documents.contact.email') %><br/>
+
+			<br />
+			<%= ssg_button t('documents.contact.send_button'), {:onclick => "$('\#contact_form').submit();"}%>
+		<%end%>
+	</div>
+</div>
+
+<script type="text/javascript">
+		$('#contact_form').validate({
+			ignore: null,
+			rules : {
+				question:  {
+					required : true
+				},
+				description : {
+					required : true
+				},
+				name : {
+					required : true
+				},
+				email : {
+					required : true,
+					email: true
+				}
+			},
+			messages: {
+				question: {
+					required: I18n.t('validation.contact.question')
+				},
+				description: {
+					required: I18n.t('validation.contact.description')
+				},
+				name: {
+					required: I18n.t('validation.contact.name')
+				},
+				email: {
+					required: I18n.t('validation.contact.email'),
+					email: I18n.t('validation.contact.email_f')
+				}
+			}
+	});
+
+</script>

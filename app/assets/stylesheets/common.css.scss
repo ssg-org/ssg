@@ -101,6 +101,7 @@ input[type="checkbox"] {
 }
 
 textarea {
+	padding-top: 6px;
 	@extend .input-texts;	
 }
 
@@ -503,17 +504,26 @@ textarea {
 }
 
 .contact-form {
-	padding: 30px;
+	padding: 20px;
 	display: inline-block;
+	background-color:$color-green;
+	color: white;
+	margin: 30px;
 
 	#contact-details {
-		float:center;
-		width:524px;
-		padding: 10px;
-		height:470px;
-		background-color:$color-green;
-		color: white;
+		width:424px;
+		height:420px;
+		padding-bottom: 10px;
 	}
+
+	input {
+		width: 400px;
+	}
+
+	textarea {
+		width: 400px;
+	}
+
 	#textarea-styled {
 		height: 240px;
 		font-family: arial;
@@ -585,4 +595,52 @@ a.account  {
  /* WYSIWYG overrides*/
 .nicEdit-main {
   background-color: white !important;
+}
+
+/* TERMS OF AGREEMENT CSS */
+
+	.tou {
+		color: white;
+		font-family: 'Arial';
+	}
+
+	.tou_link {
+		text-decoration: underline;
+	}
+
+/* CREATE ISSUE */
+
+.margin-top10 {
+	margin-top: 10px;
+}
+
+/* ERROR DIV THAT TOP ONE */
+
+.error {
+	/*border: 1px solid red !important;*/
+}
+
+
+.error-div {
+	padding: 20px;
+  position: absolute;
+  top: 0px;
+  z-index: 2;
+  width: 960px;
+  margin-left:-500px;
+  left:50%;
+	background-color: red;
+	color: white;
+	text-align: center;
+	opacity:0.8;
+	filter:alpha(opacity=80); /* For IE8 and earlier */
+	display: none;
+	font-weight: bold;
+	font-size: 13px;
+	letter-spacing: 1px;
+
+	ul {
+		font-size: 12px;
+		letter-spacing: 0px;
+	}
 }

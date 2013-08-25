@@ -91,8 +91,10 @@
 			<img src="<%= @issue.user.avatar %>" style="float:left;"/>
 			<div class="issue-info-person">
 				<span class="issue-info-display-name"><%= @issue.user.full_name %></span><br />
-				<span class="asset-location-black" ></span>
-				<span class="issue-info-city"><%= @issue.city.name %></span>
+				<div style="float:left">
+					<span class="asset-location-black" ></span>
+					<span class="issue-info-city"><%= @issue.city.name %></span>
+				</div>
 			</div>
 		</div>
 
