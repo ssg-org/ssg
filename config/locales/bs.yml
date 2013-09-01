@@ -79,12 +79,16 @@ bs:
         show:
             issues:         'PROBLEMI'
             delete_confirm: 'Da li stvarno želite obrisati ovaj problem?'
+            delete:         'Obriši problem'
             likes:          'Sviđanja'
             views:          'Pregleda'
             comments:       'Komentara'
             unvote:         'Poništite svoj glas'
             vote:           'Dajte svoj glas'
             login_to_vote:  'Molimo da se prijavite da bi ste glasali'
+        comments:
+            delete_comment:  'Obriši komentar'
+            delete_confirm:   'Da li ste sigurni da želite obrisati komentar?'
         right_menu:
             date:           'DATUM'
             featured:       'ISTAKNUTI'

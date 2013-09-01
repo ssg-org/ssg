@@ -348,6 +348,9 @@ textarea {
 	top:16px;	
 }
 
+
+/* BUTTON */
+
 .btn_green {
 	font-family: 'Conv_DINPro-Bold';
 	height:36px;
@@ -358,6 +361,7 @@ textarea {
 	font-size:14px;
 	color:white;
 	display:inline-block;
+	text-align: center;
 	&:hover {
 		border:1px solid #dddddd;
 	}
@@ -367,6 +371,10 @@ textarea {
 	@extend .btn_green;
 	width: -moz-available;
 	background: url('/assets/btn-v2-back.png'); 
+}
+
+.btn-red {
+	background: url('/assets/btn-v2-back-red.png');
 }
 
 // upload
@@ -592,6 +600,41 @@ a.account  {
 	border-top:1px solid #dedede;
 }
 
+/* COMMENTS CSS */
+
+.comments-title {
+	font-size: 18px;
+	font-weight: bold;
+	margin-top: 20px;
+	color: #3b3b3b;
+}
+.comments-guest {
+	font-size: 13px;
+	font-weight: bold;
+	color: #3b3b3b;
+	display: block;
+	padding: 15px 0px 15px 0px;
+}
+.comment-name {
+	font-size: 14px;
+	font-weight: bold;
+}
+.comment-time {
+	color: #adadad;
+	font-size: 12px;
+}
+.comment-text {
+	font-size: 15px;
+	display: inline-block;
+	margin-top: 3px;
+}
+
+.comment-delete {
+	color: red;
+	font-weight: bold;
+	float: right;
+}
+
  /* WYSIWYG overrides*/
 .nicEdit-main {
   background-color: white !important;
@@ -625,7 +668,7 @@ a.account  {
 	padding: 20px;
   position: absolute;
   top: 0px;
-  z-index: 2;
+  z-index: 9999;
   width: 960px;
   margin-left:-500px;
   left:50%;

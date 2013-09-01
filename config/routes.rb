@@ -83,7 +83,7 @@ Ssg::Application.routes.draw do
   end
 
   resources :images, :only => [:create]
-  resources :comments, :only => [:create]
+  resources :comments, :only => [:create, :destroy]
   resources  :areas
 
   namespace :ssg_admin do

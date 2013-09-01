@@ -116,18 +116,28 @@
 		<br style="clear:both;"/>
 
 		<div style="margin-bottom:10px; overflow:auto;">
-		<% if !@user.guest? %>
-			<% if @issue.user_id != @user.id%>
-				<% if @already_voted %>
-					<%= ssg_button_v2("&nbsp;&nbsp;&nbsp;&nbsp;#{t('issues.show.unvote')}&nbsp;&nbsp;&nbsp;&nbsp;", { :onclick => 'unvote()' } )%>
-				<% else %>
-					<%= ssg_button_v2("&nbsp;&nbsp;&nbsp;&nbsp;#{t('issues.show.vote')}&nbsp;&nbsp;&nbsp;&nbsp;", { :onclick => 'vote()' })%>
+			<% if !@user.guest? %>
+				<% if @issue.user_id != @user.id%>
+					<% if @already_voted %>
+						<%= ssg_button_v2("&nbsp;&nbsp;&nbsp;&nbsp;#{t('issues.show.unvote')}&nbsp;&nbsp;&nbsp;&nbsp;", { :onclick => 'unvote()' } )%>
+					<% else %>
+						<%= ssg_button_v2("&nbsp;&nbsp;&nbsp;&nbsp;#{t('issues.show.vote')}&nbsp;&nbsp;&nbsp;&nbsp;", { :onclick => 'vote()' })%>
+					<% end %>
 				<% end %>
+			<% else %>
+				<p class="font-green font-18" style="text-align: center;"><%= t('issues.show.login_to_vote')%></p>
 			<% end %>
-		<% else %>
-			<p class="font-green font-18" style="text-align: center;"><%= t('issues.show.login_to_vote')%></p>
-		<% end %>
 		</div>
+
+		<% if @user.ssg_admin? || @issue.user_id == @user.id %>
+			<div style="margin-bottom:10px; overflow:auto;">
+				<% button_text = @user.ssg_admin? ? '[ Admin Delete! ]' : t('issues.show.delete') %>
+
+				<%= link_to issue_path(@issue), :class => "", :method => :delete, :title => 'Obriši!', :confirm => t('issues.show.delete_confirm') do %>
+					<%= ssg_button_v2( button_text, {}, {}, 'btn-red', true) %>
+				<% end %>	
+			</div>
+		<% end %>
 
 		<br style="clear:both;"/>
 

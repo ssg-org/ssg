@@ -8,4 +8,17 @@ class CommentsController < ApplicationController
       	format.js
     	end
 	end
+
+  def destroy
+    comment = Comment.find(params[:id])
+
+    if @user.ssg_admin? || comment.is_owned?(@user)
+      comment.destroy
+      flash[:info] = 'Uspjesno izbrisan komentar'
+    else
+      flash[:error] = ApplicationController::ACCESS_DENIED
+    end
+
+    return redirect_to request.referer
+  end
 end

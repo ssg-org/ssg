@@ -46,7 +46,8 @@ class IssuesController < ApplicationController
 
   def destroy
     issue = Issue.find(params[:id])
-    if @user.id == issue.user_id
+
+    if @user.id == issue.user_id || @user.ssg_admin?
       issue.status = Issue::DELETED
       issue.save!
       flash[:info] = 'Uspjesno izbrisan'

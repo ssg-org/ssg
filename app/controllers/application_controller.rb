@@ -6,6 +6,8 @@ class ApplicationController < ActionController::Base
 
   include ApplicationHelper
 
+  ACCESS_DENIED = "Access DENIED!"
+
   def self.disable_layout_for_ajax(layout_name = 'application')
     layout Proc.new { |controller| controller.request.xhr? ? nil : layout_name }    
   end
