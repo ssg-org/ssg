@@ -78,6 +78,13 @@ class UsersController < ApplicationController
   def fb_login
     # Get access token
     puts "*** #{params[:code]}"
+
+    require 'pp'
+    pp ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"
+    pp env["omniauth.auth"]
+    pp ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"
+
+    return issues_path()
     
     if (params[:code])
       fb_client = User.fb_client()

@@ -1,0 +1,71 @@
+<div class="container-flud">
+  <div class="row-fluid">
+    <% if flash[:info] %>
+      <div class="alert alert-info span11" style="margin-left: 10px;">
+          <a class="close" data-dismiss="alert" href="#">×</a> <%= flash[:info] %>
+      </div>
+    <% end %>    
+    <% if flash[:error] %>
+      <div class="alert alert-error span11" style="margin-left: 10px;">
+          <a class="close" data-dismiss="alert" href="#">×</a> <%= flash[:error] %>
+      </div>
+    <% end %>
+  </div>
+  <div class="row-fluid">
+    <!-- TABLE --> 
+    <div class="grid span12">
+      <div class="grid-title">
+        <div class="pull-left">
+          <div class="setup-icon"><i class="icon-bookmark"></i></div>
+          <span>Korisnici</span> 
+          <div class="clearfix"></div>
+        </div>
+        <div class="clearfix"></div>   
+      </div>
+      <div class="grid-content">
+        <div class="dataTables_wrapper" role="grid"> 
+          <table class="table table-bordered table-mod-2 dataTable" id="entry_table" aria-describedby="datatable_3_info">
+            <thead>
+              <tr role="row">
+                <th role="columnheader" tabindex="0" rowspan="1" colspan="1">#</th>
+                <th role="columnheader" tabindex="0" rowspan="1" colspan="1">Username</th>
+                <th role="columnheader" tabindex="0" rowspan="1" colspan="1">email</th>
+                <th role="columnheader" tabindex="0" rowspan="1" colspan="1">Ime</th>
+                <th role="columnheader" tabindex="0" rowspan="1" colspan="1">Opcina</th>
+                <th role="columnheader" tabindex="0" rowspan="1" colspan="1">Prijavio Problema</th>
+                <th role="columnheader" tabindex="0" rowspan="1" colspan="1">Aktivan?</th>
+                <th role="columnheader" tabindex="0" rowspan="1" colspan="1">Tip</th>
+                <th role="columnheader" tabindex="0" rowspan="1" colspan="1">Jezik</th>
+                <th role="columnheader" tabindex="0" rowspan="1" colspan="1">Kreiran</th>
+                <th role="columnheader" tabindex="0" rowspan="1" colspan="1">FB?</th>
+                <th role="columnheader" tabindex="0" rowspan="1" colspan="1">Komande</th>
+              </tr>
+            </thead> 
+            <tbody>
+              <% @users.sort.each do |user| %>
+                <tr id="<%= "row_#{user.id}" %>">
+                  <td><%= user.id %></td>
+                  <td><%= user.username %></td>
+                  <td><%= user.email %></td>
+                  <td><%= user.full_name %></td>
+                  <td><%= user.city ? user.city.name : 'Nema opcine' %></td>
+                  <td><%= user.issues.size %></td>
+                  <td><%= user.active %></td>
+                  <td><%= user.user_type %></td>
+                  <td><%= user.locale %></td>
+                  <td><%= user.created_at.strftime("%d/%m/%Y") %></td>
+                  <td><%= !user.fb_token.nil? %></td>
+                  <td class="admin-list-toolbar-cell" align="center">          
+                    <%= link_to ssg_admin_user_path(user), :class => "btn", :method => :delete, :title => 'Obriši', :confirm => "Da li ste sigurni?" do %>
+                      <i class="icon-remove"></i>
+                    <% end %>
+                  </td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

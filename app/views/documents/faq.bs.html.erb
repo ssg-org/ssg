@@ -1,39 +1,129 @@
+<style type="text/css">
+	
+	#faq_image {
+		width: 100%;
+		height: 550px;
+		background-color: gray;
+		background: url('/assets/faq-header.jpg')
+	}
+
+	#faq_content {
+		position: relative;
+		padding: 10px 25px 20px 25px;
+	}
+
+	.faq-left-column {
+		width: 700px;
+		display: inline-block;
+		vertical-align:top;
+	}
+
+	.faq-left-column span {
+		display: block;
+	}
+
+	.faq-right-column {
+		width: 230px;
+		display: inline-block;
+		vertical-align:top;
+		padding-top: 20px;
+		font-size: 12px;
+	}
+
+	.faq-right-column span {
+		display: block;
+	}
+
+	.header {
+		font-weight: bold;
+		font-size: 19px;
+		padding-top: 10px;
+	}
+
+	.question {
+		font-weight: bold;
+		font-family: 'Conv_DINPro-Medium';
+		font-size: 16px;
+		padding-top: 14px;
+	}
+
+	.answer {
+		padding-top: 4px;
+		font-size: 14px;
+	}
+
+	.title-head {
+		font-weight: bold;
+		font-size: 13px;
+		margin-bottom: 4px;
+		margin-top: 8px;
+	}
+
+	.title-point {
+		margin-bottom: 4px;
+	}
+	
+</style>
+
+<div class="breadcrumb-container">SSG / <span>FAQ</span></div>
+
+<div id="faq_image"></div>
+<div id="faq_content">
+	<div class="faq-left-column">
+		<span class="question">What is SrediSvojGrad?</span>
+		<span class="answer">We are social community that wants to provide its citizens life in nicer environment.</span>
+		<span class="question">Who are the creators of SrediSvojGrad?</span>
+		<span class="answer">Group of citizens......</span>
+		<span class="question">How can you contact us?</span>
+		<span class="answer">Use this contact form (ADD LINK -WHEN CONTACT FORM CREATED)</span>
+
+		<span class="question">How do I add a new issue?</span>
+		<span class="answer">Click on report a problem, if you are a new user please see instructions on how to become user question,  ...</span>
+		<span class="question">Can everybody create/update an issue?</span>
+		<span class="answer">Only registered users can create/update an issue</span>
+		<span class="question">Can I comment on an issue?</span>
+		<span class="answer">dummy</span> 
+		<span class="question">How does the municipality gets informed?</span>
+		<span class="answer">dummy</span>
+		<span class="question">What does the status "open", "in progress" and "closed" mean?</span>
+		<span class="answer">dummy</span> 
+		<span class="question">How do I know an issue has been resolved?</span>
+		<span class="answer">dummy</span>
+		<span class="question">Who gets to see my name and email address when I add an issue?</span>
+		<span class="answer">For a better coorporation between you and your municipality, the information you add when adding an issue will be send to the referenced municipality. Your Display name will be the only information shown to other users.</span>
+		<span class="question">Do you edit/remove inappropriate information?</span>
+		<span class="answer">SrediSvojGrad reserves the right to edit or remove any issues, updates or comments which are considered to be inappropriate. 
+		SrediSvojGrad accepts no responsibility for the content and accuracy of issues submitted by its users.</span>
+
+		<span class="question">How to involve my municipality?</span>
+		<span class="answer">dummy</span> 
+		<span class="question">Are their additional features which can be used by a municipality?</span>
+		<span class="answer">dummy</span> 
+	</div>
+	<div class="faq-right-column">
+		<span class="title-head">About SSG</span>
+		<span class="title-point">What is SrediSvojGrad?</span>
+		<span class="title-point">Who are the creators of SrediSvojGrad?</span>
+		<span class="title-point">How can you contact us?</span>
+		<span class="title-head">Create issue SSG</span>
+		<span class="tile-point">How do I add a new issue?</span>
+		<span class="tile-point">Can everybody create/update an issue?</span>
+		<span class="tile-point">Can I comment on an issue?</span>
+		<span class="tile-point">How does the municipality gets informed?</span>
+		<span class="tile-point">What does the status "open", "in progress" and "closed" mean?</span>
+		<span class="title-head">Know the progress</span>
+		<span class="tile-point">How do I know an issue has been resolved?</span>
+		<span class="tile-point">Who gets to see my name and email address when I add an issue?</span>
+		<span class="tile-point">Do you edit/remove inappropriate information?</span>
+	</div>
+</div>
+
+<!--
 <div class="documents">
-	<div class="breadcrumb-container">SSG / <span>FAQ</span></div>
+	
 	<div id="content">
-		<p class="header"><a name="about_ssg">About SSG</p>
-		<p class="question">What is SrediSvojGrad?</p>
-		<p class="answer">We are social community that wants to provide its citizens life in nicer environment.</p>
-		<p class="question">Who are the creators of SrediSvojGrad?</p>
-		<p class="answer">Group of citizens......</p>
-		<p class="question">How can you contact us?</p>
-		<p class="answer">Use this contact form (ADD LINK -WHEN CONTACT FORM CREATED)</p>
 
-		<p class="header"><a name="how_to">How to use SSG</p>
 
-		<p class="question">How do I add a new issue?</p>
-		<p class="answer">Click on report a problem, if you are a new user please see instructions on how to become user question,  ...</p>
-		<p class="question">Can everybody create/update an issue?</p>
-		<p class="answer">Only registered users can create/update an issue</p>
-		<p class="question">Can I comment on an issue?</p>
-		<p class="answer">dummy</p> 
-		<p class="question">How does the municipality gets informed?</p>
-		<p class="answer">dummy</p>
-		<p class="question">What does the status "open", "in progress" and "closed" mean?</p>
-		<p class="answer">dummy</p> 
-		<p class="question">How do I know an issue has been resolved?</p>
-		<p class="answer">dummy</p>
-		<p class="question">Who gets to see my name and email address when I add an issue?</p>
-		<p class="answer">For a better coorporation between you and your municipality, the information you add when adding an issue will be send to the referenced municipality. Your Display name will be the only information shown to other users.</p>
-		<p class="question">Do you edit/remove inappropriate information?</p>
-		<p class="answer">SrediSvojGrad reserves the right to edit or remove any issues, updates or comments which are considered to be inappropriate. 
-		SrediSvojGrad accepts no responsibility for the content and accuracy of issues submitted by its users.</p>
-
-		<p class="header"><a name="other">Other</p>
-		<p class="question">How to involve my municipality?</p>
-		<p class="answer">dummy</p> 
-		<p class="question">Are their additional features which can be used by a municipality?</p>
-		<p class="answer">dummy</p> 
 	</div>
 	<div id="table-of-contents">
 		<p class="list"><a href="#about_ssg">About SSG</a></p>
@@ -41,3 +131,4 @@
 		<p class="list"><a href="#other">Other</a></p>
 	</div>
 </div>
+-->

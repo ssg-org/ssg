@@ -175,6 +175,21 @@ class User < ActiveRecord::Base
     return self.role & ROLE_GUEST == ROLE_GUEST
   end
 
+  def user_type
+    case role
+    when ROLE_GUEST
+      "Guest"
+    when ROLE_USER
+      "User"
+    when ROLE_COMMUNITY_ADMIN
+      "Administrativni Korisnik"
+    when ROLE_SSG_ADMIN
+      "SSG Admin"
+    else
+      "Rola nije definisana"
+    end
+  end
+
   def self.exists?(username, pwd)
     usr = User.find_by_username(username)
     if (usr && usr.password_hash == Digest::SHA256.hexdigest(pwd))

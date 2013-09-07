@@ -11,9 +11,11 @@ gem 'i18n-js'
 gem 'pg'
 #
 gem 'awesome_print'
+gem 'omniauth-facebook', '1.4.0'
 #gem 'execjs'
 #gem 'therubyracer'
-gem 'oauth2', '0.4.1'
+#gem 'oauth2', '0.4.1'
+
 
 gem 'carrierwave'
 gem 'mini_magick', '3.5.0'

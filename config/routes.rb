@@ -98,6 +98,12 @@ Ssg::Application.routes.draw do
         post :create_or_edit
       end
     end
+
+    resources :users, :only => [:index, :destroy] do
+      collection do
+        post :create
+      end
+    end
   end
 
   resources :cities do
@@ -117,6 +123,9 @@ Ssg::Application.routes.draw do
   # SSG Admin
   get '/ssg_admin/login' => 'ssg_admin#login'
   get '/ssg_admin/'      => 'ssg_admin#index'
+
+
+  get '/auth/facebook/callback' => 'users#fb_login'
 
 
   root :to => 'issues#index'
