@@ -89,10 +89,7 @@ class UsersController < ApplicationController
         forgot_pass.token = Digest::SHA1.hexdigest(Time.now().to_s + email)
         forgot_pass.save!
       else
-        forgot_pass = ForgotPassword.new
-        forgot_pass.user = user
-        forgot_pass.token = Digest::SHA1.hexdigest(Time.now().to_s + email)
-        forgot_pass.save!
+        forgot_pass = @user.create_random_reset_password(user)
       end
 
       UserMailer.reset_password(user, forgot_pass.token, "#{request.protocol}#{request.host_with_port}").deliver
@@ -129,6 +126,7 @@ class UsersController < ApplicationController
   def ssg_admin_login
     user = User.user_ssg_admin?(params[:username], params[:password])
     if user
+      puts "--------- tu gdje treba"
       session[:id] = user.id
       redirect_to ssg_admin_path()
     else

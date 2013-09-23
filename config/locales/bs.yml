@@ -54,6 +54,8 @@ bs:
             register_button:    'REGISTRUJTE SE'
             quick_sign_in:  'BRZA PRIJAVA'
             quick_sign_in_message: 'Brzo i bezbolno.'
+            set_password_bread_title: 'POSTAVITE ŠIFRU'
+            set_password_header: 'Postavite Vašu šifru'
         verify:
             email_subject:  '[SSG] Molimo potvrdite vašu email adresu. '
             reset_pass:     '[SSG] Reset šifre '
