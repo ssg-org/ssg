@@ -222,12 +222,13 @@ class User < ActiveRecord::Base
     return OAuth2::Client.new(Config::Configuration.get(:fb, :application_id), Config::Configuration.get(:fb, :secret_key), :site => Config::Configuration.get(:fb, :site_url))
   end
 
-  def self.create_fb_user(token, email, fb_id, last_name, first_name, is_active = true, role = User::ROLE_USER)
+  def self.create_fb_user(token, email, fb_id, last_name, first_name, username, is_active = true, role = User::ROLE_USER)
     user = User.new
     user.email = email
     user.uuid = UUIDTools::UUID.random_create.to_s
     user.fb_id = fb_id
     user.fb_token = token
+    user.username = username
     user.last_name = last_name
     user.first_name = first_name
     user.active = is_active

@@ -136,48 +136,37 @@ class UsersController < ApplicationController
   end
 
   def fb_login
-    # Get access token
-    puts "*** #{params[:code]}"
 
-    require 'pp'
-    pp ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"
-    pp env["omniauth.auth"]
-    pp ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"
+    fb_info = env["omniauth.auth"]
+    fb_token = fb_info['credentials']['token']
+    fb_id    = fb_info['uid']
+    f_name   = fb_info['info']['first_name']
+    l_name   = fb_info['info']['last_name']
+    email    = fb_info['info']['email']
+    username = fb_info['info']['nickname']
 
-    return issues_path()
-    
-    if (params[:code])
-      fb_client = User.fb_client()
-      access_token = fb_client.auth_code.get_token(params[:code], {:redirect_uri => redirect_uri(), :ssl => true})
+    # check fo user by access_token (fast'n'dirty check)
+    user = User.find_by_fb_token(fb_token)
 
-      require 'ap'
-      ap 'works'
-      ap access_token
+    # not found by token - check by email
+    if (user.nil?)
+      user = User.find_by_email(email)
       
-      # check fo user by access_token (fast'n'dirty check)
-      user = User.find_by_fb_token(access_token.token)
-
-      # not found by token - check by email
+      # Not found by email - check FB-id
       if (user.nil?)
-        me = ActiveSupport::JSON.decode(access_token.get('/me'))
-        user = User.find_by_email(me['email'])
+        user = User.find_by_fb_id(fb_id)
         
-        # Not found by email - check FB-id
         if (user.nil?)
-          user = User.find_by_fb_id(me['id'])
-          
-          if (user.nil?)
-            user = User.create_fb_user(access_token.token, me['email'], me['id'], me['last_name'], me['first_name'] )
-          end
-          
+          user = User.create_fb_user(fb_token, email, fb_id, l_name, f_name, username )
         end
         
       end
       
-      session[:id] = user.id
     end
+      
+    session[:id] = user.id
+
     @redirect_uri = issues_path()
-    
   end
   
 end
