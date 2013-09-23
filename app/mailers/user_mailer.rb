@@ -3,10 +3,12 @@ class UserMailer < ActionMailer::Base
 
   default :from => Config::Configuration.get(:ssg, :email_address)
 
-  def verify(user)
+  def verify(user, url)
 
   	@user = user
-  	@url = verify_users_url(:id => @user.id, :uuid => @user.uuid)
+  	@url = url + verify_users_path() + "?id=#{@user.id}&uuid=#{@user.uuid}"
+
+    #?id=8&uuid=801faacb-979b-44e1-b6eb-eb264699fa15
 
 	  mail(:to => @user.email, :subject => t('users.verify.email_subject'))
   end
@@ -27,7 +29,7 @@ class UserMailer < ActionMailer::Base
 
   	def verify
   		user = User.find(1)
-  		mail = UserMailer.verify(user)  		
+  		mail = UserMailer.verify(user, '')  		
   	end
   end
 end

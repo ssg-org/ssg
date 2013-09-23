@@ -19,14 +19,16 @@ class UsersController < ApplicationController
     puts "User #{user.inspect}"
 
     if user.nil?
-      redirect_to(login_users_path(), :alert => 'User already exists')
+      flash[:error] = 'User already exists'
+      redirect_to(login_users_path())
     else
       if user.save
-        UserMailer.verify(user).deliver
-
-        redirect_to(issues_path(), :notice => 'User was sucessfully created. Email sent')
+        UserMailer.verify(user, "#{request.protocol}#{request.host_with_port}").deliver
+        flash[:info] = 'User was sucessfully created. Email has been sent.'
+        redirect_to(issues_path())
       else
-        redirect_to(login_users_path(), :alert => 'Error creating user')
+        flash[:error] = 'Error creating user'
+        redirect_to(login_users_path())
       end
       
     end
@@ -42,9 +44,9 @@ class UsersController < ApplicationController
 
     if (!user.nil?)
       session[:id] = user.id
-      redirect_to(issues_path(), :notice => "Thank you")
+      redirect_to(issues_path(), :info => "Thank you")
     else
-      redirect_to(login_users_path(), :alert => "Error verifying user")
+      redirect_to(login_users_path(), :error => "Error verifying user")
     end
   end
 
@@ -126,11 +128,10 @@ class UsersController < ApplicationController
   def ssg_admin_login
     user = User.user_ssg_admin?(params[:username], params[:password])
     if user
-      puts "--------- tu gdje treba"
       session[:id] = user.id
       redirect_to ssg_admin_path()
     else
-      redirect_to(ssg_admin_login_path(), :alert => 'Invalid email or password')
+      redirect_to(ssg_admin_login_path(), :error => 'Invalid email or password')
     end
   end
 
