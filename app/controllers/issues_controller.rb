@@ -1,3 +1,4 @@
+# encoding: UTF-8
 class IssuesController < ApplicationController
   
   disable_layout_for_ajax
@@ -50,7 +51,7 @@ class IssuesController < ApplicationController
     if @user.id == issue.user_id || @user.ssg_admin?
       issue.status = Issue::DELETED
       issue.save!
-      flash[:info] = 'Uspjesno izbrisan'
+      flash[:info] = 'Uspješno izbrisan problem!'
     else
       flash[:error] = 'Neuspjesno brisanje!'
     end
