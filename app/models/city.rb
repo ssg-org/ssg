@@ -7,7 +7,7 @@ class City < ActiveRecord::Base
   friendly_id :name, :use => [:slugged]
 	
 	def self.for_search
-	  return City.all
+	  return City.where(:active => true).all
   end
   
   def friendly_id_link
@@ -20,6 +20,7 @@ class City < ActiveRecord::Base
   def self.create_or_edit(params)
     city = (city_id = params[:city_id]).empty? ? City.new : City.find(city_id)
     city.name = params[:city_name]
+    city.active = params[:city_active]
     city.lat  = params[:lat]
     city.long = params[:lon]
     city.save!

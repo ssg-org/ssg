@@ -8,7 +8,7 @@ bs:
             we_are: ' Mi smo društvena zajednica koja želi obezbijediti građanima život u ljepšem okruženju'
             issues: 'PROBLEMI'
             discover:   'OTKRIJ SVE'
-            cities:     'GRADOVI'
+            cities:     'OPŠTINE'
             country:    'ŠIROM DRŽAVE'
             report:     'PRIJAVI'
             create_problem: 'PROBLEM'
@@ -125,7 +125,7 @@ bs:
             re_opened:      'Ponovo otvoren'
     cities:
         index:
-            cities: 'GRADOVI'
+            cities: 'OPŠTINE'
     form:
         common:
             submit: 'Potvrdi'

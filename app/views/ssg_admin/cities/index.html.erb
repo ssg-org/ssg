@@ -27,6 +27,11 @@
         <%= form_tag create_or_edit_ssg_admin_cities_path, { :id => "mainForm", :class => "controls"} do %>
           <input type="hidden" name="city_id">
           <input type="text" required id="inputName" name="city_name" placeholder="Ime Opštine" data-original-title="" title="" class="span12">
+
+          
+          <label class="checkbox">
+            <input type="checkbox" id="inputActive" name="city_active" placeholder="Aktivna?" data-original-title="" title="" > Aktivna Opština?
+          </label>
           
           <input type="text" required id="inputLat" name="lat" placeholder="Latituda" data-original-title="" title="" class="span12">
           <input type="text" required id="inputLong" name="lon" placeholder="Longituda" data-original-title="" title="" class="span12">
@@ -59,6 +64,7 @@
               <tr role="row">
                 <th role="columnheader" tabindex="0" rowspan="1" colspan="1">#</th>
                 <th role="columnheader" tabindex="0" rowspan="1" colspan="1">Naziv</th>
+                <th role="columnheader" tabindex="0" rowspan="1" colspan="1">Aktivna?</th>
                 <th role="columnheader" tabindex="0" rowspan="1" colspan="1">Latituda</th>
                 <th role="columnheader" tabindex="0" rowspan="1" colspan="1">Longituda</th>
                 <th role="columnheader" tabindex="0" rowspan="1" colspan="1">Kontrole</th>
@@ -69,6 +75,7 @@
                 <tr id="<%= "row_#{city.id}" %>">
                   <td><%= city.id %></td>
                   <td><%= city.name %></td>
+                  <td><%= city.active ? 'Da' : 'Ne' %></td>
                   <td><%= city.lat %></td>
                   <td><%= city.long %></td>
                   <td class="admin-list-toolbar-cell">
@@ -95,7 +102,7 @@
 
 <script type="text/javascript">
   
-  FormValues = ['city_id','city_name','lat','lon'];
+  FormValues = ['city_id','city_name','city_active','lat','lon'];
 
   enableCreateBtn = function(flag) {
     $('#btn_create').prop('disabled', !flag);
@@ -106,7 +113,12 @@
     values = $('#row_' + id + ' td');
     // set values to  form
     $.each(values, function(i, v) {
-      $("[name='" + FormValues[i] + "']").val(v.textContent);
+      el = $("[name='" + FormValues[i] + "']");
+      if (el.is(":checkbox")) {
+        el.prop('checked', (v.textContent == 'Da'));
+      } else {
+        el.val(v.textContent);
+      }
     });
 
     enableCreateBtn(false);
@@ -115,7 +127,12 @@
 
   resetForm = function() {
     $.each(FormValues, function(i,v) {
-      $("[name='" + FormValues[i] + "']").val('');
+      el = $("[name='" + FormValues[i] + "']");
+      if (el.is(":checkbox")) {
+        el.prop('checked', false);
+      } else {
+        el.val('');
+      }
     });
 
     enableCreateBtn(true);

@@ -16,7 +16,7 @@
 				<%=issue.title%>
 			</div>
 			<div class="font-gray-dark font-12 issue-info-name">
-				by <%=issue.user.display_name%>
+				by <a href='<%= user_path(issue.user.id) %>' ><%=issue.user.display_name%></a>
 			</div>
 		</a>
 		

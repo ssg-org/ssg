@@ -1,0 +1,61 @@
+<style type="text/css">
+  .no-photo {
+    margin-left: 30px;
+    margin-top: 15px;
+    border: 1px black;
+  }
+
+  .user-info {
+    font-size: 14px;
+    margin-left: 30px;
+  }
+
+  .user-info-full-name {
+    font-size: 22px;
+  }
+
+  .user-info-loc {
+    font-size: 14px;
+    padding-top: 2px;
+  }
+
+  .user-info-more {
+    width: 80px;
+    display: inline-block;
+  }
+
+</style>
+
+
+<div class="breadcrumb-container">
+  SSG / USERS / <span><%= @profile_user.username.upcase %></span>
+</div>
+
+
+
+<div style="display: block;">
+  <div id="user_issues_left_column">
+    <%= image_tag 'no-photo.png', :class => 'no-photo' %>
+    <div class="user-info">
+      <span class="user-info-full-name din-font"> <%= @profile_user.full_name %> </span>
+      <% if @profile_user.city %>
+        <div class="user-info-loc din-font">
+          <span class="asset-location-black" ></span>
+          <span class="font-gray-dark" style="line-height:16px;">&nbsp;<%= @profile_user.city.name%></span>
+        </div>
+      <% end %>
+
+      <br />
+      <span class="user-info-more din-font"> Issues: </span><b><%= @issues.size %></b>
+      <br />
+      <span class="user-info-more din-font"> Follows: </span><b><%= @profile_user.follows.size %></b>
+    </div>
+  </div>
+
+  <div id="user_issues_right_column">
+
+    <%= render :partial => 'issues/issue', :collection => @issues %>
+    
+  </div>
+</div>
+<div style="clear: both;"></div>

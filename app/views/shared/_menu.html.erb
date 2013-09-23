@@ -66,7 +66,7 @@
 					<a class="account"><%=@user.display_name%></a>
 					<div class="submenu">
 					<ul class="root">
-						<li><a href="#">Profile</a></li>
+						<li><a href='<%= user_path(@user.id) %>'>Profile</a></li>
 						<li><a href="#">Settings</a></li>
 						<li><%=link_to 'Logout', logout_user_path(@user.id)%></li>
 					</ul>

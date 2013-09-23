@@ -8,7 +8,7 @@ en:
             we_are: 'We are social community that wants to provide its citizens life in nicer environment'
             issues: 'ISSUES'
             discover:   'DISCOVER ALL'
-            cities:     'CITIES'
+            cities:     'COUNTIES'
             country:    'COUNTRY WIDE'
             report:     'REPORT'
             create_problem: 'YOUR PROBLEM'
@@ -95,7 +95,7 @@ en:
             featured:       'FEATURED'
             categories:     'CATEGORIES'
             resolution:     'RESOLUTION'
-            cities:         'CITIES'
+            cities:         'COUNTIES'
             counties:       'COUNTIES'
             all_time:       'All time'
             today:          'Today'
@@ -121,7 +121,7 @@ en:
             re_opened:      'Re-opened'
     cities:
         index:
-            cities: 'CITIES'
+            cities: 'COUNTIES'
     form:
         common:
             submit: 'Submit'

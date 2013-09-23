@@ -6,6 +6,11 @@ class UsersController < ApplicationController
     redirect_to issues_path()
   end
 
+  def index
+    @profile_user = User.find(params[:id])
+    @issues = Issue.where(:user_id => params[:id]).all
+  end
+
   #
   # Login, logout, signup actions
   #

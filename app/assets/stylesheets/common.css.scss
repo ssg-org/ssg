@@ -277,7 +277,17 @@ textarea {
 	box-shadow:0px 0px 10px #999;
 }
 
+#user_issues_right_column {
+	float:left; 
+	width:685px;
+	padding:20px;
+}
 
+#user_issues_left_column {
+	float:left; 
+	width:240px; 
+	padding: 20px 10px 20px 10px;
+}
 #issues_left_column {
 	float:left; 
 	width:685px;

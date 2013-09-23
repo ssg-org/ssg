@@ -72,6 +72,7 @@ Ssg::Application.routes.draw do
     member do
       get :logout
       get :follow
+      get :index
     end
   end
   
