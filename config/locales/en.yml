@@ -4,7 +4,7 @@
 en:
     shared:
         menu:
-            what:   'What is SSG?'
+            what:   'What is Ulica.ba?'
             we_are: 'We are social community that wants to provide its citizens life in nicer environment'
             issues: 'ISSUES'
             discover:   'DISCOVER ALL'
@@ -38,6 +38,10 @@ en:
             email:   'Email'
             password:   'Password' 
             login_button:   'LOG IN NOW'
+            forgot_password: 'Forgot password?'
+            forgot_password_header: 'Restart your password'
+            forgot_password_sub:    'Please enter email your used for your registration'
+            forgot_bread_title: 'FORGOT PASSWORD'
             register:   'NOT A MEMBER OF SSG?'
             register_message:   'Fill out the form to join us today.'
             register_choose_location: 'Choose your location'
@@ -48,6 +52,7 @@ en:
             quick_sign_in_message: 'Quick and Painless.'
         verify:
             email_subject:  '[SSG] Please verify your email.'
+            reset_pass:     '[SSG] Reset password '
     documents:
         contact:    
             question:       'Question'
@@ -117,6 +122,9 @@ en:
     cities:
         index:
             cities: 'CITIES'
+    form:
+        common:
+            submit: 'Submit'
     validation:
         messages:
             required:       'This field is required.'
@@ -140,6 +148,7 @@ en:
         login:
             username:       'Username is required.'
             password:       'Password is required.'
+            email:          'Email is required.'
         register:
             username:       'Please enter your username.'
             city:           'County needs to be selected, please select county.'

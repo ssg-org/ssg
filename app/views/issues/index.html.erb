@@ -10,8 +10,11 @@
 
 <%= render :partial => 'right_menu' %>
 
-<div class="value_strip() font-15 loading" style="margin:0 auto; width:300px; height:50px; line-height:50px;"><%= t('issues.index.loading')%>...
+<!--
+<div class="value_strip() font-15 loading" style="margin:0 auto; width:300px; height:50px; line-height:50px;">
+  <%= t('issues.index.loading')%>...
 </div>
+-->
 
 
 <% content_for :javascript do %>
@@ -24,10 +27,10 @@
          'scrollTarget': $(window), 		// who gonna scroll? in this example, the full window
          'heightOffset': 50, 				// how many pixels before reaching end of the page would loading start? positives numbers only please
          'beforeLoad': function(){ 		// before load, some function, maybe display a preloader div
-  			$('.loading').show();
+  			//$('.loading').show();
          },
          'afterLoad': function(elementsLoaded){ // after loading, some function to animate results and hide a preloader div
-  			$('.loading').hide();
+  			//$('.loading').hide();
               if ($('#content').children().size() > 100){ 	// if more than 100 results loaded stop pagination (only for test)
                  $('#content').stopScrollPagination();
               }

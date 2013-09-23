@@ -64,6 +64,10 @@ Ssg::Application.routes.draw do
       post  :signup
       get   :login
       get   :verify
+      get   :forgot_password
+      get   :reset_password
+      post  :activate_password
+      post  :forgot_password_submit
     end
     member do
       get :logout
@@ -122,7 +126,7 @@ Ssg::Application.routes.draw do
 
   # SSG Admin
   get '/ssg_admin/login' => 'ssg_admin#login'
-  get '/ssg_admin/'      => 'ssg_admin#index'
+  get '/ssg_admin/'      => 'ssg_admin/cities#index'
 
 
   get '/auth/facebook/callback' => 'users#fb_login'

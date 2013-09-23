@@ -4,6 +4,13 @@
 		width: 240px;
 	}
 
+	.forgot-pass {
+		font: 'Arial';
+		font-size: 12px;
+		text-decoration: underline;
+		color: #666666;
+	}
+
 </style>
 
 <br />
@@ -20,6 +27,12 @@
 		<label class="checkbox">
       <input type="checkbox" value="1" name="remember"> Zapamti me
     </label>
+    <br />
+
+    <span style="padding: 5px; display: inline-block; margin-top: 4px;">
+			<a href="<%= forgot_password_users_path %>" class="forgot-pass"><%= t('users.login.forgot_password') %> </a>
+		</span>
+
     <br />
     <br />
 		<%= ssg_button t('users.login.login_button'), {:id => 'login_submit', :onclick => "submitForm('\#login_form');"}%>
@@ -118,7 +131,7 @@
 			},
 			password1: {
 				required: true,
-      			rangelength: [5, 50]
+      	rangelength: [5, 50]
 			},
 			password2: {
 				required: true,

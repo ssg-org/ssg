@@ -1,3 +1,4 @@
+# encoding: UTF-8
 class UsersController < ApplicationController
 
   def follow
@@ -42,6 +43,60 @@ class UsersController < ApplicationController
     end
   end
 
+  def activate_password
+    forgot_pass = ForgotPassword.where(:token => params[:token]).first
+
+    if forgot_pass.nil?
+      flash[:error] = "Pogrešni kredencijali, reset šifre nije dopušten!"
+      return redirect_to root_path
+    end
+
+    user = forgot_pass.user
+    user.password_hash = Digest::SHA256.hexdigest(params[:password1])
+    user.save!
+
+    forgot_pass.destroy
+
+    flash[:info] = "Šifra uspješno promjenjena!"
+    redirect_to login_users_path()
+  end
+
+  def reset_password()
+    token = params[:token]
+    forgot_pass = ForgotPassword.where(:token => token).first
+    if forgot_pass.nil?
+      flash[:error] = "Pogrešni kredencijali, reset šifre nije dopušten!"
+      return redirect_to root_path()
+    end
+
+    @token = forgot_pass.token
+  end
+
+  def forgot_password_submit()
+    email = params[:email]
+    user  = User.where(:email => email).first
+
+    if user
+      # check if there is already token with this user
+      forgot_pass = ForgotPassword.where(:user_id => user.id).first
+
+      if forgot_pass
+        forgot_pass.token = Digest::SHA1.hexdigest(Time.now().to_s + email)
+        forgot_pass.save!
+      else
+        forgot_pass = ForgotPassword.new
+        forgot_pass.user = user
+        forgot_pass.token = Digest::SHA1.hexdigest(Time.now().to_s + email)
+        forgot_pass.save!
+      end
+
+      UserMailer.reset_password(user, forgot_pass.token, "#{request.protocol}#{request.host_with_port}").deliver
+    end
+
+    flash[:info] = "Check your email, instructions on how to reset your password have been sent!"
+    redirect_to login_users_path()
+  end
+
   def redirect_uri()
     uri = URI.parse(request.url)
     uri.path = '/users/fb_login'
@@ -61,7 +116,8 @@ class UsersController < ApplicationController
       session[:id] = user.id
       redirect_to issues_path()
     else
-      redirect_to(login_users_path(), :alert => 'Invalid email or password')
+      flash[:error] = 'Invalid email or password'
+      redirect_to login_users_path()
     end
   end
 

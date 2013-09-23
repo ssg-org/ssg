@@ -153,7 +153,7 @@ textarea {
 
 .copyright-menu {
 	margin: 5px auto;
-	width: 320px;
+	width: 405px;
 	span {
 		color: $color-gray;
 	}
@@ -165,6 +165,18 @@ textarea {
 	color: #666666;
 	font-size: 14px;
 	margin-top: 4px;
+}
+
+.sub-text-container-sub {
+	@extend .sub-text-container;
+	color: #999999;
+	text-align: center;
+}
+.sub-text-container-head {
+	@extend .sub-text-container;
+	color: black;
+	font-size: 16px;
+	text-align: center;
 }
 
 #city_select:first-child{
@@ -686,4 +698,16 @@ a.account  {
 		font-size: 12px;
 		letter-spacing: 0px;
 	}
+}
+
+.info-div {
+	@extend .error-div;
+	background-color: #769B28;
+	display: block;
+}
+
+.error-flash-div {
+	@extend .error-div;
+	background-color: #CE4300;
+	display: block;
 }

@@ -4,7 +4,7 @@
 bs:
     shared:
         menu:
-            what:   'Šta je SSG?'
+            what:   'Šta je Ulica.ba?'
             we_are: ' Mi smo društvena zajednica koja želi obezbijediti građanima život u ljepšem okruženju'
             issues: 'PROBLEMI'
             discover:   'OTKRIJ SVE'
@@ -41,6 +41,10 @@ bs:
             username:   'Korisničko Ime'
             password:   'Lozinka' 
             login_button:   'PRIJAVITE SE ODMAH'
+            forgot_password: 'Zaboravili ste šifru?'
+            forgot_password_header: 'Restartujte Vašu šifru'
+            forgot_password_sub:    'Unesite email s kojim ste se registrovali'
+            forgot_bread_title: 'RESTART ŠIFRE'
             register:   'NISTE ČLAN SSG-a?'
             register_message:   'Pridružite nam se danas.'
             register_choose_location: 'Odaberite vaš grad'
@@ -52,6 +56,7 @@ bs:
             quick_sign_in_message: 'Brzo i bezbolno.'
         verify:
             email_subject:  '[SSG] Molimo potvrdite vašu email adresu. '
+            reset_pass:     '[SSG] Reset šifre '
     documents:
         contact:    
             question:       'Pitanje'
@@ -121,6 +126,9 @@ bs:
     cities:
         index:
             cities: 'GRADOVI'
+    form:
+        common:
+            submit: 'Potvrdi'
     validation:
         messages:
             required:       'Ovo polje je obavezno.'
@@ -144,6 +152,7 @@ bs:
         login:
             username:       'Korisničko ime je obavezno.'
             password:       'Šifra je obavezna.'
+            email:          'Email je obavezan.'
         register:
             username:       'Molimo Vas unesite korisničko ime.'
             city:           'Opština je obavezno polje, izaberite Vašu opštinu.'

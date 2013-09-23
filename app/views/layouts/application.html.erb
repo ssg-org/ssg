@@ -17,14 +17,20 @@
     <ul>
     </ul>
   </div>
+  <% if flash[:info] %>
+    <div id="flash-info-div" class="info-div">
+      <%= flash[:info] %>
+    </div>
+  <% end %>
+  <% if flash[:error] %>
+    <div id="form-error-div" class="error-flash-div">
+      <%= flash[:error] %>
+    </div>
+  <% end %>
 	<div id="main-menu">
 		<%= render  :partial => 'shared/menu' %>
 	</div>
 
-	<div id="messages">
-		<%= render  :partial => 'shared/messages' %>
-	</div>
-	
 	<div id="main">
 		<%= yield %>
     <!-- MAIN -->
