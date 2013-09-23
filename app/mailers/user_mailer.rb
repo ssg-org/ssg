@@ -17,6 +17,12 @@ class UserMailer < ActionMailer::Base
     mail(:to => @user.email, :subject => t('users.verify.reset_pass'))
   end
 
+  def notify_admin_user_creation(user, token, url)
+    @user = user
+    @url = url + reset_password_users_path() + "?token=" + token + "&set_pwd=true"
+    mail(:to => @user.email, :subject => "Kreiran vam je administarorski nalog na Sredi Svoj Grad")
+  end
+
   class Preview < MailView
 
   	def verify

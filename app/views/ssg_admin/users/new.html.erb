@@ -1,0 +1,41 @@
+<div class="row-fluid">
+    <!-- FORM -->
+    <div class="grid span4 offset4">
+      <div class="grid-title">
+        <div class="pull-left">
+          <div class="setup-icon"><i class="icon-bookmark"></i></div>
+          <span>Kreiraj Korisnika</span> 
+          <div class="clearfix"></div>
+        </div>
+        <div class="clearfix"></div>   
+      </div>
+
+      <div class="grid-content">
+		<div class="new-admin-user">
+			<%= form_tag ssg_admin_users_path(), :id => "create_admin_user" , :method => "POST" do %>
+				<input required name="username" type="text" placeholder="Korisničko ime" data-original-title="" title="" class="span12"/><br />
+				<input required name="email" type="text" placeholder="Email" data-original-title="" title="" class="span12"><br />
+				<input required name="first_name" type="text" placeholder="Ime" data-original-title="" title="" class="span12" /><br />
+				<input required name="last_name" type="text" placeholder="Prezime" data-original-title="" title="" class="span12" /><br />
+				<label for="city">Opština:</label>
+				<select id="city" name="city_id" data-original-title="" title="" class="span12">
+					<% @cities.each do |city| %>						
+						<% if ((@user.community_admin? && @user.get_city_id == city.id) || @user.ssg_admin?) %>
+							<option value="<%=city.id%>" ><%=city.name%></option>
+						<% end %>					
+					<% end %>
+				</select><br />
+				<label for="role">Uloga:</label>
+				<select id="role" name="role" placeholder="Ime Opštine" data-original-title="" title="" class="span12">
+					<option value="<%=User::ROLE_COMMUNITY_ADMIN %>">Community admin</option>
+					<% if @user.ssg_admin? %>
+						<option value="<%=User::ROLE_SSG_ADMIN %>">Admin</option>
+					<% end %>
+				</select><br />
+
+				<button class="btn btn-primary pull-right" type="submit">Kreiraj</button>
+			<% end %>
+			<div class="clearfix"></div>
+		</div>
+	</div>
+</div>

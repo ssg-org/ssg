@@ -22,7 +22,7 @@
 </style>
 <body class="admin">
   <div id="page_container" class="container-fluid admin">
-    <% if @user && @user.ssg_admin? %>
+    <% if @user && (@user.ssg_admin? || @user.community_admin?) %>
       <div class="row-fluid row-m20">
         <div class="span5">
           <a href='<%= ssg_admin_path %>'>

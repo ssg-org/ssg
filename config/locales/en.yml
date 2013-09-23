@@ -50,6 +50,8 @@ en:
             register_button:    'REGISTER'
             quick_sign_in:  'QUICK SIGN IN'
             quick_sign_in_message: 'Quick and Painless.'
+            set_password_bread_title: 'SET PASSWORD'
+            set_password_header: 'Set your password'
         verify:
             email_subject:  '[SSG] Please verify your email.'
             reset_pass:     '[SSG] Reset password '

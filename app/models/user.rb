@@ -47,6 +47,10 @@ class User < ActiveRecord::Base
     return (self.role == ROLE_SSG_ADMIN)
   end
   
+  def community_admin?
+    return (self.role == ROLE_COMMUNITY_ADMIN)
+  end
+  
   def display_name
     return self.username
   end
@@ -204,7 +208,7 @@ class User < ActiveRecord::Base
   #
   def self.user_ssg_admin?(username, pwd)
     usr = exists?(username, pwd)
-    usr && usr.active && usr.ssg_admin? ? usr : nil
+    usr && usr.active && (usr.ssg_admin? || usr.community_admin?) ? usr : nil
   end
   
   def self.guest_user
@@ -272,4 +276,28 @@ class User < ActiveRecord::Base
       return nil
     end
   end
+
+  def create_ssg_admin_user(username, email, city_id, first_name, last_name, role, url)
+    user = User.create_ssg_user(username, email, Digest::SHA1.hexdigest(Time.now().to_s), city_id)
+    
+    unless user.nil?
+      user.role = role
+      user.first_name = first_name
+      user.last_name = last_name
+      user.active = true
+      user.save
+
+      forgot_pass = create_random_reset_password(user)
+      UserMailer.notify_admin_user_creation(user, forgot_pass.token, url).deliver
+    end
+  end
+
+  def create_random_reset_password(user)
+    forgot_pass = ForgotPassword.new
+    forgot_pass.user = user
+    forgot_pass.token = Digest::SHA1.hexdigest(Time.now().to_s + user.email)
+    forgot_pass.save!
+    return forgot_pass
+  end
+
 end
