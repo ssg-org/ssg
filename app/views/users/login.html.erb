@@ -84,7 +84,7 @@
 	});
 
 	$('#fb-login-link').click(function(event) {
-		fb_login('<%=Config::Configuration.get(:fb, :application_id)%>', escape('http://localhost:3000/auth/facebook/callback'), '<%=Config::Configuration.get(:fb, :scope)%>'); 
+		fb_login('<%=Config::Configuration.get(:fb, :application_id)%>', escape('<%=fb_login_users_url()%>'), '<%=Config::Configuration.get(:fb, :scope)%>'); 
 		return false;
 	});
 
