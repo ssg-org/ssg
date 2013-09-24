@@ -136,7 +136,10 @@ class UsersController < ApplicationController
   end
 
   def fb_login
-
+    require 'pp'
+    pp ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"
+    pp env["omniauth.auth"]
+    pp ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"
     fb_info = env["omniauth.auth"]
     fb_token = fb_info['credentials']['token']
     fb_id    = fb_info['uid']
