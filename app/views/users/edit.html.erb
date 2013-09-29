@@ -1,0 +1,152 @@
+<style type="text/css">
+  
+  .left-column-edit-user {
+    width: 360px;
+    height: 600px;
+    padding: 15px;
+    margin: 20px;
+    display: inline-block;
+    vertical-align:middle;
+  }
+
+  .right-column-edit-user {
+    width: 200px;
+    height: 600px;
+    margin-left: 50px;
+    display: inline-block;
+    vertical-align:middle;
+  }
+
+  .upload-preview {
+    margin: auto;
+    width: 250px;
+    padding-bottom: 30px;
+  }
+  .bar {
+      margin-top: 5px;
+      height: 8px;
+      background: #9ECC3A;
+  }
+
+  .sbOverride, .sbOptionsOverride {
+    width: 365px;
+    margin-top: 10px;
+  }
+
+  .user-settings-photo {
+    height: 160px;
+    width: 160px;
+    margin-bottom: 20px;
+    margin-top: 20px;
+  }
+
+  .change-password {
+    font-size: 14px;
+    color: #9ECC3A;
+    font-weight: bold;
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+</style>
+
+<%= form_for @edit_user, url: settings_user_path(@edit_user), :method => :post, :html => { :multipart => true, :id => 'edit_user_settings' }  do |f| %>
+
+  <div class="left-column-edit-user">
+    <span class="change-password"><%= t('users.edit.personal_data') %></span>
+    <br />
+    <br />
+    <br />
+
+    <label><%= t('users.edit.first_name') %></label>
+    <%= f.text_field :first_name, :autocomplete=> :off , :placeholder => 'Ime Korisnika' %>  
+    <label><%= t('users.edit.last_name') %></label>
+    <%= f.text_field :last_name, :autocomplete=> :off , :placeholder => 'Prezime Korisnika' %>
+    <label><%= t('users.edit.county') %></label>
+    <%= f.collection_select(:city_id, @edit_user.get_cities, :id, :name, {}, {   } ) %>
+    <br />
+    <label><%= t('users.edit.language') %></label>
+    <%= f.collection_select(:locale, @edit_user.get_locales, :value, :name, {}, {   } ) %>
+    <br />
+    <br />
+    <br />
+    <span class="change-password"><%= t('users.edit.pass_change') %></span>
+    <br />
+    <br />
+    <br />
+
+    <%= password_field_tag :password1, nil, :placeholder => t('users.login.password'), :class => "" %>
+    <%= password_field_tag :password2, nil, :placeholder => t('users.login.register_repeat_password'), :class => "" %>
+
+  </div>
+  <div class="right-column-edit-user">
+    <span class="change-password"><%= t('users.edit.profile_img') %></span>
+    <br />
+    <br />
+    <br />
+    <%= image_tag @edit_user.image ? @edit_user.image.image.thumb : 'no-photo.png', :id => 'user_photo_settings', :class => 'user-settings-photo' %>
+
+    <input type = "button" id="upload_image_btn" value="<%= I18n.t('users.edit.image') %>" onclick ="javascript:document.getElementById('fileupload_field2').click();">
+    <input id = "fileupload_field2" type="file" style='visibility: hidden;' name="image" multiple/>
+
+    <span id="gallery_inputs">
+      <input type="hidden" id="image_count" name="image_count" value="0" />
+    </span>
+
+    <div id="progress">
+        <div class="bar"  style="width: 0%;"></div>
+    </div>
+    <div id="gallery" style="list-style:none; display: none;">
+    </div>
+    <div class="clearfix"></div>
+    <div style="margin-top: 200px; margin-left: 220px;">
+      <%= ssg_button t('users.edit.edit').upcase, {:onclick => "submitForm('\#edit_user_settings');"}, {}, 'din-font' %>
+    </div>
+  </div>
+
+<% end %>
+
+<script type="text/javascript">
+
+  $(document).ready(function() {
+    $('#user_city_id').selectbox();
+    $('#user_locale').selectbox();
+  });
+
+  $('#edit_user_settings').validate({
+    rules : {
+      password1: {
+        required: false,
+        rangelength: [5, 50]
+      },
+      password2: {
+        required: false,
+        equalTo: '#password1'
+      }
+    },
+    messages: {
+      password1: {
+        rangelength: I18n.t('validation.register.password_l')
+      },
+      password2: {
+        equalTo: I18n.t('validation.register.password_match')
+      }
+    }
+  });
+
+  // UPLOAD SETUP
+  $('#fileupload_field2').fileupload({
+    url : '<%= images_path() %>',
+    type:'post',
+     progressall: function (e, data) {
+        var progress = parseInt(data.loaded / data.total * 100, 10);
+        $('#progress .bar').css('width', progress + '%');
+     },
+    success : function() {
+      $('#progress').css('width', '0%');
+    },
+    fail : function() {
+      alert(I18n.t('issues.new.upload_error'));
+    }
+  });
+
+</script>

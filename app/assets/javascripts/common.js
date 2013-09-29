@@ -57,7 +57,9 @@ function distance(lat1, lon1, lat2, lon2, unit) {
 	dist = dist * 60 * 1.1515
 	if (unit=="K") { dist = dist * 1.609344 }
 	if (unit=="N") { dist = dist * 0.8684 }
-	return dist
+	// return dist
+    // Hack to disable distance validation on creation of issue remove later
+    return 0
 };
 
 function submitForm(form_id_selector) {
@@ -66,6 +68,8 @@ function submitForm(form_id_selector) {
 };                                                                    
 
 jQuery.validator.setDefaults({
+    onkeyup: false,
+    onclick: false,
     errorPlacement: function(error, element) {
     		$('#form-error-div').show();
     		html = $('#form-error-div ul').html();

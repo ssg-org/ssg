@@ -1,4 +1,5 @@
 require 'config/config'
+require 'ostruct'
 
 class Issue < ActiveRecord::Base
   extend FriendlyId
@@ -61,6 +62,20 @@ class Issue < ActiveRecord::Base
   def get_status
     trans_key = TRANS_KEYS[self.status]
     I18n.t("issues.status.#{trans_key}")
+  end
+
+  def self.all_statuses
+    results = []
+    5.downto(1) do |i|
+      require 'pp'
+      pp ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"
+      pp i
+      pp TRANS_KEYS[i]
+      pp ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"
+      trans_key = TRANS_KEYS[i]
+      results << OpenStruct.new(:id => i, :name => I18n.t("issues.status.#{trans_key}"))
+    end
+    results
   end
   
   def self.get_issues(params, limit=9, offset=0)

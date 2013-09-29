@@ -7,10 +7,14 @@ class User < ActiveRecord::Base
   
   GUEST_USER = User.new(:role => ROLE_GUEST, :first_name => 'Guest', :locale => I18n.locale)
 
+  LOCALES = [:bs, :en]
+
   has_many    :issues
   has_many    :votes
   has_many    :follows
+
   belongs_to  :city
+  belongs_to  :image
 
   DEF_LAT, DEF_LON, DEF_ZOOM_LVL, CITY_ZOOM = 43.855078, 18.395748, 10, 13
   
@@ -39,6 +43,16 @@ class User < ActiveRecord::Base
     return City.all
   end
 
+  def get_locales
+    results = []
+
+    LOCALES.each do |localee|
+      results << OpenStruct.new( :name => I18n.t("shared.locale.#{localee}"), :value => localee)
+    end
+
+    results
+  end
+
   def fbuser?
     return !self.fb_id.nil?
   end
@@ -58,7 +72,7 @@ class User < ActiveRecord::Base
   def full_name
     fname = "#{self.first_name} #{self.last_name}"
     if fname.blank?
-      fname = self.email
+      fname = self.username
     end
     return fname
   end
@@ -299,6 +313,24 @@ class User < ActiveRecord::Base
     forgot_pass.token = Digest::SHA1.hexdigest(Time.now().to_s + user.email)
     forgot_pass.save!
     return forgot_pass
+  end
+
+  def settings_update(params)
+    self.first_name = params[:user][:first_name]
+    self.last_name = params[:user][:last_name]
+    self.city_id = params[:user][:city_id]
+    self.locale = params[:user][:locale]
+
+    if params[:image_count] && params[:image_count].to_i > 0
+      last_image = params[:image_count].to_i - 1
+      self.image_id = params["image_#{last_image}"]
+    end
+
+    if params[:password1] && params[:password2]
+      self.password_hash = Digest::SHA256.hexdigest(params[:password1])
+    end
+
+    self.save
   end
 
 end

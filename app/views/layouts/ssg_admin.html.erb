@@ -13,44 +13,67 @@
   }
 
   .logo-position {
-    margin-left: 40px;
+    margin-left: 30px;
   }
   .userinfo-pos {
-    margin-right: 40px;
-    margin-top: 20px;
+    padding-top: 20px;
+    padding-right: 20px;
+  }
+  .logout-pos {
+    margin-left: 20px;
   }
 </style>
 <body class="admin">
   <div id="page_container" class="container-fluid admin">
-    <% if @user && (@user.ssg_admin? || @user.community_admin?) %>
-      <div class="row-fluid row-m20">
-        <div class="span5">
-          <a href='<%= ssg_admin_path %>'>
-            <%= image_tag 'logo-ulica.png', :class => 'logo-header logo-position' %>
-          </a>
-        </div>        
-        <div class="span5 userinfo-header pull-right userinfo-pos">
-          <span class="pull-right"> Dobrodošli, <b><%= @user.display_name %></b> </span><br />
-          <a class="pull-right" href="<%= logout_user_path(@user.id) %>">Odjava</a>
-        </div>
-      </div>
-      <div class="navbar">
-        <div class="navbar-inner">
-          <div class="container">
-            <ul class="nav" id="admin_tab_select">
-              <!--
-                <li><a data-toggle="tab" href="<%= ssg_admin_path() %>">Dashboard</a></li>
-              -->
-              <li><a data-toggle="tab" href="<%= ssg_admin_cities_path() %>">Opštine</a></li>
-              <li><a data-toggle="tab" href="<%= ssg_admin_categories_path() %>">Kategorije</a></li>
-              <li><a data-toggle="tab" href="<%= ssg_admin_users_path() %>">Korisnici</a></li>
-            </ul>
+    <div class="row-fluid">
+      <div class="container-fluid">
+        <% if @user && (@user.ssg_admin? || @user.community_admin?) %>
+          <div class="row-fluid row-m20">
+            <div class="span5">
+              <a href='<%= ssg_admin_path %>'>
+                <%= image_tag 'logo-ulica.png', :class => 'logo-header logo-position' %>
+              </a>
+            </div>        
+            <div class="span7 pull-right userinfo-pos">
+              <a href="<%= logout_user_path(@user.id) %>" class="pull-right logout-pos">Odjava</a>
+              <span class="pull-right"> Dobrodošli, <b><%= @user.display_name %> </b> </span>
+            </div>
           </div>
-        </div>
+          <div class="navbar">
+            <div class="navbar-inner">
+              <div class="container">
+                <ul class="nav" id="admin_tab_select">
+                  <!--
+                    <li><a data-toggle="tab" href="<%= ssg_admin_path() %>">Dashboard</a></li>
+                  -->
+                  <li><a data-toggle="tab" href="<%= ssg_admin_cities_path() %>">Opštine</a></li>
+                  <li><a data-toggle="tab" href="<%= ssg_admin_categories_path() %>">Kategorije</a></li>
+                  <li><a data-toggle="tab" href="<%= ssg_admin_users_path() %>">Korisnici</a></li>
+                  <li><a data-toggle="tab" href="<%= ssg_admin_issues_path() %>">Problemi</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        <% end %>
       </div>
-    <% end %>
-    <br />
-    <br />
+    </div>
+
+    <!-- FLASH MESSAGES -->
+    <div class="row-fluid">
+      <div class="container-fluid">
+        <% if flash[:info] %>
+          <div class="alert alert-info span12">
+              <a class="close" data-dismiss="alert" href="#">×</a> <%= flash[:info] %>
+          </div>
+        <% end %>    
+        <% if flash[:error] %>
+          <div class="alert alert-error span12">
+              <a class="close" data-dismiss="alert" href="#">×</a> <%= flash[:error] %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+
     <!-- CONTENT -->
     <div class="row-fluid">
       <%= yield %>

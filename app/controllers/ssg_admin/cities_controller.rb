@@ -14,6 +14,10 @@ class SsgAdmin::CitiesController < SsgAdminController
 
   # 
   def create_or_edit
+    require 'pp'
+    pp ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"
+    pp params
+    pp ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"
     is_created = City.create_or_edit(params)
 
     flash[:info] = "Uspješno ste #{is_created ? 'kreirali' : 'ažurirali'} grad '#{params[:city_name].capitalize}'!"

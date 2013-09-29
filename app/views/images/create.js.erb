@@ -2,3 +2,8 @@ var img_count = parseInt($('#image_count').val());
 $('<li class="upload-preview"><img height="30" src="<%=@image.image_url%>"></li>').appendTo('#gallery');
 $('<input type="hidden" name="image_' + img_count + '" value="<%=@image.id%>" />').appendTo('#gallery_inputs');
 $('#image_count').val(img_count + 1);
+
+// check for user picture frame (settings page)
+if($("#user_photo_settings").get(0)){
+  $("#user_photo_settings").attr("src", "<%=@image.image_url.html_safe %>");
+}

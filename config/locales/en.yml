@@ -31,6 +31,9 @@ en:
             comments:   'comments'
             discuss:    'Discuss this issue'
             log_in:     'You can log in to join conversation'
+        locale:
+            en:         'English'
+            bs:         'Bosnian'
     users:
         login:
             login:      'LOG IN'
@@ -55,6 +58,17 @@ en:
         verify:
             email_subject:  '[SSG] Please verify your email.'
             reset_pass:     '[SSG] Reset password '
+        edit:
+            edit:           'Save'
+            image:          'Change Photo'
+            personal_data:  'PERSONAL DATA'
+            pass_change:    'PASSWORD CHANGE'
+            profile_img:    'PROFILE IMAGE'
+            first_name:     'Name'
+            last_name:      'Surname'
+            lang:           'Language'
+            county:         'County'
+            succ_save:      'You have successfully updated your data!'
     documents:
         contact:    
             question:       'Question'

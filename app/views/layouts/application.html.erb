@@ -12,18 +12,18 @@
   <%= javascript_include_tag "application" %>
 </head>
 <body alink="#000" vlink="#000" link="#000">
-  <div id="form-error-div" class="error-div">
+  <div id="form-error-div" class="error-div" onclick="hideThisDiv(this);">
     <%= t('shared.menu.error') %>
     <ul>
     </ul>
   </div>
   <% if flash[:info] %>
-    <div id="flash-info-div" class="info-div">
+    <div id="flash-info-div" class="info-div" onclick="hideThisDiv(this);">
       <%= flash[:info] %>
     </div>
   <% end %>
   <% if flash[:error] %>
-    <div id="form-error-div" class="error-flash-div">
+    <div id="form-error-div" class="error-flash-div" onclick="hideThisDiv(this);">
       <%= flash[:error] %>
     </div>
   <% end %>
@@ -42,6 +42,10 @@
 	
 	<script>
 		I18n.locale = "<%= I18n.locale %>";
+
+    function hideThisDiv(e) {
+      $(e).hide();
+    }
 	</script>
 	<%= yield :javascript %>
 </body>

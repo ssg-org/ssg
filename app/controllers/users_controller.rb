@@ -11,6 +11,17 @@ class UsersController < ApplicationController
     @issues = Issue.where(:user_id => params[:id]).all
   end
 
+  def edit
+    @edit_user = User.find(@user.id)
+  end
+
+
+  def settings
+    @user.settings_update(params)
+    flash[:info] = I18n.t('users.edit.succ_save')
+    redirect_to user_path(@user.id)
+  end
+
   #
   # Login, logout, signup actions
   #

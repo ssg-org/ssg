@@ -31,6 +31,9 @@ bs:
             comments:   'komentar'
             discuss:    'Komentarišite problem'
             log_in:     'Morate se prijaviti da bi komentarisali problem'
+        locale:
+            en:         'Engleski'
+            bs:         'Bosanski'
     users:
         login:
             login:      'PRIJAVA'
@@ -59,6 +62,17 @@ bs:
         verify:
             email_subject:  '[SSG] Molimo potvrdite vašu email adresu. '
             reset_pass:     '[SSG] Reset šifre '
+        edit:
+            edit:           'Uredi'
+            image:          'Promjeni Sliku'
+            personal_data:  'LIČNI PODACI'
+            pass_change:    'PROMJENA LOZINKE'
+            profile_img:    'PROFILNA SLIKA'
+            first_name:     'Ime'
+            last_name:      'Prezime'
+            lang:           'Jezik'
+            county:         'Opština'
+            succ_save:      'Uspješno ste ažurirarali Vaše podatke!'
     documents:
         contact:    
             question:       'Pitanje'

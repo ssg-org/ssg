@@ -36,7 +36,6 @@
 
 
 #page_container {
-    margin: 0;
     padding: 0;
     position: relative;
 }
@@ -50,8 +49,9 @@
 
 #page_container.admin {
   
-  .navbar {    
-    margin: 1em 2em 0;
+  .navbar {
+
+    margin-top: 20px;
     
     .navbar-inner {
       padding: 0;  
@@ -156,6 +156,7 @@
   
   .grid-content {
     padding: 10px;
+    overflow: hidden;
   }
 
   .place-form {  

@@ -1,5 +1,5 @@
 class ImagesController < ApplicationController
-	def create
+  def create
     require 'pp'
     pp ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"
     pp params
@@ -11,5 +11,17 @@ class ImagesController < ApplicationController
     respond_to do |format|
       format.js
     end
-	end
+  end
+
+  def destroy
+    image = Image.find(params[:id])
+    city_id = image.issue.city.id
+
+    if @user.ssg_admin? || (@user.community_admin? && city_id == @user.city.id)
+      image.destroy
+    end
+
+    redirect_to :back
+  end
+
 end

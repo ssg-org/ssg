@@ -1,5 +1,8 @@
 <style type="text/css">
-  .no-photo {
+  .user-city-photo {
+    height: 160px;
+    width: 160px;
+    margin-bottom: 10px;
     margin-left: 30px;
     margin-top: 15px;
     border: 1px black;
@@ -35,7 +38,7 @@
 
 <div style="display: block;">
   <div id="user_issues_left_column">
-    <%= image_tag 'no-photo.png', :class => 'no-photo' %>
+    <%= image_tag @profile_user.image ? @profile_user.image.image.thumb : 'no-photo.png', :class => 'user-city-photo' %>
     <div class="user-info">
       <span class="user-info-full-name din-font"> <%= @profile_user.full_name %> </span>
       <% if @profile_user.city %>

@@ -1,19 +1,22 @@
-<div class="container-flud"  style="margin-left: 50px;">
-  <div class="row-fluid">
-    <% if flash[:info] %>
-      <div class="alert alert-info span11" style="margin-left: 10px;">
-          <a class="close" data-dismiss="alert" href="#">×</a> <%= flash[:info] %>
-      </div>
-    <% end %>    
-    <% if flash[:error] %>
-      <div class="alert alert-error span11" style="margin-left: 10px;">
-          <a class="close" data-dismiss="alert" href="#">×</a> <%= flash[:error] %>
-      </div>
-    <% end %>
-  </div>
+<style type="text/css">
+
+  .upload-preview {
+    margin: auto;
+    width: 250px;
+    padding-bottom: 30px;
+  }
+  .bar {
+      margin-top: 5px;
+      height: 8px;
+      background: #5985DE;
+  }
+
+</style>
+
+<div class="container-fluid">
   <div class="row-fluid">
     <!-- FORM -->
-    <div class="grid span3">
+    <div class="grid span4">
       <div class="grid-title">
         <div class="pull-left">
           <div class="setup-icon"><i class="icon-bookmark"></i></div>
@@ -35,7 +38,25 @@
           
           <input type="text" required id="inputLat" name="lat" placeholder="Latituda" data-original-title="" title="" class="span12">
           <input type="text" required id="inputLong" name="lon" placeholder="Longituda" data-original-title="" title="" class="span12">
-   
+
+          <input type="text" id="inputWebsite" name="website" placeholder="Website" data-original-title="" title="" class="span12">
+          <textarea id="inputDescription" name="description" placeholder="Opis" data-original-title="" title="" class="span12">
+          </textarea>
+
+          <input type = "button" id="upload_image_btn" value="Dodaj Sliku Općine" onclick ="javascript:document.getElementById('fileupload_field').click();">
+          <input id = "fileupload_field" type="file" style='visibility: hidden;' name="image" multiple/>
+
+          <span id="gallery_inputs">
+            <input type="hidden" id="image_count" name="image_count" value="0" />
+          </span>
+
+          <div id="progress">
+              <div class="bar"  style="width: 0%;"></div>
+          </div>
+          <div id="gallery" style="list-style:none">
+          </div>
+          <div class="clearfix"></div>
+
           <div class="btn-toolbar" style="text-align: center; margin-left: 0px;">
             <div class="btn-group">
                 <button id="btn_create" class="btn btn-primary" type="submit" >Kreiraj</button>
@@ -48,7 +69,7 @@
     </div>
     
     <!-- TABLE --> 
-    <div class="grid span8" style="margin-left: 20px;">
+    <div class="grid span8">
       <div class="grid-title">
         <div class="pull-left">
           <div class="setup-icon"><i class="icon-bookmark"></i></div>
@@ -67,6 +88,7 @@
                 <th role="columnheader" tabindex="0" rowspan="1" colspan="1">Aktivna?</th>
                 <th role="columnheader" tabindex="0" rowspan="1" colspan="1">Latituda</th>
                 <th role="columnheader" tabindex="0" rowspan="1" colspan="1">Longituda</th>
+                <th role="columnheader" tabindex="0" rowspan="1" colspan="1">Slika?</th>
                 <th role="columnheader" tabindex="0" rowspan="1" colspan="1">Kontrole</th>
               </tr>
             </thead> 
@@ -78,13 +100,16 @@
                   <td><%= city.active ? 'Da' : 'Ne' %></td>
                   <td><%= city.lat %></td>
                   <td><%= city.long %></td>
+                  <td style="display:none;"><%= city.website %></td>
+                  <td style="display:none;"><%= city.description %></td>
+                  <td><%= city.image ? 'Da' : 'Ne' %></td>
                   <td class="admin-list-toolbar-cell">
                     <div class="btn-toolbar">
                       <div class="btn-group">
                         <a onclick="populateForm(<%=city.id%>);" class="btn">
                           <i class="icon-edit"></i>
                         </a>
-                        <%= link_to ssg_admin_city_path(city), :class => "btn", :method => :delete, :title => 'Obriši', :confirm => "Da li ste sigurni?" do %>
+                        <%= link_to ssg_admin_city_path(city), :class => "btn", :method => :delete, :title => 'Obriši', :data => {:confirm => "Da li ste sigurni?"} do %>
                           <i class="icon-remove"></i>
                         <% end %>
                       </div>
@@ -102,7 +127,7 @@
 
 <script type="text/javascript">
   
-  FormValues = ['city_id','city_name','city_active','lat','lon'];
+  FormValues = ['city_id','city_name','city_active','lat','lon','website', 'description'];
 
   enableCreateBtn = function(flag) {
     $('#btn_create').prop('disabled', !flag);
@@ -137,6 +162,22 @@
 
     enableCreateBtn(true);
   };
+
+  // UPLOAD SETUP
+  $('#fileupload_field').fileupload({
+    url : '<%= images_path() %>',
+     progressall: function (e, data) {
+        var progress = parseInt(data.loaded / data.total * 100, 10);
+        $('#progress .bar').css('width', progress + '%');
+     },
+    success : function() {
+      $('#progress').css('width', '0%');
+      $('#upload_image_btn').css('display', 'none');
+    },
+    fail : function() {
+      alert(I18n.t('issues.new.upload_error'));
+    }
+  });
 
   $(document).ready(function() {
   });

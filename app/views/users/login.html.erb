@@ -118,6 +118,9 @@
 
 
 	$('#register_form').validate({
+		onfocusout: function (element, event) {
+      
+    },
 		rules : {
 			username: {
 				required: true

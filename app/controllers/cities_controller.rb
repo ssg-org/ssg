@@ -6,6 +6,11 @@ class CitiesController < ApplicationController
 		@categories = @user.get_categories
 	end
 
+	def show
+		@city = City.find(params[:id])
+		@issues = Issue.where(:city_id => params[:id])
+	end
+
 	def zoom
 		@issues = Issue.get_geo_issues(
 			{:lat => params[:sw_lat], :long => params[:sw_long]}, 

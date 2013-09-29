@@ -73,6 +73,7 @@ Ssg::Application.routes.draw do
       get :logout
       get :follow
       get :index
+      post :settings
     end
   end
   
@@ -87,7 +88,8 @@ Ssg::Application.routes.draw do
     end
   end
 
-  resources :images, :only => [:create]
+  resources :images, :only => [:create, :destroy]
+
   resources :comments, :only => [:create, :destroy]
   resources  :areas
 
@@ -98,13 +100,16 @@ Ssg::Application.routes.draw do
       end
     end
 
+    resources :issues, :only => [:index, :update, :edit, :destroy] do
+    end
+
     resources :categories, :only => [:index, :destroy] do
       collection do
         post :create_or_edit
       end
     end
 
-    resources :users, :only => [:index, :destroy, :new] do
+    resources :users, :only => [:index, :destroy, :edit, :update, :new] do
       collection do
         post :create
       end

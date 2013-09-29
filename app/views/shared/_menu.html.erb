@@ -67,7 +67,7 @@
 					<div class="submenu">
 					<ul class="root">
 						<li><a href='<%= user_path(@user.id) %>'>Profile</a></li>
-						<li><a href="#">Settings</a></li>
+						<li><a href='<%= edit_user_path(@user.id) %>'>Settings</a></li>
 						<li><%=link_to 'Logout', logout_user_path(@user.id)%></li>
 					</ul>
 					</div>

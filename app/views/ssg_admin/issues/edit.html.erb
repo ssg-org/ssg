@@ -1,0 +1,72 @@
+<style type="text/css">
+  .form-image {
+    width:  80px;
+    height: 80px;
+  }
+
+  .delete-container {
+    border: 1px gray solid;
+    padding: 3px;
+    display: inline-block;
+  }
+</style>
+
+<div class="container-fluid">
+  <div class="row-fluid">
+    <!-- FORM -->
+    <div class="grid span6">
+      <div class="grid-title">
+        <div class="pull-left">
+          <div class="setup-icon"><i class="icon-bookmark"></i></div>
+          <span>Uredi problem</span> 
+          <div class="clearfix"></div>
+        </div>
+        <div class="clearfix"></div>   
+      </div>
+
+      <div class="grid-content">
+        <%= form_for @issue, url: ssg_admin_issue_path(@issue), :method => :put, :html => { :multipart => true, :id => 'admin_edit_user' }  do |f| %>
+          <label>Naziv Problema</label>
+          <%= f.text_field :title, :autocomplete=> :off , :class=> 'span12', :placeholder => 'Naziv Problema' %>
+          <label>Općina / Kategorija</label>
+          <%= f.collection_select(:city_id, @user.get_cities, :id, :name, {}, { :class=> 'span6', :disabled => @user.community_admin? } ) %>
+
+          <%= f.collection_select(:category_id, @user.get_categories, :id, :name, { }, { :class=> 'span6'} ) %> <br />
+
+          <label>Status</label>
+          <%= f.collection_select(:status, Issue.all_statuses, :id, :name, { :selected => @issue.status}, { :class=> 'span6'} ) %> <br />
+
+          <label>Korisnik / Problem Kreiran</label>
+          <%= f.text_field :username, :class=> 'span6', :value => @issue.user.username, :disabled => true %>
+          <%= f.text_field :created_at, :class=> 'span6', :value => @issue.created_at.strftime("%d/%m/%Y"), :disabled => true %>
+          <label>Opis</label>
+          <%= f.text_area :description, :class => 'span12', :style=> 'height: 200px;', :placeholder => 'Opis' %>
+
+          <% @issue.images.each do |img| %>
+            <div class="delete-container">
+              <%= link_to image_path(img), :class => "btn", :method => :delete, :title => 'Obriši', :confirm => "Da li ste sigurni?" do %>
+                <i class="icon-remove"></i>
+              <% end %>
+              <%= image_tag img.image, :class => 'form-image' %><br/>
+            </div>
+          <% end %>
+          <br />
+          <br />
+
+          <div class="offset4">
+            <a href="<%= ssg_admin_issues_path() %>" style="text-decoration: none;" >
+              <button class="btn btn-warning"   type="button">Odustani</button>
+            </a>
+            <%= f.submit 'Uredi Problem', :class => 'btn btn-primary span8' %>
+          </div>
+
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+  
+<br />
+<br />
+<br />
+<br />

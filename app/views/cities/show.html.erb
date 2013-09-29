@@ -1,1 +1,72 @@
-SHOW
+<style type="text/css">
+  .user-city-photo {
+    max-width: 160px;
+    max-height: 160px;
+    margin-bottom: 10px;
+    margin-left: 30px;
+    margin-top: 15px;
+    border: 1px black;
+  }
+
+  .user-info {
+    font-size: 14px;
+    margin-left: 30px;
+  }
+
+  .city-full-name {
+    font-size: 22px;
+  }
+
+  .city-info-loc {
+    font-size: 14px;
+    padding-top: 2px;
+    color: #999999;
+  }
+
+  .city-info-desc {
+    font-size: 13px;
+    margin-top: 4px;
+  }
+
+  .user-info-more {
+    width: 80px;
+    display: inline-block;
+  }
+
+</style>
+
+
+<div class="breadcrumb-container">
+  SSG / OPŠTINE / <span><%= @city.name.upcase %></span>
+</div>
+
+
+
+<div style="display: block;">
+  <div id="user_issues_left_column">
+    <%= image_tag @city.image ? @city.image.image.thumb : 'no-city.png', :class => 'user-city-photo' %>
+    <div class="user-info">
+      <span class="city-full-name"> <%= @city.name %> </span>
+      <br />
+      <% if @city.website %>
+      <div style="margin-top: 10px;">
+        <span class="city-info-loc"> Website   </span>
+        <a href='<%= @city.website_url %>'> <%= @city.website %></a>
+      </div>
+      <% end %>
+
+      <% if @city.description %>
+        <div style="margin-top: 10px;">
+          <span class="city-info-desc"> <%= @city.description %> </span>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+  <div id="user_issues_right_column">
+
+    <%= render :partial => 'issues/issue', :collection => @issues %>
+    
+  </div>
+</div>
+<div style="clear: both;"></div>
