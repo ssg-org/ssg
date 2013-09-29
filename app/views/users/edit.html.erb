@@ -65,7 +65,7 @@
     <%= f.collection_select(:city_id, @edit_user.get_cities, :id, :name, {}, {   } ) %>
     <br />
     <label><%= t('users.edit.language') %></label>
-    <%= f.collection_select(:locale, @edit_user.get_locales, :value, :name, {}, {   } ) %>
+    <%= f.collection_select(:locale, User.get_locales, :value, :name, {}, {   } ) %>
     <br />
     <br />
     <br />

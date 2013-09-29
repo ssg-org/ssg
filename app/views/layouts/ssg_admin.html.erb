@@ -58,21 +58,24 @@
       </div>
     </div>
 
-    <!-- FLASH MESSAGES -->
-    <div class="row-fluid">
-      <div class="container-fluid">
-        <% if flash[:info] %>
-          <div class="alert alert-info span12">
-              <a class="close" data-dismiss="alert" href="#">×</a> <%= flash[:info] %>
-          </div>
-        <% end %>    
-        <% if flash[:error] %>
-          <div class="alert alert-error span12">
-              <a class="close" data-dismiss="alert" href="#">×</a> <%= flash[:error] %>
-          </div>
-        <% end %>
+
+    <% if @user && (@user.ssg_admin? || @user.community_admin?) %>
+      <!-- FLASH MESSAGES -->
+      <div class="row-fluid">
+        <div class="container-fluid">
+          <% if flash[:info] %>
+            <div class="alert alert-info span12">
+                <a class="close" data-dismiss="alert" href="#">×</a> <%= flash[:info] %>
+            </div>
+          <% end %>    
+          <% if flash[:error] %>
+            <div class="alert alert-error span12">
+                <a class="close" data-dismiss="alert" href="#">×</a> <%= flash[:error] %>
+            </div>
+          <% end %>
+        </div>
       </div>
-    </div>
+    <% end %>
 
     <!-- CONTENT -->
     <div class="row-fluid">

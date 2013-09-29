@@ -7,7 +7,9 @@
 }
 
 .asset-logo {
-	@include sprite-mixin(0px, -35px, 95px, 95px)
+	background: url(logo-ulica-main.png) no-repeat;
+	width: 95px;
+	height: 95px;
 }
 .asset-learn-more {
 	@include sprite-mixin(0px, -16px, 92px, 17px)

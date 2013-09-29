@@ -7,7 +7,7 @@
 <div style="float:left;">
 
 	<div style="margin-top:30px;">
-		<%= link_to(learn_path) do %>
+		<%= link_to(faq_path()) do %>
 			<div style="float:right;" class="asset-learn-more learn-more"></div>
 		<% end %>
 
@@ -47,6 +47,7 @@
 			</li>
 			
 			<li class="menu-sub">
+				<% session[:referer_url] = new_issue_path() if @user.guest? %>
 				<% path = @user.guest? ?  login_users_path() : new_issue_path() %>
 				<%=link_to t('shared.menu.report'), path, :class => "value_strip() font-black #{'menu-selected' if selection[:report]}"%><br/>
 				<span class="font-gray "><%=t('shared.menu.create_problem')%></span><br/>
@@ -60,20 +61,22 @@
 				<%=link_to t('shared.menu.login'), login_users_path(), :class => "value_strip()", :style => 'line-height:25px;' %>
 			</li>
 			<% else %>
-			<li class="menu-sub" id="bar"  style="float:right;">
-
-				<div class="dropdown">
-					<a class="account"><%=@user.display_name%></a>
-					<div class="submenu">
-					<ul class="root">
-						<li><a href='<%= user_path(@user.id) %>'>Profile</a></li>
-						<li><a href='<%= edit_user_path(@user.id) %>'>Settings</a></li>
-						<li><%=link_to 'Logout', logout_user_path(@user.id)%></li>
-					</ul>
+				<li class="menu-sub" id="bar"  style="float:right;">					
+					<div class="dropdown">
+						<a class="account"><%=@user.display_name%>&nbsp;&nbsp;&nbsp;<%= image_tag 'carrot-down.png', :class => '' %></a>
+						<div class="submenu">
+						<ul class="root">
+							<li><a href='<%= user_path(@user.id) %>'>Profile</a></li>
+							<li><a href='<%= edit_user_path(@user.id) %>'>Settings</a></li>
+							<li><%=link_to 'Logout', logout_user_path(@user.id)%></li>
+						</ul>
+						</div>
 					</div>
-				</div>
 
-			</li>
+				</li>
+				<li  class="menu-sub" style="float:right; padding-right: 0px;">
+					<%= image_tag @user.image ? @user.image.image.thumb : 'no-photo.png', :class => 'profile-user-photo' %>
+				</li>
 			<% end -%>
 
 			<!-- blog

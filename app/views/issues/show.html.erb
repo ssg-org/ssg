@@ -12,7 +12,7 @@
 		}
 
 		.issue-info-person {
-			margin-left: 20px;
+			margin-left: 15px;
 			margin-top: 10px;
 			display: inline-block;
 		}
@@ -86,7 +86,7 @@
 	</div>
 
 	<div style="float:left; margin-left:20px; width:240px;">
-		<div style="margin-bottom:10px; overflow:auto;">
+		<div style="margin-bottom:10px;">
 			<img src="<%= @issue.user.avatar %>" style="float:left;"/>
 			<div class="issue-info-person">
 				<a href='<%= user_path(@issue.user.id) %>'>
@@ -101,22 +101,22 @@
 
 		<br style="clear:both;"/>
 
-		<div style="margin-bottom:10px; overflow:auto;">
+		<div style="margin-bottom:25px;">
 			<div class="issue-info-heart-container">
 				<div class="issue-info-heart"></div>
 				<span class="issue-info-vote-count"><%= @issue.vote_count %></span>
 			</div>
 			<div style="float:left; width:70px; padding:10px;">
-				<span class="issue-info-count"><%= @issue.session_view_count%></spam><br/>
-				<span class="issue-info-count-title"><%= t('issues.show.views')%></spam><br/>
-				<span class="issue-info-count"><%= @issue.comments.count%></spam><br/>
-				<span class="issue-info-count-title"><%= t('issues.show.comments')%></spam>
+				<span class="issue-info-count"><%= @issue.session_view_count%></span><br/>
+				<span class="issue-info-count-title"><%= t('issues.show.views')%></span><br/>
+				<span class="issue-info-count"><%= @issue.comments.count%></span><br/>
+				<span class="issue-info-count-title"><%= t('issues.show.comments')%></span>
 			</div>
 		</div>
 
-		<br style="clear:both;"/>
-
-		<div style="margin-bottom:10px; overflow:auto;">
+		<br />
+		<br />
+		<div style="margin-bottom:10px;">
 			<% if !@user.guest? %>
 				<% if @issue.user_id != @user.id%>
 					<% if @already_voted %>
@@ -131,7 +131,7 @@
 		</div>
 
 		<% if @user.ssg_admin? || @issue.user_id == @user.id %>
-			<div style="margin-bottom:10px; overflow:auto;">
+			<div style="margin-bottom:10px;">
 				<% button_text = @user.ssg_admin? ? '[ Admin Delete! ]' : t('issues.show.delete') %>
 
 				<%= link_to issue_path(@issue), :class => "", :method => :delete, :title => 'Obriši!', :confirm => t('issues.show.delete_confirm') do %>

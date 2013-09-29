@@ -62,6 +62,10 @@ function distance(lat1, lon1, lat2, lon2, unit) {
     return 0
 };
 
+function global_locale_change(e) {
+    alert(e);
+};
+
 function submitForm(form_id_selector) {
 	$('#form-error-div ul').empty();
 	return $(form_id_selector).submit();

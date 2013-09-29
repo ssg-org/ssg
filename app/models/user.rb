@@ -43,7 +43,7 @@ class User < ActiveRecord::Base
     return City.all
   end
 
-  def get_locales
+  def self.get_locales
     results = []
 
     LOCALES.each do |localee|
@@ -321,22 +321,6 @@ class User < ActiveRecord::Base
     self.city_id = params[:user][:city_id]
     self.locale = params[:user][:locale]
 
-
-    require 'pp'
-    pp ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"
-    pp 'Image count'
-    pp params[:image_count]
-    pp params[:image_count].to_i > 0
-    pp 'Uslov'
-    pp params[:image_count] && params[:image_count].to_i > 0
-    pp 'Last image index'
-    pp params[:image_count].to_i - 1
-    last_image = params[:image_count].to_i - 1
-    pp 'Key'
-    pp params["image_#{last_image}"]
-    pp params["image_#{last_image}".to_sym]
-    pp ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"
-
     if params[:image_count] && params[:image_count].to_i > 0
       last_image = params[:image_count].to_i - 1
       self.image_id = params["image_#{last_image}"]
@@ -345,11 +329,6 @@ class User < ActiveRecord::Base
     if params[:password1] && params[:password2]
       self.password_hash = Digest::SHA256.hexdigest(params[:password1])
     end
-
-    require 'pp'
-    pp ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"
-    pp self
-    pp ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"
 
     self.save
   end

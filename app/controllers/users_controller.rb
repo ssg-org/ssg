@@ -129,7 +129,7 @@ class UsersController < ApplicationController
     user = User.exists?(params[:username], params[:password])
     if user && user.active
       session[:id] = user.id
-      redirect_to issues_path()
+      redirect_to session[:referer_url] ? session.delete(:referer_url) : issues_path()
     else
       flash[:error] = 'Invalid email or password'
       redirect_to login_users_path()
@@ -142,7 +142,8 @@ class UsersController < ApplicationController
       session[:id] = user.id
       redirect_to ssg_admin_path()
     else
-      redirect_to(ssg_admin_login_path(), :error => 'Invalid email or password')
+      flash[:error] = "Pogrešan username / password!"
+      redirect_to(ssg_admin_login_path())
     end
   end
 

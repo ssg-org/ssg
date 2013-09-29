@@ -127,8 +127,7 @@ textarea {
 .footer-menu {
 	list-style:none;
 	color: $color-green;
-	margin: 5px auto;
-	width: 400px;
+	margin: auto;
 	
 	li {
 		float:left;
@@ -150,10 +149,28 @@ textarea {
 	}
 }
 
+.main-footer-menu {
+	width: 450px;
+	overflow: hidden;
+	margin: auto;
+	text-align: center;
+	line-height: 22px;
+	margin-top: 15px;
+}
+
+.locale-selection {
+	font-size: 14px;
+	font-weight: bold;
+	color: white;
+	margin: auto;
+	a {
+		color: $color-green;
+	}
+}
 
 .copyright-menu {
-	margin: 5px auto;
-	width: 405px;
+	margin: auto;
+
 	span {
 		color: $color-gray;
 	}
@@ -330,7 +347,18 @@ textarea {
 
 .issue-category-part {
 	height:31px;
+	line-height: 31px;
 }
+
+.issue-category-part-name {
+	float: right;
+	white-space: nowrap;
+	overflow: hidden;
+	width: 110px;
+	text-align: right;
+	margin-right: 10px;
+}
+
 .issue-share-part {
 	padding:7px; 
 	background-color:#f6f6f6; 
@@ -570,6 +598,13 @@ textarea {
 	height: 17px;
 	text-align:left;
 }
+.profile-user-photo {
+	width: 25px;
+	height: 25px;
+	border: 1px solid black;
+	float: left;
+}
+
 .submenu {
 	background: #fff;
 	position: absolute;

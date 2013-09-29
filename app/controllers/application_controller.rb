@@ -12,6 +12,11 @@ class ApplicationController < ActionController::Base
     layout Proc.new { |controller| controller.request.xhr? ? nil : layout_name }    
   end
 
+  def change_locale
+    session[:locale] = params[:locale]
+    redirect_to :back
+  end
+
   private
   def check_login
     # Assing uniq seed for 'view counting'
@@ -20,13 +25,19 @@ class ApplicationController < ActionController::Base
       cookies[:unique] = Random.new.rand(1..999999999)
     end
 
+    locale = I18n.default_locale
+
     if (session[:id])
       @user = User.find_by_id(session[:id])
+      locale = @user.locale
     else
       # Guest if not from session
       @user = User.guest_user
+      # check for session locale
+      locale = session[:locale] if session[:locale]
     end
-    I18n.locale = @user.locale
+
+    I18n.locale = locale
   end
   
   private

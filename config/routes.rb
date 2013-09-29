@@ -130,6 +130,9 @@ Ssg::Application.routes.draw do
   get '/terms'    => 'documents#terms' 
   get '/learn'    => 'documents#learn'
 
+  # change locale
+  get '/locale_change' => 'application#change_locale'
+
   # SSG Admin
   get '/ssg_admin/login' => 'ssg_admin#login'
   get '/ssg_admin/'      => 'ssg_admin/cities#index'

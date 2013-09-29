@@ -31,8 +31,10 @@
 	<hr style="margin-top:3px;"/>
 	
 	<div class="issue-category-part" >
-		<span class="font-gray-dark font-12" style="line-height:31px;"><b>&nbsp;&nbsp;&nbsp;&nbsp;<%=issue.get_status %></b></span>
-		<span class="font-gray-dark font-13" style="line-height:31px; float: right; margin-right: 10px;">&nbsp;&nbsp;&nbsp;&nbsp;<%=issue.category.name%></span>
+		<span class="font-gray-dark font-12"><b>&nbsp;&nbsp;&nbsp;&nbsp;<%=issue.get_status %></b></span>
+		<span class="font-gray-dark font-13 issue-category-part-name">
+			&nbsp;&nbsp;&nbsp;<%=issue.category.name%>
+		</span>
 	</div>
 	
 	<hr/>
