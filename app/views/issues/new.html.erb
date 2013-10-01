@@ -42,7 +42,7 @@
 				</tr>
 				<tr>
 					<td colspan="2">
-						<%= f.collection_select(:category_id, @user.get_categories, :id, :name, {:include_blank => t('issues.new.select_category')}) %>
+						<%= f.collection_select(:category_id, @user.get_all_categories, :id, :name, {:include_blank => t('issues.new.select_category')}) %>
 					</td>
 				</tr>
 				<tr>
@@ -78,7 +78,7 @@
 				</tr>
 				<tr>
 					<td>
-						<input type="checkbox" value="1" name="terms_of_use" id="terms_of_use">
+						<input type="checkbox" checked value="1" name="terms_of_use" id="terms_of_use">
 						<span class="tou"><%= t('users.login.register_agree_tou') %> 
 							<a href="<%= terms_path %>" class="tou_link tou"><%= t('users.login.register_agree_tou2') %></a>
 						</span>

@@ -1,0 +1,12 @@
+Dear User,
+
+Your account has been created on portal Ulica.ba
+To start using our portal Ulica.ba, you need to setup your password. Your password can be set on following link: <%= @url %>
+
+Your account data
+
+Username:</b> <%= @user.username %>
+
+Copyright 2013 ULICA.ba by Sredi Svoj Grad CPCD.
+http://ssg-dev.herokuapp.com/
+This email is generic and you should not reply to it.

@@ -1,3 +1,4 @@
+# encoding: UTF-8
 class User < ActiveRecord::Base
 
   ROLE_GUEST            = 1
@@ -35,8 +36,27 @@ class User < ActiveRecord::Base
     return self.follows.order(:type)
   end
   
+  # only parent categories are returned here
   def get_categories
-    return Category.all
+    get_sub_categories(nil)
+  end
+
+  def get_sub_categories(parent_id)
+    Category.where(:parent_id => parent_id).all
+  end
+
+  def get_all_categories()
+    parent_categories = get_categories()
+    results = []
+    parent_categories.each do |cat|
+      results << OpenStruct.new(:id => cat.id, :name => cat.name)
+      sub_categories = get_sub_categories(cat.id)
+      sub_categories.each do |sub_cat|
+        results << OpenStruct.new(:id => sub_cat.id, :name => "·· #{sub_cat.name}")
+      end
+    end
+
+    results
   end
 
   def get_cities
@@ -327,7 +347,9 @@ class User < ActiveRecord::Base
     end
 
     if params[:password1] && params[:password2]
-      self.password_hash = Digest::SHA256.hexdigest(params[:password1])
+      if !params[:password1].strip.empty? && params[:password1].eql?(params[:password2])
+        self.password_hash = Digest::SHA256.hexdigest(params[:password1])
+      end
     end
 
     self.save

@@ -7,13 +7,13 @@ class Issue < ActiveRecord::Base
   OPEN          = 1
   IN_PROGRESS   = 2
   ACCEPTED      = 3
-  FIXED         = 3
-  DELETED       = 4
-  RE_OPENED     = 5
+  FIXED         = 4
+  DELETED       = 5
+  RE_OPENED     = 6
 
   TRANS_KEYS = ['none','open','in_progress', 'accepted','fixed','deleted','re_opened']
 
-  default_scope where('status <> 4')
+  default_scope where('status <> 5')
 
   attr_accessible :title, :category, :city, :description, :user, :lat, :long, :status, :vote_count, :view_count, :comment_count, :share_count, :created_at
 
@@ -66,7 +66,7 @@ class Issue < ActiveRecord::Base
 
   def self.all_statuses
     results = []
-    5.downto(1) do |i|
+    6.downto(1) do |i|
       require 'pp'
       pp ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"
       pp i
@@ -85,10 +85,15 @@ class Issue < ActiveRecord::Base
     # Order
     order_by = 'created_at desc'
 
+
+
     # Get category, status and city params
     if (!params[:category].blank?)
-      query << 'category_id = :category_id'
-      values[:category_id] = params[:category]
+      #query << 'category_id = :category_id'
+      #values[:category_id] = params[:category]
+      query << 'category_id IN (:category_ids)'
+      # category id + all its subcategory ids
+      values[:category_ids] = [params[:category]].concat(Category.subcategories_ids(params[:category]))
     end
 
     if (!params[:status].blank?)

@@ -21,4 +21,8 @@ class Category < ActiveRecord::Base
 
     return category_id.empty?
   end
+
+  def self.subcategories_ids(parent_id)
+    Category.select(:id).where(:parent_id => parent_id).pluck(:id)
+  end
 end

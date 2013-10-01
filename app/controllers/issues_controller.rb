@@ -4,6 +4,14 @@ class IssuesController < ApplicationController
   disable_layout_for_ajax
   
   def index
+    #@user = User.find(2)
+
+    #UserMailer.verify(@user, "#{request.protocol}#{request.host_with_port}").deliver
+    #UserMailer.reset_password(@user, '1321323', "#{request.protocol}#{request.host_with_port}").deliver
+    #UserMailer.notify_admin_user_creation(@user, "1231231", "aaaaa").deliver
+
+
+
     params[:offset] ||= 0
     @issues = Issue.get_issues(params, 12, params[:offset].to_i)
     @city_names = collect_city_names() unless @city_names
@@ -30,6 +38,8 @@ class IssuesController < ApplicationController
       image_ids << params["image_#{i}"]
     end
 
+
+    flash[:info] = I18n.t('issues.new.success')
     @user.create_issue(params[:issue][:title], params[:issue][:category_id], params[:issue][:city_id], params[:issue][:description], params[:issue][:lat], params[:issue][:long],image_ids)
     redirect_to issues_path()
   end

@@ -42,6 +42,11 @@
 	<div class="issue-share-part">
 		<span class="asset-heart"></span><span style="float:left;" class="font-bold font-14">&nbsp;&nbsp;<%=issue.vote_count%>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
 		<span class="asset-eye"></span><span style="float:left;" class="font-bold font-14">&nbsp;&nbsp;<%=issue.session_view_count%></span>
-		<span style="float:right; margin-top: 2px; cursor: pointer;" class="font-13 font-gray-dark">Share</span> 
+		<span style="float:right; margin-top: 2px; cursor: pointer;" class="font-13 font-gray-dark">
+			<a href="https://www.facebook.com/sharer/sharer.php?u=<%=issue_path(issue.friendly_id)%>" onclick="window.open(this.href, 'mywin',
+'left=20,top=20,width=500,height=200,toolbar=1,resizable=0'); return false;">
+  			Share
+			</a>
+		</span> 
 	</div>
 </div>

@@ -47,7 +47,7 @@ bs:
             forgot_password: 'Zaboravili ste šifru?'
             forgot_password_header: 'Restartujte Vašu šifru'
             forgot_password_sub:    'Unesite email s kojim ste se registrovali'
-            forgot_bread_title: 'RESTART ŠIFRE'
+            forgot_bread_title: 'PROMJENA LOZINKE'
             register:   'NISTE ČLAN SSG-a?'
             register_message:   'Pridružite nam se danas.'
             register_choose_location: 'Odaberite vaš grad'
@@ -89,6 +89,7 @@ bs:
             loading:        'Učitavanje'
         new:
             report:         'PRIJAVITE PROBLEM'
+            success:        'Uspješno ste prijavili problem u Vašoj opštini!'
             set_location:   'Odaberite lokaciju na mapi'
             issue_title:    'Naziv problema'
             select_city:    'Molimo odaberite opštinu'

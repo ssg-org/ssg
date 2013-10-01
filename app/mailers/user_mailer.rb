@@ -10,19 +10,29 @@ class UserMailer < ActionMailer::Base
 
     #?id=8&uuid=801faacb-979b-44e1-b6eb-eb264699fa15
 
-	  mail(:to => @user.email, :subject => t('users.verify.email_subject'))
+	  using_locale(user.locale) { mail(:to => @user.email, :subject => t('users.verify.email_subject')) }
   end
 
   def reset_password(user, token, url)
     @user = user
     @url = url + reset_password_users_path() + "?token=" + token
-    mail(:to => @user.email, :subject => t('users.verify.reset_pass'))
+    using_locale(user.locale) { mail(:to => @user.email, :subject => t('users.verify.reset_pass')) }
   end
 
   def notify_admin_user_creation(user, token, url)
     @user = user
     @url = url + reset_password_users_path() + "?token=" + token + "&set_pwd=true"
-    mail(:to => @user.email, :subject => "Kreiran vam je administarorski nalog na Sredi Svoj Grad")
+    using_locale(user.locale) { mail(:to => @user.email, :subject => "Kreiran Vam je administratorski nalog na ULICA.ba") }
+  end
+
+  protected
+
+  def using_locale(locale, &block)
+    original_locale = I18n.locale
+    I18n.locale = locale
+    return_value = yield
+    I18n.locale = original_locale
+    return_value
   end
 
   class Preview < MailView
