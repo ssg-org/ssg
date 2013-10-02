@@ -105,7 +105,7 @@
     return "#" + hex(rgb[1]) + hex(rgb[2]) + hex(rgb[3]);
   }
 
-  FormValues = ['category_id','category_name','parent_category','description', 'color'];
+  FormValues = ['category_id','category_name','parent_category_id','description', 'color'];
 
   enableCreateBtn = function(flag) {
     $('#btn_create').prop('disabled', !flag);
@@ -113,6 +113,7 @@
   };
 
   populateForm = function(id, parent_id) {
+
     values = $('#row_' + id + ' td');
     // set values to  form
     var el;

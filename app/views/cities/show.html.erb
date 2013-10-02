@@ -35,12 +35,9 @@
 
 </style>
 
-
-<div class="breadcrumb-container">
-  SSG / OPŠTINE / <span><%= @city.name.upcase %></span>
+<div class="breadcrumb-container" style="margin-left: 40px; margin-bottom: -8px;">
+  <a href="<%= root_path() %>">ULICA.BA<a/> / <a href="<%= cities_path() %>"><%= t('issues.right_menu.counties') %><a/> / <span><%= @city.name %></span>
 </div>
-
-
 
 <div style="display: block;">
   <div id="user_issues_left_column">

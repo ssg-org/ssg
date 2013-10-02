@@ -15,7 +15,8 @@ class Issue < ActiveRecord::Base
 
   default_scope where('status <> 5')
 
-  attr_accessible :title, :category, :city, :description, :user, :lat, :long, :status, :vote_count, :view_count, :comment_count, :share_count, :created_at
+  attr_accessor :image_url, :short_desc, :issue_url
+  attr_accessible  :title, :category, :city, :description, :user, :lat, :long, :status, :vote_count, :view_count, :comment_count, :share_count, :created_at
 
   belongs_to 	:user
   belongs_to  :category
@@ -27,7 +28,6 @@ class Issue < ActiveRecord::Base
   has_many    :unique_views, :dependent => :destroy
   
   friendly_id :title, :use => [:slugged]
-
 
   def mark_as_viewed(user_uniq_cookie_id) 
     uniq_view = self.unique_views.where(:session => user_uniq_cookie_id).first
@@ -49,6 +49,12 @@ class Issue < ActiveRecord::Base
     self.save!
   end
 
+  def setup_json_attributes!()
+    @image_url = self.images.first.image.thumb.url
+    @short_desc = ApplicationController.helpers.truncate(self.description, :length => 200)
+    @issue_url = Rails.application.routes.url_helpers.issue_path(self.friendly_id)
+  end
+
   def self.get_geo_issues(south_west_geo, north_east_geo, limit)
     sw_lat = south_west_geo[:lat]
     sw_long = south_west_geo[:long]
@@ -67,15 +73,19 @@ class Issue < ActiveRecord::Base
   def self.all_statuses
     results = []
     6.downto(1) do |i|
-      require 'pp'
-      pp ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"
-      pp i
-      pp TRANS_KEYS[i]
-      pp ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"
       trans_key = TRANS_KEYS[i]
       results << OpenStruct.new(:id => i, :name => I18n.t("issues.status.#{trans_key}"))
     end
     results
+  end
+
+  def as_json(options={})
+    # also can be solved by adding :methods to options hash
+    response = super(options)
+    response[:image_url] = self.image_url
+    response[:short_desc] = self.short_desc
+    response[:issue_url] = self.issue_url
+    response
   end
   
   def self.get_issues(params, limit=9, offset=0)

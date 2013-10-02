@@ -30,15 +30,15 @@ class UsersController < ApplicationController
     puts "User #{user.inspect}"
 
     if user.nil?
-      flash[:error] = 'User already exists'
+      flash[:error] = I18n.t('users.msgs.exists')
       redirect_to(login_users_path())
     else
       if user.save
         UserMailer.verify(user, "#{request.protocol}#{request.host_with_port}").deliver
-        flash[:info] = 'User was sucessfully created. Email has been sent.'
+        flash[:info] = I18n.t('users.msgs.created')
         redirect_to(issues_path())
       else
-        flash[:error] = 'Error creating user'
+        flash[:error] = I18n.t('users.msgs.error_create')
         redirect_to(login_users_path())
       end
       
@@ -55,9 +55,11 @@ class UsersController < ApplicationController
 
     if (!user.nil?)
       session[:id] = user.id
-      redirect_to(issues_path(), :info => "Thank you")
+      flash[:info] = I18n.t('users.msgs.thanks')
+      redirect_to(issues_path())
     else
-      redirect_to(login_users_path(), :error => "Error verifying user")
+      flash[:error] = I18n.t('users.msgs.error_verify')
+      redirect_to(login_users_path())
     end
   end
 
@@ -65,7 +67,7 @@ class UsersController < ApplicationController
     forgot_pass = ForgotPassword.where(:token => params[:token]).first
 
     if forgot_pass.nil?
-      flash[:error] = "Pogrešni kredencijali, reset šifre nije dopušten!"
+      flash[:error] = I18n.t('users.msgs.error_creds')
       return redirect_to root_path
     end
 
@@ -75,7 +77,7 @@ class UsersController < ApplicationController
 
     forgot_pass.destroy
 
-    flash[:info] = "Šifra uspješno promjenjena!"
+    flash[:info] = I18n.t('users.msgs.pass_change')
     redirect_to login_users_path()
   end
 
@@ -83,7 +85,7 @@ class UsersController < ApplicationController
     token = params[:token]
     forgot_pass = ForgotPassword.where(:token => token).first
     if forgot_pass.nil?
-      flash[:error] = "Pogrešni kredencijali, reset šifre nije dopušten!"
+      flash[:error] = I18n.t('users.msgs.error_pass_change')
       return redirect_to root_path()
     end
 
@@ -108,7 +110,7 @@ class UsersController < ApplicationController
       UserMailer.reset_password(user, forgot_pass.token, "#{request.protocol}#{request.host_with_port}").deliver
     end
 
-    flash[:info] = "Check your email, instructions on how to reset your password have been sent!"
+    flash[:info] = I18n.t('users.msgs.forgot_pass')
     redirect_to login_users_path()
   end
 
@@ -131,7 +133,7 @@ class UsersController < ApplicationController
       session[:id] = user.id
       redirect_to session[:referer_url] ? session.delete(:referer_url) : issues_path()
     else
-      flash[:error] = 'Invalid email or password'
+      flash[:error] = I18n.t('users.msgs.invalid_login')
       redirect_to login_users_path()
     end
   end
@@ -142,7 +144,7 @@ class UsersController < ApplicationController
       session[:id] = user.id
       redirect_to ssg_admin_path()
     else
-      flash[:error] = "Pogrešan username / password!"
+      flash[:error] = I18n.t('users.msgs.invalid_login')
       redirect_to(ssg_admin_login_path())
     end
   end

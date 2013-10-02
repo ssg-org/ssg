@@ -1,8 +1,8 @@
-<div style="padding:25px;">
-	<div class="breadcrumb-container">
-		SSG / <span><%= t('cities.index.cities')%></span>
-	</div>
+<div class="breadcrumb-container">
+	<a href="<%= root_path() %>">ULICA.BA<a/> / <span><%= t('cities.index.cities')%></span>
+</div>
 
+<div style="padding:0px 25px 25px 25px;">
 	<div id="mini_map" style="width:100%;  height:700px; float:left;">
 	</div>
 
@@ -58,6 +58,7 @@ function loadMoreIssues() {
 }
 
 function drawIssues(issue_array) {
+	// why not pass all ?!
 	for (var i in issue_array) {
 		var issue = issue_array[i];
 		$('#mini_map').SSGMap('drawIssue', {
@@ -65,7 +66,9 @@ function drawIssues(issue_array) {
 			lng : issue['long'], 
 			icon : __icons[issue.category_id],
 			title : issue.title,
-			description : issue.description
+			description : issue.short_desc,
+			image_url: issue.image_url,
+			issue_url: issue.issue_url
 		});
 	}
 }

@@ -17,6 +17,15 @@ class CitiesController < ApplicationController
 			{:lat => params[:ne_lat], :long => params[:ne_long]},
 			20
 		)
+
+		# will set members to data we need in map view
+		@issues.each  { |issue| issue.setup_json_attributes!() }
+
+		require 'pp'
+		pp ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"
+		pp @issues.first
+		pp ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"
+
 		render :json => @issues
 	end
 end

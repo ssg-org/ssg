@@ -49,6 +49,11 @@
   }
 </style>
 
+<div class="breadcrumb-container" style="margin-left: 35px; margin-bottom: -10px;">
+  <a href="<%= root_path() %>">ULICA.BA<a/> / <span><%= t('users.show.settings').upcase %></span>
+</div>
+
+
 <%= form_for @edit_user, url: settings_user_path(@edit_user), :method => :post, :html => { :multipart => true, :id => 'edit_user_settings' }  do |f| %>
 
   <div class="left-column-edit-user">

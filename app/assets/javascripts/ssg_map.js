@@ -22,8 +22,6 @@ var methods = {
 		data.map = map;
 
 		$this.data('ssg_map', data);
-
-		console.log($this.data('ssg_map'));
 	},
 	setView : function(lat, lng, zoom) {
 		var $this = $(this);
@@ -36,6 +34,7 @@ var methods = {
 	drawIssue : function(opts) {
 		var $this = $(this);
 		var data = $this.data('ssg_map');
+		var htmlMarkup = '';
 
 		var marker = L.marker([ opts.lat, opts.lng ]);
 
@@ -44,7 +43,11 @@ var methods = {
 		}
 
 		if (opts.title) {
-			marker.bindPopup("<b>" + opts.title + "</b><br>" + opts.description)
+			htmlMarkup += "<b><a href='" + opts.issue_url + "'>" +  opts.title + "<a/></b></br></br>";
+			//htmlMarkup += "<img  style='width: 70px; height: 70px; display: inline-block;' src='" +  opts.image_url + "'></img>";
+			htmlMarkup += "<span style='color: black; display: inline-block;'>" + opts.description + "</span></br></br>";
+			//console.log(htmlMarkup);
+			marker.bindPopup(htmlMarkup);
 		}
 
 		marker.addTo(data.map);

@@ -35,6 +35,17 @@ en:
             en:         'English'
             bs:         'Bosnian'
     users:
+        msgs:
+            exists: 'User already exists'
+            created: 'User was sucessfully created. Email has been sent.'
+            error_create: 'Error creating user, please try again'
+            thanks: "Thank you"
+            error_verify: "Error verifying user"
+            error_creds: "Wrong credentials, password reset not allowed!"
+            pass_change: "Password successfully changed!"
+            error_pass_change: "Wrong credentials, password reset not allowed!"
+            forgot_pass: "Check your email, instructions on how to reset your password have been sent!"
+            invalid_login: 'Invalid username or password'
         login:
             login:      'LOG IN'
             login_message: 'If you are already SSG member?'
@@ -42,6 +53,7 @@ en:
             password:   'Password' 
             login_button:   'LOG IN NOW'
             forgot_password: 'Forgot password?'
+            forgot_password_notice: 'Check your email, instructions on how to reset your password have been sent!'
             forgot_password_header: 'Restart your password'
             forgot_password_sub:    'Please enter email your used for your registration'
             forgot_bread_title: 'FORGOT PASSWORD'
@@ -70,6 +82,11 @@ en:
             lang:           'Language'
             county:         'County'
             succ_save:      'You have successfully updated your data!'
+        show:
+            title:          'USERS'
+            settings:       'Settings'
+            profile:        'Profile'
+            logout:         'Log out'
     documents:
         contact:    
             question:       'Question'
@@ -103,7 +120,7 @@ en:
             views:          'Views'
             comments:       'Comments'
             unvote:         'Unvote'
-            vote:           'Give this issue your vote'
+            vote:           'Vote this issue'
             login_to_vote:  'Please login to give your vote'
         comments:
             delete_comment:  'Delete comment'

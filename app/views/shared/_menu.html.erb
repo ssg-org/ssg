@@ -66,9 +66,9 @@
 						<a class="account"><%=@user.display_name%>&nbsp;&nbsp;&nbsp;<%= image_tag 'carrot-down.png', :class => '' %></a>
 						<div class="submenu">
 						<ul class="root">
-							<li><a href='<%= user_path(@user.id) %>'>Profile</a></li>
-							<li><a href='<%= edit_user_path(@user.id) %>'>Settings</a></li>
-							<li><%=link_to 'Logout', logout_user_path(@user.id)%></li>
+							<li><a href='<%= user_path(@user.id) %>'><%= t('users.show.profile') %></a></li>
+							<li><a href='<%= edit_user_path(@user.id) %>'><%= t('users.show.settings') %></a></li>
+							<li><%=link_to t('users.show.logout'), logout_user_path(@user.id)%></li>
 						</ul>
 						</div>
 					</div>

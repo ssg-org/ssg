@@ -35,6 +35,17 @@ bs:
             en:         'Engleski'
             bs:         'Bosanski'
     users:
+        msgs:
+            exists: 'Korisnik sa tim podacima već postoji'
+            created: 'Korisnik kreiran. Email sa dodatnim uputama je poslan'
+            error_create: 'Greška prilikom kreiranja korisnika, pokušajte ponovo'
+            thanks: "Hvala Vam!"
+            error_verify: "Greška prilikom verifikacije korisnika"
+            error_creds: "Pogrešni kredencijali, reset lozinke nije dopušten!"
+            pass_change: "Lozinka uspješno promjenjena!"
+            error_pass_change: "Pogrešni kredencijali, reset lozinke nije dopušten!"
+            forgot_pass: "Provjerite Vaš email, instrukcije kako restartovati lozinku su poslane!"
+            invalid_login: 'Pogrešno korisničko ime ili lozinka'
         login:
             login:      'PRIJAVA'
             login_message: 'Da li ste već član SSG?'
@@ -45,6 +56,7 @@ bs:
             password:   'Lozinka' 
             login_button:   'PRIJAVITE SE ODMAH'
             forgot_password: 'Zaboravili ste šifru?'
+            forgot_password_notice: 'Provjerite Vaš email, instrukcije za restartovanje lozinke su poslane!'
             forgot_password_header: 'Restartujte Vašu šifru'
             forgot_password_sub:    'Unesite email s kojim ste se registrovali'
             forgot_bread_title: 'PROMJENA LOZINKE'
@@ -73,6 +85,11 @@ bs:
             lang:           'Jezik'
             county:         'Opština'
             succ_save:      'Uspješno ste ažurirarali Vaše podatke!'
+        show:
+            title:          'KORISNICI'
+            settings:       'Postavke'
+            profile:        'Profil'
+            logout:         'Odjavi se'
     documents:
         contact:    
             question:       'Pitanje'
@@ -94,7 +111,7 @@ bs:
             issue_title:    'Naziv problema'
             select_city:    'Molimo odaberite opštinu'
             select_category: 'Molimo odaberite kategoriju'
-            upload_error:   'Greška pri uploadu slike. Molimo vas da osvježite stranicu i pokušate ponovo'
+            upload_error:   'Greška pri uploadu slike. Molimo vas da osvježite stranicu i pokušajte ponovo'
             issue_desc:     'Opišite problem'
             btn:            'PRIJAVI'
             add_img:        'Dodaj sliku'
