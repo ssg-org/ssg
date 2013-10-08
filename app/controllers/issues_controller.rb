@@ -9,9 +9,7 @@ class IssuesController < ApplicationController
     #UserMailer.verify(@user, "#{request.protocol}#{request.host_with_port}").deliver
     #UserMailer.reset_password(@user, '1321323', "#{request.protocol}#{request.host_with_port}").deliver
     #UserMailer.notify_admin_user_creation(@user, "1231231", "aaaaa").deliver
-
-
-
+    
     params[:offset] ||= 0
     @issues = Issue.get_issues(params, 12, params[:offset].to_i)
     @city_names = collect_city_names() unless @city_names

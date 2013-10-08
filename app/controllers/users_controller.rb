@@ -46,6 +46,9 @@ class UsersController < ApplicationController
   end
 
   def login
+    # referer url to create issue
+    session[:referer_url] = @user.guest? && params[:create_issue] ? new_issue_path() : nil
+    
     @city_names = collect_city_names()
     @city_names.unshift( [I18n.t('users.login.choose_city'), 0])
   end

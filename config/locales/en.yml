@@ -9,6 +9,8 @@ en:
             issues: 'ISSUES'
             discover:   'DISCOVER ALL'
             cities:     'COUNTIES'
+            reports:    'REPORTS'
+            reports_discover: 'VIEW'
             country:    'COUNTRY WIDE'
             report:     'REPORT'
             create_problem: 'YOUR PROBLEM'
@@ -32,8 +34,8 @@ en:
             discuss:    'Discuss this issue'
             log_in:     'You can log in to join conversation'
         locale:
-            en:         'English'
-            bs:         'Bosnian'
+            en:         'ENG'
+            bs:         'BHS'
     users:
         msgs:
             exists: 'User already exists'
@@ -48,16 +50,20 @@ en:
             invalid_login: 'Invalid username or password'
         login:
             login:      'LOG IN'
-            login_message: 'If you are already SSG member?'
+            login_message: 'Already Ulica.ba member?'
             email:   'Email'
+            username:   'Username'
             password:   'Password' 
             login_button:   'LOG IN NOW'
+            remember_me:  'Remember me'
+            login_message: 'Are you already a member of Ulica.ba?'
+            choose_city:   'Choose your county'
             forgot_password: 'Forgot password?'
             forgot_password_notice: 'Check your email, instructions on how to reset your password have been sent!'
             forgot_password_header: 'Restart your password'
             forgot_password_sub:    'Please enter email your used for your registration'
             forgot_bread_title: 'FORGOT PASSWORD'
-            register:   'NOT A MEMBER OF SSG?'
+            register:   'NOT A MEMBER OF ULICA.BA?'
             register_message:   'Fill out the form to join us today.'
             register_choose_location: 'Choose your location'
             register_repeat_password: 'Repeate password'
@@ -69,8 +75,8 @@ en:
             set_password_bread_title: 'SET PASSWORD'
             set_password_header: 'Set your password'
         verify:
-            email_subject:  '[SSG] Please verify your email.'
-            reset_pass:     '[SSG] Reset password '
+            email_subject:  '[ULICA.BA] Please verify your email.'
+            reset_pass:     '[ULICA.BA] Reset password '
         edit:
             edit:           'Save'
             image:          'Change Photo'
@@ -157,6 +163,8 @@ en:
     cities:
         index:
             cities: 'COUNTIES'
+            select: 'Map of all counties'
+            reports: 'REPORTS'
     form:
         common:
             submit: 'Submit'
@@ -169,7 +177,7 @@ en:
             minlength:      'Please enter at least {0} characters.'
             imageRequired:  'Image is required'
             locationRequired: 'Please select location on the map'
-            locationTooFar: 'Selected location is too far from city centar'
+            locationTooFar: 'Selected location is too far from county centar'
         new_issue:
             title:          'Issue title is required.'
             title_l:        'Issue title should be 10 characters long.'

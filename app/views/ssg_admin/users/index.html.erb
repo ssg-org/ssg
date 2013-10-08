@@ -23,12 +23,9 @@
                 <th role="columnheader" tabindex="0" rowspan="1" colspan="1">email</th>
                 <th role="columnheader" tabindex="0" rowspan="1" colspan="1">Ime</th>
                 <th role="columnheader" tabindex="0" rowspan="1" colspan="1">Opcina</th>
-                <th role="columnheader" tabindex="0" rowspan="1" colspan="1">Prijavio Problema</th>
-                <th role="columnheader" tabindex="0" rowspan="1" colspan="1">Aktivan?</th>
+                <th role="columnheader" tabindex="0" rowspan="1" colspan="1">Prijavio</th>
                 <th role="columnheader" tabindex="0" rowspan="1" colspan="1">Tip</th>
-                <th role="columnheader" tabindex="0" rowspan="1" colspan="1">Jezik</th>
                 <th role="columnheader" tabindex="0" rowspan="1" colspan="1">Kreiran</th>
-                <th role="columnheader" tabindex="0" rowspan="1" colspan="1">FB?</th>
                 <th role="columnheader" tabindex="0" rowspan="1" colspan="1">Komande</th>
               </tr>
             </thead> 
@@ -40,12 +37,9 @@
                   <td><%= user.email %></td>
                   <td><%= user.full_name %></td>
                   <td><%= user.city ? user.city.name : 'Nema opcine' %></td>
-                  <td><%= user.issues.size %></td>
-                  <td><%= user.active %></td>
+                  <td><%= user.issues.size %> <%= user.issues.size == 1 ? 'problem' : 'problema' %></td>
                   <td><%= user.user_type %></td>
-                  <td><%= user.locale %></td>
                   <td><%= user.created_at.strftime("%d/%m/%Y") %></td>
-                  <td><%= !user.fb_token.nil? %></td>
                   <td class="admin-list-toolbar-cell" align="center">          
                     <%= link_to ssg_admin_user_path(user), :class => "btn", :method => :delete, :title => 'Obriši', :confirm => "Da li ste sigurni?" do %>
                       <i class="icon-remove"></i>

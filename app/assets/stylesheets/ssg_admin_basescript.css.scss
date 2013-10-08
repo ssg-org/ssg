@@ -47,6 +47,23 @@
   margin: 0 auto;
 }
 
+/* ADMIN */
+
+.row-m20 {
+  margin-top: 20px;
+}
+
+.logo-position {
+  margin-left: 30px;
+}
+.userinfo-pos {
+  padding-top: 20px;
+  padding-right: 20px;
+}
+.logout-pos {
+  margin-left: 20px;
+}
+
 #page_container.admin {
   
   .navbar {
@@ -289,4 +306,5 @@
   .add-admin-user{
     margin-bottom:15px;
   }
+
 }

@@ -10,6 +10,8 @@ bs:
             discover:   'OTKRIJ SVE'
             cities:     'OPŠTINE'
             country:    'ŠIROM DRŽAVE'
+            reports:    'IZVJEŠTAJI'
+            reports_discover: 'PREGLED'
             report:     'PRIJAVI'
             create_problem: 'PROBLEM'
             blog:       'BLOG'
@@ -32,8 +34,8 @@ bs:
             discuss:    'Komentarišite problem'
             log_in:     'Morate se prijaviti da bi komentarisali problem'
         locale:
-            en:         'Engleski'
-            bs:         'Bosanski'
+            en:         'ENG'
+            bs:         'BHS'
     users:
         msgs:
             exists: 'Korisnik sa tim podacima već postoji'
@@ -48,10 +50,11 @@ bs:
             invalid_login: 'Pogrešno korisničko ime ili lozinka'
         login:
             login:      'PRIJAVA'
-            login_message: 'Da li ste već član SSG?'
+            login_message: 'Da li ste već član Ulica.ba?'
             email:   'Email'
             username:   'Korisničko ime'
-            choose_city:   'Izaberite svoj grad'
+            remember_me: 'Zapamti me'
+            choose_city:   'Izaberite Vašu opštinu'
             username:   'Korisničko Ime'
             password:   'Lozinka' 
             login_button:   'PRIJAVITE SE ODMAH'
@@ -60,9 +63,9 @@ bs:
             forgot_password_header: 'Restartujte Vašu šifru'
             forgot_password_sub:    'Unesite email s kojim ste se registrovali'
             forgot_bread_title: 'PROMJENA LOZINKE'
-            register:   'NISTE ČLAN SSG-a?'
+            register:   'NISTE ČLAN ULICA.BA-a?'
             register_message:   'Pridružite nam se danas.'
-            register_choose_location: 'Odaberite vaš grad'
+            register_choose_location: 'Odaberite Vašu opštinu'
             register_repeat_password: 'Ponovite lozinku'
             register_agree_tou: 'Slažem se sa '
             register_agree_tou2: 'uslovima korištenja'
@@ -72,8 +75,8 @@ bs:
             set_password_bread_title: 'POSTAVITE ŠIFRU'
             set_password_header: 'Postavite Vašu šifru'
         verify:
-            email_subject:  '[SSG] Molimo potvrdite vašu email adresu. '
-            reset_pass:     '[SSG] Reset šifre '
+            email_subject:  '[ULICA.BA] Molimo potvrdite vašu email adresu. '
+            reset_pass:     '[ULICA.BA] Reset šifre '
         edit:
             edit:           'Uredi'
             image:          'Promjeni Sliku'
@@ -133,7 +136,7 @@ bs:
             featured:       'ISTAKNUTI'
             categories:     'KATEGORIJE'
             resolution:     'STATUS'
-            cities:         'GRADOVI'
+            cities:         'OPŠTINE'
             counties:       'OPŠTINE'
             all_time:       'Sve vrijeme'
             today:          'Danas'
@@ -160,6 +163,8 @@ bs:
     cities:
         index:
             cities: 'OPŠTINE'
+            select: 'Mapa svih opština'
+            reports: 'REPORTS'
     form:
         common:
             submit: 'Potvrdi'

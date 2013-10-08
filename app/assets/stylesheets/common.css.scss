@@ -738,6 +738,7 @@ a.account  {
 	font-weight: bold;
 	font-size: 13px;
 	letter-spacing: 1px;
+	cursor: pointer;
 
 	ul {
 		font-size: 13px;
@@ -822,3 +823,22 @@ a.account  {
 	.title-point {
 		margin-bottom: 4px;
 	}
+
+/* REPORTS */
+
+  #report_content {
+    padding-left: 30px;
+    padding-top: 5px;
+    padding-right: 50px;
+    padding-bottom:  40px;
+
+     .button-link {
+    	color: #91C12B;
+  	}
+
+  	.sub-header {
+    	font-size: 14px;
+    	color: #333333;
+  	}
+  }
+

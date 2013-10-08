@@ -3,6 +3,10 @@
 </div>
 
 <div style="padding:0px 25px 25px 25px;">
+	<div style="float: right;">
+		<%= select_tag :city_id, options_for_select(@city_names), { :id => 'city_select', :onChange=>"return selectCity(this);" } %><br />
+	</div>
+
 	<div id="mini_map" style="width:100%;  height:700px; float:left;">
 	</div>
 
@@ -11,6 +15,11 @@
 
 <% content_for :javascript do %>
 <script>
+
+$(document).ready(function() {
+	$('#city_select').selectbox();
+});
+
 $(function () {
 
 	$('#mini_map').SSGMap({
@@ -30,6 +39,16 @@ var __icons = {};
 <% end %>
 
 var __cities = {};
+
+function selectCity(selectedItem) {
+	var item = $(selectedItem);
+
+	if (item.val() == 0) {
+		return true;
+	} else {
+		window.location.href = '<%= cities_path() %>' + '/' + item.val();
+	}
+};
 
 function loadMoreIssues() {
 	var latLngBounds = $('#mini_map').SSGMap('getBounds');

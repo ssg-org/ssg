@@ -7,22 +7,6 @@
   <%= javascript_include_tag "application" %>
 </head>
 
-<style type="text/css">
-  .row-m20 {
-    margin-top: 20px;
-  }
-
-  .logo-position {
-    margin-left: 30px;
-  }
-  .userinfo-pos {
-    padding-top: 20px;
-    padding-right: 20px;
-  }
-  .logout-pos {
-    margin-left: 20px;
-  }
-</style>
 <body class="admin">
   <div id="page_container" class="container-fluid admin">
     <div class="row-fluid">
@@ -46,10 +30,10 @@
                   <!--
                     <li><a data-toggle="tab" href="<%= ssg_admin_path() %>">Dashboard</a></li>
                   -->
-                  <li><a data-toggle="tab" href="<%= ssg_admin_cities_path() %>">Opštine</a></li>
-                  <li><a data-toggle="tab" href="<%= ssg_admin_categories_path() %>">Kategorije</a></li>
-                  <li><a data-toggle="tab" href="<%= ssg_admin_users_path() %>">Korisnici</a></li>
                   <li><a data-toggle="tab" href="<%= ssg_admin_issues_path() %>">Problemi</a></li>
+                  <li><a data-toggle="tab" href="<%= ssg_admin_categories_path() %>">Kategorije</a></li>
+                  <li><a data-toggle="tab" href="<%= ssg_admin_cities_path() %>">Opštine</a></li>
+                  <li><a data-toggle="tab" href="<%= ssg_admin_users_path() %>">Korisnici</a></li>
                 </ul>
               </div>
             </div>

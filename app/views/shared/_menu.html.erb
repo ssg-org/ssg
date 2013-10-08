@@ -44,11 +44,18 @@
 				<% if selection[:cities]%>
 					<div class="selection"></div>
 				<% end %>
+			</li>			
+
+			<li class="menu-sub">
+				<%=link_to t('shared.menu.reports'), reports_path(), :class => "value_strip() font-black #{'menu-selected' if selection[:reports]}"%><br/>
+				<span class="font-gray "><%=t('shared.menu.reports_discover')%></span><br/>
+				<% if selection[:reports]%>
+					<div class="selection"></div>
+				<% end %>
 			</li>
 			
 			<li class="menu-sub">
-				<% session[:referer_url] = new_issue_path() if @user.guest? %>
-				<% path = @user.guest? ?  login_users_path() : new_issue_path() %>
+				<% path = @user.guest? ?  login_users_path(:create_issue => true) : new_issue_path() %>
 				<%=link_to t('shared.menu.report'), path, :class => "value_strip() font-black #{'menu-selected' if selection[:report]}"%><br/>
 				<span class="font-gray "><%=t('shared.menu.create_problem')%></span><br/>
 				<% if selection[:report]%>

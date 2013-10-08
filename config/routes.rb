@@ -51,6 +51,7 @@ Ssg::Application.routes.draw do
 
   # Assets redirect
   get '/img/:name', to: redirect {|params, req| "/assets/#{params[:name]}.#{params[:format]}" }
+  get '/images/:name', to: redirect {|params, req| "/assets/#{params[:name]}.#{params[:format]}" }
 
   if Rails.env.development?
     mount UserMailer::Preview => 'mail_view'
@@ -87,6 +88,8 @@ Ssg::Application.routes.draw do
       get   :more
     end
   end
+
+  resources :reports, :only => [:index]
 
   resources :images, :only => [:create, :destroy]
 
@@ -135,7 +138,7 @@ Ssg::Application.routes.draw do
 
   # SSG Admin
   get '/ssg_admin/login' => 'ssg_admin#login'
-  get '/ssg_admin/'      => 'ssg_admin/cities#index'
+  get '/ssg_admin/'      => 'ssg_admin/issues#index'
 
 
 

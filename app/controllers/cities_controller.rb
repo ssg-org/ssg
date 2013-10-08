@@ -4,6 +4,9 @@ class CitiesController < ApplicationController
 		@center_long = 17.70
 		@center_zoom = 8
 		@categories = @user.get_categories
+
+		@city_names = collect_city_names() unless @city_names
+    @city_names.unshift([I18n.t('cities.index.select'), 0])
 	end
 
 	def show
