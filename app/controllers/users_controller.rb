@@ -17,6 +17,16 @@ class UsersController < ApplicationController
 
 
   def settings
+    
+    # if password there check password
+    if !params[:password0].empty? || !(params[:password1].empty? && params[:password2].empty?)
+      unless @user.is_good_password?(params[:password0])
+        flash[:error] = I18n.t('users.edit.wrong_pass')
+        return redirect_to edit_user_path(@user.id)
+      end
+    end
+
+    # if all good update params
     @user.settings_update(params)
     flash[:info] = I18n.t('users.edit.succ_save')
     redirect_to user_path(@user.id)

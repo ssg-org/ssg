@@ -83,6 +83,7 @@ Ssg::Application.routes.draw do
       post  :vote
       post  :unvote
       get   :follow
+      post  :change_status
     end
     collection do 
       get   :more

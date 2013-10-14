@@ -1,5 +1,11 @@
 
 	<style type="text/css">
+	  .sbOverride, .sbOptionsOverride {
+	    width: 238px;
+	    margin-top: 2px;
+	  }
+
+
 		.show-container {
 			padding: 15px 25px 25px 25px;
 		}
@@ -32,7 +38,7 @@
 		.issue-info-vote-count {
 			color: #A4D43C;
 			font-weight: bold;
-			font-size: 28px;
+			font-size: 26px;
 		}
 		.issue-info-count {
 			font-weight: bold;
@@ -45,8 +51,26 @@
 			float:left; 
 			width:105px; 
 			padding:10px; 
-			margin: 20px 0px 0px 5px;
+			margin: 10px 0px 0px 5px;
 			display: block;
+		}
+		.table-style {
+			border: 1px #CCCCCC dotted;
+			border-collapse: collapse;
+			border-left: none;
+			border-right: none;
+			width: 235px;
+		}
+
+		.table-style td {
+			padding: 10px;
+		}
+
+		.table-style th {
+			border: 1px #CCCCCC dotted;
+			border-left: none;
+			padding: 0px;
+			width: 130px;
 		}
 	</style>
 
@@ -102,20 +126,28 @@
 		<br style="clear:both;"/>
 
 		<div style="margin-bottom:25px;">
-			<div class="issue-info-heart-container">
-				<div class="issue-info-heart"></div>
-				<span class="issue-info-vote-count"><%= @issue.vote_count %></span>
-			</div>
-			<div style="float:left; width:70px; padding:10px;">
-				<span class="issue-info-count"><%= @issue.session_view_count%></span><br/>
-				<span class="issue-info-count-title"><%= t('issues.show.views')%></span><br/>
-				<span class="issue-info-count"><%= @issue.comments.count%></span><br/>
-				<span class="issue-info-count-title"><%= t('issues.show.comments')%></span>
-			</div>
+			<table class="table-style">
+				<tr>
+					<th rowspan="2">
+						<div class="issue-info-heart-container">
+							<div class="issue-info-heart"></div>
+							<span class="issue-info-vote-count"><%= @issue.vote_count %></span>
+						</div>
+					</th>
+					<td style="border-right: none;">
+						<span class="issue-info-count"><%= @issue.session_view_count%></span><br/>
+						<span class="issue-info-count-title"><%= t('issues.show.views')%></span><br/>
+					</td>
+				</tr>
+				<tr>
+					<td style="border-right: none;">
+						<span class="issue-info-count"><%= @issue.comments.count%></span><br/>
+						<span class="issue-info-count-title"><%= t('issues.show.comments')%></span>
+					</td>
+				</tr>
+			</table>
 		</div>
 
-		<br />
-		<br />
 		<div style="margin-bottom:10px;">
 			<% if !@user.guest? %>
 				<% if @issue.user_id != @user.id%>
@@ -144,6 +176,16 @@
 
 		<div id="mini_map" style="height:260px;">
 		</div>
+		<br />
+		<% if @user.ssg_admin? || @issue.user_id == @user.id %>
+			<span class="issue-info-display-name" style="font-size: 13px;padding-left: 5px;"> <%= t('issues.show.change_status')  %> </span>
+			<% if @user.ssg_admin? %>
+				<span style="color:red; margin-left: 10px;">[ Admin ]</span>
+			<% end %>
+			<br />
+			<br />
+			<%= collection_select(:get, :status, @user.ssg_admin? ? Issue.all_statuses : Issue.user_statuses, :id, :name, { :selected => @issue.status }, { :onChange => "return change_status(this);" } ) %> <br />
+		<% end %>
 
 	</div>
 
@@ -162,11 +204,25 @@ $(function () {
 		lat : <%=@issue.lat%>, 
 		lng : <%=@issue.long%>
 	});
+
+	$('#get_status').selectbox();
 });
+
+
 
 function vote() {
 	$.ajax({
 		url : '<%=vote_issue_path(@issue.id)%>',
+		type : 'post',
+		success : function() {
+			window.location = '<%=issue_path(params[:id])%>';
+		}
+	});
+}
+
+function change_status(el) {
+	$.ajax({
+		url : '<%=change_status_issue_path(@issue.id)%>' + '?status=' + $(el).val(),
 		type : 'post',
 		success : function() {
 			window.location = '<%=issue_path(params[:id])%>';

@@ -43,7 +43,7 @@ var methods = {
 		}
 
 		if (opts.title) {
-			htmlMarkup += "<b><a href='" + opts.issue_url + "'>" +  opts.title + "<a/></b></br></br>";
+			htmlMarkup += "<b><a href='" + opts.issue_url + "'>" +  opts.title + "</a></b></br></br>";
 			//htmlMarkup += "<img  style='width: 70px; height: 70px; display: inline-block;' src='" +  opts.image_url + "'></img>";
 			htmlMarkup += "<span style='color: black; display: inline-block;'>" + opts.description + "</span></br></br>";
 			//console.log(htmlMarkup);

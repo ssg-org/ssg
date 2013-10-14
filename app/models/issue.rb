@@ -79,6 +79,16 @@ class Issue < ActiveRecord::Base
     results
   end
 
+  def self.user_statuses
+    results = []
+    [1,2,3,4,6].each do |i|
+      trans_key = TRANS_KEYS[i]
+      results << OpenStruct.new(:id => i, :name => I18n.t("issues.status.#{trans_key}"))
+    end
+
+    results
+  end
+
   def as_json(options={})
     # also can be solved by adding :methods to options hash
     response = super(options)

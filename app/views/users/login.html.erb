@@ -171,7 +171,6 @@
 	$.validator.addMethod(
 		"select_county", 
 		function(value) {
-			alert($('#dropDownId :selected').text());
 			return $('#dropDownId :selected').text();
 		},
 		I18n.t('validation.new_issue.image')

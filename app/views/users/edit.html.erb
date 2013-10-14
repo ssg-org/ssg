@@ -10,7 +10,7 @@
   }
 
   .right-column-edit-user {
-    width: 200px;
+    width: 330px;
     height: 600px;
     margin-left: 50px;
     display: inline-block;
@@ -47,10 +47,15 @@
     margin-top: 20px;
     margin-bottom: 20px;
   }
+
+  textarea {
+    height: 78px;
+  }
+
 </style>
 
 <div class="breadcrumb-container" style="margin-left: 35px; margin-bottom: -10px;">
-  <a href="<%= root_path() %>">ULICA.BA<a/> / <span><%= t('users.show.settings').upcase %></span>
+  <a href="<%= root_path() %>">ULICA.BA</a> / <span><%= t('users.show.settings').upcase %></span>
 </div>
 
 
@@ -63,9 +68,9 @@
     <br />
 
     <label><%= t('users.edit.first_name') %></label>
-    <%= f.text_field :first_name, :autocomplete=> :off , :placeholder => 'Ime Korisnika' %>  
+    <%= f.text_field :first_name, :autocomplete=> :off , :placeholder => t('users.edit.first_name') %>
     <label><%= t('users.edit.last_name') %></label>
-    <%= f.text_field :last_name, :autocomplete=> :off , :placeholder => 'Prezime Korisnika' %>
+    <%= f.text_field :last_name, :autocomplete=> :off , :placeholder => t('users.edit.last_name') %>
     <label><%= t('users.edit.county') %></label>
     <%= f.collection_select(:city_id, @edit_user.get_cities, :id, :name, {}, {   } ) %>
     <br />
@@ -79,8 +84,9 @@
     <br />
     <br />
 
-    <%= password_field_tag :password1, nil, :placeholder => t('users.login.password'), :class => "" %>
-    <%= password_field_tag :password2, nil, :placeholder => t('users.login.register_repeat_password'), :class => "" %>
+    <%= password_field_tag :password0, nil, :placeholder => t('users.login.current_password'), :class => "" %>
+    <%= password_field_tag :password1, nil, :placeholder => t('users.login.new_password'), :class => "" %>
+    <%= password_field_tag :password2, nil, :placeholder => t('users.login.register_repeat_new_password'), :class => "" %>
 
   </div>
   <div class="right-column-edit-user">
@@ -89,7 +95,7 @@
     <br />
     <br />
     <%= image_tag @edit_user.image ? @edit_user.image.image.thumb : 'no-photo.png', :id => 'user_photo_settings', :class => 'user-settings-photo' %>
-
+    <br />
     <input type = "button" id="upload_image_btn" value="<%= I18n.t('users.edit.image') %>" onclick ="javascript:document.getElementById('fileupload_field2').click();">
     <input id = "fileupload_field2" type="file" style='visibility: hidden;' name="image" multiple/>
 
@@ -103,7 +109,15 @@
     <div id="gallery" style="list-style:none; display: none;">
     </div>
     <div class="clearfix"></div>
-    <div style="margin-top: 200px; margin-left: 220px;">
+    <div style="margin-top: 37px;">
+      <span class="change-password"><%= t('users.edit.profile_img') %></span>
+      <br />
+      <br />
+      <br />
+      <%= f.text_field :website, :autocomplete=> :off , :placeholder => t('users.edit.website') %>
+      <%= f.text_area :description, :autocomplete=> :off , :placeholder => t('users.edit.short_desc') %>
+    </div>
+    <div style="margin-top: 20px; margin-left: 220px;">
       <%= ssg_button t('users.edit.edit').upcase, {:onclick => "submitForm('\#edit_user_settings');"}, {}, 'din-font' %>
     </div>
   </div>
@@ -137,6 +151,16 @@
       }
     }
   });
+
+  // VALIDATE
+  $.validator.addMethod(
+    "password_enter", 
+    function(value) {
+      alert( $('#password0').text());
+      return $('#password0').text();
+    },
+    I18n.t('validation.new_issue.image')
+  );
 
   // UPLOAD SETUP
   $('#fileupload_field2').fileupload({

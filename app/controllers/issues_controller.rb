@@ -72,6 +72,11 @@ class IssuesController < ApplicationController
     render :json => { :ok => true }
   end
 
+  def change_status
+    @user.change_status_for(params[:id], params[:status])
+    render :json => { :ok => true }
+  end
+
   def unvote
     @user.unvote_for(params[:id])
     render :json => { :ok => true }

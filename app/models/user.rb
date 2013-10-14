@@ -89,6 +89,10 @@ class User < ActiveRecord::Base
     return self.username
   end
 
+  def is_good_password?(pwd)
+    return self.password_hash.eql? Digest::SHA256.hexdigest(pwd)
+  end
+
   def full_name
     fname = "#{self.first_name} #{self.last_name}"
     if fname.blank?
@@ -99,6 +103,14 @@ class User < ActiveRecord::Base
 
   def avatar
     fbuser? ? "http://graph.facebook.com/#{fb_id}/picture" : '/assets/no_avatar.png'
+  end
+
+  def formated_website
+    if self.website.match(/^(http|https):\/\/.*/ix)
+      return self.website
+    else
+      return "http://#{website}"
+    end
   end
   
   def comment_on_issue(issue_id, text)
@@ -120,6 +132,17 @@ class User < ActiveRecord::Base
           Vote.create(:user => self, :issue => issue)
         end
         issue.vote_count += 1
+        issue.save
+      end
+    end
+  end
+
+  def change_status_for(issue_id, status)
+    ActiveRecord::Base.transaction do
+      issue = Issue.find(issue_id)
+      # You can't vote for your issues
+      if (issue.user_id == self.id || self.ssg_admin?)
+        issue.status = status.to_i
         issue.save
       end
     end
@@ -340,6 +363,8 @@ class User < ActiveRecord::Base
     self.last_name = params[:user][:last_name]
     self.city_id = params[:user][:city_id]
     self.locale = params[:user][:locale]
+    self.website = params[:user][:website]
+    self.description = params[:user][:description]
 
     if params[:image_count] && params[:image_count].to_i > 0
       last_image = params[:image_count].to_i - 1

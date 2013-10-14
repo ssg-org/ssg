@@ -27,11 +27,23 @@
     display: inline-block;
   }
 
+  .website-link a {
+    color: #9ECC3B;
+  }
+
+  .user-description {
+    font-size: 11px;
+    color: #666666;
+    text-align: justify;
+    max-height: 40px;
+    font-style: italic;
+  }
+
 </style>
 
 
 <div class="breadcrumb-container" style="margin-left: 40px; margin-bottom: -12px;">
-  <a href="<%= root_path() %>">ULICA.BA<a/> / <span><%= @profile_user.username.upcase %></span>
+  <a href="<%= root_path() %>">ULICA.BA</a> / <span><%= @profile_user.username.upcase %></span>
 </div>
 
 <div style="display: block;">
@@ -45,8 +57,21 @@
           <span class="font-gray-dark" style="line-height:16px;">&nbsp;<%= @profile_user.city.name%></span>
         </div>
       <% end %>
-
+      <% if @profile_user.description && !@profile_user.description.empty? %>
+        <span class="user-description din-font">
+          <br />
+          <%= truncate(@profile_user.description, :length => 500)  %>
+        </span>
+      <% end %>
       <br />
+      <% if @profile_user.website && !@profile_user.website.empty? %>
+        <span class="website-link">
+          <br />
+          <a href='<%= @profile_user.formated_website %>'>Website</a>
+        </span>
+        <br />
+        <br />
+      <% end %>
       <span class="user-info-more din-font"> Issues: </span><b><%= @issues.size %></b>
       <br />
     </div>
