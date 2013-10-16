@@ -81,6 +81,8 @@
 <script>
 	$(document).ready(function() {
 	  $('#city_select').selectbox();
+
+
 	});
 
 	$('#fb-login-link').click(function(event) {
@@ -95,6 +97,15 @@
       submitForm('#login_form');
     }
 	});
+
+	// VALIDATE
+	$.validator.addMethod(
+		"select_county", 
+		function(value) {
+			return $('#dropDownId :selected').text();
+		},
+		I18n.t('validation.new_issue.image')
+	);
 
 	// Validation
 	$('#login_form').validate({
@@ -167,14 +178,7 @@
 		}
 	});
 
-		// VALIDATE
-	$.validator.addMethod(
-		"select_county", 
-		function(value) {
-			return $('#dropDownId :selected').text();
-		},
-		I18n.t('validation.new_issue.image')
-	);
+
 
 </script>
 <% end %>

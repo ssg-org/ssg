@@ -16,14 +16,14 @@
 				<%=issue.title%>
 			</div>
 			<div class="font-gray-dark font-12 issue-info-name">
-				by <a href='<%= user_path(issue.user.id) %>' ><%=issue.user.display_name%></a>
+				by <a href='<%= user_path(issue.user.id) %>' ><span style="text-decoration: underline;"><%=issue.user.display_name%></span></a>
 			</div>
 		</a>
 		
 		<a class="info-link" href="<%=city_path(issue.city.id)%>">
 			<div class="issue-info-loc">
 				<span class="asset-location-black" ></span>
-				<span class="font-gray-dark" style="line-height:16px;">&nbsp;<%=issue.city.name%></span>
+				&nbsp;<span class="font-gray-dark" style="line-height:16px;text-decoration:underline;"><%=issue.city.name%></span>
 			</div>
 		</a>
 	</div>
@@ -43,9 +43,15 @@
 		<span class="asset-heart"></span><span style="float:left;" class="font-bold font-14">&nbsp;&nbsp;<%=issue.vote_count%>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
 		<span class="asset-eye"></span><span style="float:left;" class="font-bold font-14">&nbsp;&nbsp;<%=issue.session_view_count%></span>
 		<span style="float:right; margin-top: 2px; cursor: pointer;" class="font-13 font-gray-dark">
-			<a href="https://www.facebook.com/sharer/sharer.php?u=<%=issue_path(issue.friendly_id)%>" onclick="window.open(this.href, 'mywin',
-'left=20,top=20,width=500,height=200,toolbar=1,resizable=0'); return false;">
-  			Share
+			<% link_url = "#{request.protocol}#{request.host_with_port}#{issue_path(issue.friendly_id)}" %>
+
+			<a href="https://www.facebook.com/sharer/sharer.php?u=<%=link_url%>" onclick="window.open(this.href, 'mywin',
+'left=20,top=20,width=500,height=300,toolbar=1,resizable=0'); return false;">
+  			<%=image_tag 'facebook.png', :border => '0' %>
+			</a>
+			<a href="https://twitter.com/share?text=<%=link_url%>" onclick="window.open(this.href, 'mywin',
+'left=20,top=20,width=500,height=300,toolbar=1,resizable=0'); return false;" data-via="Ulica.ba">
+				<%=image_tag 'twitter.png', :border => '0' %>
 			</a>
 		</span> 
 	</div>

@@ -45,20 +45,20 @@
 					<div class="selection"></div>
 				<% end %>
 			</li>			
-
-			<li class="menu-sub">
-				<%=link_to t('shared.menu.reports'), reports_path(), :class => "value_strip() font-black #{'menu-selected' if selection[:reports]}"%><br/>
-				<span class="font-gray "><%=t('shared.menu.reports_discover')%></span><br/>
-				<% if selection[:reports]%>
-					<div class="selection"></div>
-				<% end %>
-			</li>
 			
 			<li class="menu-sub">
 				<% path = @user.guest? ?  login_users_path(:create_issue => true) : new_issue_path() %>
 				<%=link_to t('shared.menu.report'), path, :class => "value_strip() font-black #{'menu-selected' if selection[:report]}"%><br/>
 				<span class="font-gray "><%=t('shared.menu.create_problem')%></span><br/>
 				<% if selection[:report]%>
+					<div class="selection"></div>
+				<% end %>
+			</li>
+
+			<li class="menu-sub">
+				<%=link_to t('shared.menu.reports'), reports_path(), :class => "value_strip() font-black #{'menu-selected' if selection[:reports]}"%><br/>
+				<span class="font-gray "><%=t('shared.menu.reports_discover')%></span><br/>
+				<% if selection[:reports]%>
 					<div class="selection"></div>
 				<% end %>
 			</li>
@@ -70,7 +70,7 @@
 			<% else %>
 				<li class="menu-sub" id="bar"  style="float:right;">					
 					<div class="dropdown">
-						<a class="account"><%=@user.display_name%>&nbsp;&nbsp;&nbsp;<%= image_tag 'carrot-down.png', :class => '' %></a>
+						<a class="account"><%=@user.full_name %>&nbsp;&nbsp;&nbsp;<%= image_tag 'carrot-down.png', :class => '' %></a>
 						<div class="submenu">
 						<ul class="root">
 							<li><a href='<%= user_path(@user.id) %>'><%= t('users.show.profile') %></a></li>

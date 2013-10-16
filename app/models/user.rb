@@ -260,6 +260,13 @@ class User < ActiveRecord::Base
     return nil
   end
 
+  def self.send_community_admin_mails(url, city_id)
+    users = User.where(:city_id => city_id, :role => ROLE_COMMUNITY_ADMIN).all
+    users.each do |user|
+      UserMailer.created(user, url).deliver
+    end
+  end
+
   #
   # Returns user only with ssg admin
   #

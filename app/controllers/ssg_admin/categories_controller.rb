@@ -1,6 +1,8 @@
 # encoding: UTF-8
 class SsgAdmin::CategoriesController < SsgAdminController
 
+  before_filter :check_ssg_admin
+
   def index
     @categories = Category.find(:all).sort() { |a,b| a.name <=> b.name }
     @parent_categories = @categories.select { |c| c.parent.nil? }

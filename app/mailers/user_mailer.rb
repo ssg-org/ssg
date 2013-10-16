@@ -1,3 +1,4 @@
+# encoding: UTF-8
 class UserMailer < ActionMailer::Base
 	include ApplicationHelper
 
@@ -11,6 +12,13 @@ class UserMailer < ActionMailer::Base
     #?id=8&uuid=801faacb-979b-44e1-b6eb-eb264699fa15
 
 	  using_locale(user.locale) { mail(:to => @user.email, :subject => t('users.verify.email_subject')) }
+  end
+
+  def created(user, url)
+    @community_user = user
+    @url = url
+
+    using_locale(user.locale) { mail(:to => @community_user.email, :subject => 'Kreiran je problem za Vašu opštinu') }
   end
 
   def reset_password(user, token, url)

@@ -6,7 +6,7 @@ class SsgAdmin::IssuesController < SsgAdminController
     if @user.ssg_admin?
       @issues = Issue.find(:all, :order => 'vote_count DESC')
     else
-      @issues = Issue.where(:user_id => @user.id).order('vote_count DESC').all
+      @issues = Issue.where(:city_id => @user.city_id).order('vote_count DESC').all
     end
   end
 

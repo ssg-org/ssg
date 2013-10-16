@@ -7,14 +7,14 @@
 <div id="issues_right_column" class="font-13" style="clear:right;">
 	
 	<div class="filter">
-		<span class="title value_strip()">DATE</span><br/>
+		<span class="title value_strip()"><%= t('issues.right_menu.date')%></span><br/>
 		<%=link_to t('issues.right_menu.all_time'), issues_path(clear_params({:date => nil})), { :class => "#{'r-menu-selected' if params[:date].blank? }"} %><br/>
 		<%=link_to t('issues.right_menu.today'), issues_path(clear_params({:date => :today})), { :class => "#{'r-menu-selected' if params[:date] == 'today' }"} %><br/>
 		<%=link_to t('issues.right_menu.this_week'), issues_path(clear_params({:date => :week})), { :class => "#{'r-menu-selected' if params[:date] == 'week' }"} %><br/>
 		<%=link_to t('issues.right_menu.this_month'), issues_path(clear_params({:date => :month})), { :class => "#{'r-menu-selected' if params[:date] == 'month' }"} %><br/>
 	</div>
 	<div class="filter">
-		<span class="title value_strip()">FEATURED</span><br/>
+		<span class="title value_strip()"><%= t('issues.right_menu.featured')%></span><br/>
 		<%=link_to t('issues.right_menu.all_time'), issues_path(clear_params(:featured => nil)), { :class => "#{'r-menu-selected' if params[:featured].blank? }"} %><br/>
 		<%=link_to t('issues.right_menu.most_viewed'), issues_path(clear_params(:featured => :viewed)), { :class => "#{'r-menu-selected' if params[:featured] == 'viewed' }"} %><br/>
 		<%=link_to t('issues.right_menu.most_voted'), issues_path(clear_params(:featured => :votes)), { :class => "#{'r-menu-selected' if params[:featured] == 'votes' }"} %><br/>

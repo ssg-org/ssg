@@ -1,6 +1,8 @@
 # encoding: UTF-8
 class SsgAdmin::UsersController < SsgAdminController
 
+  before_filter :check_ssg_admin
+  
   def index
     @users = User.find(:all)
     require 'pp'

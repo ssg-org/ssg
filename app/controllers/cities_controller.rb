@@ -1,8 +1,8 @@
 class CitiesController < ApplicationController
 	def index
-		@center_lat = 43.90
-		@center_long = 17.70
-		@center_zoom = 8
+		@center_lat = 43.851822
+		@center_long = 18.383984
+		@center_zoom = 12
 		@categories = @user.get_categories
 
 		@city_names = collect_city_names() unless @city_names

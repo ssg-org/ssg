@@ -6,6 +6,7 @@ class IssuesController < ApplicationController
   def index
     #@user = User.find(2)
 
+    #UserMailer.created(@user, "#{request.protocol}#{request.host_with_port}").deliver
     #UserMailer.verify(@user, "#{request.protocol}#{request.host_with_port}").deliver
     #UserMailer.reset_password(@user, '1321323', "#{request.protocol}#{request.host_with_port}").deliver
     #UserMailer.notify_admin_user_creation(@user, "1231231", "aaaaa").deliver
@@ -38,7 +39,16 @@ class IssuesController < ApplicationController
 
 
     flash[:info] = I18n.t('issues.new.success')
-    @user.create_issue(params[:issue][:title], params[:issue][:category_id], params[:issue][:city_id], params[:issue][:description], params[:issue][:lat], params[:issue][:long],image_ids)
+    issue = @user.create_issue(params[:issue][:title], params[:issue][:category_id], params[:issue][:city_id], params[:issue][:description], params[:issue][:lat], params[:issue][:long],image_ids)
+    
+    url = "#{request.protocol}#{request.host_with_port}#{issue_path(issue.friendly_id)}"
+
+    Thread.new do
+      User.send_community_admin_mails(url, issue.city_id)
+       # close db connection
+      ActiveRecord::Base.connection.close
+    end
+
     redirect_to issues_path()
   end
   

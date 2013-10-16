@@ -99,6 +99,7 @@ en:
             settings:       'Settings'
             profile:        'Profile'
             logout:         'Log out'
+            issues:         'Issues'
     documents:
         contact:    
             question:       'Question'

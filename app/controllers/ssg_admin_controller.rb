@@ -13,7 +13,16 @@ class SsgAdminController < ActionController::Base
   def login
   end
 
+  protected
+
+  def check_ssg_admin
+    return if @user.ssg_admin?
+
+    redirect_to ssg_admin_issues_path
+  end
+
   private
+
   def check_login
     if (session[:id])
       @user = User.find_by_id(session[:id])
