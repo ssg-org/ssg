@@ -68,6 +68,7 @@ function global_locale_change(e) {
 
 function submitForm(form_id_selector) {
 	$('#form-error-div ul').empty();
+    $('#form-error-div').hide();
 	return $(form_id_selector).submit();
 };                                                                    
 
@@ -76,11 +77,16 @@ jQuery.validator.setDefaults({
     onclick: false,
     errorPlacement: function(error, element) {
     		$('#form-error-div').show();
-    		html = $('#form-error-div ul').html();
 
-    		if (html.indexOf(error.text()) >= 0) {
-    			return;
-    		}
+            var form = $(element).closest('form')[0];
+            // Hack since for some reasone required is not working on select
+            if (form.id == 'register_form') {
+                specialCase();
+            }
+
+            if (errorDisplayed(error.text())) {
+                return;
+            }
 
     		// add error class to select box
     		if (element.is("select")) {
@@ -89,7 +95,28 @@ jQuery.validator.setDefaults({
     		}
 
         //error.appendTo(element.prev());
-        $('#form-error-div ul').append('<li>' + error.text() + '</li>');
+        appendErrorText(error.text());
     }
 });
 
+// I am sorry
+function specialCase() {
+    // Custom handle
+    if ($('#city_id').val() == "") {
+        var error_text = I18n.t('validation.register.city');
+        if (!errorDisplayed(error_text)) {
+            appendErrorText(error_text);
+        }
+
+        return false;
+    }
+};
+
+function errorDisplayed(error_text) {
+    html = $('#form-error-div ul').html();
+    return (html.indexOf(error_text) >= 0)
+};
+
+function appendErrorText(error_text) {
+    $('#form-error-div ul').append('<li>' + error_text + '</li>');
+};

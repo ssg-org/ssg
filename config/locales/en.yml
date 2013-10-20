@@ -100,6 +100,7 @@ en:
             profile:        'Profile'
             logout:         'Log out'
             issues:         'Issues'
+            no_issues:      'User has no reported issues'
     documents:
         contact:    
             question:       'Question'

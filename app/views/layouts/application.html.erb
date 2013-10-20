@@ -2,8 +2,8 @@
 <html>
 <head>
   <title>Sredi svoj grad</title>
-  <meta name="description" content="Social community koji gradjanima zeli da omoguci zivot u odredjenom gradu." /> 
-  <meta name="keywords" content="sredi svoj grad, bosna, parkiranje, fasade, okolis, rasvjeta, putevi, ekologija" />
+  <meta name="description" content="Uredi svoj grad." /> 
+  <meta name="keywords" content="sredi svoj grad, bosna, parkiranje, fasade, okolis, rasvjeta, putevi, ekologija, ulica.ba, ssg" />
   <%= csrf_meta_tags %>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <!--[if lte IE 8]>
@@ -18,14 +18,26 @@
     </ul>
   </div>
   <% if flash[:info] %>
-    <div id="flash-info-div" class="info-div" onclick="hideThisDiv(this);">
+    <div id="flash-info-div" class="info-div dummy-hide-div" onclick="hideThisDiv(this);">
       <%= flash[:info] %>
     </div>
   <% end %>
   <% if flash[:error] %>
-    <div id="form-error-div" class="error-flash-div" onclick="hideThisDiv(this);">
+    <div id="form-error-div" class="error-flash-div dummy-hide-div" onclick="hideThisDiv(this);">
       <%= flash[:error] %>
     </div>
+  <% end %>
+  <% if flash[:info] || flash[:error] %>
+  <script>
+    $(function() {
+      // setTimeout() function will be fired after page is loaded
+      // it will wait for 5 sec. and then will fire
+      // $("#successMessage").hide() function
+      setTimeout(function() {
+          $(".dummy-hide-div").hide('fade', {}, 500)
+      }, 3000);
+    });
+  </script>
   <% end %>
 	<div id="main-menu">
 		<%= render  :partial => 'shared/menu' %>

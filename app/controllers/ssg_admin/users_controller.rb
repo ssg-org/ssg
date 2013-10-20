@@ -17,15 +17,29 @@ class SsgAdmin::UsersController < SsgAdminController
     if user.issues.size > 0
       flash[:error] = "Korisnik ima kreirane probleme, prvo pobrišite probleme."
     else
-      user.destroy
+      user.delete!
       flash[:info] = "Uspješno ste obrisali korisnika!"
     end
 
     redirect_to ssg_admin_users_path()
   end
 
+  def update
+    require 'pp'
+    pp ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"
+    pp params
+    pp ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"
+    @user.ssg_admin_update(params)
+    flash[:info] = "Uspješno ste ažurirali korisnika!"
+    redirect_to ssg_admin_users_path
+  end
+
   def new
     @cities = @user.get_cities
+  end
+
+  def edit
+    @edit_user = User.find(params[:id])
   end
 
   def create

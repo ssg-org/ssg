@@ -1,5 +1,6 @@
 class City < ActiveRecord::Base
   extend FriendlyId
+  include SoftDelete
   
 	has_many :issues
   has_many :users
@@ -7,6 +8,8 @@ class City < ActiveRecord::Base
   belongs_to :image
 	
   friendly_id :name, :use => [:slugged]
+
+  default_scope where(:deleted => false)
 	
 	def self.for_search
 	  return City.where(:active => true).all

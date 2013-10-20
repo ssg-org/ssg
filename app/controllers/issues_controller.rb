@@ -7,6 +7,7 @@ class IssuesController < ApplicationController
     #@user = User.find(2)
 
     #UserMailer.created(@user, "#{request.protocol}#{request.host_with_port}").deliver
+    #UserMailer.notify_created(@user.city, "#{request.protocol}#{request.host_with_port}").deliver
     #UserMailer.verify(@user, "#{request.protocol}#{request.host_with_port}").deliver
     #UserMailer.reset_password(@user, '1321323', "#{request.protocol}#{request.host_with_port}").deliver
     #UserMailer.notify_admin_user_creation(@user, "1231231", "aaaaa").deliver

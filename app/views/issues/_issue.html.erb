@@ -32,7 +32,7 @@
 	
 	<div class="issue-category-part" >
 		<span class="font-gray-dark font-12"><b>&nbsp;&nbsp;&nbsp;&nbsp;<%=issue.get_status %></b></span>
-		<span class="font-gray-dark font-13 issue-category-part-name">
+		<span class="font-gray-dark font-13 <%= issue.category.name.size > 12 ? 'issue-category-part-name-long' : 'issue-category-part-name' %>">
 			&nbsp;&nbsp;&nbsp;<%=issue.category.name%>
 		</span>
 	</div>

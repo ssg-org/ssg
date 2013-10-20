@@ -1,6 +1,8 @@
 # encoding: UTF-8
 class User < ActiveRecord::Base
 
+  include SoftDelete
+
   ROLE_GUEST            = 1
   ROLE_USER             = 2
   ROLE_COMMUNITY_ADMIN  = 3
@@ -18,6 +20,8 @@ class User < ActiveRecord::Base
   belongs_to  :image
 
   DEF_LAT, DEF_LON, DEF_ZOOM_LVL, CITY_ZOOM = 43.855078, 18.395748, 10, 13
+
+  default_scope where(:deleted => false)
   
 
   def users_lat_long
@@ -61,6 +65,14 @@ class User < ActiveRecord::Base
 
   def get_cities
     return City.all
+  end
+
+  def self.get_admin_roles
+    results = []
+    results << OpenStruct.new( :name => 'Korisnik', :value => ROLE_USER)
+    results << OpenStruct.new( :name => 'Administrativni Korisnik', :value => ROLE_COMMUNITY_ADMIN)
+    results << OpenStruct.new( :name => 'SSG Admin', :value => ROLE_SSG_ADMIN)
+    results
   end
 
   def self.get_locales
@@ -241,7 +253,7 @@ class User < ActiveRecord::Base
     when ROLE_GUEST
       "Guest"
     when ROLE_USER
-      "User"
+      "Korisnik"
     when ROLE_COMMUNITY_ADMIN
       "Administrativni Korisnik"
     when ROLE_SSG_ADMIN
@@ -265,6 +277,9 @@ class User < ActiveRecord::Base
     users.each do |user|
       UserMailer.created(user, url).deliver
     end
+
+    # mail goes to predfined user to be notifed about all emails
+    UserMailer.notify_created(City.find(city_id), url).deliver
   end
 
   #
@@ -363,6 +378,19 @@ class User < ActiveRecord::Base
     forgot_pass.token = Digest::SHA1.hexdigest(Time.now().to_s + user.email)
     forgot_pass.save!
     return forgot_pass
+  end
+
+  def ssg_admin_update(params)
+    user = User.find(params[:id])
+    user.first_name = params[:user][:first_name]
+    user.last_name = params[:user][:last_name]
+    user.email = params[:user][:email]
+    user.username = params[:user][:username]
+    user.city_id = params[:user][:city_id]
+    user.active = params[:user][:active]
+    user.role = params[:user][:role]
+
+    user.save!
   end
 
   def settings_update(params)

@@ -17,6 +17,11 @@
     font-size: 22px;
   }
 
+  .no-issues-text {
+    font-size: 16px;
+    color: #333333;
+  }
+
   .user-info-loc {
     font-size: 14px;
     padding-top: 2px;
@@ -79,7 +84,12 @@
 
   <div id="user_issues_right_column">
 
-    <%= render :partial => 'issues/issue', :collection => @issues %>
+    <% unless @issues.empty? %>
+      <%= render :partial => 'issues/issue', :collection => @issues %>
+    <% else %>
+      <br />
+      <span class="no-issues-text"><%= t('users.show.no_issues') %></span>
+    <% end %>
     
   </div>
 </div>

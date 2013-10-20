@@ -1,0 +1,41 @@
+
+
+<div class="row-fluid">
+    <div class="span4 offset4">
+      <%= link_to ssg_admin_users_path() do%>
+        <span style="margin-left:10px;">&lt;&lt; Nazad</span>
+      <% end %>
+    </div>
+    <!-- FORM -->
+    <div class="grid span4 offset4">
+      <div class="grid-title">
+        <div class="pull-left">
+          <div class="setup-icon"><i class="icon-bookmark"></i></div>
+          <span>Ažuriraj Korisnika</span> 
+          <div class="clearfix"></div>
+        </div>
+        <div class="clearfix"></div>   
+      </div>
+
+      <div class="grid-content">
+    <div class="new-admin-user">
+
+      <%= form_for @edit_user, url: ssg_admin_user_path(), :method => "PUT", :html => { :id => "update_admin_user" } do |f| %>
+        <%= f.text_field :username, :autocomplete=> :off , :placeholder => "Korisničko Ime", :class => 'span12', :required => true %>
+        <%= f.text_field :email, :autocomplete=> :off , :placeholder => "Email", :class => 'span12', :required => true %>
+        <%= f.text_field :first_name, :autocomplete=> :off , :placeholder => "Ime", :class => 'span12' %>
+        <%= f.text_field :last_name, :autocomplete=> :off , :placeholder => "Prezime", :class => 'span12' %>
+        <label for="active" class="checkbox"><%= f.check_box :active %>Aktivan Korisnik?
+        </label>
+        <label for="city_id">Opština:</label>
+        <%= f.collection_select(:city_id, @edit_user.get_cities, :id, :name, {}, {   } ) %>
+        <br />
+        <label for="role">Uloga:</label>
+        <%= f.collection_select(:role, User.get_admin_roles, :value, :name, {}, {   } ) %>
+        <br />
+        <button class="btn btn-primary pull-right" type="submit">Ažuriraj</button>
+      <% end %>
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</div>

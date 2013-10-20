@@ -1,10 +1,15 @@
 class Category < ActiveRecord::Base
+
+  include SoftDelete
+
   has_many  :issues
   
   has_many :children, :class_name => "Category", :foreign_key => "parent_id"
   belongs_to :parent, :class_name => "Category"
 
   DEFAULT_ICON = 'default.png'
+
+  default_scope where(:deleted => false)
   #
   # Returns true if created, false if edited
   #

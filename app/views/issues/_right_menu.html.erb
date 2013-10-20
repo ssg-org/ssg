@@ -35,7 +35,7 @@
 		<span class="title value_strip()"><%= t('issues.right_menu.resolution')%></span><br/>
 		<%=link_to t('issues.right_menu.all'), issues_path(clear_params({:status => nil})), { :class => "#{'r-menu-selected' if params[:status].blank? }"} %><br/>
 		<% Issue::TRANS_KEYS.each_with_index do |status, i| %>
-			<% next if i == 0 # we skip first one since it is 'none' %>
+			<% next if i == 0 || i == 5 # we skip first one since it is 'none' %>
 			<%=link_to t("issues.status.#{status}"), issues_path(clear_params({:status => i })), { :class => "#{'r-menu-selected' if params[:status] == i.to_s }"} %><br/>
 		<% end %>
 	</div>

@@ -60,7 +60,7 @@ class UsersController < ApplicationController
     session[:referer_url] = @user.guest? && params[:create_issue] ? new_issue_path() : nil
     
     @city_names = collect_city_names()
-    @city_names.unshift( [I18n.t('users.login.choose_city'), 0])
+    @city_names.unshift( [I18n.t('users.login.choose_city'), ''])
   end
 
   def verify
@@ -137,7 +137,9 @@ class UsersController < ApplicationController
   def logout
     reset_session
     session = nil
-    redirect_to issues_path()
+
+
+    redirect_to params[:admin_logout] ? ssg_admin_login_path() : issues_path()
   end
   
   def ssg_login

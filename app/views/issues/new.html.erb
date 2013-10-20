@@ -75,6 +75,7 @@
 						</ul>
 					</td>
 				</tr>
+				<!--
 				<tr>
 					<td>
 						<input type="checkbox" checked value="1" name="terms_of_use" id="terms_of_use">
@@ -83,10 +84,11 @@
 						</span>
 					</td>
 				</tr>
+			-->
 				<tr>
 					<td>
 						<div style="padding-top: 20px;">
-							<%= ssg_button t('issue.new.report').upcase, {:onclick => "submitForm('\#fileupload');"}, {}, 'din-font' %>
+							<%= ssg_button t('issues.new.report').upcase, {:onclick => "submitForm('\#fileupload');"}, {}, 'din-font' %>
 						</div>
 					</td>
 				</tr>
@@ -199,9 +201,6 @@ $(function () {
 				required : true
 			},
 			'issue[lat]' : {
-				required : true
-			},
-			terms_of_use : {
 				required : true
 			},
 			'distance' : {

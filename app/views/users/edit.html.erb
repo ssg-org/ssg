@@ -74,7 +74,7 @@
     <label><%= t('users.edit.county') %></label>
     <%= f.collection_select(:city_id, @edit_user.get_cities, :id, :name, {}, {   } ) %>
     <br />
-    <label><%= t('users.edit.language') %></label>
+    <label><%= t('users.edit.lang') %></label>
     <%= f.collection_select(:locale, User.get_locales, :value, :name, {}, {   } ) %>
     <br />
     <br />

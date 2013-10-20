@@ -8,8 +8,15 @@ class SsgAdmin::CitiesController < SsgAdminController
   end
 
   def destroy
-    City.destroy(params[:id])
-    flash[:info] = "Uspješno ste obrisali grad!"
+    city = City.find(params[:id])
+
+    num_of_users = city.users.size
+    unless num_of_users == 0
+      flash[:error] = "Opština ima '#{num_of_users}' korisnika vezanih za sebe ne možemo obrisati opštinu!"
+    else
+      city.delete!
+      flash[:info] = "Uspješno ste obrisali grad!"
+    end
     redirect_to ssg_admin_cities_path()
   end
 
