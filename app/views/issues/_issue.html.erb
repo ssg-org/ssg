@@ -45,10 +45,11 @@
 		<span style="float:right; margin-top: 2px; cursor: pointer;" class="font-13 font-gray-dark">
 			<% link_url = "#{request.protocol}#{request.host_with_port}#{issue_path(issue.friendly_id)}" %>
 
-			<a href="https://www.facebook.com/sharer/sharer.php?u=<%=link_url%>" onclick="window.open(this.href, 'mywin',
+			<a href="https://www.facebook.com/sharer/sharer.php?p[title]=<%= issue.title%>&amp;p[summary]=<%=issue.description%>&amp;p[url]=<%=link_url%>" onclick="window.open(this.href, 'mywin',
 'left=20,top=20,width=500,height=300,toolbar=1,resizable=0'); return false;">
   			<%=image_tag 'facebook.png', :border => '0' %>
 			</a>
+
 			<a href="https://twitter.com/share?text=<%=issue.title %>&amp;url=<%=link_url%>&amp;hashtags=ulicaba" onclick="window.open(this.href, 'mywin',
 'left=20,top=20,width=500,height=300,toolbar=1,resizable=0'); return false;" data-via="Ulica.ba">
 				<%=image_tag 'twitter.png', :border => '0' %>
