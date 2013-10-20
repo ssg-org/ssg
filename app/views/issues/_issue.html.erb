@@ -31,9 +31,9 @@
 	<hr style="margin-top:3px;"/>
 	
 	<div class="issue-category-part" >
-		<span class="font-gray-dark font-12"><b>&nbsp;&nbsp;&nbsp;&nbsp;<%=issue.get_status %></b></span>
-		<span class="font-gray-dark font-13 <%= issue.category.name.size > 12 ? 'issue-category-part-name-long' : 'issue-category-part-name' %>">
-			&nbsp;&nbsp;&nbsp;<%=issue.category.name%>
+		<span class="font-gray-dark font-12"><b>&nbsp;&nbsp;<%=issue.get_status %></b></span>
+		<span class="font-gray-dark font-13 <%= issue.category.name.size > 25 ? 'issue-category-part-name-long' : 'issue-category-part-name' %>">
+			<%=issue.category.name%>
 		</span>
 	</div>
 	
@@ -49,7 +49,7 @@
 'left=20,top=20,width=500,height=300,toolbar=1,resizable=0'); return false;">
   			<%=image_tag 'facebook.png', :border => '0' %>
 			</a>
-			<a href="https://twitter.com/share?text=<%=link_url%>" onclick="window.open(this.href, 'mywin',
+			<a href="https://twitter.com/share?text=<%=issue.title %>&amp;url=<%=link_url%>&amp;hashtags=ulicaba" onclick="window.open(this.href, 'mywin',
 'left=20,top=20,width=500,height=300,toolbar=1,resizable=0'); return false;" data-via="Ulica.ba">
 				<%=image_tag 'twitter.png', :border => '0' %>
 			</a>

@@ -355,7 +355,7 @@ textarea {
 	float: right;
 	white-space: nowrap;
 	overflow: hidden;
-	width: 110px;
+	width: 120px;
 	text-align: right;
 	margin-right: 10px;
 }
@@ -364,8 +364,9 @@ textarea {
 	@extend .issue-category-part-name;
 	line-height: 14px;
 	white-space: normal;
-	font-size: 11px;
+	font-size: 13px;
 	vertical-align: middle;
+	text-align: center;
 	margin-top: 2px;
 }
 

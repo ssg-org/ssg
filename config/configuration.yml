@@ -1,7 +1,7 @@
 development:
   ssg:
     email_address:          "no-reply@sredisvojgrad.com"
-    notify_address:         "haris.krajina@gmail.com"
+    notify_address:         "dummy@dummy.com"
     auth_enabled:           False
     auth_username:          "username"
     auth_password:          "pass"
@@ -21,7 +21,7 @@ development:
 production:
   ssg:
     email_address:          "no-reply@sredisvojgrad.com"
-    notify_address:         "haris.krajina@gmail.com"
+    notify_address:         "dummy@dummy.com"
     auth_enabled:           False
     auth_username:          "username"
     auth_password:          "pass"
