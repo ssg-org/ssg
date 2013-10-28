@@ -33,6 +33,7 @@ bs:
             comments:   'komentar'
             discuss:    'Komentarišite problem'
             log_in:     'Morate se prijaviti da bi komentarisali problem'
+            deleted:    'Uspješno izbrisan komentar!'
         locale:
             en:         'ENG'
             bs:         'BHS'
@@ -169,6 +170,8 @@ bs:
             fixed:          'Popravljen'
             deleted:        'Obrisan'
             re_opened:      'Ponovo otvoren'
+            change_from:    'Status promjenjen iz'
+            change_to:      'u'
     cities:
         index:
             cities: 'OPŠTINE'

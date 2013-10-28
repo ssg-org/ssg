@@ -14,7 +14,7 @@ class CommentsController < ApplicationController
 
     if @user.ssg_admin? || comment.is_owned?(@user)
       comment.destroy
-      flash[:info] = 'Uspjesno izbrisan komentar'
+      flash[:info] = I18n.t('shared.comments.deleted')
     else
       flash[:error] = ApplicationController::ACCESS_DENIED
     end

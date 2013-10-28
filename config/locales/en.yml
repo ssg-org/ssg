@@ -33,6 +33,7 @@ en:
             comments:   'comments'
             discuss:    'Discuss this issue'
             log_in:     'You can log in to join conversation'
+            deleted:    'Comment successfully deleted!'
         locale:
             en:         'ENG'
             bs:         'BHS'
@@ -169,6 +170,8 @@ en:
             fixed:          'Fixed'
             deleted:        'Deleted'
             re_opened:      'Re-opened'
+            change_from:    'Status changed from'
+            change_to:      'to'
     cities:
         index:
             cities: 'COUNTIES'

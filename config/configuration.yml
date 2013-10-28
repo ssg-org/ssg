@@ -14,7 +14,10 @@ development:
     secret_key:             
   aws:
     access_key:             
-    access_secret:          
+    access_secret:
+  twitter:
+    consumer_key:
+    consumer_secret:        
   misc:
     unique_view_epsilon:    3600
 
@@ -34,6 +37,9 @@ production:
     secret_key:             
   aws:
     access_key:             
-    access_secret:          
+    access_secret:  
+  twitter:
+    consumer_key:
+    consumer_secret:        
   misc:
     unique_view_epsilon:    3600

@@ -7,6 +7,8 @@ class User < ActiveRecord::Base
   ROLE_USER             = 2
   ROLE_COMMUNITY_ADMIN  = 3
   ROLE_SSG_ADMIN        = 4
+
+  DUMMY_TWITTER_EMAIL = 'dummy@twitter.com'
   
   GUEST_USER = User.new(:role => ROLE_GUEST, :first_name => 'Guest', :locale => I18n.locale)
 
@@ -125,10 +127,12 @@ class User < ActiveRecord::Base
     end
   end
   
-  def comment_on_issue(issue_id, text)
-    ActiveRecord::Base.transaction do    
+  def comment_on_issue(issue_id, text, admin=false, status_1, status_2)
+    # invalid case change to same status
+    return if admin && status_1.to_i == status_2.to_i
+    ActiveRecord::Base.transaction do
       issue = Issue.find(issue_id)
-      issue.comments << Comment.new(:text => text, :user => self)
+      issue.comments << Comment.new(:text => text, :user => self, :admin_comment => admin, :status_first => status_1.to_i, :status_second => status_2.to_i)
       issue.comment_count += 1
       issue.save
     end
@@ -154,8 +158,11 @@ class User < ActiveRecord::Base
       issue = Issue.find(issue_id)
       # You can't vote for your issues
       if (issue.user_id == self.id || self.ssg_admin?)
+        old_status   = issue.status
         issue.status = status.to_i
         issue.save
+
+        comment_on_issue(issue.id, 'status comment', true, old_status, status)
       end
     end
   end
@@ -307,6 +314,24 @@ class User < ActiveRecord::Base
     user.uuid = UUIDTools::UUID.random_create.to_s
     user.fb_id = fb_id
     user.fb_token = token
+    user.username = username
+    user.last_name = last_name
+    user.first_name = first_name
+    user.active = is_active
+    user.role = role
+    user.locale = I18n.default_locale
+    user.save
+    
+    return user
+  end  
+
+  def self.create_twitter_user(token, email, t_id, last_name, first_name, username, is_active = true, role = User::ROLE_USER)
+    user = User.new
+    user.uuid = UUIDTools::UUID.random_create.to_s
+    # there can be twitter users without email (we hack in that case)
+    user.email = email ? email : user.uuid
+    user.twitter_id = t_id
+    user.twitter_token = token
     user.username = username
     user.last_name = last_name
     user.first_name = first_name

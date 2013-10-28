@@ -70,9 +70,16 @@ class Issue < ActiveRecord::Base
     I18n.t("issues.status.#{trans_key}")
   end
 
+  def self.translate_status(id)
+    trans_key = TRANS_KEYS[id.to_i]
+    I18n.t("issues.status.#{trans_key}")
+  end
+
   def self.all_statuses
     results = []
     6.downto(1) do |i|
+      # do not support deleted
+      next if i == 5
       trans_key = TRANS_KEYS[i]
       results << OpenStruct.new(:id => i, :name => I18n.t("issues.status.#{trans_key}"))
     end

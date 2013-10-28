@@ -11,7 +11,13 @@ gem 'i18n-js'
 gem 'pg'
 #
 gem 'awesome_print'
-gem 'omniauth-facebook', '1.4.0'
+
+gem 'omniauth-facebook'
+gem 'omniauth'
+gem 'omniauth-twitter'
+gem 'twitter'
+gem 'twitter-text'
+
 #gem 'execjs'
 #gem 'therubyracer'
 #gem 'oauth2', '0.4.1'

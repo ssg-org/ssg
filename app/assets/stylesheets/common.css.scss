@@ -687,6 +687,12 @@ a.account  {
 	font-size: 14px;
 	font-weight: bold;
 }
+
+.comment-name-admin {
+	font-size: 13px;
+	font-weight: bold;
+}
+
 .comment-time {
 	color: #adadad;
 	font-size: 12px;
@@ -695,6 +701,10 @@ a.account  {
 	font-size: 15px;
 	display: inline-block;
 	margin-top: 3px;
+}
+.comment-text-admin {
+	@extend .comment-text;
+	font-size: 13px;
 }
 
 .comment-delete {

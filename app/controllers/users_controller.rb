@@ -15,6 +15,45 @@ class UsersController < ApplicationController
     @edit_user = User.find(@user.id)
   end
 
+  def twitter_create
+    pp ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"
+    pp request.env["omniauth.auth"]
+    pp ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"
+    twitter_info = env["omniauth.auth"]
+    t_token      = twitter_info['credentials']['token']
+    t_id         = twitter_info['uid']
+    f_name       = twitter_info['info']['first_name'] || twitter_info['info']['name']
+    l_name       = twitter_info['info']['last_name']
+    email        = twitter_info['info']['email']
+    username     = twitter_info['info']['nickname']
+    
+    # check fo user by access_token (fast'n'dirty check)
+    user = User.find_by_twitter_token(t_token)
+
+    # not found by token - check by email
+    if (user.nil?)
+      user = User.find_by_email(email) unless email.nil?
+      
+      # Not found by email - check FB-id
+      if (user.nil?)
+        user = User.find_by_twitter_id(t_id)
+        
+        if (user.nil?)
+          user = User.create_twitter_user(t_token, email, t_id, l_name, f_name, username )
+        end
+      end
+    end
+      
+    session[:id] = user.id
+
+    @redirect_uri = issues_path()
+    redirect_to issues_path()
+  end
+
+  def twitter_failure
+    flash[:error] = "Not able to login to twitter!"
+    @redirect_uri = issues_path()
+  end
 
   def settings
     

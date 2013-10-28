@@ -41,11 +41,21 @@ class ApplicationController < ActionController::Base
   end
   
   private
+
   def check_access
     puts " #{Config::Configuration.get(:ssg, :auth_enabled).class}"
     authenticate_or_request_with_http_basic do |user_name, password|
       # Change these to username and password required
       user_name == Config::Configuration.get(:ssg, :auth_username) && password == Config::Configuration.get(:ssg, :auth_password)
+    end
+  end
+
+  def client
+    Twitter.configure do |config|
+      config.consumer_key = Config::Configuration.get(:twitter, :consumer_key)
+      config.consumer_secret = Config::Configuration.get(:twitter, :consumer_secret)
+      config.oauth_token = session['access_token']
+      config.oauth_token_secret = session['access_secret']
     end
   end
 end

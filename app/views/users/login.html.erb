@@ -73,7 +73,13 @@
 		<span class=''><%=t('users.login.quick_sign_in_message') %></span>
 	</div>
 	<br />
-	<%= link_to image_tag('fb_login_en.png'), '#', :id => 'fb-login-link' %> 
+	<%= link_to image_tag('fb_login_en.png'), '#', :id => 'fb-login-link' %>
+	<br />
+	<br />
+	<br />
+	<%= form_tag "/auth/twitter", :method => "get",:id => "twitter_form", :html => {:class => ""} do |f| %>
+    <%= link_to image_tag('twitter_login_en.png'), '#', :id => 'twitter-login-link' %>
+	<% end %>
 </div>
 <br style="clear:both">
 
@@ -81,12 +87,15 @@
 <script>
 	$(document).ready(function() {
 	  $('#city_id').selectbox();
-
-
 	});
 
 	$('#fb-login-link').click(function(event) {
 		fb_login('<%=Config::Configuration.get(:fb, :application_id)%>', escape('<%=fb_login_users_url()%>'), '<%=Config::Configuration.get(:fb, :scope)%>'); 
+		return false;
+	});
+
+	$('#twitter-login-link').click(function(event) {
+		document.forms['twitter_form'].submit();
 		return false;
 	});
 
