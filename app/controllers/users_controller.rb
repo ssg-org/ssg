@@ -16,6 +16,7 @@ class UsersController < ApplicationController
   end
 
   def twitter_create
+    require 'pp'
     pp ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"
     pp request.env["omniauth.auth"]
     pp ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"
