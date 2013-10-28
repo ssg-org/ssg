@@ -8,6 +8,9 @@ function fb_login(app_id, redirect_url, scope){
 	var  left     = parseInt(screenX + ((outerWidth - width) / 2), 10);
 	var  top      = parseInt(screenY + ((outerHeight - height) / 2.5), 10);
 	var  features = 'width=' + width + ',height=' + height + ',left=' + left + ',top=' + top + ',title=' + 'Facebook login page' + ',background-color:' + '#000000';
+
+	console.log('Final');
+	console.log('https://www.facebook.com/dialog/oauth?client_id=' + app_id +'&redirect_uri=' + redirect_url + '&scope=' + scope + '&state=4&display=popup');
 	var newwindow = window.open('https://www.facebook.com/dialog/oauth?client_id=' + app_id +'&redirect_uri=' + redirect_url + '&scope=' + scope + '&state=4&display=popup', 'Facebook', features);
 	if (window.focus) {
 		newwindow.focus();

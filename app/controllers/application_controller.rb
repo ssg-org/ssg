@@ -19,6 +19,7 @@ class ApplicationController < ActionController::Base
 
   private
   def check_login
+    
     # Assing uniq seed for 'view counting'
     if (cookies[:unique].blank?)
       # TODO - DB sequence maybe ? uuid is too space consuming
