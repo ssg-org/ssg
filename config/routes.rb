@@ -143,9 +143,7 @@ Ssg::Application.routes.draw do
 
   # twitter
   get '/auth/twitter/callback', to: 'users#twitter_create', as: 'callback'
-  get '/auth/failure', to: 'sessions#twitter_error', as: 'failure'
-  get '/profile', to: 'sessions#twitter_show', as: 'show'
-
+  get '/auth/failure', to: 'users#auth_error', as: 'failure'
   get '/auth/facebook/callback' => 'users#fb_login', as: 'fb_callback'
 
 

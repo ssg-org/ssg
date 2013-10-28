@@ -51,8 +51,13 @@ class UsersController < ApplicationController
     redirect_to issues_path()
   end
 
-  def twitter_failure
-    flash[:error] = "Not able to login to twitter!"
+  def auth_error
+    require 'pp'
+    pp ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"
+    pp params
+    pp request.env["omniauth.auth"]
+    pp ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"
+    flash[:error] = "Not able to login to via social network!"
     @redirect_uri = issues_path()
   end
 
