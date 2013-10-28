@@ -218,7 +218,7 @@ DEPENDENCIES
   mail_view!
   mini_magick (= 3.5.0)
   omniauth
-  omniauth-facebook
+  omniauth-facebook (= 1.4.0)
   omniauth-twitter
   pg
   rails (= 3.2.6)

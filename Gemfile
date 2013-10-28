@@ -12,7 +12,7 @@ gem 'pg'
 #
 gem 'awesome_print'
 
-gem 'omniauth-facebook'
+gem 'omniauth-facebook', '1.4.0'
 gem 'omniauth'
 gem 'omniauth-twitter'
 gem 'twitter'
