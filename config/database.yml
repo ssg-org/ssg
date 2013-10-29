@@ -32,3 +32,11 @@ development:
 #  database: db/production.sqlite3
 #  pool: 5
 #  timeout: 5000
+production:
+  adapter: postgresql
+  encoding: unicode
+  database: ssg_demo
+  pool: 50
+  username: ssg_demo
+  password: ssg_demo
+  host: localhost
