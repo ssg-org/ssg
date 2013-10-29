@@ -90,10 +90,6 @@
 	});
 
 	$('#fb-login-link').click(function(event) {
-		console.log('<%=Config::Configuration.get(:fb, :application_id)%>');
-		console.log(escape('<%=fb_callback_url()%>'));
-		console.log('<%=Config::Configuration.get(:fb, :scope)%>');
-
 		fb_login('<%=Config::Configuration.get(:fb, :application_id)%>', escape('<%=fb_callback_url()%>'), '<%=Config::Configuration.get(:fb, :scope)%>'); 
 		return false;
 	});
