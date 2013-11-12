@@ -17,6 +17,6 @@ development:
 production:
   adapter: postgresql
   host: localhost
-  database: ssg-prod
-  username: ssg-prod
-  password: ssg-prod
+  database: ssg_demo
+  username: ssg_demo
+  password: ssg_demo
