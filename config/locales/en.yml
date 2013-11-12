@@ -8,7 +8,7 @@ en:
             we_are: 'We are social community that wants to provide its citizens life in nicer environment'
             issues: 'ISSUES'
             discover:   'DISCOVER ALL'
-            cities:     'COUNTIES'
+            cities:     'CITIES'
             reports:    'REPORTS'
             reports_discover: 'VIEW'
             country:    'COUNTRY WIDE'
@@ -42,7 +42,7 @@ en:
             exists: 'User already exists'
             created: 'User was sucessfully created. Email has been sent.'
             error_create: 'Error creating user, please try again'
-            thanks: "Thank you"
+            verify_ok: "Your email address has been successfully verified. Thank you!"
             error_verify: "Error verifying user"
             error_creds: "Wrong credentials, password reset not allowed!"
             pass_change: "Password successfully changed!"
@@ -87,6 +87,7 @@ en:
             personal_data:  'PERSONAL DATA'
             pass_change:    'PASSWORD CHANGE'
             profile_img:    'PROFILE IMAGE'
+            details:        'DETAILS'
             first_name:     'Name'
             last_name:      'Surname'
             website:        'Website'
@@ -146,7 +147,7 @@ en:
             featured:       'FEATURED'
             categories:     'CATEGORIES'
             resolution:     'RESOLUTION'
-            cities:         'COUNTIES'
+            cities:         'CITIES'
             counties:       'COUNTIES'
             all_time:       'All time'
             today:          'Today'
@@ -161,7 +162,7 @@ en:
             open:           'Open'
             in_progress:    'In progress'
             fixed:          'Fixed'
-            all_counties:   'All counties'
+            all_counties:   'All cities'
         status:
             none:           'Not set'
             open:           'Opened'
@@ -174,8 +175,8 @@ en:
             change_to:      'to'
     cities:
         index:
-            cities: 'COUNTIES'
-            select: 'Map of all counties'
+            cities: 'Cities'
+            select: 'Map of all cities'
             reports: 'REPORTS'
     form:
         common:

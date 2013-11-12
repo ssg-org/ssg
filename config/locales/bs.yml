@@ -42,7 +42,7 @@ bs:
             exists: 'Korisnik sa tim podacima već postoji'
             created: 'Korisnik kreiran. Email sa dodatnim uputama je poslan'
             error_create: 'Greška prilikom kreiranja korisnika, pokušajte ponovo'
-            thanks: "Hvala Vam!"
+            verify_ok: "Vaša email adresa je uspjesno verificirana. Hvala vam!"
             error_verify: "Greška prilikom verifikacije korisnika"
             error_creds: "Pogrešni kredencijali, reset lozinke nije dopušten!"
             pass_change: "Lozinka uspješno promjenjena!"
@@ -87,6 +87,7 @@ bs:
             personal_data:  'LIČNI PODACI'
             pass_change:    'PROMJENA LOZINKE'
             profile_img:    'PROFILNA SLIKA'
+            details:        'DETALJI'
             first_name:     'Ime'
             last_name:      'Prezime'
             website:        'Web stranica'
@@ -117,7 +118,7 @@ bs:
             issues:         'PROBLEMI'
             loading:        'Učitavanje'
         new:
-            report:         'PRIJAVITE PROBLEM'
+            report:         'PRIJAVI'
             success:        'Uspješno ste prijavili problem u Vašoj opštini!'
             set_location:   'Odaberite lokaciju na mapi'
             issue_title:    'Naziv problema'

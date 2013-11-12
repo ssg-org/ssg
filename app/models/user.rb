@@ -10,7 +10,7 @@ class User < ActiveRecord::Base
 
   DUMMY_TWITTER_EMAIL = 'dummy@twitter.com'
   
-  GUEST_USER = User.new(:role => ROLE_GUEST, :first_name => 'Guest', :locale => I18n.locale)
+  GUEST_USER = User.new(:role => ROLE_GUEST, :first_name => 'Guest', :locale => I18n.default_locale)
 
   LOCALES = [:bs, :en]
 

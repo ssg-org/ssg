@@ -1,7 +1,7 @@
 development:
   ssg:
     email_address:          "no-reply@sredisvojgrad.com"
-    notify_address:         "dummy@dummy.com"
+    notify_address:         "notifications@sredisvojgrad.com"
     auth_enabled:           False
     auth_username:          "username"
     auth_password:          "pass"
@@ -14,7 +14,7 @@ development:
     secret_key:             
   aws:
     access_key:             
-    access_secret:
+    access_secret:          
   twitter:
     consumer_key:
     consumer_secret:        

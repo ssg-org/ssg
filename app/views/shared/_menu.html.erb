@@ -16,7 +16,6 @@
 		</span>
 	</div>
 	
-	<% puts "#{params[:controller]}   #{params[:action]}"%>
 	<% selection = {
 		:issues => params[:controller] == 'issues' && params[:action] != 'new',
 		:cities => params[:controller] == 'cities',
@@ -26,7 +25,6 @@
 		:signup => params[:controller] == 'users' && params[:action] == 'login',
 		:login => params[:controller] == 'users' && params[:action] == 'login'
 	}%>
-	<% puts selection.inspect%>
 	
 	<div style="margin-top:70px;">
 		<ul id="menu-list">

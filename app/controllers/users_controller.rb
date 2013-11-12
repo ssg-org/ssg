@@ -73,6 +73,12 @@ class UsersController < ApplicationController
 
     # if all good update params
     @user.settings_update(params)
+
+    # Reset local for current session
+    if session[:locale] != @user.locale
+      I18n.locale = session[:locale] = @user.locale
+    end
+
     flash[:info] = I18n.t('users.edit.succ_save')
     redirect_to user_path(@user.id)
   end
@@ -113,7 +119,7 @@ class UsersController < ApplicationController
 
     if (!user.nil?)
       session[:id] = user.id
-      flash[:info] = I18n.t('users.msgs.thanks')
+      flash[:info] = I18n.t('users.msgs.verify_ok')
       redirect_to(issues_path())
     else
       flash[:error] = I18n.t('users.msgs.error_verify')
@@ -136,7 +142,12 @@ class UsersController < ApplicationController
     forgot_pass.destroy
 
     flash[:info] = I18n.t('users.msgs.pass_change')
-    redirect_to login_users_path()
+
+    if (user.ssg_admin? || user.community_admin?)
+      redirect_to ssg_admin_login_path()
+    else
+      redirect_to login_users_path()
+    end
   end
 
   def reset_password()

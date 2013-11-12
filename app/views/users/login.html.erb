@@ -99,14 +99,6 @@
 		return false;
 	});
 
-	// on enter click
-	$("#login_form #password").keyup(function (e) {
-    if (e.keyCode == 13) {
-      // Do something
-      submitForm('#login_form');
-    }
-	});
-
 	// Validation
 	$('#login_form').validate({
 		rules: {
@@ -127,14 +119,7 @@
 		}
 	});
 
-
 	$('#register_form').validate({
-		submitHandler: function(form) {
-    	$(form).submit();
-  	},
-		onfocusout: function (element, event) {
-      
-    },
 		rules : {
 			username: {
 				required: true
@@ -182,8 +167,5 @@
 			}
 		}
 	});
-
-
-
 </script>
 <% end %>

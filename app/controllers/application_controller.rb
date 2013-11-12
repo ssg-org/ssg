@@ -19,26 +19,21 @@ class ApplicationController < ActionController::Base
 
   private
   def check_login
-    
+
     # Assing uniq seed for 'view counting'
     if (cookies[:unique].blank?)
       # TODO - DB sequence maybe ? uuid is too space consuming
       cookies[:unique] = Random.new.rand(1..999999999)
     end
 
-    locale = I18n.default_locale
-
-    if (session[:id])
+    if session[:id]
       @user = User.find_by_id(session[:id])
-      locale = @user.locale
     else
       # Guest if not from session
       @user = User.guest_user
-      # check for session locale
-      locale = session[:locale] if session[:locale]
     end
 
-    I18n.locale = locale
+    I18n.locale = session[:locale] || @user.locale || I18n.default_locale
   end
   
   private
