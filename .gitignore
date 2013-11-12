@@ -9,3 +9,5 @@ public/assets
 public/system/**/*
 public/uploads
 tmp
+temp
+.sass-cache/

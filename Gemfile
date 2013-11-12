@@ -19,7 +19,7 @@ gem 'twitter'
 gem 'twitter-text'
 
 #gem 'execjs'
-#gem 'therubyracer'
+gem 'therubyracer'
 #gem 'oauth2', '0.4.1'
 
 
