@@ -29,10 +29,10 @@
               <% @issues.sort.each do |issue| %>
                 <tr id="<%= "row_#{issue.id}" %>">
                   <td><%= issue.id %></td>
-                  <td><%= truncate(issue.title, :length => 20) %></td>
-                  <td><%= issue.user.username %></td>
+                  <td><%= link_to truncate(issue.title, :length => 20), issue_path(issue), :target => "_blank" %></td>
+                  <td><%= link_to issue.user.username, user_path(issue.user), :target => "_blank" %></td>
                   <td><%= issue.get_status %></td>
-                  <td><%= issue.city ? issue.city.name : 'Nema opcine' %></td>
+                  <td><%= issue.city ? link_to(issue.city.name, city_path(issue.city), :target => "_blank") : 'Nema opcine' %></td>
                   <td><%= issue.vote_count %></td>
                   <td><%= issue.view_count %></td>
                   <td class="admin-list-toolbar-cell" align="center">
@@ -40,7 +40,7 @@
                       <div class="btn-group">
                         <%= link_to edit_ssg_admin_issue_path(issue), :class => "btn"  do%>
                           <i class="icon-edit"></i>
-                        <% end %>      
+                        <% end %>
                         <%= link_to ssg_admin_issue_path(issue), :class => "btn", :method => :delete, :title => 'Obriši', :confirm => "Da li ste sigurni?" do %>
                           <i class="icon-remove"></i>
                         <% end %>

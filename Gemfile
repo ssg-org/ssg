@@ -4,8 +4,6 @@ ruby "1.9.3"
 
 gem 'rails', '3.2.6'
 
-# Bundle edge Rails instead:
-# gem 'rails', :git => 'git://github.com/rails/rails.git'
 gem 'i18n-js'
 # gem 'sqlite3'
 gem 'pg'
@@ -22,16 +20,13 @@ gem 'twitter-text'
 gem 'therubyracer'
 #gem 'oauth2', '0.4.1'
 
-
 gem 'carrierwave'
 gem 'mini_magick', '3.5.0'
+
 # S3 support
 gem "fog", "~> 1.3.1"
 
 gem 'friendly_id', '4.0.1'
-
-# Email related gems
-gem 'mail_view', :git => 'https://github.com/37signals/mail_view.git'
 
 # gem 'koala', '>= 1.5.0'
 # gem 'twitter'

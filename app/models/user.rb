@@ -127,7 +127,7 @@ class User < ActiveRecord::Base
     end
   end
   
-  def comment_on_issue(issue_id, text, admin=false, status_1, status_2)
+  def comment_on_issue(issue_id, text, admin = false, status_1 = 0, status_2 = 0)
     # invalid case change to same status
     return if admin && status_1.to_i == status_2.to_i
     ActiveRecord::Base.transaction do

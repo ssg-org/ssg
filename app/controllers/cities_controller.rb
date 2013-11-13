@@ -11,7 +11,7 @@ class CitiesController < ApplicationController
 
 	def show
 		@city = City.find(params[:id])
-		@issues = Issue.where(:city_id => params[:id])
+		@issues = @city.issues
 	end
 
 	def zoom
