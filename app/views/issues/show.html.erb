@@ -110,7 +110,7 @@
 
 	<div style="float:left; margin-left:20px; width:240px;">
 		<div style="margin-bottom:10px;">
-			<%= image_tag @user.image ? @user.image.image.thumb_logo : 'no-photo.png', :class => 'issue-info-user-image' %>
+			<%= image_tag @issue.user.image ? @issue.user.image.image.thumb_logo : 'no-photo.png', :class => 'issue-info-user-image' %>
 			<div class="issue-info-person">
 				<a href='<%= user_path(@issue.user.id) %>'>
 					<span class="issue-info-display-name"><%= @issue.user.full_name %></span><br />
