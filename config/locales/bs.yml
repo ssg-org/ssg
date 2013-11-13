@@ -23,8 +23,7 @@ bs:
             logout:     'ODJAVA'
             error:      'Molimo Vas popunite sva obavezna polja i ponovo prijavite Vaš problem.'
         footer:
-            privacy:     'Izjava o privatnosti'
-            tos:        'Uslovi korištenja'
+            tos:        'Uslovi korištenja i privatnost'
             help:       'Pomoć i FAQ'
             advertise:  'Reklamiranje'
             contact:    'Kontakt'

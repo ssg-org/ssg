@@ -23,8 +23,7 @@ en:
             logout:     'LOGOUT'
             error:      'Please fill in all requested fields and then submit your issue.'
         footer:
-            privacy:    'Privacy policy'
-            tos:        'Terms of use'
+            tos:        'Terms of use and privacy policy'
             help:       'Help & FAQ'
             advertise:  'Advertise'
             contact:    'Contact'

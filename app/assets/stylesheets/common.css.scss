@@ -834,6 +834,10 @@ a.account  {
 		font-size: 14px;
 	}
 
+	.answer li {
+		margin-left: 15px;
+	}
+
 	.title-head {
 		font-weight: bold;
 		font-size: 13px;
@@ -843,6 +847,11 @@ a.account  {
 
 	.title-point {
 		margin-bottom: 4px;
+	}
+
+	.title-point a, .answer a {
+		text-decoration: underline;
+		color: #55B9DD;
 	}
 
 /* REPORTS */
@@ -862,4 +871,8 @@ a.account  {
     	color: #333333;
   	}
   }
+
+ .terms-content {
+		padding: 10px 25px 20px 25px;
+ }
 
