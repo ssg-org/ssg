@@ -49,12 +49,4 @@ class UserMailer < ActionMailer::Base
     I18n.locale = original_locale
     return_value
   end
-
-  class Preview < MailView
-
-  	def verify
-  		user = User.find(1)
-  		mail = UserMailer.verify(user, '')  		
-  	end
-  end
 end
