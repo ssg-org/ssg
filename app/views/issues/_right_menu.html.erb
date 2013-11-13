@@ -30,6 +30,8 @@
 			<%=link_to cat.name, issues_path(clear_params({:category => cat.id})), { :class => "#{'r-menu-selected' if params[:category] == cat.id.to_s }"} %><br/>
 		<% end %>
 	</div>
+	<br style="clear:both;">
+	<br />
 
 	<div class="filter">
 		<span class="title value_strip()"><%= t('issues.right_menu.resolution')%></span><br/>

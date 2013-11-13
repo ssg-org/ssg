@@ -1,8 +1,8 @@
 class CitiesController < ApplicationController
 	def index
-		@center_lat = 43.851822
-		@center_long = 18.383984
-		@center_zoom = 12
+		@center_lat = 43.951822
+		@center_long = 17.683984
+		@center_zoom = 8
 		@categories = @user.get_categories
 
 		@city_names = collect_city_names() unless @city_names
@@ -23,11 +23,6 @@ class CitiesController < ApplicationController
 
 		# will set members to data we need in map view
 		@issues.each  { |issue| issue.setup_json_attributes!() }
-
-		require 'pp'
-		pp ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"
-		pp @issues.first
-		pp ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"
 
 		render :json => @issues
 	end
