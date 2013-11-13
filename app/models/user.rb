@@ -66,7 +66,7 @@ class User < ActiveRecord::Base
   end
 
   def get_cities
-    return City.all
+    return City.where(:active => true)
   end
 
   def self.get_admin_roles

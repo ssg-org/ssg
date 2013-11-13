@@ -29,6 +29,8 @@
           <span class="add-on"><i style="background-color: rgb(255, 146, 180)"></i></span>
         </div>
 
+        <input type="text" required id="inputIcon" name="icon" placeholder="Ikona" data-original-title="" title="" class="span12">
+
         <div class="btn-toolbar" style="text-align: center; margin-left: 0px;">
           <div class="btn-group">
               <button id="btn_create" class="btn btn-primary" type="submit" >Kreiraj</button>
@@ -60,6 +62,7 @@
                 <th role="columnheader" tabindex="0" rowspan="1" colspan="1">Glavna Kategorija</th>
                 <th role="columnheader" tabindex="0" rowspan="1" colspan="1">Opis</th>
                 <th role="columnheader" tabindex="0" rowspan="1" colspan="1">Boja</th>
+                <th role="columnheader" tabindex="0" rowspan="1" colspan="1">Ikona</th>
                 <th role="columnheader" tabindex="0" rowspan="1" colspan="1">Kontrole</th>
               </tr>
             </thead> 
@@ -71,6 +74,7 @@
                   <td><%= category.parent ? category.parent.name : 'Glavna Kategorija' %></td>
                   <td nowrap style="max-width:150px;"><%= category.description %></td>
                   <td style="padding-left: 30px;"><div style="width: 20px; height: 20px; background-color: #<%= category.color %>;"></div></td>
+                  <td><%= category.icon %></td>
 
                   <td class="admin-list-toolbar-cell">
                     <div class="btn-toolbar">
@@ -105,7 +109,7 @@
     return "#" + hex(rgb[1]) + hex(rgb[2]) + hex(rgb[3]);
   }
 
-  FormValues = ['category_id','category_name','parent_category_id','description', 'color'];
+  FormValues = ['category_id','category_name','parent_category_id','description', 'color', 'icon'];
 
   enableCreateBtn = function(flag) {
     $('#btn_create').prop('disabled', !flag);

@@ -7,7 +7,7 @@ class Category < ActiveRecord::Base
   has_many :children, :class_name => "Category", :foreign_key => "parent_id"
   belongs_to :parent, :class_name => "Category"
 
-  DEFAULT_ICON = 'default.png'
+  DEFAULT_ICON = 'ostalo.png'
 
   default_scope where(:deleted => false)
   #
@@ -21,7 +21,7 @@ class Category < ActiveRecord::Base
     category.description = params[:description]
     category.parent  = params[:parent_category_id] && params[:parent_category_id] != '0' ? Category.find(params[:parent_category_id]) : nil
     category.color = params[:color].gsub('#','')
-    category.icon = category.icon || DEFAULT_ICON
+    category.icon = params[:icon] || DEFAULT_ICON
     category.save!
 
     return category_id.empty?

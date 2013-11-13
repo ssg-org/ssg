@@ -18,15 +18,10 @@ class SsgAdmin::IssuesController < SsgAdminController
   def update
 
     issue = Issue.find(params[:id])
-
-    issue.title = params[:issue][:title]
-    issue.city_id = params[:issue][:city_id].to_i
-    issue.category_id = params[:issue][:category_id].to_i
     old_status   = issue.status
-    issue.status = params[:issue][:status].to_i
-    issue.description = params[:issue][:description]
 
-    issue.save
+    # Update model and save
+    issue.update_attributes(params[:issue], :without_protection => true)
 
     # add admin comment
     if old_status != issue.status
@@ -38,6 +33,9 @@ class SsgAdmin::IssuesController < SsgAdminController
   end
 
   def destroy
-  end
-  
+    issue = Issue.find(params[:id])
+    issue.destroy
+
+    redirect_to ssg_admin_issues_path()
+  end  
 end
