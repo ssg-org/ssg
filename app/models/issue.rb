@@ -104,6 +104,16 @@ class Issue < ActiveRecord::Base
     response[:issue_url] = self.issue_url
     response
   end
+
+  def fb_share_link
+    url = Rails.application.routes.url_helpers.issue_path(self.friendly_id)
+
+    if self.images.first.nil?
+      return "https://www.facebook.com/sharer/sharer.php?s=100&amp;p[title]=#{self.title}&amp;p[summary]=#{self.description}&amp;p[url]=#{url}"
+    else
+      return "https://www.facebook.com/sharer/sharer.php?s=100&amp;p[title]=#{self.title}&amp;p[summary]=#{self.description}&amp;p[url]=#{url}&amp;p[images][0]=#{self.images.first.image.url.to_s}" 
+    end
+  end
   
   def self.get_issues(params, limit=9, offset=0)
   	query = Array.new
