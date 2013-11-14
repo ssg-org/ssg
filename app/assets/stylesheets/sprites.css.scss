@@ -11,8 +11,11 @@
 	width: 95px;
 	height: 95px;
 }
-.asset-learn-more {
-	@include sprite-mixin(0px, -16px, 92px, 17px)
+.asset-learn-more-bs {
+	@include sprite-mixin(0px, -129px, 92px, 17px)
+}
+.asset-learn-more-en {
+	@include sprite-mixin(0px, -15px, 92px, 17px)
 }
 .asset-location {
 	@include sprite-mixin(-34px, 0px, 12px, 15px)
