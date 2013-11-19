@@ -28,6 +28,9 @@ class SsgAdmin::IssuesController < SsgAdminController
       @user.comment_on_issue(issue.id, 'status comment', true, old_status, issue.status)
     end
 
+    # Send  email notifications
+    @user.notify_issue_updated(issue)
+
     flash[:info] = "Uspješno ste ažurirali proble '#{issue.title}'"
     redirect_to ssg_admin_issues_path()
   end

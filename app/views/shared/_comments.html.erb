@@ -28,7 +28,7 @@
 
 				<%-# if admin user or this comment is owned by this user -%>
 				<% if @user.ssg_admin? || comment.is_owned?(@user) %>
-					<%= link_to comment_path(comment), :class => "comment-delete", :method => :delete, :title => 'Obriši!', :confirm => t('issues.comments.delete_confirm') do %>
+					<%= link_to comment_path(comment), :class => "comment-delete", :method => :delete, :title => 'Obriši!', :data => {:confirm => t('issues.comments.delete_confirm')} do %>
 						<%= @user.ssg_admin? ? '[Admin Delete!]' : t('issues.comments.delete_comment') %>
 					<% end %>
 				<% end %>
@@ -49,7 +49,7 @@
 
 				<%-# if admin user or this comment is owned by this user -%>
 				<% if @user.ssg_admin? || comment.is_owned?(@user) %>
-					<%= link_to comment_path(comment), :class => "comment-delete", :method => :delete, :title => 'Obriši!', :confirm => t('issues.comments.delete_confirm') do %>
+					<%= link_to comment_path(comment), :class => "comment-delete", :method => :delete, :title => 'Obriši!', :data => {:confirm => t('issues.comments.delete_confirm')} do %>
 						<%= @user.ssg_admin? ? '[Admin Delete!]' : t('issues.comments.delete_comment') %>
 					<% end %>
 				<% end %>

@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
 
   ROLE_GUEST            = 1
   ROLE_USER             = 2
-  ROLE_CITY_ADMIN  = 3
+  ROLE_CITY_ADMIN       = 3
   ROLE_SSG_ADMIN        = 4
 
   DUMMY_TWITTER_EMAIL = 'dummy@twitter.com'
@@ -69,6 +69,10 @@ class User < ActiveRecord::Base
     return City.where(:active => true)
   end
 
+  def self.ssg_admins
+    User.where(:role => ROLE_SSG_ADMIN, :active => true)
+  end
+
   def self.get_admin_roles
     results = []
     results << OpenStruct.new( :name => 'Korisnik', :value => ROLE_USER)
@@ -116,7 +120,7 @@ class User < ActiveRecord::Base
   end
 
   def avatar
-    if !image.nil?
+    if !self.image_id.nil?
       return image.image.thumb_logo
     elsif fbuser? 
       return "http://graph.facebook.com/#{fb_id}/picture"
@@ -162,13 +166,17 @@ class User < ActiveRecord::Base
   def change_status_for(issue_id, status)
     ActiveRecord::Base.transaction do
       issue = Issue.find(issue_id)
-      # You can't vote for your issues
+      # Only admin and user who created issue can change state
       if (issue.user_id == self.id || self.ssg_admin?)
         old_status   = issue.status
         issue.status = status.to_i
         issue.save
 
+        # Add Comment
         comment_on_issue(issue.id, 'status comment', true, old_status, status)
+
+        # Send notifications
+        notify_issue_updated(issue)
       end
     end
   end
@@ -283,6 +291,21 @@ class User < ActiveRecord::Base
     end
     
     return nil
+  end
+
+  def notify_issue_updated(issue)
+    # Send email notifications to issue creator
+    UserMailer.notify_issue_updated(issue.user, self, issue).deliver
+
+    # Send emails to all active city admins
+    issue.city.admin_users.each do |city_admin|
+      UserMailer.notify_issue_updated(city_admin, self, issue).deliver unless city_admin == issue.user
+    end
+
+    # Send emails to all system admins
+    User.ssg_admins.each do |ssg_admin|
+      UserMailer.notify_issue_updated(ssg_admin, self, issue).deliver unless ssg_admin == issue.user            
+    end
   end
 
   def self.send_community_admin_mails(url, city_id)

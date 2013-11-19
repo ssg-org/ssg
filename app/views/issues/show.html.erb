@@ -81,11 +81,6 @@
 
 <div class="show-container">
 	<div class="issue-container">
-		<!--
-		<div>
-			<%= link_to 'x', issue_path(@issue.id), :style => 'float:right; margin:10px;', :method => :delete, :confirm => t('issues.show.delete_confirm') %>
-		</div>
-	--> 
 		<div class="issue-container-green">
 			<div class="issue-cell">
 				<span class="issue-cell-title"><%=@issue.title.upcase%></span><br/>
@@ -165,7 +160,7 @@
 			<div style="margin-bottom:10px;">
 				<% button_text = @user.ssg_admin? ? '[ Admin Delete! ]' : t('issues.show.delete') %>
 
-				<%= link_to issue_path(@issue), :class => "", :method => :delete, :title => 'Obriši!', :confirm => t('issues.show.delete_confirm') do %>
+				<%= link_to issue_path(@issue), :class => "", :method => :delete, :title => 'Obriši!', :data => {:confirm => t('issues.show.delete_confirm')} do %>
 					<%= ssg_button_v2( button_text, {}, {}, 'btn-red', true) %>
 				<% end %>	
 			</div>

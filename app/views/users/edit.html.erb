@@ -71,7 +71,7 @@
     <%= f.text_field :first_name, :autocomplete=> :off , :placeholder => t('users.edit.first_name') %>
     <label><%= t('users.edit.last_name') %></label>
     <%= f.text_field :last_name, :autocomplete=> :off , :placeholder => t('users.edit.last_name') %>
-    <label><%= t('users.edit.county') %></label>
+    <label><%= t('users.edit.city') %></label>
     <%= f.collection_select(:city_id, @edit_user.get_cities, :id, :name, {}, {   } ) %>
     <br />
     <label><%= t('users.edit.lang') %></label>
@@ -94,7 +94,7 @@
     <br />
     <br />
     <br />
-    <%= image_tag @edit_user.image ? @edit_user.image.image.thumb_logo : 'no-photo.png', :id => 'user_photo_settings', :class => 'user-settings-photo' %>
+    <%= image_tag @edit_user.avatar, :id => 'user_photo_settings', :class => 'user-settings-photo' %>
     <br />
     <input type = "button" id="upload_image_btn" value="<%= I18n.t('users.edit.image') %>" onclick ="javascript:document.getElementById('fileupload_field2').click();">
     <input id = "fileupload_field2" type="file" style='visibility: hidden;' name="image" multiple/>

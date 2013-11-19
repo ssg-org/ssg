@@ -23,6 +23,10 @@ class City < ActiveRecord::Base
     self.website.match(/^http.*/) ? self.website : "http://#{website}"
   end
 
+  def admin_users
+    self.users.where(:role => User::ROLE_CITY_ADMIN, :active => true)
+  end
+
   #
   # Returns true if created, false if edited
   #

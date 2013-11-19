@@ -92,7 +92,7 @@ bs:
             website:        'Web stranica'
             short_desc:     'Kratki opis'
             lang:           'Jezik'
-            county:         'Opština'
+            city:         'Opština'
             succ_save:      'Uspješno ste ažurirarali Vaše podatke!'
             wrong_pass:     'Pogrešna lozinka!'
         show:
@@ -102,6 +102,8 @@ bs:
             logout:         'Odjavi se'
             issues:         'Problemi'
             no_issues:      'Korisnik nema prijavljenih problema'
+        notify:
+            issue_updated:  '[ULICA.BA] Problem ažuriran '
     documents:
         contact:    
             question:       'Pitanje'
@@ -147,7 +149,7 @@ bs:
             categories:     'KATEGORIJE'
             resolution:     'STATUS'
             cities:         'OPŠTINE'
-            counties:       'OPŠTINE'
+            cities:       'OPŠTINE'
             all_time:       'Svi'
             today:          'Danas'
             this_week:      'Ove sedmice'

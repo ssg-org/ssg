@@ -60,7 +60,7 @@ en:
             login_button:   'LOG IN NOW'
             remember_me:  'Remember me'
             login_message: 'Are you already a member of Ulica.ba?'
-            choose_city:   'Choose your county'
+            choose_city:   'Choose your city'
             forgot_password: 'Forgot password?'
             forgot_password_notice: 'Check your email, instructions on how to reset your password have been sent!'
             forgot_password_header: 'Restart your password'
@@ -92,7 +92,7 @@ en:
             website:        'Website'
             short_desc:     'Short description'
             lang:           'Language'
-            county:         'County'
+            city:           'City'
             succ_save:      'You have successfully updated your data!'
             wrong_pass:     'Wrong password!'
         show:
@@ -102,6 +102,8 @@ en:
             logout:         'Log out'
             issues:         'Issues'
             no_issues:      'User has no reported issues'
+        notify:
+            issue_updated:  '[ULICA.BA] Issue updated '
     documents:
         contact:    
             question:       'Question'
@@ -118,10 +120,10 @@ en:
             loading:        'Loading'
         new:
             report:         'REPORT A PROBLEM'
-            success:        'You have successfully reported issue in your county!'
+            success:        'You have successfully reported issue in your city!'
             set_location:   'Click on map to set location'
             issue_title:    'Problem title'
-            select_city:    'Please select county'
+            select_city:    'Please select city'
             select_category: 'Please select category'
             issue_desc:     'Describe your Problem'
             upload_error:   'Error during upload. Please refresh your browser and try again'
@@ -147,7 +149,6 @@ en:
             categories:     'CATEGORIES'
             resolution:     'RESOLUTION'
             cities:         'CITIES'
-            counties:       'COUNTIES'
             all_time:       'All time'
             today:          'Today'
             this_week:      'This week'
@@ -187,16 +188,16 @@ en:
             minlength:      'Please enter at least {0} characters.'
             imageRequired:  'Image is required'
             locationRequired: 'Please select location on the map'
-            locationTooFar: 'Selected location is too far from county centar'
+            locationTooFar: 'Selected location is too far from city centar'
         new_issue:
             title:          'Issue title is required.'
             title_l:        'Issue title should be 10 characters long.'
             description:    'Issue description is required.'
             description_l:  'Issue description should be 10 characters long.'
-            city:           'Issue county is required.'
+            city:           'Issue city is required.'
             category:       'Issue category is required.'
             point:          'Please click on the map to mark location of issue.'
-            radius:         'Issue is too far from selected county.'
+            radius:         'Issue is too far from selected city.'
             image:          'Picture of the image is required.'
         login:
             username:       'Username is required.'
@@ -204,7 +205,7 @@ en:
             email:          'Email is required.'
         register:
             username:       'Please enter your username.'
-            city:           'County needs to be selected, please select county.'
+            city:           'City needs to be selected, please select city.'
             email:          'Please enter your email address.'
             email_f:        'Entered email has invalid format.'
             password1:      'Please enter your password.'

@@ -80,7 +80,7 @@
 
 				</li>
 				<li  class="menu-sub" style="float:right; padding-right: 0px;">
-					<%= image_tag @user.image ? @user.image.image.thumb : 'no-photo.png', :class => 'profile-user-photo' %>
+					<%= image_tag @user.avatar, :class => 'profile-user-photo' %>
 				</li>
 			<% end -%>
 

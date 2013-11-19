@@ -1,9 +1,9 @@
 development:
   adapter: postgresql
   host: localhost
-  database: ssg-dev
-  username: ssg-dev
-  password: ssg-dev
+  database: ssg_dev
+  username: ssg_dev
+  password: ssg_dev
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".

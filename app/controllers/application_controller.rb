@@ -27,7 +27,7 @@ class ApplicationController < ActionController::Base
     end
 
     if session[:id]
-      @user = User.find_by_id(session[:id])
+      @user = User.find_by_id(session[:id]) || User.guest_user
     else
       # Guest if not from session
       @user = User.guest_user

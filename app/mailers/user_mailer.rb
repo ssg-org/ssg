@@ -9,8 +9,6 @@ class UserMailer < ActionMailer::Base
   	@user = user
   	@url = url + verify_users_path() + "?id=#{@user.id}&uuid=#{@user.uuid}"
 
-    #?id=8&uuid=801faacb-979b-44e1-b6eb-eb264699fa15
-
 	  using_locale(user.locale) { mail(:to => @user.email, :subject => t('users.verify.email_subject')) }
   end
 
@@ -38,6 +36,14 @@ class UserMailer < ActionMailer::Base
     @user = user
     @url = url + reset_password_users_path() + "?token=" + token + "&set_pwd=true"
     using_locale(user.locale) { mail(:to => @user.email, :subject => "Kreiran Vam je administratorski nalog na ULICA.ba") }
+  end
+
+  def notify_issue_updated(user, updated_by_user, issue)
+    @user = user
+    @updated_by_user = updated_by_user
+    @issue = issue
+
+    using_locale(user.locale) { mail(:to => @user.email, :subject => t('users.notify.issue_updated')) }
   end
 
   protected
