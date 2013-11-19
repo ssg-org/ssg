@@ -4,16 +4,14 @@ require 'ostruct'
 class Issue < ActiveRecord::Base
   extend FriendlyId
 
-  OPEN          = 1
+  REPORTED      = 1
   IN_PROGRESS   = 2
-  ACCEPTED      = 3
-  FIXED         = 4
-  DELETED       = 5
-  RE_OPENED     = 6
+  FIXED         = 3
+  DELETED       = 4
 
-  TRANS_KEYS = ['none','open','in_progress', 'accepted','fixed','deleted','re_opened']
+  TRANS_KEYS = ['none','reported','in_progress','fixed','deleted']
 
-  default_scope where('status <> 5')
+  default_scope where('status <> 4')
 
   attr_accessor :image_url, :short_desc, :issue_url
   attr_accessible  :title, :category, :city, :description, :user, :lat, :long, :status, :vote_count, :view_count, :comment_count, :share_count, :created_at
@@ -61,7 +59,6 @@ class Issue < ActiveRecord::Base
     ne_lat = north_east_geo[:lat]
     ne_long = north_east_geo[:long]
 
-
     return Issue.where('lat > ? AND lat < ? AND long > ? AND long < ?', sw_lat, ne_lat, sw_long, ne_long).limit(limit)  
   end
 
@@ -77,9 +74,7 @@ class Issue < ActiveRecord::Base
 
   def self.all_statuses
     results = []
-    6.downto(1) do |i|
-      # do not support deleted
-      next if i == 5
+    3.downto(1) do |i|
       trans_key = TRANS_KEYS[i]
       results << OpenStruct.new(:id => i, :name => I18n.t("issues.status.#{trans_key}"))
     end
@@ -88,7 +83,7 @@ class Issue < ActiveRecord::Base
 
   def self.user_statuses
     results = []
-    [1,2,3,4,6].each do |i|
+    [1,2,3].each do |i|
       trans_key = TRANS_KEYS[i]
       results << OpenStruct.new(:id => i, :name => I18n.t("issues.status.#{trans_key}"))
     end
@@ -121,8 +116,6 @@ class Issue < ActiveRecord::Base
 
     # Order
     order_by = 'created_at desc'
-
-
 
     # Get category, status and city params
     if (!params[:category].blank?)

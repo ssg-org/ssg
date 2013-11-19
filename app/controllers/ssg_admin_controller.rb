@@ -26,7 +26,7 @@ class SsgAdminController < ActionController::Base
   def check_login
     if (session[:id])
       @user = User.find_by_id(session[:id])
-      return if @user.ssg_admin? || @user.community_admin?
+      return if @user.ssg_admin? || @user.city_admin?
     end
     
     redirect_to ssg_admin_login_path

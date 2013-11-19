@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
 
   ROLE_GUEST            = 1
   ROLE_USER             = 2
-  ROLE_COMMUNITY_ADMIN  = 3
+  ROLE_CITY_ADMIN  = 3
   ROLE_SSG_ADMIN        = 4
 
   DUMMY_TWITTER_EMAIL = 'dummy@twitter.com'
@@ -72,8 +72,8 @@ class User < ActiveRecord::Base
   def self.get_admin_roles
     results = []
     results << OpenStruct.new( :name => 'Korisnik', :value => ROLE_USER)
-    results << OpenStruct.new( :name => 'Administrativni Korisnik', :value => ROLE_COMMUNITY_ADMIN)
-    results << OpenStruct.new( :name => 'SSG Admin', :value => ROLE_SSG_ADMIN)
+    results << OpenStruct.new( :name => 'Opštinski Administrator', :value => ROLE_CITY_ADMIN)
+    results << OpenStruct.new( :name => 'SSG Administrator', :value => ROLE_SSG_ADMIN)
     results
   end
 
@@ -95,8 +95,8 @@ class User < ActiveRecord::Base
     return (self.role == ROLE_SSG_ADMIN)
   end
   
-  def community_admin?
-    return (self.role == ROLE_COMMUNITY_ADMIN)
+  def city_admin?
+    return (self.role == ROLE_CITY_ADMIN)
   end
   
   def display_name
@@ -116,7 +116,13 @@ class User < ActiveRecord::Base
   end
 
   def avatar
-    fbuser? ? "http://graph.facebook.com/#{fb_id}/picture" : '/assets/no_avatar.png'
+    if !image.nil?
+      return image.image.thumb_logo
+    elsif fbuser? 
+      return "http://graph.facebook.com/#{fb_id}/picture"
+    else
+      return '/assets/no_avatar.png'
+    end
   end
 
   def formated_website
@@ -261,7 +267,7 @@ class User < ActiveRecord::Base
       "Guest"
     when ROLE_USER
       "Korisnik"
-    when ROLE_COMMUNITY_ADMIN
+    when ROLE_CITY_ADMIN
       "Administrativni Korisnik"
     when ROLE_SSG_ADMIN
       "SSG Admin"
@@ -280,7 +286,7 @@ class User < ActiveRecord::Base
   end
 
   def self.send_community_admin_mails(url, city_id)
-    users = User.where(:city_id => city_id, :role => ROLE_COMMUNITY_ADMIN).all
+    users = User.where(:city_id => city_id, :role => ROLE_CITY_ADMIN).all
     users.each do |user|
       UserMailer.created(user, url).deliver
     end
@@ -294,7 +300,7 @@ class User < ActiveRecord::Base
   #
   def self.user_ssg_admin?(username, pwd)
     usr = exists?(username, pwd)
-    usr && usr.active && (usr.ssg_admin? || usr.community_admin?) ? usr : nil
+    usr && usr.active && (usr.ssg_admin? || usr.city_admin?) ? usr : nil
   end
   
   def self.guest_user

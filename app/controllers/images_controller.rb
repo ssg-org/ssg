@@ -13,7 +13,7 @@ class ImagesController < ApplicationController
     image = Image.find(params[:id])
     city_id = image.issue.city.id
 
-    if @user.ssg_admin? || (@user.community_admin? && city_id == @user.city.id)
+    if @user.ssg_admin? || (@user.city_admin? && city_id == @user.city.id)
       image.destroy
     end
 

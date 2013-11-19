@@ -25,16 +25,16 @@
 				<label for="city">Opština:</label>
 				<select id="city" name="city_id" data-original-title="" title="" class="span12">
 					<% @cities.each do |city| %>						
-						<% if ((@user.community_admin? && @user.get_city_id == city.id) || @user.ssg_admin?) %>
+						<% if ((@user.city_admin? && @user.get_city_id == city.id) || @user.ssg_admin?) %>
 							<option value="<%=city.id%>" ><%=city.name%></option>
 						<% end %>					
 					<% end %>
 				</select><br />
 				<label for="role">Uloga:</label>
 				<select id="role" name="role" placeholder="Ime Opštine" data-original-title="" title="" class="span12">
-					<option value="<%=User::ROLE_COMMUNITY_ADMIN %>">Community admin</option>
+					<option value="<%=User::ROLE_CITY_ADMIN %>">Opštinski administrator</option>
 					<% if @user.ssg_admin? %>
-						<option value="<%=User::ROLE_SSG_ADMIN %>">Admin</option>
+						<option value="<%=User::ROLE_SSG_ADMIN %>">Administrator</option>
 					<% end %>
 				</select><br />
 

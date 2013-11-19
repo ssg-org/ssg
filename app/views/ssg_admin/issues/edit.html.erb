@@ -29,7 +29,7 @@
           <label>Naziv Problema</label>
           <%= f.text_field :title, :autocomplete=> :off , :class=> 'span12', :placeholder => 'Naziv Problema' %>
           <label>Opština / Kategorija</label>
-          <%= f.collection_select(:city_id, @user.get_cities, :id, :name, {}, { :class=> 'span6', :disabled => @user.community_admin? } ) %>
+          <%= f.collection_select(:city_id, @user.get_cities, :id, :name, {}, { :class=> 'span6', :disabled => @user.city_admin? } ) %>
 
           <%= f.collection_select(:category_id, @user.get_categories, :id, :name, { }, { :class=> 'span6'} ) %> <br />
 

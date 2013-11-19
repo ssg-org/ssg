@@ -11,7 +11,7 @@
   <div id="page_container" class="container-fluid admin">
     <div class="row-fluid">
       <div class="container-fluid">
-        <% if @user && (@user.ssg_admin? || @user.community_admin?) %>
+        <% if @user && (@user.ssg_admin? || @user.city_admin?) %>
           <div class="row-fluid row-m20">
             <div class="span5">
               <a href='<%= ssg_admin_path %>'>
@@ -45,7 +45,7 @@
     </div>
 
 
-    <% if @user && (@user.ssg_admin? || @user.community_admin?) %>
+    <% if @user && (@user.ssg_admin? || @user.city_admin?) %>
       <!-- FLASH MESSAGES -->
       <div class="row-fluid">
         <div class="container-fluid">

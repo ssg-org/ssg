@@ -164,12 +164,10 @@ en:
             all_counties:   'All cities'
         status:
             none:           'Not set'
-            open:           'Opened'
+            reported:       'Reported'
             in_progress:    'In progress'
-            accepted:       'Accepted'
             fixed:          'Fixed'
             deleted:        'Deleted'
-            re_opened:      'Re-opened'
             change_from:    'Status changed from'
             change_to:      'to'
     cities:

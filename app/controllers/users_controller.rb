@@ -143,7 +143,7 @@ class UsersController < ApplicationController
 
     flash[:info] = I18n.t('users.msgs.pass_change')
 
-    if (user.ssg_admin? || user.community_admin?)
+    if (user.ssg_admin? || user.city_admin?)
       redirect_to ssg_admin_login_path()
     else
       redirect_to login_users_path()

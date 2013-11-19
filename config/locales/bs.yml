@@ -164,12 +164,10 @@ bs:
             all_counties:   'Sve opštine'
         status:
             none:           'Nepoznato'
-            open:           'Prijavljen'
+            reported:       'Prijavljen'
             in_progress:    'U izradi'
-            accepted:       'Prihvaćen'
             fixed:          'Popravljen'
             deleted:        'Obrisan'
-            re_opened:      'Ponovo otvoren'
             change_from:    'Status promjenjen iz'
             change_to:      'u'
     cities:
