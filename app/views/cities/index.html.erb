@@ -4,7 +4,7 @@
 
 <div style="padding:0px 25px 25px 25px;">
 	<div style="float: right;">
-		<%= select_tag :city_id, options_for_select(@city_names), { :id => 'city_select', :onChange=>"return selectCity(this);" } %><br />
+		<%= select_tag :city_id, options_from_collection_for_select(@cities, :slug, :name), { :id => 'city_select', :onChange=>"return selectCity(this);" , :prompt => t("cities.index.select")} %><br />
 	</div>
 
 	<div id="mini_map" style="width:100%;  height:700px; float:left;">
