@@ -1,4 +1,4 @@
-class Category < ActiveRecord::Base
+class Category < TranslatedBase
 
   include SoftDelete
 
@@ -14,8 +14,6 @@ class Category < ActiveRecord::Base
   # Returns true if created, false if edited
   #
   def self.create_or_edit(params)
-    require 'pp'
-    pp params
     category = (category_id = params[:category_id]).empty? ? Category.new : Category.find(category_id)
     category.name = params[:category_name]
     category.description = params[:description]

@@ -66,7 +66,7 @@ class UsersController < ApplicationController
     # if password there check password
     if !params[:password0].empty? || !(params[:password1].empty? && params[:password2].empty?)
       unless @user.is_good_password?(params[:password0])
-        flash[:error] = I18n.t('users.edit.wrong_pass')
+        flash[:error] = t('users.edit.wrong_pass')
         return redirect_to edit_user_path(@user.id)
       end
     end
@@ -77,9 +77,15 @@ class UsersController < ApplicationController
     # Reset local for current session
     if session[:locale] != @user.locale
       I18n.locale = session[:locale] = @user.locale
+      Rails.cache.clear
     end
 
-    flash[:info] = I18n.t('users.edit.succ_save')
+    if session[:script] != @user.script
+      I18n.script = session[:script] = @user.script
+      Rails.cache.clear
+    end
+
+    flash[:info] = t('users.edit.succ_save')
     redirect_to user_path(@user.id)
   end
 
@@ -201,6 +207,8 @@ class UsersController < ApplicationController
     user = User.exists?(params[:username], params[:password])
     if user && user.active
       session[:id] = user.id
+      session[:locale] = user.locale
+      session[:script] = user.script
       redirect_to session[:referer_url] ? session.delete(:referer_url) : issues_path()
     else
       flash[:error] = I18n.t('users.msgs.invalid_login')
@@ -212,6 +220,8 @@ class UsersController < ApplicationController
     user = User.user_ssg_admin?(params[:username], params[:password])
     if user
       session[:id] = user.id
+      session[:locale] = user.locale
+      session[:script] = user.script
       redirect_to ssg_admin_path()
     else
       flash[:error] = I18n.t('users.msgs.invalid_login')
@@ -248,6 +258,8 @@ class UsersController < ApplicationController
     end
       
     session[:id] = user.id
+    session[:locale] = user.locale
+    session[:script] = user.script
 
     @redirect_uri = issues_path()
   end

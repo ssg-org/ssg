@@ -1,4 +1,4 @@
-class Comment < ActiveRecord::Base
+class Comment < TranslatedBase
   belongs_to :issue
   belongs_to :user
 

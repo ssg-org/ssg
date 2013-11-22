@@ -14,6 +14,8 @@ class ApplicationController < ActionController::Base
 
   def change_locale
     session[:locale] = params[:locale]
+    session[:script] = params[:script]
+    Rails.cache.clear
     redirect_to :back
   end
 
@@ -34,6 +36,7 @@ class ApplicationController < ActionController::Base
     end
 
     I18n.locale = session[:locale] || @user.locale || I18n.default_locale
+    I18n.script = session[:script] || @user.script || I18n.default_script
   end
   
   private

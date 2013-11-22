@@ -1,5 +1,5 @@
 # encoding: UTF-8
-class User < ActiveRecord::Base
+class User < TranslatedBase
 
   include SoftDelete
 
@@ -83,11 +83,9 @@ class User < ActiveRecord::Base
 
   def self.get_locales
     results = []
-
-    LOCALES.each do |localee|
-      results << OpenStruct.new( :name => I18n.t("shared.locale.#{localee}"), :value => localee)
-    end
-
+    results << OpenStruct.new( :name => 'BHS', :value => :bs_latin)
+    results << OpenStruct.new( :name => 'БХС', :value => :bs_cyrillic)
+    results << OpenStruct.new( :name => 'ENG', :value => :en)
     results
   end
 
@@ -451,9 +449,12 @@ class User < ActiveRecord::Base
     self.first_name = params[:user][:first_name]
     self.last_name = params[:user][:last_name]
     self.city_id = params[:user][:city_id]
-    self.locale = params[:user][:locale]
     self.website = params[:user][:website]
     self.description = params[:user][:description]
+
+    # locale includes script: example bs_latin, bs_cyrilic
+    self.locale = params[:user][:locale].to_s.split("_")[0]
+    self.script = params[:user][:locale].to_s.split("_")[1] rescue nil
 
     if params[:image_count] && params[:image_count].to_i > 0
       last_image = params[:image_count].to_i - 1

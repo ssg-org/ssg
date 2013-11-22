@@ -1,4 +1,4 @@
-class City < ActiveRecord::Base
+class City < TranslatedBase
   extend FriendlyId
   include SoftDelete
   

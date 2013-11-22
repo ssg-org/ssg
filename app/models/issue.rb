@@ -1,7 +1,7 @@
 require 'config/config'
 require 'ostruct'
 
-class Issue < ActiveRecord::Base
+class Issue < TranslatedBase
   extend FriendlyId
 
   REPORTED      = 1

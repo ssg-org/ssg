@@ -2,7 +2,9 @@
 <div>
   <div class="main-footer-menu">
     <div class="locale-selection">
-      <a href="<%= locale_change_path(:locale => :bs) %>"><%= I18n.t("shared.locale.bs") %></a> | <a href="<%= locale_change_path(:locale => :en) %>"><%=I18n.t("shared.locale.en") %></a>
+      <a href="<%= locale_change_path(:locale => :bs, :script => :latin) %>">BHS</a> | 
+      <a href="<%= locale_change_path(:locale => :bs, :script => :cyrillic) %>">БХС</a> | 
+      <a href="<%= locale_change_path(:locale => :en, :script => :latin) %>">EN</a>
     </div>
     <div class="footer-menu">
       <%= link_to(t('shared.footer.tos'), terms_path)%>  <span>|</span>

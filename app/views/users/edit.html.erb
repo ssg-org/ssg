@@ -96,7 +96,7 @@
     <br />
     <%= image_tag @edit_user.avatar, :id => 'user_photo_settings', :class => 'user-settings-photo' %>
     <br />
-    <input type = "button" id="upload_image_btn" value="<%= I18n.t('users.edit.image') %>" onclick ="javascript:document.getElementById('fileupload_field2').click();">
+    <input type = "button" id="upload_image_btn" value="<%= t('users.edit.image') %>" onclick ="javascript:document.getElementById('fileupload_field2').click();">
     <input id = "fileupload_field2" type="file" style='visibility: hidden;' name="image" multiple/>
 
     <span id="gallery_inputs">
@@ -174,7 +174,7 @@
       $('#progress').css('width', '0%');
     },
     fail : function() {
-      alert(I18n.t('issues.new.upload_error'));
+      alert(t('issues.new.upload_error'));
     }
   });
 

@@ -198,6 +198,7 @@ GEM
       unf_ext
     unf_ext (0.0.6)
     uuidtools (2.1.4)
+    viljushka (0.7.1)
     xml-simple (1.1.2)
 
 PLATFORMS
@@ -232,3 +233,4 @@ DEPENDENCIES
   twitter-text
   uglifier (>= 1.0.3)
   uuidtools
+  viljushka

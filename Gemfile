@@ -32,6 +32,7 @@ gem 'friendly_id', '4.0.1'
 # gem 'twitter'
 gem 'uuidtools'
 gem 'random_images'
+gem 'viljushka'
 
 gem 'aws-ses', :require => 'aws/ses'
 

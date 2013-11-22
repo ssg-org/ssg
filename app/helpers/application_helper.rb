@@ -40,4 +40,12 @@ module ApplicationHelper
     cities = City.where(:active => true).sort { |a,b| a.name <=> b.name }
     cities.collect { |c| [c.name, c.id ] }
   end
+
+  def t(key, options = {})
+    I18n.cyrillic? ? I18n.t(key, options).to_cyr : I18n.t(key, options)
+  end
+
+  def trans(value)
+    I18n.cyrillic? ? value.to_cyr : value rescue nil
+  end
 end
