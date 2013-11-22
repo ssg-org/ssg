@@ -92,7 +92,7 @@ bs:
             website:        'Web stranica'
             short_desc:     'Kratki opis'
             lang:           'Jezik'
-            city:         'Opština'
+            city:           'Opština'
             succ_save:      'Uspješno ste ažurirarali Vaše podatke!'
             wrong_pass:     'Pogrešna lozinka!'
         show:
@@ -111,7 +111,7 @@ bs:
             name:           'Ime'
             email:          'Email'
             send_button:    'POŠALJI'
-            bread_title:   'KONTAKT'
+            bread_title:    'KONTAKT'
             title:          'KONTAKT FORMA'
             sub_title:      'Ako imate pitanje, molimo Vas iskoristite ovu formu da nas kontaktirate.'
     issues:
@@ -142,14 +142,14 @@ bs:
             change_status:  'Promjeni status problema'
         comments:
             delete_comment:  'Obriši komentar'
-            delete_confirm:   'Da li ste sigurni da želite obrisati komentar?'
+            delete_confirm:  'Da li ste sigurni da želite obrisati komentar?'
         right_menu:
             date:           'DATUM'
             featured:       'IZDVOJENI'
             categories:     'KATEGORIJE'
             resolution:     'STATUS'
             cities:         'OPŠTINE'
-            cities:       'OPŠTINE'
+            cities:         'OPŠTINE'
             all_time:       'Svi'
             today:          'Danas'
             this_week:      'Ove sedmice'

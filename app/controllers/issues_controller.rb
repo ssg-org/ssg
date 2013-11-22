@@ -4,18 +4,10 @@ class IssuesController < ApplicationController
   disable_layout_for_ajax
   
   def index
-    #@user = User.find(2)
-
-    #UserMailer.created(@user, "#{request.protocol}#{request.host_with_port}").deliver
-    #UserMailer.notify_created(@user.city, "#{request.protocol}#{request.host_with_port}").deliver
-    #UserMailer.verify(@user, "#{request.protocol}#{request.host_with_port}").deliver
-    #UserMailer.reset_password(@user, '1321323', "#{request.protocol}#{request.host_with_port}").deliver
-    #UserMailer.notify_admin_user_creation(@user, "1231231", "aaaaa").deliver
-    
     params[:offset] ||= 0
     @issues = Issue.get_issues(params, 12, params[:offset].to_i)
     @city_names = collect_city_names() unless @city_names
-    @city_names.unshift([I18n.t('issues.right_menu.all_counties'), 0])
+    @city_names.unshift([t('issues.right_menu.all_counties'), 0])
   end
   
   def more
@@ -38,8 +30,7 @@ class IssuesController < ApplicationController
       image_ids << params["image_#{i}"]
     end
 
-
-    flash[:info] = I18n.t('issues.new.success')
+    flash[:info] = t('issues.new.success')
     issue = @user.create_issue(params[:issue][:title], params[:issue][:category_id], params[:issue][:city_id], params[:issue][:description], params[:issue][:lat], params[:issue][:long],image_ids)
     
     url = "#{request.protocol}#{request.host_with_port}#{issue_path(issue.friendly_id)}"
