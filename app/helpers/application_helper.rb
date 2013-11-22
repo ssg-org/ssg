@@ -42,7 +42,7 @@ module ApplicationHelper
   end
 
   def t(key, options = {})
-    I18n.cyrillic? ? I18n.t(key, options).to_cyr : I18n.t(key, options)
+    I18n.cyrillic? ? I18n.t(key, options).to_cyr : I18n.t(key, options) rescue nil
   end
 
   def trans(value)
