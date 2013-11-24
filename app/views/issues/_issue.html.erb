@@ -13,10 +13,10 @@
 	<div class="issue-info-part">
 		<a class="info-link" href="<%=issue_path(issue.friendly_id)%>">
 			<div class="font-14 issue-info-title">
-				<%=issue.title%>
+				<%= trans(issue.title) %>
 			</div>
 			<div class="font-gray-dark font-12 issue-info-name">
-				by <a href='<%= user_path(issue.user.id) %>' ><span style="text-decoration: underline;"><%=issue.user.display_name%></span></a>
+				<%= t('issues.show.reported_by') %> <a href='<%= user_path(issue.user.id) %>' ><span style="text-decoration: underline;"><%= trans(issue.user.display_name) %></span></a>
 			</div>
 		</a>
 		
@@ -31,7 +31,7 @@
 	<hr style="margin-top:3px;"/>
 	
 	<div class="issue-category-part" >
-		<span class="font-gray-dark font-12"><b>&nbsp;&nbsp;<%=issue.get_status %></b></span>
+		<span class="font-gray-dark font-12"><b>&nbsp;&nbsp;<%= trans(issue.get_status) %></b></span>
 		<span class="font-gray-dark font-13 <%= issue.category.name.size > 25 ? 'issue-category-part-name-long' : 'issue-category-part-name' %>">
 			<%=issue.category.name%>
 		</span>

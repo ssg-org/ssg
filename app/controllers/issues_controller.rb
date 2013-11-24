@@ -61,9 +61,9 @@ class IssuesController < ApplicationController
     if @user.id == issue.user_id || @user.ssg_admin?
       issue.status = Issue::DELETED
       issue.save!
-      flash[:info] = 'Uspješno izbrisan problem!'
+      flash[:info] = t('issues.delete.success')
     else
-      flash[:error] = 'Neuspjesno brisanje!'
+      flash[:error] = t('issues.delete.error')
     end
 
     redirect_to issues_url()

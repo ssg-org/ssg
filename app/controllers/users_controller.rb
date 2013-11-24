@@ -97,15 +97,15 @@ class UsersController < ApplicationController
     puts "User #{user.inspect}"
 
     if user.nil?
-      flash[:error] = I18n.t('users.msgs.exists')
+      flash[:error] = t('users.msgs.exists')
       redirect_to(login_users_path())
     else
       if user.save
         UserMailer.verify(user, "#{request.protocol}#{request.host_with_port}").deliver
-        flash[:info] = I18n.t('users.msgs.created')
+        flash[:info] = t('users.msgs.created')
         redirect_to(issues_path())
       else
-        flash[:error] = I18n.t('users.msgs.error_create')
+        flash[:error] = t('users.msgs.error_create')
         redirect_to(login_users_path())
       end
       
@@ -117,7 +117,7 @@ class UsersController < ApplicationController
     session[:referer_url] = @user.guest? && params[:create_issue] ? new_issue_path() : nil
     
     @city_names = collect_city_names()
-    @city_names.unshift( [I18n.t('users.login.choose_city'), ''])
+    @city_names.unshift( [t('users.login.choose_city'), ''])
   end
 
   def verify
@@ -125,10 +125,10 @@ class UsersController < ApplicationController
 
     if (!user.nil?)
       session[:id] = user.id
-      flash[:info] = I18n.t('users.msgs.verify_ok')
+      flash[:info] = t('users.msgs.verify_ok')
       redirect_to(issues_path())
     else
-      flash[:error] = I18n.t('users.msgs.error_verify')
+      flash[:error] = t('users.msgs.error_verify')
       redirect_to(login_users_path())
     end
   end
@@ -137,7 +137,7 @@ class UsersController < ApplicationController
     forgot_pass = ForgotPassword.where(:token => params[:token]).first
 
     if forgot_pass.nil?
-      flash[:error] = I18n.t('users.msgs.error_creds')
+      flash[:error] = t('users.msgs.error_creds')
       return redirect_to root_path
     end
 
@@ -147,7 +147,7 @@ class UsersController < ApplicationController
 
     forgot_pass.destroy
 
-    flash[:info] = I18n.t('users.msgs.pass_change')
+    flash[:info] = t('users.msgs.pass_change')
 
     if (user.ssg_admin? || user.city_admin?)
       redirect_to ssg_admin_login_path()
@@ -160,7 +160,7 @@ class UsersController < ApplicationController
     token = params[:token]
     forgot_pass = ForgotPassword.where(:token => token).first
     if forgot_pass.nil?
-      flash[:error] = I18n.t('users.msgs.error_pass_change')
+      flash[:error] = t('users.msgs.error_pass_change')
       return redirect_to root_path()
     end
 
@@ -185,7 +185,7 @@ class UsersController < ApplicationController
       UserMailer.reset_password(user, forgot_pass.token, "#{request.protocol}#{request.host_with_port}").deliver
     end
 
-    flash[:info] = I18n.t('users.msgs.forgot_pass')
+    flash[:info] = t('users.msgs.forgot_pass')
     redirect_to login_users_path()
   end
 
@@ -211,7 +211,7 @@ class UsersController < ApplicationController
       session[:script] = user.script
       redirect_to session[:referer_url] ? session.delete(:referer_url) : issues_path()
     else
-      flash[:error] = I18n.t('users.msgs.invalid_login')
+      flash[:error] = t('users.msgs.invalid_login')
       redirect_to login_users_path()
     end
   end
@@ -224,7 +224,7 @@ class UsersController < ApplicationController
       session[:script] = user.script
       redirect_to ssg_admin_path()
     else
-      flash[:error] = I18n.t('users.msgs.invalid_login')
+      flash[:error] = t('users.msgs.invalid_login')
       redirect_to(ssg_admin_login_path())
     end
   end

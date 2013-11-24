@@ -105,6 +105,10 @@ bs:
         notify:
             issue_updated:  '[ULICA.BA] Problem ažuriran '
     documents:
+        terms:
+            title:          'USLOVI KORIŠTENJA'
+        faq:
+            title:          'NAJČEŠĆE POSTAVLJANA PITANJA'
         contact:    
             question:       'Pitanje'
             details:        'Detalji'
@@ -114,6 +118,7 @@ bs:
             bread_title:    'KONTAKT'
             title:          'KONTAKT FORMA'
             sub_title:      'Ako imate pitanje, molimo Vas iskoristite ovu formu da nas kontaktirate.'
+            message_sent:   'Vaša poruka je uspješno poslana!'
     issues:
         index:
             issues:         'PROBLEMI'
@@ -140,6 +145,10 @@ bs:
             vote:           'Dajte svoj glas'
             login_to_vote:  'Molimo da se prijavite da bi ste glasali'
             change_status:  'Promjeni status problema'
+            reported_by:    'prijavio'
+        delete:
+            success:         'Uspješno izbrisan problem!'
+            error:           'Problem prilikom brisanja problema!'
         comments:
             delete_comment:  'Obriši komentar'
             delete_confirm:  'Da li ste sigurni da želite obrisati komentar?'

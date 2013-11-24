@@ -76,18 +76,18 @@
 
 
 <div class="breadcrumb-container">
-	<a href="<%= root_path() %>">ULICA.BA</a> / <a href="<%= root_path() %>"><%= t('issues.show.issues')%></a> / <span><%=@issue.title.upcase%></span>
+	<a href="<%= root_path() %>">ULICA.BA</a> / <a href="<%= root_path() %>"><%= t('issues.show.issues')%></a> / <span><%= trans(@issue.title.upcase) %></span>
 </div>
 
 <div class="show-container">
 	<div class="issue-container">
 		<div class="issue-container-green">
 			<div class="issue-cell">
-				<span class="issue-cell-title"><%=@issue.title.upcase%></span><br/>
+				<span class="issue-cell-title"><%= trans(@issue.title.upcase) %></span><br/>
 				<span class="issue-cell-subtitle"><%=@issue.category.name%>, <%=@issue.city.name%></span><br/>
 			</div>
 			<div class="issue-cell">
-				<p><%=@issue.description.gsub(/(?:\n\r?|\r\n?)/, '<br/>').html_safe%></p>
+				<p><%= trans(@issue.description.gsub(/(?:\n\r?|\r\n?)/, '<br/>')).html_safe%></p>
 			</div>
 			<br />
 			<div  class="issue-cell">
@@ -201,8 +201,6 @@ $(function () {
 
 	$('#get_status').selectbox();
 });
-
-
 
 function vote() {
 	$.ajax({

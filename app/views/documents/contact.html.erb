@@ -9,12 +9,11 @@
 	<br />
 
 	<div id="contact-details">
-		<%= form_tag '#', :id=>"contact_form" do %>
+		<%= form_tag contact_message_path, :method => :post, :id=>"contact_form" do %>
 			<%= text_field_tag :question, nil, :placeholder => t('documents.contact.question') %><br/>
 			<%= text_area_tag :description, nil, :style => 'height:200px;', :placeholder => t('documents.contact.details') %>
 			<%= text_field_tag :name, nil, :placeholder => t('documents.contact.name') %><br/>
 			<%= text_field_tag :email, nil, :placeholder => t('documents.contact.email') %><br/>
-
 			<br />
 			<%= ssg_button t('documents.contact.send_button'), {:onclick => "$('\#contact_form').submit();"}%>
 		<%end%>

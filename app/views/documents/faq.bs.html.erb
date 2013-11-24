@@ -1,153 +1,158 @@
 <div class="breadcrumb-container">
-  <a href="<%= root_path() %>">ULICA.BA</a> / <span>NAJČEŠĆE POSTAVLJANA PITANJA</span>
+  <a href="<%= root_path() %>">ULICA.BA</a> / <span><%= t('documents.faq.title')%></span>
 </div>
 
 <div id="faq_image"></div>
 <div id="faq_content">
 	<div class="faq-left-column">
 		<a name="question_1"/>
-		<span class="question">Šta je ULICA.BA?</span>
-		<span class="answer">ULICA.BA je web platforma kreirana za građane Bosne i Hercegovine kako bi probleme sa kojima se svakodnevno susreću u svojim lokalnim zajednicama mogli prijavljivati nadležnim vlastima. Platforma omogućava direktnu komunikaciju između Vas i općinskih vlasti. Vi prijavljujete probleme i diskutujete o njima sa drugima, a općinske vlasti Vam daju povratne informacije o rješavanju istih.</span>
+		<span class="question"><%= trans('Šta je ULICA.BA?') %></span>
+		<span class="answer"><%= trans('ULICA.BA je web platforma kreirana za građane Bosne i Hercegovine kako bi probleme sa kojima se svakodnevno susreću u svojim lokalnim zajednicama mogli prijavljivati nadležnim vlastima. Platforma omogućava direktnu komunikaciju između Vas i općinskih vlasti. Vi prijavljujete probleme i diskutujete o njima sa drugima, a općinske vlasti Vam daju povratne informacije o rješavanju istih.') %></span>
 
 		<a name="question_2"/>
-		<span class="question">Ko stoji iza platforme?</span>
-		<span class="answer"><strong>Udruženje Sredi Svoj Grad (SSG)</strong>, koje je nastalo kao zajednička ideja grupe mladih entuzijasta koji svoje stručno znanje i iskustvo žele staviti u funkciju poboljšanja kvalitete života u lokalnoj zajednici. Obzirom da je misija Udruženja razvoj i promocija informacionih tehnologija koje će doprinijeti u postizanju društveno-korisnih ciljeva, kreirana je platforma koja upravo to i omogućava.</span>
+		<span class="question"><%= trans('Ko stoji iza platforme?') %></span>
+		<span class="answer"><strong><%= trans('Udruženje Sredi Svoj Grad (SSG)') %></strong>, <%= trans('koje je nastalo kao zajednička ideja grupe mladih entuzijasta koji svoje stručno znanje i iskustvo žele staviti u funkciju poboljšanja kvalitete života u lokalnoj zajednici. Obzirom da je misija Udruženja razvoj i promocija informacionih tehnologija koje će doprinijeti u postizanju društveno-korisnih ciljeva, kreirana je platforma koja upravo to i omogućava.') %></span>
 
 		<a name="question_3"/>
-		<span class="question">Ko finansira platformu?</span>
-		<span class="answer">Platformu financira Ambasada Sjedinjenih Američkih Država u okviru Democracy Commision Small Grant Programme.</span>
+		<span class="question"><%= trans('Ko finansira platformu?') %></span>
+		<span class="answer"><%= trans('Platformu financira Ambasada Sjedinjenih Američkih Država u okviru ') %>Democracy Commision Small Grant Programme.</span>
 
 		<a name="question_4"/>
-		<span class="question">Koje probleme mogu prijavljivati na platformi?</span>
-		<span class="answer">ULICA.BA omogućava prijavu problema koji otežavaju građanima život u lijepom, sigurnom i čistom okruženju. Ukoliko je nešto <strong>uništeno, pokvareno, prljavo ili ometa građane u svakodnevnim aktivnostima</strong>, te je <strong>potreban popravak, čišćenje ili uklanjanje</strong>, prijavite to putem platforme. To mogu biti problemi kao što su:
+		<span class="question"><%= trans('Koje probleme mogu prijavljivati na platformi?') %></span>
+		<span class="answer"><%= trans('ULICA.BA omogućava prijavu problema koji otežavaju građanima život u lijepom, sigurnom i čistom okruženju. Ukoliko je nešto') %> <strong><%= trans('uništeno, pokvareno, prljavo ili ometa građane u svakodnevnim aktivnostima') %></strong><%= trans(', te je') %> <strong><%= trans('potreban popravak, čišćenje ili uklanjanje') %></strong>, <%= trans(' prijavite to putem platforme. To mogu biti problemi kao što su:') %>
 		<ul>
-			<li>prljave ulice</li>
-			<li>neuređena igrališta za djecu i parkovi</li>
-			<li>ilegalna odlagališta otpada</li>
-			<li>rupe na lokanim putevima</li>
-			<li>nepropisno parkirani automobili</li>
-			<li>nepropisno plakatiranje javnih prostora</li>
-			<li>razbijena ulična rasvjeta, itd.</li>
+			<li><%= trans('prljave ulice') %></li>
+			<li><%= trans('neuređena igrališta za djecu i parkovi') %></li>
+			<li><%= trans('ilegalna odlagališta otpada') %></li>
+			<li><%= trans('rupe na lokanim putevima') %></li>
+			<li><%= trans('nepropisno parkirani automobili') %></li>
+			<li><%= trans('nepropisno plakatiranje javnih prostora') %></li>
+			<li><%= trans('razbijena ulična rasvjeta, itd.') %></li>
 		</ul>
 		<br/>
-		Također, platforma ULICA.BA može biti i Vaš alat za pokretanje inicijativa korisnih za zajednicu, a koje možete podijeliti sa Vašim sugrađanima.
-		</span>
+		<%= trans('Također, platforma ULICA.BA može biti i Vaš alat za pokretanje inicijativa korisnih za zajednicu, a koje možete podijeliti sa Vašim sugrađanima.') %></span>
 
 		<a name="question_5"/>
-		<span class="question">Ko može koristiti platformu?</span>
-		<span class="answer">Platforma je otvorena za sve posjetioce. Bez registracije možete pregledati sve probleme prijavljene širom Bosne i Hercegovine.<br>
-Registracijom postajete član ULICA.BA, što Vam omogućava prijavljivanje problema, razgovor o istima sa drugim građanima, glasanje i određivanje prioriteta u rješavanju problema, organiziranje zajedničkih akcija i mnoge druge aktivnosti. 
-</span>
+		<span class="question"><%= trans('Ko može koristiti platformu?') %></span>
+		<span class="answer"><%= trans('Platforma je otvorena za sve posjetioce. Bez registracije možete pregledati sve probleme prijavljene širom Bosne i Hercegovine.') %>
+			<br>
+		<%= trans('Registracijom postajete član ULICA.BA, što Vam omogućava prijavljivanje problema, razgovor o istima sa drugim građanima, glasanje i određivanje prioriteta u rješavanju problema, organiziranje zajedničkih akcija i mnoge druge aktivnosti.') %></span>
 
 		<a name="question_6"/>
-		<span class="question">Kako prijavljujem problem?</span>
-		<span class="answer">Da biste prijavili problem potrebno je da se prijavite. Ukoliko niste član potrebno je da se registrujete.<br>
-Problem prijavljujete klikom na „PRIJAVI PROBLEM“ na glavnom meniju koji će Vam otvoriti formu za kreiranje problema. Problem kreirate tako što:
-<ul>
-	<li>unesete naslov problema</li>
-	<li>odredite kojoj kategoriji pripada</li>
-	<li>izaberete općinu u kojoj prijavljujete probleme</li>
-	<li>locirate problem klikom na mapu</li>
-	<li>opišete isti ukratko i</li>
-	<li>upotpunite slikom.</li>
-</ul>
-</span>
+		<span class="question"><%= trans('Kako prijavljujem problem?') %></span>
+		<span class="answer"><%= trans('Da biste prijavili problem potrebno je da se prijavite. Ukoliko niste član potrebno je da se registrujete.') %>
+		<br>
+		<%= trans('Problem prijavljujete klikom na „PRIJAVI PROBLEM“ na glavnom meniju koji će Vam otvoriti formu za kreiranje problema. Problem kreirate tako što:') %>
+		<ul>
+			<li><%= trans('unesete naslov problema') %></li>
+			<li><%= trans('odredite kojoj kategoriji pripada') %></li>
+			<li><%= trans('izaberete općinu u kojoj prijavljujete probleme') %></li>
+			<li><%= trans('locirate problem klikom na mapu') %></li>
+			<li><%= trans('opišete isti ukratko i') %></li>
+			<li><%= trans('upotpunite slikom.') %></li>
+		</ul>
+		</span>
 
 		<a name="question_7"/>
-		<span class="question">Kako odrediti kojoj kategoriji pripada problem koji prijavljujem?</span>
-		<span class="answer">Kada prijavljujete problem potrebno je da odredite kojoj kategoriji pripada kako bi isti bio prijavljen odgovarajućem sektoru unutar općine. Ponuđene kategorije su:
+		<span class="question"><%= trans('Kako odrediti kojoj kategoriji pripada problem koji prijavljujem?') %></span>
+		<span class="answer"><%= trans('Kada prijavljujete problem potrebno je da odredite kojoj kategoriji pripada kako bi isti bio prijavljen odgovarajućem sektoru unutar općine. Ponuđene kategorije su:') %>
 		<ul>
-			<li><strong>Komunalna infrastruktura</strong>
+			<li><strong><%= trans('Komunalna infrastruktura') %></strong>
 				<ul>
-					<li>Komunalna higijena (Primjeri: smeće na ulicama, rijeke i obale rijeka, komunalna inspekcija, javni toaleti, čišćenje snijega)</li>
-					<li>Javna rasvjeta (Primjeri: razbijena lampa, nedostak rasvjete)</li>
-					<li>Vodovod i kanalizacija (Primjeri: vodovodne cijevi, šahtovi, zamjena vodomjera )</li>
+					<li><%= trans('Komunalna higijena (Primjeri: smeće na ulicama, rijeke i obale rijeka, komunalna inspekcija, javni toaleti, čišćenje snijega)') %></li>
+					<li><%= trans('Javna rasvjeta (Primjeri: razbijena lampa, nedostak rasvjete)') %></li>
+					<li><%= trans('Vodovod i kanalizacija (Primjeri: vodovodne cijevi, šahtovi, zamjena vodomjera )') %></li>
 				</ul>
 			</li>
-			<li><strong>Saobraćaj i parking</strong> (Primjer: nepropisno parkiranje, uništen ili opasan put ili pločnik, neobilježen pješački prijelaz, saobraćajna signalizacija)
+			<li><strong><%= trans('Saobraćaj i parking') %></strong><%= trans('(Primjer: nepropisno parkiranje, uništen ili opasan put ili pločnik, neobilježen pješački prijelaz, saobraćajna signalizacija)') %>
 				<ul>
-					<li>Javni prijevoz (Primjeri: stajališta,sredstva javnog prijevoza)</li>
+					<li><%= trans('Javni prijevoz (Primjeri: stajališta,sredstva javnog prijevoza)') %></li>
 				</ul>
 			</li>
-			<li><strong>Zelene i rekreativne povrsine</strong> (Primjer: parkovi,igrališta,sporstki tereni)</li>
-			<li><strong>Zdravlje i sigurnost građana</strong> (Primjeri: zagađenje zraka, psi lutalice, curenje plina)</li>
-			<li><strong>Lice grada</strong> (Primjeri: obrušene fasade, grafiti, nepropisno plakatiranje)</li>
-			<li><strong>Ostalo</strong></li>
+			<li><strong><%= trans('Zelene i rekreativne povrsine') %></strong> <%= trans('(Primjer: parkovi,igrališta,sporstki tereni)') %></li>
+			<li><strong><%= trans('Zdravlje i sigurnost građana') %></strong> <%= trans('(Primjeri: zagađenje zraka, psi lutalice, curenje plina)') %></li>
+			<li><strong><%= trans('Lice grada') %></strong> <%= trans('(Primjeri: obrušene fasade, grafiti, nepropisno plakatiranje)') %></li>
+			<li><strong><%= trans('Ostalo') %></strong></li>
 		</ul>
 	</span>
 
 		<a name="question_8"/>
-		<span class="question">Ko može kreirati problem?</span>
-		<span class="answer">Samo registrovani članovi mogu kreirati probleme.</span>
+		<span class="question"><%= trans('Ko može kreirati problem?') %></span>
+		<span class="answer"><%= trans('Samo registrovani članovi mogu kreirati probleme.') %></span>
 
 		<a name="question_9"/>
-		<span class="question">Mogu li davati komentare na probleme koje je neko drugi prijavio?</span>
-		<span class="answer">Ako ste član ULICA.BA možete davati komentare i na druge prijavljene probleme, kao i glasati za njih, te na taj način određivati prioritete u rješavanju istih.</span>
+		<span class="question"><%= trans('Mogu li davati komentare na probleme koje je neko drugi prijavio?') %></span>
+		<span class="answer"><%= trans('Ako ste član ULICA.BA možete davati komentare i na druge prijavljene probleme, kao i glasati za njih, te na taj način određivati prioritete u rješavanju istih.') %></span>
 
 		<a name="question_10"/>
-		<span class="question">Kako mogu dati svoj glas problemu koji je prijavio neki drugi član ULICA.BA?</span>
-		<span class="answer">Kao registrovani član otvorite problem na koji želite ukazati, te klikom na ikonu SRCE dajte svoj glas za rješavanje problema. Na ovaj način općinske vlasti će lakše steći uvid koji problemi su prioriteti u zajednici.</span>
+		<span class="question"><%= trans('Kako mogu dati svoj glas problemu koji je prijavio neki drugi član ULICA.BA?') %></span>
+		<span class="answer"><%= trans('Kao registrovani član otvorite problem na koji želite ukazati, te klikom na ikonu SRCE dajte svoj glas za rješavanje problema. Na ovaj način općinske vlasti će lakše steći uvid koji problemi su prioriteti u zajednici.') %></span>
 
 		<a name="question_11"/>
-		<span class="question">Kako se rješavaju problemi koje ja prijavim?</span>
-		<span class="answer">Prijavljene probleme zaprima općina koja angažuje nadležnu službu i obavještava članove o poduzetim koracima za rješavanje problema. Nakon što je problem riješen općinske vlasti obavještavaju članove o tome.<br>
-		Platforma Vam omogućava da razgovarate s drugim građanima o problemima, te da zajedno lobirate općine da ih riješe ili pak da ih Vi kao građani riješite organizujući zajedničke akcije.</span>
+		<span class="question"><%= trans('Kako se rješavaju problemi koje ja prijavim?') %></span>
+		<span class="answer"><%= trans('Prijavljene probleme zaprima općina koja angažuje nadležnu službu i obavještava članove o poduzetim koracima za rješavanje problema. Nakon što je problem riješen općinske vlasti obavještavaju članove o tome.') %>
+			<br>
+			<%= trans('Platforma Vam omogućava da razgovarate s drugim građanima o problemima, te da zajedno lobirate općine da ih riješe ili pak da ih Vi kao građani riješite organizujući zajedničke akcije.') %></span>
 
 		<a name="question_12"/>
-		<span class="question">Šta znače statusi prijavljen, rješava se  i riješen?</span>
-		<span class="answer"><strong>Prijavljen:</strong> problem ima ovaj status od trenutka kada ga Vi prijavite do trenutka kada općinske vlasti preuzmu problem i započnu njegovo rješavanje.<br>
-		<strong>Rješava se:</strong> status označava da općina poduzima potrebne korake kako bi se problem riješio.<br>
-		<strong>Riješen:</strong> problem je riješen kada su općinske vlasti poduzele sve što je potrebno da bi se prijavljeni problem riješio ili kada je građanin koji je prijavio problem zadovoljan rješenjem.</span>
+		<span class="question"><%= trans('Šta znače statusi prijavljen, rješava se  i riješen?') %></span>
+		<span class="answer"><strong><%= trans('Prijavljen:') %></strong> <%= trans('problem ima ovaj status od trenutka kada ga Vi prijavite do trenutka kada općinske vlasti preuzmu problem i započnu njegovo rješavanje.') %>
+		<br>
+		<strong><%= trans('Rješava se:') %></strong> <%= trans('status označava da općina poduzima potrebne korake kako bi se problem riješio.') %>
+			<br>
+		<strong><%= trans('Riješen:') %></strong> <%= trans('problem je riješen kada su općinske vlasti poduzele sve što je potrebno da bi se prijavljeni problem riješio ili kada je građanin koji je prijavio problem zadovoljan rješenjem.') %></span>
 
 		<a name="question_13"/>
-		<span class="question">Kako znam da je problem riješen?</span>
-		<span class="answer">O svim izmjenama statusa problema koji ste prijavili dobit ćete obavještenje na Vašu e-mail adresu koju ste prijavili prilikom registracije na ULICA.BA. Ukoliko niste zadovoljni popravkom  problema koji ste prijavili, možete mu promijeniti status u <strong>prijavljen</strong>, dodati komentar sa detaljima zašto nije popravljen, kako biste ponovno pokrenuli proceduru rješavanja/popravljanja problema.</span>
+		<span class="question"><%= trans('Kako znam da je problem riješen?') %></span>
+		<span class="answer"><%= trans('O svim izmjenama statusa problema koji ste prijavili dobit ćete obavještenje na Vašu e-mail adresu koju ste prijavili prilikom registracije na ULICA.BA. Ukoliko niste zadovoljni popravkom  problema koji ste prijavili, možete mu promijeniti status u') %> <strong><%= trans('prijavljen') %></strong>, <%= trans('dodati komentar sa detaljima zašto nije popravljen, kako biste ponovno pokrenuli proceduru rješavanja/popravljanja problema.') %></span>
 
 		<a name="question_14"/>
-		<span class="question">Ko vidi moje ime i e-mail adresu kada prijavim problem?</span>
-		<span class="answer">Vašu e-mail adresu ne mogu vidjeti drugi korisnici.<br>
-Vaše ime i prezime (ukoliko ste ga unijeli), korisničko ime i vaše aktivnosti će biti vidljive ostalim korisnicima.</span>
+		<span class="question"><%= trans('Ko vidi moje ime i e-mail adresu kada prijavim problem?') %></span>
+		<span class="answer"><%= trans('Vašu e-mail adresu ne mogu vidjeti drugi korisnici.') %>
+		<br>
+		<%= trans('Vaše ime i prezime (ukoliko ste ga unijeli), korisničko ime i vaše aktivnosti će biti vidljive ostalim korisnicima.') %></span>
 
 		<a name="question_15"/>
-		<span class="question">Da li uređujete/uklanjate neprikladne sadržaje?</span>
-		<span class="answer">ULICA.BA ima pravo da uređuje ili uklanja bilo koji problem, informaciju ili komentar koji se smatra neprimjerenim. ULICA.BA ne preuzima odgovornost za sadržaj i tačnost prijavljenih problema.</span>
+		<span class="question"><%= trans('Da li uređujete/uklanjate neprikladne sadržaje?') %></span>
+		<span class="answer"><%= trans('ULICA.BA ima pravo da uređuje ili uklanja bilo koji problem, informaciju ili komentar koji se smatra neprimjerenim. ULICA.BA ne preuzima odgovornost za sadržaj i tačnost prijavljenih problema.') %></span>
 
 		<a name="question_16"/>
-		<span class="question">U kojim općinama mogu prijavljivati probleme?</span>
-		<span class="answer">ULICA.BA omogućuje da prijavite problem u bilo kojoj općini u Bosni Hercegovini, međutim do sada smo uspostavili saradnju sa općinama: <strong>Istočna Ilidža, Istočno Novo Sarajevo, Bosanska Krupa i Zenica</strong>, a kroz partnerski odnos sa Centrom za promociju civilnog društva (CPCD) platforma je aktivna i u općinama: <strong>Stari Grad, Novo Sarajevo, Novi Grad, Ilidža i Vogošća u Kantonu Sarajevo</strong>, te očekujemo da će se navedene općine očitovati o problemima koji su prijavljeni na područjima koje obuhvataju.<br>
-Iako sa ostalim općinama u BiH nemamo ostvarenu formalnu saradnju, Vaša prijava problema putem ULICA.BA može biti prvi korak koji će nam pomoći da ostvarimo saradnju sa Vašom općinom.</span>
+		<span class="question"><%= trans('U kojim općinama mogu prijavljivati probleme?') %></span>
+		<span class="answer"><%= trans('ULICA.BA omogućuje da prijavite problem u bilo kojoj općini u Bosni Hercegovini, međutim do sada smo uspostavili saradnju sa općinama: ') %><strong><%= trans('Istočna Ilidža, Istočno Novo Sarajevo, Bosanska Krupa i Zenica') %></strong>, <%= trans('a kroz partnerski odnos sa Centrom za promociju civilnog društva (CPCD) platforma je aktivna i u općinama: ') %><strong><%= trans('Stari Grad, Novo Sarajevo, Novi Grad, Ilidža i Vogošća u Kantonu Sarajevo') %></strong>, <%= trans('te očekujemo da će se navedene općine očitovati o problemima koji su prijavljeni na područjima koje obuhvataju.')%>
+		<br>
+		<%= trans('Iako sa ostalim općinama u BiH nemamo ostvarenu formalnu saradnju, Vaša prijava problema putem ULICA.BA može biti prvi korak koji će nam pomoći da ostvarimo saradnju sa Vašom općinom.') %></span>
 
 		<a name="question_17"/>
-		<span class="question">Mogu li koristiti platformu na mobitelu?</span>
-		<span class="answer">Platformu možete koristiti na mobilnim uređajima putem standardnih Internet pretraživača. Trenutno ne postoji mobilna aplikacija za platformu ULICA.BA.</span>
+		<span class="question"><%= trans('Mogu li koristiti platformu na mobitelu?') %></span>
+		<span class="answer"><%= trans('Platformu možete koristiti na mobilnim uređajima putem standardnih Internet pretraživača. Trenutno ne postoji mobilna aplikacija za platformu ULICA.BA.') %></span>
 
 		<a name="question_18"></a>
-		<span class="question">Kome se mogu obratiti u slučaju tehničkih poteškoća?</span>
-		<span class="answer">Koristite našu <%= link_to 'kontakt formu', contact_path() %>.</span>
+		<span class="question"><%= trans('Kome se mogu obratiti u slučaju tehničkih poteškoća?') %></span>
+		<span class="answer"><%= trans('Koristite našu') %> <%= link_to trans('kontakt formu'), contact_path() %></span>
 
 		<a name="question_19"></a>
-		<span class="question">Šta da uradim ukoliko nijedno od iznad ponuđenih pitanja/odgovora ne rješava moju dilemu?</span>
-		<span class="answer">Ukoliko imate dodatna pitanja, molimo Vas da koristite našu <%= link_to 'kontakt formu', contact_path() %>, a mi ćemo se potruditi da Vam u što kraćem roku odgovorimo na upit. </span>
+		<span class="question"><%= trans('Šta da uradim ukoliko nijedno od iznad ponuđenih pitanja/odgovora ne rješava moju dilemu?') %></span>
+		<span class="answer"><%= trans('Ukoliko imate dodatna pitanja, molimo Vas da koristite našu') %> <%= link_to trans('kontakt formu'), contact_path() %>, <%= trans('a mi ćemo se potruditi da Vam u što kraćem roku odgovorimo na upit.') %></span>
 	</div>
 
 	<div class="faq-right-column">
-		<span class="title-point"><a href="#question_1"/>Šta je ULICA.BA?</a></span>
-		<span class="title-point"><a href="#question_2"/>Ko stoji iza platforme?</a></span>
-		<span class="title-point"><a href="#question_3"/>Ko finansira platformu?</a></span>
-		<span class="title-point"><a href="#question_4"/>Koje probleme mogu prijavljivati na platformi?</a></span>
-		<span class="title-point"><a href="#question_5"/>Ko može koristiti platformu?</a></span>
-		<span class="title-point"><a href="#question_6"/>Kako prijavljujem problem?</a></span>
-		<span class="title-point"><a href="#question_7"/>Kako odrediti kojoj kategoriji pripada problem koji prijavljujem?</a></span>
-		<span class="title-point"><a href="#question_8"/>Ko može kreirati problem?</a></span>
-		<span class="title-point"><a href="#question_9"/>Mogu li davati komentare na probleme koje je neko drugi prijavio?</a></span>
-		<span class="title-point"><a href="#question_10"/>Kako mogu dati svoj glas problemu koji je prijavio neki drugi član ULICA.BA?</a></span>
-		<span class="title-point"><a href="#question_11"/>Kako se rješavaju problemi koje ja prijavim?</a></span>
-		<span class="title-point"><a href="#question_12"/>Šta znače statusi prijavljen, rješava se  i riješen?</a></span>
-		<span class="title-point"><a href="#question_13"/>Kako znam da je problem riješen?</a></span>
-		<span class="title-point"><a href="#question_14"/>Ko vidi moje ime i e-mail adresu kada prijavim problem?</a></span>
-		<span class="title-point"><a href="#question_15"/>Da li uređujete/uklanjate neprikladne sadržaje?</a></span>
-		<span class="title-point"><a href="#question_16"/>U kojim općinama mogu prijavljivati probleme?</a></span>
-		<span class="title-point"><a href="#question_17"/>Mogu li koristiti platformu na mobitelu?</a></span>
-		<span class="title-point"><a href="#question_18"/>Kome se mogu obratiti u slučaju tehničkih poteškoća?</a></span>
-		<span class="title-point"><a href="#question_19"/>Šta da uradim ukoliko nijedno od iznad ponuđenih pitanja/odgovora ne rješava moju dilemu?</</a>
+		<span class="title-point"><a href="#question_1"/><%= trans('Šta je ULICA.BA?') %></a></span>
+		<span class="title-point"><a href="#question_2"/><%= trans('Ko stoji iza platforme?') %></a></span>
+		<span class="title-point"><a href="#question_3"/><%= trans('Ko finansira platformu?') %></a></span>
+		<span class="title-point"><a href="#question_4"/><%= trans('Koje probleme mogu prijavljivati na platformi?') %></a></span>
+		<span class="title-point"><a href="#question_5"/><%= trans('Ko može koristiti platformu?') %></a></span>
+		<span class="title-point"><a href="#question_6"/><%= trans('Kako prijavljujem problem?') %></a></span>
+		<span class="title-point"><a href="#question_7"/><%= trans('Kako odrediti kojoj kategoriji pripada problem koji prijavljujem?') %></a></span>
+		<span class="title-point"><a href="#question_8"/><%= trans('Ko može kreirati problem?') %></a></span>
+		<span class="title-point"><a href="#question_9"/><%= trans('Mogu li davati komentare na probleme koje je neko drugi prijavio?') %></a></span>
+		<span class="title-point"><a href="#question_10"/><%= trans('Kako mogu dati svoj glas problemu koji je prijavio neki drugi član ULICA.BA?') %></a></span>
+		<span class="title-point"><a href="#question_11"/><%= trans('Kako se rješavaju problemi koje ja prijavim?') %></a></span>
+		<span class="title-point"><a href="#question_12"/><%= trans('Šta znače statusi prijavljen, rješava se  i riješen?') %></a></span>
+		<span class="title-point"><a href="#question_13"/><%= trans('Kako znam da je problem riješen?') %></a></span>
+		<span class="title-point"><a href="#question_14"/><%= trans('Ko vidi moje ime i e-mail adresu kada prijavim problem?') %></a></span>
+		<span class="title-point"><a href="#question_15"/><%= trans('Da li uređujete/uklanjate neprikladne sadržaje?') %></a></span>
+		<span class="title-point"><a href="#question_16"/><%= trans('U kojim općinama mogu prijavljivati probleme?') %></a></span>
+		<span class="title-point"><a href="#question_17"/><%= trans('Mogu li koristiti platformu na mobitelu?') %></a></span>
+		<span class="title-point"><a href="#question_18"/><%= trans('Kome se mogu obratiti u slučaju tehničkih poteškoća?') %></a></span>
+		<span class="title-point"><a href="#question_19"/><%= trans('Šta da uradim ukoliko nijedno od iznad ponuđenih pitanja/odgovora ne rješava moju dilemu?') %></a></span>
 	</div>

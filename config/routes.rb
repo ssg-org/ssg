@@ -79,6 +79,7 @@ Ssg::Application.routes.draw do
   get '/privacy'  => 'documents#privacy'
   get '/help'     => 'documents#help'
   get '/contact'  => 'documents#contact' 
+  post '/contact_message'  => 'documents#contact_message' 
   get '/terms'    => 'documents#terms' 
   get '/learn'    => 'documents#learn'
 

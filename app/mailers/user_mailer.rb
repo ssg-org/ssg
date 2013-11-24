@@ -2,7 +2,7 @@
 class UserMailer < ActionMailer::Base
 	include ApplicationHelper
 
-  default :from => Config::Configuration.get(:ssg, :email_address)
+  default :from => Config::Configuration.get(:ssg, :email_address), :to => Config::Configuration.get(:ssg, :notify_address)
 
   def verify(user, url)
 
@@ -23,7 +23,7 @@ class UserMailer < ActionMailer::Base
     @city = city
     @url  = url
 
-    mail(:to => Config::Configuration.get(:ssg, :notify_address), :subject => "Kreiran je problem za opštinu #{city.name}")
+    mail(:subject => "Kreiran je problem za opštinu #{city.name}")
   end
 
   def reset_password(user, token, url)
@@ -44,6 +44,15 @@ class UserMailer < ActionMailer::Base
     @issue = issue
 
     using_locale(user.locale) { mail(:to => @user.email, :subject => t('users.notify.issue_updated')) }
+  end
+
+  def send_contact_message(subject, message, name, email)
+    @subject = subject
+    @message = message
+    @name = name
+    @email = email
+
+    mail(:subject => "New message from SrediSvojGrad: #{@subject} ")
   end
 
   protected

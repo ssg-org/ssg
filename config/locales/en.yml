@@ -105,6 +105,10 @@ en:
         notify:
             issue_updated:  '[ULICA.BA] Issue updated '
     documents:
+        terms:
+            title:          'TERMS OF USE'
+        faq:
+            title:          'FREQUENTLY ASKED QUESTIONS'
         contact:    
             question:       'Question'
             details:        'Details'
@@ -114,6 +118,7 @@ en:
             bread_title:    'CONTACT'
             title:          'CONTACT FORM'
             sub_title:      'If you have any questions, please send us them with this form.'
+            message_sent:   'Your message is successfully sent!'
     issues:
         index:
             issues:         'ISSUES'
@@ -140,9 +145,13 @@ en:
             vote:           'Vote this issue'
             login_to_vote:  'Please login to give your vote'
             change_status:  'Change issue status'
+            reported_by:    'by'
+        delete:
+            success:         'Issue successfully deleted!'
+            error:           'Error deleting issue!'
         comments:
             delete_comment:  'Delete comment'
-            delete_confirm:   'Are you sure that you want to delete this comment?'
+            delete_confirm:  'Are you sure that you want to delete this comment?'
         right_menu:
             date:           'DATE'
             featured:       'FEATURED'
