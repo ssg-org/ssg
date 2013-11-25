@@ -119,6 +119,8 @@ en:
             title:          'CONTACT FORM'
             sub_title:      'If you have any questions, please send us them with this form.'
             message_sent:   'Your message is successfully sent!'
+        reports:
+            title:          'REPORTS'
     issues:
         index:
             issues:         'ISSUES'
@@ -184,7 +186,6 @@ en:
         index:
             cities: 'Cities'
             select: 'Map of all cities'
-            reports: 'REPORTS'
     form:
         common:
             submit: 'Submit'

@@ -119,6 +119,8 @@ bs:
             title:          'KONTAKT FORMA'
             sub_title:      'Ako imate pitanje, molimo Vas iskoristite ovu formu da nas kontaktirate.'
             message_sent:   'Vaša poruka je uspješno poslana!'
+        reports:
+            title:          'IZVJEŠTAJI'
     issues:
         index:
             issues:         'PROBLEMI'
@@ -185,7 +187,6 @@ bs:
         index:
             cities: 'OPŠTINE'
             select: 'Mapa svih opština'
-            reports: 'REPORTS'
     form:
         common:
             submit: 'Potvrdi'

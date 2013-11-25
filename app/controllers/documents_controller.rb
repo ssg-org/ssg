@@ -19,4 +19,7 @@ class DocumentsController < ApplicationController
 
 	def learn
 	end
+
+	def reports
+	end
 end

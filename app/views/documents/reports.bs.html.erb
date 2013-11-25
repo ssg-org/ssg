@@ -1,0 +1,66 @@
+<div class="breadcrumb-container">
+  <a href="<%= root_path() %>">ULICA.BA</a> / <span><%= t('documents.reports.title')%></span>
+</div>
+
+<% current_url = "#{request.protocol}#{request.host_with_port}" %>
+<div id="report_content">
+  <div>
+    <h2 class="text_title"><%= trans('Izvještaj 2012') %></h2>
+    <div id="content_form">
+      <p align="justify">
+        <%= trans('Centar za promociju civilnog društva predstavlja istraživanje o zadovoljstvu građana javnim uslugama na području navedenih općina koje je provedeno u okviru projekta "Monitoring lokalnih usluga: organizacije civilnog društva (OCD), građani i lokalne vlasti zajedno do boljih usluga". Projekt finansira Fond otvoreno društvo BiH.') %>
+      </p>
+      <p align="justify">
+        <%= trans('Cilj projekta je podržati razvoj demokratske lokalne uprave u BiH zasnovane na principima participacije, nediskriminacije i odgovornosti lokalnih vlasti. U aktivnostima projekta uključeno je još i 75 nevladinih organizacija i neformalnih grupa kroz učešće u forumima, kampanji javnog zagovaranja i drugim aktivnostima projekta.') %>
+      </p>
+      <br />
+      <br />
+      <span class="sub-header"><%= trans('Finalni izvještaji:') %></span>
+      <br />
+      <br />
+      <p>
+        <a class="button-link" href="<%= current_url %>/assets/docs/Finalni_izvjestaj_za_Opcinu_Stari_grad_Sarajevo.pdf" target="_blank"><%= trans('Izvještaj Ispitivanje korisnika javnih usluga u općini  Stari Grad Sarajevo') %></a>
+      </p>
+      <p>
+        <a class="button-link" href="<%= current_url %>/assets/docs/Finalni_izvjestaj_za_Opcinu_Centar.pdf" target="_blank"><%= trans('Izvještaj Ispitivanje korisnika javnih usluga u općini Centar') %></a>
+      </p>
+      <p>
+        <a class="button-link" href="<%= current_url %>/assets/docs/Finalni_izvjestaj_za_Novo_Sarajevo.pdf" target="_blank"><%= trans('Izvještaj Ispitivanje korisnika javnih usluga u općini Novo Sarajevo') %></a>
+      </p>
+      <p>
+        <a class="button-link" href="<%= current_url %>/assets/docs/Finalni_izvjestaj_za_Opcinu_Novi_grad.pdf" target="_blank"><%= trans('Izvještaj Ispitivanje korisnika javnih usluga u općini Novi Grad') %></a>
+      </p>
+      <p>
+        <a class="button-link" href="<%= current_url %>/assets/docs/Finalni_izvjestaj_za_Ilidzu.pdf" target="_blank"><%= trans('Izvještaj Ispitivanje korisnika javnih usluga u općini Ilidža') %></a>
+      </p>
+      <p>
+        <a class="button-link" href="<%= current_url %>/assets/docs/Finalni_izvjestaj_za_Vogoscu.pdf" target="_blank"><%= trans('Izvještaj Ispitivanje korisnika javnih usluga u općini Vogošća') %></a>
+      </p>
+      <br />
+      <br />
+      <span class="sub-header"><%= trans('Sumarni izvještaji:') %></span>
+      <br />
+      <br />
+
+      <p>
+        <a class="button-link" href="<%= current_url %>/assets/docs/Stari_Grad_sumarno.pdf" target="_blank"><%= trans('Sumarni izvještaj za Općinu Stari Grad Sarajevo') %></a>
+      </p>
+      <p>
+        <a class="button-link" href="<%= current_url %>/assets/docs/Centar_sumarno.pdf" target="_blank"><%= trans('Sumarni izvještaj za Općinu Centar') %></a>
+      </p>
+      <p>
+        <a class="button-link" href="<%= current_url %>/assets/docs/Novo_Sarajevo_sumarno.pdf" target="_blank"><%= trans('Sumarni izvještaj za Općinu Novo Sarajevo') %></a>
+      </p>
+      <p>
+        <a class="button-link" href="<%= current_url %>/assets/docs/Novi_Grad_sumarno.pdf" target="_blank"><%= trans('Sumarni izvještaj za Općinu Novi Grad') %></a>
+      </p>
+      <p>
+        <a class="button-link" href="<%= current_url %>/assets/docs/Ilidza_sumarno.pdf" target="_blank"><%= trans('Sumarni izvještaj za Ilidžu') %></a>
+      </p>
+      <p>
+        <a class="button-link" href="<%= current_url %>/assets/docs/Vogosca_sumarno_1.pdf" target="_blank"><%= trans('Sumarni izvještaj za Vogošću') %></a>
+      </p>
+    </div>
+  </div>
+  <div id="clear"></div>
+</div>

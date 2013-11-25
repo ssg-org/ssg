@@ -34,8 +34,6 @@ Ssg::Application.routes.draw do
     end
   end
 
-  resources :reports, :only => [:index]
-
   resources :images, :only => [:create, :destroy]
 
   resources :comments, :only => [:create, :destroy]
@@ -82,6 +80,7 @@ Ssg::Application.routes.draw do
   post '/contact_message'  => 'documents#contact_message' 
   get '/terms'    => 'documents#terms' 
   get '/learn'    => 'documents#learn'
+  get '/reports'  => 'documents#reports'
 
   # change locale
   get '/locale_change' => 'application#change_locale'
