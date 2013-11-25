@@ -22,6 +22,8 @@
                 <th role="columnheader" tabindex="0" rowspan="1" colspan="1">Opština</th>
                 <th role="columnheader" tabindex="0" rowspan="1" colspan="1">Glasovi</th>
                 <th role="columnheader" tabindex="0" rowspan="1" colspan="1">Pregled</th>
+                <th role="columnheader" tabindex="0" rowspan="1" colspan="1">Kreiran</th>
+                <th role="columnheader" tabindex="0" rowspan="1" colspan="1">Modifikovan</th>
                 <th role="columnheader" tabindex="0" rowspan="1" colspan="1">Komande</th>
               </tr>
             </thead> 
@@ -35,6 +37,8 @@
                   <td><%= issue.city ? link_to(issue.city.name, city_path(issue.city.friendly_id), :target => "_blank") : 'Nema opcine' %></td>
                   <td><%= issue.vote_count %></td>
                   <td><%= issue.view_count %></td>
+                  <td><%= issue.created_at %></td>
+                  <td><%= issue.updated_at %></td>
                   <td class="admin-list-toolbar-cell" align="center">
                     <div class="btn-toolbar">
                       <div class="btn-group">
