@@ -33,7 +33,7 @@
 	
 	<div class="issue-status-part">
 		<span class="font-gray-dark font-12"> <%= trans(issue.get_status) %></span>
-		<span class="issue-status-date"><%= time_ago_in_words(issue.updated_at) %></span>
+		<span class="issue-status-date"><%= time_ago_in_words(issue.created_at) %></span>
 	</div>
 
 	<hr/>
