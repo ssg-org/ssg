@@ -24,4 +24,5 @@
 //= require i18n
 //= require i18n/translations
 //= require common
+//= require retina-1.1.0
 

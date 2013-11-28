@@ -4,29 +4,36 @@
 	<% end %>
 </div>
 
+<div class="header-menu">
+	<ul>
+		<li>
+	    <a href="<%= locale_change_path(:locale => :bs, :script => :latin) %>">BHS</a> | 
+	    <a href="<%= locale_change_path(:locale => :bs, :script => :cyrillic) %>">БХС</a> | 
+  	  <a href="<%= locale_change_path(:locale => :en, :script => :latin) %>">EN</a>
+		</li>
+		<li>
+	    <%= link_to(t('shared.menu.help'), faq_path) %>		
+		</li>
+		<li>
+	  	<%= link_to(t('shared.menu.admin_login'), ssg_admin_path)%>		
+		</li>
+	</ul>
+</div>
+
 <div style="float:left;">
-
-	<div style="margin-top:30px;">
-		<%= link_to(faq_path()) do %>
-			<div style="float:right;" class="asset-learn-more-<%= I18n.locale %> learn-more"></div>
-		<% end %>
-
-		<span style="float:right; padding-top: 10px; color: #333333" class="what-are-we">
-			<strong><%=t('shared.menu.what')%></strong> <%=t('shared.menu.we_are')%>&nbsp;&nbsp;&nbsp;&nbsp;
-		</span>
-	</div>
 	
 	<% selection = {
 		:issues => params[:controller] == 'issues' && params[:action] != 'new',
 		:cities => params[:controller] == 'cities',
+		:reports => params[:controller] == 'documents' && params[:action] == 'reports',
 		:report => params[:controller] == 'issues' && params[:action] == 'new',
-		:blog => params[:controller] == 'blog',
+		:contact => params[:controller] == 'documents' && params[:action] == 'contact',
 		:help => params[:controller] == 'help',
 		:signup => params[:controller] == 'users' && params[:action] == 'login',
 		:login => params[:controller] == 'users' && params[:action] == 'login'
 	}%>
 	
-	<div style="margin-top:70px;">
+	<div style="margin-top:35px;">
 		<ul id="menu-list">
 			<li class="menu-sub">
 				<%=link_to t('shared.menu.issues'), issues_path(), :class => "value_strip() font-black #{'menu-selected' if selection[:issues]}"%><br/>
@@ -63,7 +70,11 @@
 
 			<% if @user.guest? %>
 			<li class="menu-sub" style="float:right;">
-				<%=link_to t('shared.menu.login'), login_users_path(), :class => "value_strip()", :style => 'line-height:25px;' %>
+				<%=link_to t('shared.menu.login'), login_users_path(), :class => "value_strip() font-black #{'menu-selected' if selection[:login]}" %><br/>
+				<span class="font-gray "><%=t('shared.menu.registration')%></span>
+				<% if selection[:login]%>
+					<div class="selection"></div>
+				<% end %>
 			</li>
 			<% else %>
 				<li class="menu-sub" id="bar"  style="float:right;">					
@@ -77,20 +88,18 @@
 						</ul>
 						</div>
 					</div>
-
 				</li>
 				<li  class="menu-sub" style="float:right; padding-right: 0px;">
 					<%= image_tag @user.avatar, :class => 'profile-user-photo' %>
 				</li>
 			<% end -%>
 
-			<!-- blog
 			<li class="menu-sub" style="float:right;">
-				<%=link_to t('shared.menu.blog'), new_issue_path(), :class => "value_strip()", :style => 'line-height:25px;' %><br/>
-			</li>
-			-->
-			<li  class="menu-sub" style="float:right;">
-				<%=link_to t('shared.menu.help'), faq_path(), :class => "value_strip()", :style => 'line-height:25px;' %><br/>
+				<%=link_to t('shared.menu.contact'), contact_path(), :class => "value_strip() font-black #{'menu-selected' if selection[:contact]}"%><br/>
+				<span class="font-gray "><%=t('shared.menu.information')%></span><br/>
+				<% if selection[:contact]%>
+					<div class="selection"></div>
+				<% end %>
 			</li>
 
 		</ul>

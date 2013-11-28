@@ -73,14 +73,24 @@
 		<span class=''><%=t('users.login.quick_sign_in_message') %></span>
 	</div>
 	<br />
-	<%= link_to image_tag('fb_login_en.png'), '#', :id => 'fb-login-link' %>
+
+	<a href="#" id="fb-login-link" class="btn-fb fb-button fb-blue btn icon-btn btn-block btn-large large padded-btn-block row-space-1 btn-facebook" data-populate_uri="" style="width:180px !important;">
+		<span class="icon-container">
+	    <i class="fa fa-facebook icon"></i>
+		</span>
+		<span class="text-container">
+	    Facebook Login
+	  </span>
+	</a>
+
 	<br />
 	<br />
 	<br />
-	<%= form_tag "/auth/twitter", :method => "get",:id => "twitter_form", :html => {:class => ""} do |f| %>
+<!-- 	<%= form_tag "/auth/twitter", :method => "get",:id => "twitter_form", :html => {:class => ""} do |f| %>
     <%= link_to image_tag('twitter_login_en.png'), '#', :id => 'twitter-login-link' %>
 	<% end %>
-</div>
+ -->
+ </div>
 <br style="clear:both">
 
 <% content_for :javascript do %>

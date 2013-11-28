@@ -1,0 +1,392 @@
+
+.btn, select {
+    display: inline-block;
+    margin-bottom: 0;
+    border-radius: 2px;
+    text-align: center;
+    vertical-align: middle;
+    font-weight: bold;
+    line-height: 1.4;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    white-space: nowrap;
+    cursor: pointer
+}
+
+.btn:hover, select:hover, .btn:focus, select:focus {
+    text-decoration: none
+}
+
+.btn:focus, select:focus {
+    outline: none;
+    outline-offset: -2px
+}
+
+.disabled.btn, select.disabled, [disabled].btn, select[disabled],
+fieldset[disabled] .btn, fieldset[disabled] select {
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=65)";
+    opacity: 0.65;
+    box-shadow: none;
+    cursor: default
+}
+
+[disabled].btn, select[disabled], fieldset[disabled] .btn, fieldset[disabled] select {
+    pointer-events: none
+}
+
+.btn+.btn {
+    margin-left: 4px
+}
+
+.btn {
+    padding: 5px 10px;
+    font-size: 13px
+}
+
+.btn.btn-contrast {
+    border: 0;
+    padding: 6px 11px
+}
+
+.btn.btn-facebook {
+    padding-left: 20px;
+    position: relative;
+    overflow: hidden
+}
+
+.btn.btn-facebook .icon {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    font-size: 20px;
+    text-align: right;
+    padding-top: 0.07em;
+    padding-right: 0.2em;
+    width: 30px;
+}
+
+.btn .icon:first-child {
+    margin-right: 2px
+}
+
+.btn.icon {
+    padding: 0;
+    height: 30px;
+    width: 30px
+}
+
+.btn.icon.icon-full {
+    font-size: 19px
+}
+
+.btn-small {
+    padding: 3px 6px;
+    font-size: 11px
+}
+
+.btn-small.btn-contrast {
+    border: 0;
+    padding: 4px 7px
+}
+
+.btn-small.btn-facebook {
+    padding-left: 29px;
+    position: relative;
+    overflow: hidden
+}
+
+.btn-small.btn-facebook .icon {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    font-size: 24px;
+    text-align: right;
+    padding-top: 0.07em;
+    padding-right: 0.2em;
+    width: 1em
+}
+
+.btn-small .icon:first-child {
+    margin-right: 1px
+}
+
+.btn-small.icon {
+    padding: 0;
+    height: 23px;
+    width: 23px
+}
+
+.btn-small.icon.icon-full {
+    font-size: 16px
+}
+
+.btn-large {
+    padding: 9px 18px;
+    font-size: 15px
+}
+
+.btn-large.btn-contrast {
+    border: 0;
+    padding: 10px 19px
+}
+
+.btn-large.btn-facebook {
+    padding-left: 59px;
+    position: relative;
+    overflow: hidden
+}
+
+.btn-large.btn-facebook .icon {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    font-size: 42px;
+    text-align: right;
+    padding-top: 0.07em;
+    padding-right: 0.2em;
+    width: 1em
+}
+
+.btn-large .icon:first-child {
+    margin-right: 4px
+}
+
+.btn-large.icon {
+    padding: 0;
+    height: 41px;
+    width: 41px
+}
+
+.btn-large.icon.icon-full {
+    font-size: 22px
+}
+
+.btn, select {
+    background-color: #fff;
+    background-image: -webkit-linear-gradient(#fff, #f2f2f2);
+    background-image: linear-gradient(#fff, #f2f2f2);
+    border: 1px solid #c7c7c7;
+    color: #393c3d;
+    text-shadow: 0 1px 0 #fff;
+    box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.05)
+}
+
+.btn:hover, select:hover, .btn:focus, select:focus {
+    background-color: #fbfbfb;
+    background-image: -webkit-linear-gradient(#fbfbfb, #fff);
+    background-image: linear-gradient(#fbfbfb, #fff)
+}
+
+.active.btn, select.active, .btn:active, select:active {
+    background-color: #eaeaea;
+    background-image: -webkit-linear-gradient(#eaeaea, #f9f9f9);
+    background-image: linear-gradient(#eaeaea, #f9f9f9)
+}
+
+.disabled.btn, select.disabled, [disabled].btn, select[disabled],
+fieldset[disabled] .btn, fieldset[disabled] select {
+    background: #f8f8f8
+}
+
+.btn:hover, select:hover, .btn:focus, select:focus {
+    border-color: #c7c7c7
+}
+
+.active.btn, select.active, .btn:active, select:active {
+    border-color: #d4d4d4;
+    border-bottom-color: #dedede
+}
+
+.btn:hover, select:hover, .btn:focus, select:focus {
+    color: #393c3d
+}
+
+.active.btn, select.active, .btn:active, select:active {
+    box-shadow: inset 0 0 1px 1px rgba(0, 0, 0, 0.04), inset 0 1px 1px 0 rgba(0, 0, 0, 0.08)
+}
+
+.btn-primary {
+    background-color: #2badf3;
+    background-image: -webkit-linear-gradient(#2badf3, #2492db);
+    background-image: linear-gradient(#2badf3, #2492db);
+    border: 1px solid #106fa9;
+    color: #fff;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.2);
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.18), inset 0 0 1px 1px rgba(255, 255, 255, 0.09)
+}
+
+.btn-primary:hover, .btn-primary:focus {
+    background-color: #27b8f6;
+    background-image: -webkit-linear-gradient(#27b8f6, #22a1e7);
+    background-image: linear-gradient(#27b8f6, #22a1e7)
+}
+
+.btn-primary.active, .btn-primary:active {
+    background-color: #1588d1;
+    background-image: -webkit-linear-gradient(#1588d1, #1998e2);
+    background-image: linear-gradient(#1588d1, #1998e2)
+}
+
+.btn-primary.disabled, .btn-primary[disabled], fieldset[disabled] .btn-primary {
+    background: #279fe7
+}
+
+.btn-primary:hover, .btn-primary:focus {
+    border-color: #1689c7
+}
+
+.btn-primary.active, .btn-primary:active {
+    border-color: #127fb3;
+    border-bottom-color: #148cc6
+}
+
+.btn-primary:hover, .btn-primary:focus {
+    color: #fff
+}
+
+.btn-primary.active, .btn-primary:active {
+    box-shadow: inset 0 0 1px 1px rgba(0, 0, 0, 0.06), inset 0 1px 1px 0 rgba(0, 0, 0, 0.12)
+}
+
+.btn-special {
+    background-color: #fce359;
+    background-image: -webkit-linear-gradient(#fce359, #fed231);
+    background-image: linear-gradient(#fce359, #fed231);
+    border: 1px solid #e5b50f;
+    color: #393c3d;
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.32);
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.11), inset 0 0 1px 1px rgba(255, 255, 255, 0.12)
+}
+
+.btn-special:hover, .btn-special:focus {
+    background-color: #fde861;
+    background-image: -webkit-linear-gradient(#fde861, #fedb33);
+    background-image: linear-gradient(#fde861, #fedb33)
+}
+
+.btn-special.active, .btn-special:active {
+    background-color: #fed636;
+    background-image: -webkit-linear-gradient(#fed636, #fcdf4e);
+    background-image: linear-gradient(#fed636, #fcdf4e)
+}
+
+.btn-special.disabled, .btn-special[disabled], fieldset[disabled] .btn-special {
+    background: #fdda45
+}
+
+.btn-special:hover, .btn-special:focus {
+    border-color: #e7ba0e
+}
+
+.btn-special.active, .btn-special:active {
+    border-color: #eac533;
+    border-bottom-color: #ecca45
+}
+
+.btn-special:hover, .btn-special:focus {
+    color: #393c3d
+}
+
+.btn-special.active, .btn-special:active {
+    box-shadow: inset 0 0 1px 1px rgba(0, 0, 0, 0.04), inset 0 1px 1px 0 rgba(0, 0, 0, 0.06)
+}
+
+.btn-facebook {
+    background-color: #4063b3;
+    background-image: -webkit-linear-gradient(#4063b3, #3c599d);
+    background-image: linear-gradient(#4063b3, #3c599d);
+    border: 1px solid #224084;
+    color: #fff;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.2);
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.18), inset 0 0 1px 1px rgba(255, 255, 255, 0.09)
+}
+
+.btn-facebook:hover, .btn-facebook:focus {
+    background-color: #4368be;
+    background-image: -webkit-linear-gradient(#4368be, #405fa7);
+    background-image: linear-gradient(#4368be, #405fa7)
+}
+
+.btn-facebook.active, .btn-facebook:active {
+    background-color: #3c599c;
+    background-image: -webkit-linear-gradient(#3c599c, #4265b8);
+    background-image: linear-gradient(#3c599c, #4265b8)
+}
+
+.btn-facebook.disabled, .btn-facebook[disabled], fieldset[disabled] .btn-facebook {
+    background: #3e5ea8
+}
+
+.btn-facebook:hover, .btn-facebook:focus {
+    border-color: #224084
+}
+
+.btn-facebook.active, .btn-facebook:active {
+    border-color: #224084;
+    border-bottom-color: #264894
+}
+
+.btn-facebook:hover, .btn-facebook:focus {
+    color: #fff
+}
+
+.btn-facebook.active, .btn-facebook:active {
+    box-shadow: inset 0 0 1px 1px rgba(0, 0, 0, 0.06), inset 0 1px 1px 0 rgba(0, 0, 0, 0.12)
+}
+
+.btn-facebook .icon {
+    border-right: 1px solid #40598b;
+    box-shadow: 1px 0 0 rgba(255, 255, 255, 0.09)
+}
+
+.btn-group {
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+    white-space: nowrap
+}
+
+.btn-group .btn {
+    float: left;
+    border-radius: 0;
+    position: relative
+}
+
+.btn-group .btn:first-child {
+    border-top-left-radius: 2px;
+    border-bottom-left-radius: 2px
+}
+
+.btn-group .btn:last-child {
+    border-top-right-radius: 2px;
+    border-bottom-right-radius: 2px
+}
+
+.btn-group .btn:hover, .btn-group .btn:focus, .btn-group .btn.active,
+.btn-group .btn:active {
+    z-index: 1
+}
+
+.btn-group .btn+.btn {
+    margin-left: -1px
+}
+
+.btn-group+.btn-group {
+    margin-left: 4px
+}
+
+.btn-block {
+    display: block;
+    white-space: normal;
+    width: 100%
+}
+
+.btn-block+.btn-block {
+    margin-top: 7px;
+    margin-left: 0
+}

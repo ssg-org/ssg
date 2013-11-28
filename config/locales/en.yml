@@ -18,9 +18,13 @@ en:
             help:       'HELP'
             signup:     'SIGNUP'
             login:      'LOGIN'
+            registration: 'REGISTRATION'
+            information: 'INFORMATION'
+            contact:    'CONTACT'
             profile:    'PROFILE'
             settings:   'SETTINGS'
             logout:     'LOGOUT'
+            admin_login: 'ADMIN LOGIN'
             error:      'Please fill in all requested fields and then submit your issue.'
         footer:
             tos:        'Terms of use and privacy policy'

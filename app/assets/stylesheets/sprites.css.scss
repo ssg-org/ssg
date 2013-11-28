@@ -7,10 +7,26 @@
 }
 
 .asset-logo {
-	background: url(logo-ulica-main.png) no-repeat;
+	background: url(ssglogo.png) no-repeat;
 	width: 95px;
 	height: 95px;
 }
+
+@media only screen and (-webkit-min-device-pixel-ratio: 2),
+       only screen and (-moz-min-device-pixel-ratio: 2),
+       only screen and (-o-min-device-pixel-ratio: 2/1),
+       only screen and (min-device-pixel-ratio: 2) { 
+         
+    .asset-logo {
+			background: url(ssglogo@2x.png) no-repeat;
+      background-position: 0px 0px !important;
+      background-repeat: no-repeat !important;
+      -webkit-backgorund-size:95px 95px !important; 
+      background-size: 95px 95px !important;
+      -moz-background-size: 95px 95px !important;
+    } 
+}
+
 .asset-learn-more-bs {
 	@include sprite-mixin(0px, -129px, 92px, 17px)
 }

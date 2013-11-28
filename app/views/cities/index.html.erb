@@ -35,7 +35,7 @@ $(function () {
 
 var __icons = {};
 <% @categories.each do |category| %>
-	__icons[<%=category.id%>] = L.icon({ iconUrl : 'assets/map_icons/<%=category.icon%>', iconSize : [32, 37], iconAnchor: [16, 3] });
+	__icons[<%=category.id%>] = L.icon({ iconUrl : 'assets/map_icons/<%=category.map_icon%>', iconSize : [32, 37], iconAnchor: [16, 3] });
 <% end %>
 
 var __cities = {};

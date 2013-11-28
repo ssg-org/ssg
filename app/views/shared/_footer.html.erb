@@ -1,11 +1,6 @@
 
 <div>
   <div class="main-footer-menu">
-    <div class="locale-selection">
-      <a href="<%= locale_change_path(:locale => :bs, :script => :latin) %>">BHS</a> | 
-      <a href="<%= locale_change_path(:locale => :bs, :script => :cyrillic) %>">БХС</a> | 
-      <a href="<%= locale_change_path(:locale => :en, :script => :latin) %>">EN</a>
-    </div>
     <div class="footer-menu">
       <%= link_to(t('shared.footer.tos'), terms_path)%>  <span>|</span>
       <%= link_to(t('shared.footer.help'), faq_path) %>  <span>|</span>

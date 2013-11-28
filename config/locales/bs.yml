@@ -18,9 +18,13 @@ bs:
             help:       'POMOĆ'
             signup:     'SIGNUP'
             login:      'PRIJAVA'
+            registration: 'REGISTRACIJA'
+            information: 'INFORMACIJE'
+            contact:    'KONTAKT'
             profile:    'PROFIL'
             settings:   'PODEŠAVANJA'
             logout:     'ODJAVA'
+            admin_login: 'ADMIN PRIJAVA'
             error:      'Molimo Vas popunite sva obavezna polja i ponovo prijavite Vaš problem.'
         footer:
             tos:        'Uslovi korištenja i privatnost'

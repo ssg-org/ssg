@@ -106,6 +106,27 @@ textarea {
 }
 
 /* HEADER MENU */
+.header-menu {
+	float: right; 
+	margin: 22px 22px 0px 0px;
+}
+
+.header-menu ul {
+	margin: 0;
+	padding: 0;
+	list-style-type: none;	
+}
+
+.header-menu ul li {
+	@extend .font-gray;
+	display: inline;
+	padding: 0px 5px;
+}
+
+.header-menu a {
+	@extend .font-gray; 
+}
+
 .what-are-we {
 	font-family: "Arial";
 }
@@ -116,14 +137,6 @@ textarea {
 
 /* FOOTER MENU */
 
-#footer {
-	margin: 3px auto 0 auto;
-	background-color:#040500;
-	width:990px;
-	height: 100px;
-	border-top:1px solid black;
-	box-shadow:0px 0px 10px #999;
-}
 .footer-menu {
 	list-style:none;
 	color: $color-green;
@@ -143,7 +156,7 @@ textarea {
 	}
 
 	span {
-		color: white;
+		color: #999;
 		margin-left: 10px;
 		margin-right: 10px;
 	}
@@ -153,9 +166,11 @@ textarea {
 	width: 570px;
 	overflow: hidden;
 	margin: auto;
-	text-align: center;
+	text-align: right;
 	line-height: 22px;
-	margin-top: 15px;
+	margin:15px;
+	background-color:#fff;
+	float:right;
 }
 
 .locale-selection {
@@ -172,7 +187,7 @@ textarea {
 	margin: auto;
 
 	span {
-		color: $color-gray;
+		color: #959595;
 	}
 }
 
@@ -212,6 +227,7 @@ textarea {
 .font-gray-dark {
 	color: $color-dark-gray;
 }
+
 .font-bold {
 	font-weight:bold;
 }
@@ -287,10 +303,9 @@ textarea {
 
 #footer {
 	margin: 3px auto 0 auto;
-	background-color:#040500;
+	background-color:#FFF;
 	width:990px;
-	height: 100px;
-	border-top:1px solid black;
+	height: 75px;
 	box-shadow:0px 0px 10px #999;
 }
 
@@ -337,44 +352,49 @@ textarea {
 .issue {
 	float:left;
 	width:204px;
-	height: 302px;
 	margin:12px;
 	box-shadow:0px 0px 5px #999999;
 	background-color:white;
 }
+
 .issue-img-part {
 	padding:3px;
 }
+
 .issue-info-part {
 	height:66px;
 }
 
-.issue-category-part {
+.issue-status-part {
 	height:31px;
 	line-height: 31px;
+	padding:0 10px;
 }
 
-.issue-category-part-name {
+.issue-status-date {
 	float: right;
+	color: #ccc;
+	font-size: 11px;
+}
+
+.issue-category-part {
+	height:30px;
+	line-height: 31px;
 	white-space: nowrap;
 	overflow: hidden;
-	width: 110px;
-	text-align: right;
-	margin-right: 10px;
+	padding:0 10px;
 }
 
-.issue-category-part-name-long {
-	@extend .issue-category-part-name;
-	white-space: nowrap;
-	font-size: 13px;
-	vertical-align: middle;
-	text-align: center;
+.issue-category-icon {
+	display: inline;
+	color: white;
+	border: 1px;	
 }
 
 .issue-share-part {
 	padding:7px; 
 	background-color:#f6f6f6; 
-	height:20px;	
+	padding:10px 5px 10px 10px;
 }
 .info-link:hover {
 	text-decoration:none;
