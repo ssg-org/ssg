@@ -5,7 +5,7 @@ class CitiesController < ApplicationController
 		@center_zoom = 8
 		@categories = @user.get_categories
 
-		@cities = City.all
+		@cities = @user.get_cities
 	end
 
 	def show

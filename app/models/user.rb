@@ -66,7 +66,7 @@ class User < TranslatedBase
   end
 
   def get_cities
-    return City.where(:active => true)
+    return City.where(:active => true).order(:name)
   end
 
   def self.ssg_admins
