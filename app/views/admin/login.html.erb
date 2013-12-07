@@ -1,0 +1,27 @@
+<div class="spacer200"></div>
+<div class="container">
+  <div class="row">
+    <div class="span4 offset4 well">
+      <legend>Admin Panel</legend>
+      <% if flash[:error] %>
+        <div class="alert alert-error">
+            <a class="close" data-dismiss="alert" href="#">×</a> <%= flash[:error] %>
+        </div>
+      <% end %>
+
+      <%=form_tag admin_login_users_path(), :id => "login_form" do %>
+        <form method="POST" action="" accept-charset="UTF-8">
+        <input type="text" id="username" required name="username" placeholder="Korisiničko Ime" style="width: 252px;"><br />
+        <input type="password" id="password" required name="password" placeholder="Lozinka" style="width: 252px;"><br />
+        <!--
+        <label class="checkbox">
+          <input type="checkbox" name="remember" value="1"> Remember Me
+        </label>
+        -->
+        <br />
+        <button type="submit" name="submit" class="btn btn-info btn-block">Prijavi se</button>
+      <% end %>
+      </form>    
+    </div>
+  </div>
+</div>

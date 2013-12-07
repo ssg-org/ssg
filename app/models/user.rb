@@ -321,7 +321,15 @@ class User < TranslatedBase
   #
   def self.user_ssg_admin?(username, pwd)
     usr = exists?(username, pwd)
-    usr && usr.active && (usr.ssg_admin? || usr.city_admin?) ? usr : nil
+    usr && usr.active && (usr.ssg_admin?) ? usr : nil
+  end
+  
+  #
+  # Returns user only with ssg admin
+  #
+  def self.user_admin?(username, pwd)
+    usr = exists?(username, pwd)
+    usr && usr.active && usr.city_admin? ? usr : nil
   end
   
   def self.guest_user

@@ -1,0 +1,36 @@
+<div class="row">
+  <div class="span12">
+
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Naziv</th>
+          <th>Korisnik</th>
+          <th>Status</th>
+          <th>Glasovi</th>
+          <th>Pregled</th>
+          <th>Kreiran</th>
+          <th>Modificiran</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @issues.each do |issue| %>
+        <tr>
+            <td><%= link_to truncate(issue.title, :length => 20), issue_path(issue), :target => "_blank" %></td>
+            <td><%= link_to issue.user.username, user_path(issue.user), :target => "_blank" %></td>
+            <td><%= issue.get_status %></td>
+            <td><%= issue.vote_count %></td>
+            <td><%= issue.view_count %></td>
+            <td><%= issue.created_at.strftime("%d %b. %Y") %></td>
+            <td><%= issue.updated_at.strftime("%d %b. %Y") %></td>
+            <td>
+              <%= link_to 'Edituj', edit_admin_issue_path(issue.id)%>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+
+  </div>
+</div>

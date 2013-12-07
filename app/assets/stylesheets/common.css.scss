@@ -904,3 +904,32 @@ a.account  {
 		font-size: 14px;
 		padding-top: 14px;
  }
+
+.align-center {
+ 	text-align:center;
+}
+
+.issue-header-menu {
+	list-style:none;	
+	margin:3px;
+}
+.issue-header-menu li {
+	display:inline-block;
+	border-bottom:4px solid #f9f9f9;
+	margin:0 15px;
+}
+
+.header-menu-active {
+	border-bottom:4px solid #9ecc3b !important;
+}
+.issue-header-count {
+	display:inline-block; 
+	background-color:gray; 
+	color:white;
+	border-radius:4px;
+	padding: 0 2px;
+}
+
+.issue-container-green a {
+	color:white;
+}

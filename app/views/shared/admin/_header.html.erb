@@ -1,0 +1,19 @@
+<div class="navbar navbar navbar-fixed-top">
+  <div class="navbar-inner">
+    <div class="container">
+      <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="brand" href="#"><%=@user.city.name%></a>
+      <div class="nav-collapse collapse">
+        <ul class="nav">
+          <li class="<%='active' if params[:controller] == 'admin/issues' %>"><%= link_to 'Problemi', admin_issues_path%></li>
+          <li><a href="#about">Opstina</a></li>
+          <li><a href="<%= logout_user_path(@user.id, {:url => '/'}) %>">Odjava</a></li>
+        </ul>
+      </div><!--/.nav-collapse -->
+    </div>
+  </div>
+</div>
