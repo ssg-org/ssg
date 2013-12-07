@@ -137,6 +137,12 @@ textarea {
 
 /* FOOTER MENU */
 
+.footer-logo {
+	display: inline; 
+	float: left; 
+	margin: 15px 7px;
+}
+
 .footer-menu {
 	list-style:none;
 	color: $color-green;
