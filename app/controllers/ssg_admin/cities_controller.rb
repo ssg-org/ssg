@@ -12,7 +12,7 @@ class SsgAdmin::CitiesController < SsgAdminController
 
     num_of_users = city.users.size
     unless num_of_users == 0
-      flash[:error] = "Opština ima '#{num_of_users}' korisnika vezanih za sebe ne možemo obrisati opštinu!"
+      flash[:error] = "Grad ima '#{num_of_users}' aktivnih korisnika. Molimo obišite korisnike prije brisanja grada!"
     else
       city.delete!
       flash[:info] = "Uspješno ste obrisali grad!"

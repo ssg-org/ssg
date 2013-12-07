@@ -16,14 +16,14 @@ class UserMailer < ActionMailer::Base
     @community_user = user
     @url = url
 
-    using_locale(user.locale) { mail(:to => @community_user.email, :subject => 'Kreiran je problem za Vašu opštinu') }
+    using_locale(user.locale) { mail(:to => @community_user.email, :subject => 'Kreiran je problem za Vašu općinu') }
   end
 
   def notify_created(city, url)
     @city = city
     @url  = url
 
-    mail(:subject => "Kreiran je problem za opštinu #{city.name}")
+    mail(:subject => "Kreiran je problem za općinu #{city.name}")
   end
 
   def reset_password(user, token, url)

@@ -20,7 +20,7 @@
       <div class="grid-title">
         <div class="pull-left">
           <div class="setup-icon"><i class="icon-bookmark"></i></div>
-          <span>Kreiraj Opštinu</span> 
+          <span>Kreiraj Općinu</span> 
           <div class="clearfix"></div>
         </div>
         <div class="clearfix"></div>   
@@ -29,11 +29,10 @@
       <div class="grid-content">
         <%= form_tag create_or_edit_ssg_admin_cities_path, { :id => "mainForm", :class => "controls"} do %>
           <input type="hidden" name="city_id">
-          <input type="text" required id="inputName" name="city_name" placeholder="Ime Opštine" data-original-title="" title="" class="span12">
-
+          <input type="text" required id="inputName" name="city_name" placeholder="Ime Općine" data-original-title="" title="" class="span12">
           
           <label class="checkbox">
-            <input type="checkbox" id="inputActive" name="city_active" placeholder="Aktivna?" data-original-title="" title="" > Aktivna Opština?
+            <input type="checkbox" id="inputActive" name="city_active" placeholder="Aktivna?" data-original-title="" title="" > Aktivna Općina?
           </label>
           
           <input type="text" required id="inputLat" name="lat" placeholder="Latituda" data-original-title="" title="" class="span12">
@@ -43,7 +42,7 @@
           <textarea id="inputDescription" name="description" placeholder="Opis" data-original-title="" title="" class="span12">
           </textarea>
 
-          <input type = "button" id="upload_image_btn" value="Dodaj Sliku Opštine" onclick ="javascript:document.getElementById('fileupload_field').click();">
+          <input type = "button" id="upload_image_btn" value="Dodaj Sliku Općine" onclick ="javascript:document.getElementById('fileupload_field').click();">
           <input id = "fileupload_field" type="file" style='visibility: hidden;' name="image" multiple/>
 
           <span id="gallery_inputs">
@@ -73,7 +72,7 @@
       <div class="grid-title">
         <div class="pull-left">
           <div class="setup-icon"><i class="icon-bookmark"></i></div>
-          <span>Lista Opština</span> 
+          <span>Lista Općina</span> 
           <div class="clearfix"></div>
         </div>
         <div class="clearfix"></div>   

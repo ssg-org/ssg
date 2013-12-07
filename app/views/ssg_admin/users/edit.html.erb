@@ -27,7 +27,7 @@
         <%= f.text_field :last_name, :autocomplete=> :off , :placeholder => "Prezime", :class => 'span12' %>
         <label for="active" class="checkbox"><%= f.check_box :active %>Aktivan Korisnik?
         </label>
-        <label for="city_id">Opština:</label>
+        <label for="city_id">Općina:</label>
         <%= f.collection_select(:city_id, @edit_user.get_cities, :id, :name, {}, {   } ) %>
         <br />
         <label for="role">Uloga:</label>

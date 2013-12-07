@@ -28,7 +28,7 @@
         <%= form_for @issue, url: ssg_admin_issue_path(@issue), :method => :put, :html => { :multipart => true, :id => 'admin_edit_user' }  do |f| %>
           <label>Naziv Problema</label>
           <%= f.text_field :title, :autocomplete=> :off , :class=> 'span12', :placeholder => 'Naziv Problema' %>
-          <label>Opština / Kategorija</label>
+          <label>Općina / Kategorija</label>
           <%= f.collection_select(:city_id, @user.get_cities, :id, :name, {}, { :class=> 'span6', :disabled => @user.city_admin? } ) %>
 
           <%= f.collection_select(:category_id, @user.get_categories, :id, :name, { }, { :class=> 'span6'} ) %> <br />

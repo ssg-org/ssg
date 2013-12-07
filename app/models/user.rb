@@ -76,7 +76,7 @@ class User < TranslatedBase
   def self.get_admin_roles
     results = []
     results << OpenStruct.new( :name => 'Korisnik', :value => ROLE_USER)
-    results << OpenStruct.new( :name => 'Opštinski Administrator', :value => ROLE_CITY_ADMIN)
+    results << OpenStruct.new( :name => 'Općinski Administrator', :value => ROLE_CITY_ADMIN)
     results << OpenStruct.new( :name => 'SSG Administrator', :value => ROLE_SSG_ADMIN)
     results
   end

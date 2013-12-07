@@ -58,7 +58,7 @@ bs:
             email:   'Email'
             username:   'Korisničko ime'
             remember_me: 'Zapamti me'
-            choose_city:   'Izaberite Vašu opštinu'
+            choose_city:   'Izaberite Vašu općinu'
             username:   'Korisničko Ime'
             password:   'Lozinka'
             current_password:   'Unesite trenutnu lozinku'
@@ -72,7 +72,7 @@ bs:
             forgot_bread_title: 'PROMJENA LOZINKE'
             register:   'NISTE ČLAN ULICA.BA-a?'
             register_message:   'Pridružite nam se danas.'
-            register_choose_location: 'Odaberite Vašu opštinu'
+            register_choose_location: 'Odaberite Vašu općinu'
             register_repeat_password: 'Ponovite lozinku'
             register_agree_tou: 'Slažem se sa '
             register_agree_tou2: 'uslovima korištenja'
@@ -96,7 +96,7 @@ bs:
             website:        'Web stranica'
             short_desc:     'Kratki opis'
             lang:           'Jezik'
-            city:           'Opština'
+            city:           'Općina'
             succ_save:      'Uspješno ste ažurirarali Vaše podatke!'
             wrong_pass:     'Pogrešna lozinka!'
         show:
@@ -131,10 +131,10 @@ bs:
             loading:        'Učitavanje'
         new:
             report:         'PRIJAVI'
-            success:        'Uspješno ste prijavili problem u Vašoj opštini!'
+            success:        'Uspješno ste prijavili problem u Vašoj općini!'
             set_location:   'Odaberite lokaciju na mapi'
             issue_title:    'Naziv problema'
-            select_city:    'Molimo odaberite opštinu'
+            select_city:    'Molimo odaberite općinu'
             select_category: 'Molimo odaberite kategoriju'
             upload_error:   'Greška pri uploadu slike. Molimo vas da osvježite stranicu i pokušajte ponovo'
             issue_desc:     'Opišite problem'
@@ -178,7 +178,7 @@ bs:
             open:           'Prijavljeni'
             in_progress:    'U izradi'
             fixed:          'Popravljeni'
-            all_counties:   'Sve opštine'
+            all_counties:   'Sve općine'
         status:
             none:           'Nepoznato'
             reported:       'Prijavljen'
@@ -189,8 +189,8 @@ bs:
             change_to:      'u'
     cities:
         index:
-            cities: 'OPŠTINE'
-            select: 'Mapa svih opština'
+            cities: 'OPĆINE'
+            select: 'Mapa svih općina'
     form:
         common:
             submit: 'Potvrdi'
@@ -209,10 +209,10 @@ bs:
             title_l:        'Naziv problema treba da bude duži od 10 karaktera.'
             description:    'Opis problem je obavezano polje.'
             description_l:  'Opis problem treba da bude duži od 10 karaktera.'
-            city:           'Opština u kojem se nalazi problem je obavezan.'
+            city:           'Općina u kojem se nalazi problem je obavezan.'
             category:       'Kategorija problema je obavezano polje.'
             point:          'Kliknite na mapu da označite lokaciju problema.'
-            radius:         'Problem je previše udaljen od izabrane opštine.'
+            radius:         'Problem je previše udaljen od izabrane općine.'
             image:          'Potrebno je dodati sliku za Vaš problem.'
         login:
             username:       'Korisničko ime je obavezno.'
@@ -220,7 +220,7 @@ bs:
             email:          'Email je obavezan.'
         register:
             username:       'Molimo Vas unesite korisničko ime.'
-            city:           'Opština je obavezno polje, izaberite Vašu opštinu.'
+            city:           'Općina je obavezno polje, izaberite Vašu općinu.'
             email:          'Molimo Vas unesite Vašu email adresu.'
             email_f:        'Vaša email adresa nije odgovarajućeg formata.'
             password1:      'Molimo Vas unesite šifru.'
