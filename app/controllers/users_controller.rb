@@ -113,6 +113,9 @@ class UsersController < ApplicationController
   end
 
   def login
+    # Already loged user
+    return redirect_to issues_path if !@user.guest?
+
     # referer url to create issue
     session[:referer_url] = @user.guest? && params[:create_issue] ? new_issue_path() : nil
     
