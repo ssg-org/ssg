@@ -484,6 +484,10 @@ textarea {
 	background-color:$color-green;
 	color:white;
 }
+.issue-container-gray {
+	padding: 30px 0;	
+	color:#555555;
+}
 .issue-cell {
 	margin-bottom:10px;
 
@@ -978,7 +982,7 @@ a.account  {
 
 .issue-header-menu {
 	list-style:none;	
-	margin:3px;
+	margin:0 3px 3px 25px;
 }
 .issue-header-menu li {
 	display:inline-block;

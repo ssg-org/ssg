@@ -84,11 +84,11 @@
 
 		<ul class="issue-header-menu">
 			<li class="<%= 'header-menu-active' if params[:view].blank? %>">
-				<%= link_to 'Problem', issue_path(@issue.friendly_id)%>
+				<%= link_to trans('Problem'), issue_path(@issue.friendly_id)%>
 			</li>
 			<li class="<%= 'header-menu-active' if params[:view] == 'promjene' %>">
 				<a href="<%=issue_path(@issue.friendly_id, {:view => 'promjene'})%>">
-					Promjene <span class="issue-header-count"><%=@issue.updates.count%></span>
+					<%=trans('Promjene')%> <span class="issue-header-count"><%=@issue.updates.count%></span>
 				</a>
 			</li>
 		</ul>
