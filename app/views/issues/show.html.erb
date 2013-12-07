@@ -91,11 +91,6 @@
 					Promjene <span class="issue-header-count"><%=@issue.updates.count%></span>
 				</a>
 			</li>
-			<li class="<%= 'header-menu-active' if params[:view] == 'komentari' %>">
-				<a href="<%=issue_path(@issue.friendly_id, {:view => 'komentari'})%>">
-					Komentari
-				</a>
-			</li>
 		</ul>
 
 		<% if params[:view].blank? %>
