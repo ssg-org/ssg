@@ -28,7 +28,7 @@
 		<br/>
 		
 		<%= form_for @issue, :html => { :multipart => true, :id => 'fileupload' }  do |f|%>
-			<table style="width:340px;">
+			<table style="max-width:355px;">
 				<tr >
 					<td colspan="2">
 						<%= f.text_field :title, :style => 'width: 355px; margin-bottom: 0px;', :autocomplete=> :off , :placeholder => t('issues.new.issue_title') %>
@@ -71,20 +71,12 @@
 						<div id="progress">
     						<div class="bar"  style="width: 0%;"></div>
 						</div>
-						<ul id="gallery" style="list-style:none">
-						</ul>
+						<div style="height: 40px; width: 100%; overflow-y:auto;">
+							<ul id="gallery" style="list-style:none;" >
+							</ul>
+						</div>
 					</td>
 				</tr>
-				<!--
-				<tr>
-					<td>
-						<input type="checkbox" checked value="1" name="terms_of_use" id="terms_of_use">
-						<span class="tou"><%= t('users.login.register_agree_tou') %> 
-							<a href="<%= terms_path %>" class="tou_link tou"><%= t('users.login.register_agree_tou2') %></a>
-						</span>
-					</td>
-				</tr>
-			-->
 				<tr>
 					<td>
 						<div style="padding-top: 20px;">
@@ -122,8 +114,6 @@ var marker = null;
 var city_radius = 30;
 var city_lat = null;
 var city_long = null;
-
-
 
 $(function () {
 	// MAP
@@ -165,7 +155,6 @@ $(function () {
 		}
 	});
 
-
 	// UPLOAD SETUP
 	$('#fileupload_field').fileupload({
 		url : '<%= images_path() %>',
@@ -180,8 +169,6 @@ $(function () {
 			alert(I18n.t('issues.new.upload_error'));
 		}
 	});
-
-
 
 	$('#fileupload').validate({
 		ignore: null,
