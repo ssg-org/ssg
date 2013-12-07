@@ -50,7 +50,7 @@ class Issue < TranslatedBase
   end
 
   def setup_json_attributes!()
-    @image_url = self.images.first.image.thumb.url
+    @image_url = self.images.first.image.issue_full.url
     @short_desc = ApplicationController.helpers.truncate(self.description, :length => 200)
     @issue_url = Rails.application.routes.url_helpers.issue_path(self.friendly_id)
   end

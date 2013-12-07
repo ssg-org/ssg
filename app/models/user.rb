@@ -119,7 +119,7 @@ class User < TranslatedBase
 
   def avatar
     if !self.image_id.nil?
-      return image.image.thumb_logo
+      return image.image.logo_small
     elsif fbuser? 
       return "http://graph.facebook.com/#{fb_id}/picture"
     else

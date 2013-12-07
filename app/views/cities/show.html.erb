@@ -41,7 +41,7 @@
 
 <div style="display: block;">
   <div id="user_issues_left_column">
-    <%= image_tag @city.image ? @city.image.image.thumb_logo : 'no-city.png', :class => 'user-city-photo' %>
+    <%= image_tag @city.image ? @city.image.image.logo_full : 'no-city.png', :class => 'user-city-photo' %>
     <div class="user-info">
       <span class="city-full-name"> <%= @city.name %> </span>
       <br>
