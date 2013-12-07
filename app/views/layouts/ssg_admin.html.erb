@@ -20,7 +20,7 @@
             </div>        
             <div class="span7 pull-right userinfo-pos">
               <a href="<%= logout_user_path(@user.id, {:url => '/'}) %>" class="pull-right logout-pos">Odjava</a>
-              <span class="pull-right"> Dobrodošli, <b><%= @user.display_name %> </b> </span>
+              <span class="pull-right"> Dobrodošli, <b><%= @user.full_name %> </b> </span>
             </div>
           </div>
           <div class="navbar">

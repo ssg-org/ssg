@@ -18,7 +18,7 @@
 				<%= trans(issue.title) %>
 			</div>
 			<div class="font-gray-dark font-12 issue-info-name">
-				<%= t('issues.show.reported_by') %> <a href='<%= user_path(issue.user.id) %>' ><span style="font-style: italic;"><%= trans(issue.user.display_name) %></span></a>
+				<%= t('issues.show.reported_by') %> <a href='<%= user_path(issue.user.id) %>' ><span style="font-style: italic;"><%= trans(issue.user.full_name) %></span></a>
 			</div>
 		</a>
 		

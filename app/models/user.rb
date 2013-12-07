@@ -101,20 +101,16 @@ class User < TranslatedBase
     return (self.role == ROLE_CITY_ADMIN)
   end
   
-  def display_name
-    return self.username
-  end
-
   def is_good_password?(pwd)
     return self.password_hash.eql? Digest::SHA256.hexdigest(pwd)
   end
 
   def full_name
-    fname = "#{self.first_name} #{self.last_name}"
-    if fname.blank?
-      fname = self.username
+    if self.first_name.blank? && self.last_name.blank?
+      return self.username.titlecase
+    else
+      return "#{self.first_name} #{self.last_name}".titlecase
     end
-    return fname
   end
 
   def avatar
