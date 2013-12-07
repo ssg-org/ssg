@@ -35,7 +35,7 @@ Ssg::Application.routes.draw do
     end
   end
 
-  resources :images, :only => [:create, :destroy]
+  resources :images, :only => [:create, :destroy, :update]
 
   resources :comments, :only => [:create, :destroy]
   resources  :areas
@@ -66,6 +66,7 @@ Ssg::Application.routes.draw do
 
   namespace :admin do
     resources :issues
+    resource :city
   end
 
   resources :cities do

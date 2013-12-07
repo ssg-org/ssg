@@ -9,6 +9,10 @@ class ImagesController < ApplicationController
     end
   end
 
+  def update
+    create
+  end
+
   def destroy
     image = Image.find(params[:id])
     city_id = image.issue.city.id

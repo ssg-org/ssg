@@ -32,6 +32,14 @@ class ImageUploader < CarrierWave::Uploader::Base
     process :resize_to_fill => [64, 48]
   end
 
+  version :logo_full do
+    process :resize_to_fill => [160, 160]
+  end
+
+  version :logo_small do
+    process :resize_to_fill => [64, 64]
+  end
+
   #
   # def scale(width, height)
   #   puts "SOMETHING"

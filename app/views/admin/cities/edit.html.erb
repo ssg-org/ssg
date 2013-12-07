@@ -1,0 +1,76 @@
+<div class="grid">
+  <div class="span6">
+
+    <%= form_for [:admin, @city], :multipart => true do |f| %>
+      <%= f.label 'Ime Općine' %>
+      <%= f.text_field :name, :class => 'input-xlarge'%>
+
+      <%= f.label 'Aktivna Općina' %>
+      <%= f.check_box :active%><br/>
+
+      <%= f.label 'Koordinate' %>
+      <%= f.text_field :lat, :class => 'input-small'%> 
+      <%= f.text_field :long, :class => 'input-small'%>
+
+      <%= f.label 'Website' %>
+      <%= f.text_field :website, :class => 'input-xlarge'%>
+
+      <%= f.label 'Facebook' %>
+      <%= f.text_field :facebook, :class => 'input-xlarge'%>
+
+      <%= f.label 'Opis' %>
+      <%= f.text_area :description, :class => 'input-xxlarge', :style=>'height:150px;'%>
+
+      <%= f.hidden_field :image_id %>
+
+      <% if @city.image %>
+        <img src="<%=@city.image.image_url('logo_full')%>" /><br/>
+      <% end %>
+
+    <input type="button" class="btn" id="upload_image_btn" value="Promjeni Sliku Općine" onclick ="javascript:document.getElementById('fileupload_field').click();">
+    <input id = "fileupload_field" type="file" style='visibility: hidden;' name="image" multiple/>
+
+    <span id="gallery_inputs">
+      <input type="hidden" id="image_count" name="image_count" value="0" />
+    </span>
+
+    <div id="progress">
+        <div class="bar"  style="width: 0%;"></div>
+    </div>
+    <div id="gallery" style="list-style:none">
+    </div>
+    <div class="clearfix"></div>
+
+    <div style="text-align:center;">
+      <%= f.submit 'Snimi', :class => 'btn btn-primary' %>
+    </div>
+  <% end %>
+
+
+  </div>
+
+</div>
+
+
+<script type="text/javascript">  
+  // UPLOAD SETUP
+  $('#fileupload_field').fileupload({
+    url : '<%= images_url() %>/0',
+    type : 'POST',
+    progressall: function (e, data) {
+      var progress = parseInt(data.loaded / data.total * 100, 10);
+      $('#progress .bar').css('width', progress + '%');
+    },
+    success : function(data) {
+      $('#progress').css('width', '0%');
+      $('#upload_image_btn').css('display', 'none');
+      console.log(data);
+    },
+    fail : function() {
+      alert(I18n.t('issues.new.upload_error'));
+    }
+  });
+
+  $(document).ready(function() {
+  });
+</script>
