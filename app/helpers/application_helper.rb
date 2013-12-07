@@ -36,6 +36,10 @@ module ApplicationHelper
     end
   end
 
+  def icon_path(icon, extension = 'png')
+    return "icons/#{icon}.#{extension}"
+  end
+
   def collect_city_names()
     cities = City.where(:active => true).sort { |a,b| a.name <=> b.name }
     cities.collect { |c| [c.name, c.id ] }

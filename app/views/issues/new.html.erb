@@ -205,8 +205,7 @@ $(function () {
 			},
 			'distance' : {
 				max : city_radius
-			},
-			'image' : 'images_validator'
+			}
 		},
 		messages: {
 			'issue[title]': {
@@ -234,15 +233,6 @@ $(function () {
 			},
 		}
 	});
-
-	// VALIDATE
-	$.validator.addMethod(
-		"images_validator", 
-		function(value) {
-			return $('.upload-preview').length > 0;
-		},
-		I18n.t('validation.new_issue.image')
-	);
 });	
 </script>
 

@@ -8,7 +8,7 @@ class UsersController < ApplicationController
 
   def index
     @profile_user = User.find(params[:id])
-    @issues = Issue.where(:user_id => params[:id]).all
+    @issues = Issue.where(:user_id => params[:id]).order('created_at desc')
   end
 
   def edit

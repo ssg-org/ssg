@@ -2,7 +2,7 @@
 class Admin::IssuesController < AdminController
 
   def index
-    @issues = Issue.where(:city_id => @user.city_id).order('vote_count DESC')
+    @issues = Issue.where(:city_id => @user.city_id).order('created_at desc')
   end
 
   def edit

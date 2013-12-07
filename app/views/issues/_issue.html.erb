@@ -4,6 +4,8 @@
 			<div style="height:155px; width:198px;">
 				<% if  issue.images.length > 0 %>
 					<%=image_tag issue.images.first.image.issue_thumb, :border => '0' %>
+				<% else %>
+					<%=image_tag icon_path(issue.category.icon, 'jpg'), :border => '0' %>
 				<% end %>
 			</div>
 		</a>
