@@ -904,3 +904,70 @@ a.account  {
 		font-size: 14px;
 		padding-top: 14px;
  }
+
+	/*  COMMON */
+	.website-link-color {
+	  color: #9ECC3B;
+	}
+
+  .website-link a {
+    color: #9ECC3B;
+  }
+
+	.description-text {
+    font-size: 13px;
+    color: #666666;
+    text-align: justify;
+    max-height: 40px;
+    font-style: italic;
+  }
+
+  /* USER */
+  .user-info-desc {
+  	@extend .description-text;
+  }
+
+  .user-info-web {
+    @extend .website-link-color;
+  }
+
+  .user-info-issues {
+  	font-size: 14px;
+  	list-style-type: none;
+  }
+
+  .user-info-issues-title {
+  	font-size: 16px;
+  	font-weight: bold;
+  }
+
+  .user-info-issues ul {
+  	list-style-type: none;
+  }
+
+  /* CITY */
+  .city-info-web {
+    color: #9ECC3B;
+  }
+
+  .city-info-fb {
+  	font-size: 12px;
+  }
+
+  .city-info-desc {
+  	@extend .description-text;
+  }
+
+  .city-info-issues {
+  	font-size: 14px;
+  	list-style-type: none;
+  }
+
+  .city-info-issues-title {
+  	font-size: 16px;
+  	font-weight: bold;
+  }
+
+  .city-info-issues ul {
+  	list-style-type: none;
+  }

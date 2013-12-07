@@ -470,4 +470,8 @@ class User < TranslatedBase
     self.save
   end
 
+  def get_issues_by_status(status = nil) 
+    return status.nil? ? issues : issues.where(:status => status)
+  end
+
 end

@@ -31,19 +31,6 @@
     width: 80px;
     display: inline-block;
   }
-
-  .website-link a {
-    color: #9ECC3B;
-  }
-
-  .user-description {
-    font-size: 11px;
-    color: #666666;
-    text-align: justify;
-    max-height: 40px;
-    font-style: italic;
-  }
-
 </style>
 
 
@@ -56,29 +43,38 @@
     <%= image_tag @profile_user.image ? @profile_user.image.image.thumb_logo : 'no-photo.png', :class => 'user-city-photo' %>
     <div class="user-info">
       <span class="user-info-full-name din-font"> <%= @profile_user.full_name %> </span>
+
       <% if @profile_user.city %>
         <div class="user-info-loc din-font">
           <span class="asset-location-black" ></span>
           <span class="font-gray-dark" style="line-height:16px;">&nbsp;<%= @profile_user.city.name%></span>
         </div>
       <% end %>
-      <% if @profile_user.description && !@profile_user.description.empty? %>
-        <span class="user-description din-font">
-          <br />
+
+      <% if !@profile_user.website.blank? %>
+        <%= link_to @profile_user.website, @profile_user.website, :class => 'user-info-web' %>
+        <br>
+        <br>
+      <% end %>      
+
+      <% if !@profile_user.description.blank? %>
+        <span class="user-info-desc din-font">
           <%= truncate(@profile_user.description, :length => 500)  %>
         </span>
+        <br>
       <% end %>
-      <br />
-      <% if @profile_user.website && !@profile_user.website.empty? %>
-        <span class="website-link">
-          <br />
-          <a href='<%= @profile_user.formated_website %>'>Website</a>
-        </span>
-        <br />
-        <br />
-      <% end %>
-      <span class="user-info-more din-font"> <%= t('users.show.issues') %>: </span><b><%= @issues.size %></b>
-      <br />
+
+      <br>
+      <hr>
+      <br>
+      <div class="user-info-issues din-font" >
+        <span class="user-info-issues-title din-font"><%= t('users.show.issues') %></span>
+        <ul style="margin: 5px;">
+          <% Issue.user_statuses.each do |status| %>
+            <li><%= trans(status.name) %>: <strong><%= @profile_user.get_issues_by_status(status.id).size %></strong></li>
+          <% end %>
+        </ul>
+      </div>
     </div>
   </div>
 

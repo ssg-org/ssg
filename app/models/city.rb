@@ -27,6 +27,10 @@ class City < TranslatedBase
     self.users.where(:role => User::ROLE_CITY_ADMIN, :active => true)
   end
 
+  def get_issues_by_status(status = nil) 
+    return status.nil? ? issues : issues.where(:status => status)
+  end
+
   #
   # Returns true if created, false if edited
   #

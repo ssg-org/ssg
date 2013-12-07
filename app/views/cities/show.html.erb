@@ -44,23 +44,36 @@
     <%= image_tag @city.image ? @city.image.image.thumb_logo : 'no-city.png', :class => 'user-city-photo' %>
     <div class="user-info">
       <span class="city-full-name"> <%= @city.name %> </span>
-      <br />
-      <% if @city.website %>
-      <div style="margin-top: 10px;">
-        <span class="city-info-loc"> Website   </span>
-        <a href='<%= @city.website_url %>'> <%= @city.website %></a>
+      <br>
+
+      <% if !@city.website.blank? %>
+        <%= link_to @city.website, @city.website_url, :class => 'city-info-web' %>
+        <br>
+      <% end %>
+
+      <% if !@city.facebook.blank? %>
+        <%= link_to "#{@city.name} on Facebook", @city.facebook, :class => 'city-info-fb' %>
+        <br>
+      <% end %>
+
+      <br>
+      <% if !@city.description.blank? %>
+        <span class="city-info-desc din-font">
+          <%= truncate(@city.description, :length => 500)  %>
+        </span>
+        <br>
+      <% end %>
+      <br>
+      <hr>
+      <br>
+      <div class="city-info-issues din-font" >
+        <span class="city-info-issues-title din-font"><%= t('users.show.issues') %></span>
+        <ul style="margin: 5px;">
+          <% Issue.user_statuses.each do |status| %>
+            <li><%= trans(status.name) %>: <strong><%= @city.get_issues_by_status(status.id).size %></strong></li>
+          <% end %>
+        </ul>        
       </div>
-      <% end %>
-
-      <% if @city.description %>
-        <div style="margin-top: 10px;">
-          <span class="city-info-desc"> <%= @city.description %> </span>
-        </div>
-      <% end %>
-
-      <span class="user-info-more din-font"> <%= t('users.show.issues') %>: </span><b><%= @issues.size %></b>
-      <br />
-
     </div>
   </div>
 
