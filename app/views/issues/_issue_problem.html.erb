@@ -1,0 +1,16 @@
+<div class="issue-container-green">
+  <div class="issue-cell">
+    <span class="issue-cell-title"><%= trans(@issue.title.upcase) %></span><br/>
+    <span class="issue-cell-subtitle"><%=@issue.category.name%>, <%=@issue.city.name%></span><br/>
+  </div>
+  <div class="issue-cell">
+    <p><%= trans(@issue.description.gsub(/(?:\n\r?|\r\n?)/, '<br/>')).html_safe%></p>
+  </div>
+  <br />
+  <div  class="issue-cell">
+    <% @issue.images.each do |img| %>
+      <%= image_tag img.image, :style=> 'margin-bottom:20px;'%><br/>
+    <% end %>
+  </div>
+
+</div>

@@ -6,6 +6,7 @@ Ssg::Application.routes.draw do
       get   :fb_login
       post  :ssg_login
       post  :ssg_admin_login
+      post  :admin_login
       post  :signup
       get   :login
       get   :verify
@@ -62,6 +63,11 @@ Ssg::Application.routes.draw do
     end
   end
 
+
+  namespace :admin do
+    resources :issues
+  end
+
   resources :cities do
     collection do
       get 'zoom'
@@ -88,6 +94,9 @@ Ssg::Application.routes.draw do
   # SSG Admin
   get '/ssg_admin/login' => 'ssg_admin#login'
   get '/ssg_admin/'      => 'ssg_admin/issues#index'
+  # City Admin
+  get '/admin/login' => 'admin#login'
+  get '/admin/'      => 'admin/issues#index'
 
   # twitter
   get '/auth/twitter/callback', to: 'users#twitter_create', as: 'callback'

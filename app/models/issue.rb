@@ -24,8 +24,10 @@ class Issue < TranslatedBase
   has_many    :images, :dependent => :destroy
   has_many    :votes, :dependent => :destroy
   has_many    :unique_views, :dependent => :destroy
+  has_many    :updates
   
   friendly_id :title, :use => [:slugged]
+
 
   def mark_as_viewed(user_uniq_cookie_id) 
     uniq_view = self.unique_views.where(:session => user_uniq_cookie_id).first

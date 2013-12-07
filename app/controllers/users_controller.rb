@@ -149,8 +149,10 @@ class UsersController < ApplicationController
 
     flash[:info] = t('users.msgs.pass_change')
 
-    if (user.ssg_admin? || user.city_admin?)
+    if (user.ssg_admin?)
       redirect_to ssg_admin_login_path()
+    elsif (user.city_admin?)
+      redirect_to admin_login_path()
     else
       redirect_to login_users_path()
     end
@@ -200,7 +202,7 @@ class UsersController < ApplicationController
     reset_session
     session = nil
 
-    redirect_to params[:admin_logout] ? ssg_admin_login_path() : issues_path()
+    redirect_to params[:url] ? params[:url] : issues_path()
   end
   
   def ssg_login
@@ -226,6 +228,19 @@ class UsersController < ApplicationController
     else
       flash[:error] = t('users.msgs.invalid_login')
       redirect_to(ssg_admin_login_path())
+    end
+  end
+
+def admin_login
+    user = User.user_admin?(params[:username], params[:password])
+    if user
+      session[:id] = user.id
+      session[:locale] = user.locale
+      session[:script] = user.script
+      redirect_to admin_issues_path()
+    else
+      flash[:error] = t('users.msgs.invalid_login')
+      redirect_to(admin_login_path())
     end
   end
 
