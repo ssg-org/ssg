@@ -106,10 +106,15 @@ class Issue < TranslatedBase
     url = Rails.application.routes.url_helpers.issue_path(self.friendly_id)
 
     if self.images.first.nil?
-      return "https://www.facebook.com/sharer/sharer.php?s=100&amp;p[title]=#{self.title}&amp;p[summary]=#{self.description}&amp;p[url]=#{url}"
+      return "https://www.facebook.com/sharer/sharer.php?s=100&p[title]=#{self.title}&p[summary]=#{self.description}&p[url]=#{url}"
     else
-      return "https://www.facebook.com/sharer/sharer.php?s=100&amp;p[title]=#{self.title}&amp;p[summary]=#{self.description}&amp;p[url]=#{url}&amp;p[images][0]=#{self.images.first.image.url.to_s}" 
+      return "https://www.facebook.com/sharer/sharer.php?s=100&p[title]=#{self.title}&p[summary]=#{self.description}&p[url]=#{url}&p[images][0]=#{self.images.first.image.url.to_s}"
     end
+  end
+
+  def twiter_share_link
+    url = Rails.application.routes.url_helpers.issue_path(self.friendly_id)
+    return "https://twitter.com/share?text=#{title}&url=#{url}&hashtags=ulicaba"
   end
   
   def self.get_issues(params, limit=9, offset=0)

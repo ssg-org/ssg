@@ -152,6 +152,9 @@ en:
             login_to_vote:  'Please login to give your vote'
             change_status:  'Change issue status'
             reported_by:    'by'
+            share:          'Share issue'
+            info:           'Issue'
+            updates:        'Updates'
         delete:
             success:         'Issue successfully deleted!'
             error:           'Error deleting issue!'

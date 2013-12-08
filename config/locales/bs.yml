@@ -152,6 +152,9 @@ bs:
             login_to_vote:  'Molimo da se prijavite da bi ste glasali'
             change_status:  'Promjeni status problema'
             reported_by:    'prijavio'
+            share:          'Podijeli problem'
+            info:           'Problem'
+            updates:        'Promjene'
         delete:
             success:         'Uspješno izbrisan problem!'
             error:           'Problem prilikom brisanja problema!'
