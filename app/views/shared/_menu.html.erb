@@ -81,7 +81,10 @@
 			<% else %>
 				<li class="menu-sub" id="bar"  style="float:right;">					
 					<div class="dropdown">
-						<a class="account"><%=@user.full_name %>&nbsp;<%= image_tag 'carrot-down.png', :class => '' %></a>
+						<a class="account">
+							<%= image_tag @user.avatar, :class => 'profile-user-photo' %>
+							<%=@user.full_name %>&nbsp;<%= image_tag 'carrot-down.png', :class => '' %>
+						</a>
 						<div class="submenu">
 						<ul class="root">
 							<li><a href='<%= user_path(@user.id) %>'><%= t('users.show.profile') %></a></li>
@@ -90,9 +93,6 @@
 						</ul>
 						</div>
 					</div>
-				</li>
-				<li  class="menu-sub" style="float:right; padding-right: 0px;">
-					<%= image_tag @user.avatar, :class => 'profile-user-photo' %>
 				</li>
 			<% end -%>
 

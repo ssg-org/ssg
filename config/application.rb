@@ -58,5 +58,11 @@ module Ssg
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
+
+    # Set hostname for _url methods
+    Rails.application.routes.default_url_options = {
+        :host => Config::Configuration.get(:ssg, :host),
+        :port => Config::Configuration.get(:ssg, :port)
+    }
   end
 end

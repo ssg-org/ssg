@@ -1017,3 +1017,31 @@ a.account  {
 .issue-container-green a {
 	color:white;
 }
+
+.issue-update-container {
+	height: 175px;
+	padding: 15px 15px 0px 15px;
+	background-color: #EEF2EA; 
+	border-bottom:1px solid #C9D4BF;
+}
+
+.issue-update-user-info {
+	font-weight: bold;
+	height: 60px;
+}
+
+.issue-update-text {
+	overflow: hidden;
+	height: 95px;		
+}
+
+.issue-update-time {
+	height: 20px;		
+	color: #B6B7B6;
+}
+
+.issue-update-logo {
+	width: 60px;
+	height: 60px;
+	vertical-align:middle;
+}

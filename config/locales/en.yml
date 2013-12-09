@@ -155,6 +155,7 @@ en:
             share:          'Share issue'
             info:           'Issue'
             updates:        'Updates'
+            status:         'Status'
         delete:
             success:         'Issue successfully deleted!'
             error:           'Error deleting issue!'

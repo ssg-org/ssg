@@ -44,12 +44,14 @@
     <div class="user-info">
       <span class="user-info-full-name din-font"> <%= @profile_user.full_name %> </span>
 
-      <% if @profile_user.city %>
-        <div class="user-info-loc din-font">
-          <span class="asset-location-black" ></span>
-          <span class="font-gray-dark" style="line-height:16px;">&nbsp;<%= @profile_user.city.name%></span>
+      <a href="<%=city_path(@profile_user.city)%>">
+        <div class="user-info-loc">
+            <i class="fa fa-map-marker font-gray-dark"> </i>
+            <span class="font-gray-dark" style="line-height:16px;"> 
+              <%=@profile_user.city.name%>
+            </span>
         </div>
-      <% end %>
+      </a>
 
       <% if !@profile_user.website.blank? %>
         <%= link_to @profile_user.website, @profile_user.website, :class => 'user-info-web' %>

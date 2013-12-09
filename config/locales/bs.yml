@@ -155,6 +155,7 @@ bs:
             share:          'Podijeli problem'
             info:           'Problem'
             updates:        'Promjene'
+            status:         'Status'
         delete:
             success:         'Uspješno izbrisan problem!'
             error:           'Problem prilikom brisanja problema!'

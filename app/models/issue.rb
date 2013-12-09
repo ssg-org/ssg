@@ -50,7 +50,7 @@ class Issue < TranslatedBase
   end
 
   def setup_json_attributes!()
-    @image_url = self.images.first.image.issue_full.url
+    @image_url = self.images.first.image.issue_full.url if !self.images.empty?
     @short_desc = ApplicationController.helpers.truncate(self.description, :length => 200)
     @issue_url = Rails.application.routes.url_helpers.issue_path(self.friendly_id)
   end
@@ -93,6 +93,14 @@ class Issue < TranslatedBase
     results
   end
 
+  def image_url
+    if images.length > 0
+      return  images.first.image.issue_thumb.to_s
+    else
+      return ApplicationController.helpers.icon_path(category.icon, 'jpg')
+    end
+  end
+
   def as_json(options={})
     # also can be solved by adding :methods to options hash
     response = super(options)
@@ -102,18 +110,7 @@ class Issue < TranslatedBase
     response
   end
 
-  def fb_share_link
-    url = Rails.application.routes.url_helpers.issue_path(self.friendly_id)
-
-    if self.images.first.nil?
-      return "https://www.facebook.com/sharer/sharer.php?s=100&p[title]=#{self.title}&p[summary]=#{self.description}&p[url]=#{url}"
-    else
-      return "https://www.facebook.com/sharer/sharer.php?s=100&p[title]=#{self.title}&p[summary]=#{self.description}&p[url]=#{url}&p[images][0]=#{self.images.first.image.url.to_s}"
-    end
-  end
-
-  def twiter_share_link
-    url = Rails.application.routes.url_helpers.issue_path(self.friendly_id)
+  def twiter_share_link(url)
     return "https://twitter.com/share?text=#{title}&url=#{url}&hashtags=ulicaba"
   end
   

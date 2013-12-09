@@ -12,6 +12,29 @@
   <%= javascript_include_tag "application" %>
 </head>
 <body alink="#000" vlink="#000" link="#000">
+  <div id="fb-root"></div>
+  <script>
+    window.fbAsyncInit = function() {
+      // init the FB JS SDK
+      FB.init({
+        appId      : <%= Config::Configuration.get(:fb, :application_id) %>,                        // App ID from the app dashboard
+        status     : false,                                 // Check Facebook Login status
+        xfbml      : false                                  // Look for social plugins on the page
+      });
+
+      // Additional initialization code such as adding Event Listeners goes here
+    };
+
+    // Load the SDK asynchronously
+    (function(d, s, id){
+       var js, fjs = d.getElementsByTagName(s)[0];
+       if (d.getElementById(id)) {return;}
+       js = d.createElement(s); js.id = id;
+       js.src = "//connect.facebook.net/en_US/all.js";
+       fjs.parentNode.insertBefore(js, fjs);
+     }(document, 'script', 'facebook-jssdk'));
+  </script>
+
   <div id="form-error-div" class="error-div" onclick="hideThisDiv(this);">
     <%= t('shared.menu.error') %>
     <ul>

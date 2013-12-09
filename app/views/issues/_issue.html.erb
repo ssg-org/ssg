@@ -62,13 +62,13 @@
 	  <span class="font-gray-dark font-14 font-bold" style="margin-left:3px;"><%=issue.session_view_count%></span>
 
 		<span style="float:right; margin-top: 2px; cursor: pointer;" class="font-13 font-gray-dark">
-			<% link_url = "#{request.protocol}#{request.host_with_port}#{issue_path(issue.friendly_id)}" %>
+			<% url = issue_url(issue) %>
 
-			<a href="<%= issue.fb_share_link %>" onclick="window.open(this.href, 'mywin','left=20,top=20,width=500,height=300,toolbar=1,resizable=0'); return false;">
+			<a href="#" onclick="fb_share('ULICA.BA', '<%= j issue.title %>', '<%= j issue.description %>', '<%= j url %>', '<%= image_url issue.image_url %>')">
   			<%=image_tag 'fbshare.png', :border => '0' %>
 			</a>
 
-			<a href="<%= issue.twiter_share_link %>" onclick="window.open(this.href, 'mywin','left=20,top=20,width=500,height=300,toolbar=1,resizable=0'); return false;" data-via="Ulica.ba">
+			<a href="<%= issue.twiter_share_link(url) %>" onclick="window.open(this.href, 'mywin','left=20,top=20,width=500,height=300,toolbar=1,resizable=0'); return false;" data-via="Ulica.ba">
 				<%=image_tag 'twshare.png', :border => '0' %>
 			</a>
 		</span> 

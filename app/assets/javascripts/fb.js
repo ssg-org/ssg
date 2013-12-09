@@ -14,4 +14,23 @@ function fb_login(app_id, redirect_url, scope){
 		newwindow.focus();
 	}
 	return false;
-}
+};
+
+function fb_share(name, caption, description, link, picture) {
+  FB.ui(
+  {
+   method: 'feed',
+   name: name,
+   caption: caption,
+   description: description,
+   link: link,
+   picture: picture
+  },
+  function(response) {
+    if (response && response.post_id) {
+      alert('Post was published.');
+    } else {
+      alert('Post was not published.');
+    }
+  });
+};
