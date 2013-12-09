@@ -19,7 +19,7 @@
   <span class="issue-share-title"><%= t('issues.show.share') %></span> <br/>
   <% url = issue_url(@issue) %>
 
-  <a href="#" onclick="fb_share('ULICA.BA', '<%= j @issue.title %>', '<%= j @issue.description %>', '<%= j url %>', '<%= image_url @issue.image_url %>')">
+  <a href="#" onclick="fb_share('ULICA.BA', '<%= j @issue.title %>', '<%= j @issue.description %>', '<%= j url %>', '<%= "#{request.protocol}#{request.host_with_port}#{@issue.image_url}" %>')">
     <%=image_tag 'fbshare2x.png', :border => '0' %>
   </a>
 

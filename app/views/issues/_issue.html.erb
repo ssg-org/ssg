@@ -64,7 +64,7 @@
 		<span style="float:right; margin-top: 2px; cursor: pointer;" class="font-13 font-gray-dark">
 			<% url = issue_url(issue) %>
 
-			<a href="#" onclick="fb_share('ULICA.BA', '<%= j issue.title %>', '<%= j issue.description %>', '<%= j url %>', '<%= image_url issue.image_url %>')">
+			<a href="#" onclick="fb_share('ULICA.BA', '<%= j issue.title %>', '<%= j issue.description %>', '<%= j url %>', '<%= "#{request.protocol}#{request.host_with_port}#{issue.image_url}" %>')">
   			<%=image_tag 'fbshare.png', :border => '0' %>
 			</a>
 

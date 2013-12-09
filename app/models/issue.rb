@@ -95,7 +95,7 @@ class Issue < TranslatedBase
 
   def image_url
     if images.length > 0
-      return  images.first.image.issue_thumb.to_s
+      return  images.first.image.issue_thumb.url
     else
       return ApplicationController.helpers.icon_path(category.icon, 'jpg')
     end
