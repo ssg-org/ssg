@@ -5,10 +5,6 @@ class SsgAdmin::UsersController < SsgAdminController
   
   def index
     @users = User.find(:all)
-    require 'pp'
-    pp ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"
-    pp @users.first
-    pp ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"
   end
 
   def destroy
@@ -25,10 +21,6 @@ class SsgAdmin::UsersController < SsgAdminController
   end
 
   def update
-    require 'pp'
-    pp ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"
-    pp params
-    pp ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"
     @user.ssg_admin_update(params)
     flash[:info] = "Uspješno ste ažurirali korisnika!"
     redirect_to ssg_admin_users_path
@@ -43,10 +35,8 @@ class SsgAdmin::UsersController < SsgAdminController
   end
 
   def create
-    @user.create_ssg_admin_user(params[:username], params[:email], params[:city_id], params[:first_name], params[:last_name], params[:role], "#{request.protocol}#{request.host_with_port}")
+    @user.create_ssg_admin_user(params[:email], params[:city_id], params[:first_name], params[:last_name], params[:role], "#{request.protocol}#{request.host_with_port}")
     flash[:info] = "Uspješno ste dodali novog korisnika!"
     redirect_to ssg_admin_users_path
   end
-
-
 end

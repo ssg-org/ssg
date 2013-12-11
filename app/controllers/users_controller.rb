@@ -8,55 +8,14 @@ class UsersController < ApplicationController
 
   def index
     @profile_user = User.find(params[:id])
-    @issues = Issue.where(:user_id => params[:id]).order('created_at desc')
+    @issues = @profile_user.issues.order('created_at desc')
   end
 
   def edit
     @edit_user = User.find(@user.id)
   end
 
-  def twitter_create
-    require 'pp'
-    pp ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"
-    pp request.env["omniauth.auth"]
-    pp ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"
-    twitter_info = env["omniauth.auth"]
-    t_token      = twitter_info['credentials']['token']
-    t_id         = twitter_info['uid']
-    f_name       = twitter_info['info']['first_name'] || twitter_info['info']['name']
-    l_name       = twitter_info['info']['last_name']
-    email        = twitter_info['info']['email']
-    username     = twitter_info['info']['nickname']
-    
-    # check fo user by access_token (fast'n'dirty check)
-    user = User.find_by_twitter_token(t_token)
-
-    # not found by token - check by email
-    if (user.nil?)
-      user = User.find_by_email(email) unless email.nil?
-      
-      # Not found by email - check FB-id
-      if (user.nil?)
-        user = User.find_by_twitter_id(t_id)
-        
-        if (user.nil?)
-          user = User.create_twitter_user(t_token, email, t_id, l_name, f_name, username )
-        end
-      end
-    end
-      
-    session[:id] = user.id
-
-    @redirect_uri = issues_path()
-    redirect_to issues_path()
-  end
-
   def auth_error
-    require 'pp'
-    pp ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"
-    pp params
-    pp request.env["omniauth.auth"]
-    pp ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"
     flash[:error] = "Not able to login to via social network!"
     @redirect_uri = issues_path()
   end
@@ -93,22 +52,21 @@ class UsersController < ApplicationController
   # Login, logout, signup actions
   #
   def signup
-    user = User.create_ssg_user(params[:username], params[:email], params[:password1], params[:city_id])
+    user = User.create_ssg_user(params[:email], params[:password1], params[:city_id])
     puts "User #{user.inspect}"
 
     if user.nil?
       flash[:error] = t('users.msgs.exists')
-      redirect_to(login_users_path())
+      redirect_to login_users_path
     else
       if user.save
         UserMailer.verify(user, "#{request.protocol}#{request.host_with_port}").deliver
         flash[:info] = t('users.msgs.created')
-        redirect_to(issues_path())
+        redirect_to issues_path
       else
         flash[:error] = t('users.msgs.error_create')
-        redirect_to(login_users_path())
-      end
-      
+        redirect_to login_users_path
+      end      
     end
   end
 
@@ -209,7 +167,7 @@ class UsersController < ApplicationController
   end
   
   def ssg_login
-    user = User.exists?(params[:username], params[:password])
+    user = User.exists?(params[:email], params[:password])
     if user && user.active
       session[:id] = user.id
       session[:locale] = user.locale
@@ -222,7 +180,7 @@ class UsersController < ApplicationController
   end
 
   def ssg_admin_login
-    user = User.user_ssg_admin?(params[:username], params[:password])
+    user = User.user_ssg_admin?(params[:email], params[:password])
     if user
       session[:id] = user.id
       session[:locale] = user.locale
@@ -235,7 +193,7 @@ class UsersController < ApplicationController
   end
 
 def admin_login
-    user = User.user_admin?(params[:username], params[:password])
+    user = User.user_admin?(params[:email], params[:password])
     if user
       session[:id] = user.id
       session[:locale] = user.locale
@@ -254,7 +212,6 @@ def admin_login
     f_name   = fb_info['info']['first_name']
     l_name   = fb_info['info']['last_name']
     email    = fb_info['info']['email']
-    username = fb_info['info']['nickname']
 
     # check fo user by access_token (fast'n'dirty check)
     user = User.find_by_fb_token(fb_token)
@@ -268,7 +225,7 @@ def admin_login
         user = User.find_by_fb_id(fb_id)
         
         if (user.nil?)
-          user = User.create_fb_user(fb_token, email, fb_id, l_name, f_name, username )
+          user = User.create_fb_user(fb_token, email, fb_id, l_name, f_name)
         end
         
       end

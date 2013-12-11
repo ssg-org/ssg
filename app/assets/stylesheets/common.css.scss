@@ -282,6 +282,12 @@ textarea {
 		font-size: 13px;
 		letter-spacing: 0px;
 		font-weight:bold;
+
+		.menu-user-title {
+			float: left;
+			line-height: 25px;
+			margin-right: 5px;
+		}
 	}
 
 	.selection {
@@ -373,6 +379,11 @@ textarea {
 
 .issue-img-part {
 	padding:3px;
+
+	img {
+		width: 198px;
+		height: 155px;
+	}
 }
 
 .issue-info-part {
@@ -671,7 +682,6 @@ textarea {
 	margin-left: 10px;
 	padding: 40px 0 5px;
 	border-radius: 6px;
-	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.45);
 }
 .dropdown li a {
 	color: #555555;

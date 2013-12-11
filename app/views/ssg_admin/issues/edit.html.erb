@@ -37,7 +37,7 @@
           <%= f.collection_select(:status, Issue.all_statuses, :id, :name, { :selected => @issue.status}, { :class=> 'span6'} ) %> <br />
 
           <label>Korisnik / Problem Kreiran</label>
-          <%= f.text_field :username, :class=> 'span6', :value => @issue.user.username, :disabled => true %>
+          <%= f.text_field :user, :class=> 'span6', :value => @issue.user.full_name, :disabled => true %>
           <%= f.text_field :created_at, :class=> 'span6', :value => @issue.created_at.strftime("%d/%m/%Y"), :disabled => true %>
           <label>Opis</label>
           <%= f.text_area :description, :class => 'span12', :style=> 'height: 200px;', :placeholder => 'Opis' %>

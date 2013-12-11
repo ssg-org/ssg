@@ -19,9 +19,9 @@
             <thead>
               <tr role="row">
                 <th role="columnheader" tabindex="0" rowspan="1" colspan="1">#</th>
-                <th role="columnheader" tabindex="0" rowspan="1" colspan="1">Username</th>
                 <th role="columnheader" tabindex="0" rowspan="1" colspan="1">email</th>
                 <th role="columnheader" tabindex="0" rowspan="1" colspan="1">Ime</th>
+                <th role="columnheader" tabindex="0" rowspan="1" colspan="1">Prezime</th>
                 <th role="columnheader" tabindex="0" rowspan="1" colspan="1">Opcina</th>
                 <th role="columnheader" tabindex="0" rowspan="1" colspan="1">Prijavio</th>
                 <th role="columnheader" tabindex="0" rowspan="1" colspan="1">Tip</th>
@@ -33,9 +33,9 @@
               <% @users.sort.each do |user| %>
                 <tr id="<%= "row_#{user.id}" %>">
                   <td><%= user.id %></td>
-                  <td><%= user.username %></td>
                   <td><%= user.email %></td>
-                  <td><%= user.full_name %></td>
+                  <td><%= user.first_name %></td>
+                  <td><%= user.last_name %></td>
                   <td><%= user.city ? user.city.name : 'Nema opcine' %></td>
                   <td><%= user.issues.size %> <%= user.issues.size == 1 ? 'problem' : 'problema' %></td>
                   <td><%= user.user_type %></td>

@@ -17,7 +17,7 @@
               <tr role="row">
                 <th role="columnheader" tabindex="0" rowspan="1" colspan="1">#</th>
                 <th role="columnheader" tabindex="0" rowspan="1" colspan="1">Naziv</th>
-                <th role="columnheader" tabindex="0" rowspan="1" colspan="1">User</th>
+                <th role="columnheader" tabindex="0" rowspan="1" colspan="1">Korisnik</th>
                 <th role="columnheader" tabindex="0" rowspan="1" colspan="1">Status</th>
                 <th role="columnheader" tabindex="0" rowspan="1" colspan="1">Općina</th>
                 <th role="columnheader" tabindex="0" rowspan="1" colspan="1">Glasovi</th>
@@ -32,7 +32,7 @@
                 <tr id="<%= "row_#{issue.id}" %>">
                   <td><%= issue.id %></td>
                   <td><%= link_to truncate(issue.title, :length => 20), issue_path(issue), :target => "_blank" %></td>
-                  <td><%= link_to issue.user.username, user_path(issue.user), :target => "_blank" %></td>
+                  <td><%= link_to issue.user.full_name, user_path(issue.user), :target => "_blank" %></td>
                   <td><%= issue.get_status %></td>
                   <td><%= issue.city ? link_to(issue.city.name, city_path(issue.city.friendly_id), :target => "_blank") : 'Nema opcine' %></td>
                   <td><%= issue.vote_count %></td>

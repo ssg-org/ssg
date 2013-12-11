@@ -21,7 +21,7 @@
 		<span><%=t('users.login.login_message') %></span>
 	</div>
 	<%=form_tag ssg_login_users_path(), :id => "login_form" do %>
-		<%= text_field_tag :username, nil, :placeholder => t('users.login.username') %><br/>
+		<%= text_field_tag :email, nil, :placeholder => t('users.login.email') %><br/>
 		<%= password_field_tag :password, nil, :placeholder => t('users.login.password') %><br/>
 
 		<label class="checkbox">
@@ -48,7 +48,6 @@
 		<br />
 		<%= form_tag signup_users_path(), :id => "register_form" do %>
 			<%= select_tag :city_id, options_for_select(@city_names), { } %><br />
-			<%= text_field_tag :username, nil, :placeholder => t('users.login.username'), :class => "" %><br/>
 			<%= text_field_tag :email, nil, :placeholder => t('users.login.email'), :class => "" %><br/>
 			<%= password_field_tag :password1, nil, :placeholder => t('users.login.password'), :class => "" %><br/>
 			<%= password_field_tag :password2, nil, :placeholder => t('users.login.register_repeat_password'), :class => "" %><br/>
@@ -112,7 +111,7 @@
 	// Validation
 	$('#login_form').validate({
 		rules: {
-			username: {
+			email: {
 				required: true
 			},
 			password: {
@@ -120,8 +119,8 @@
 			}
 		},
 		messages: {
-			username: {
-				required: I18n.t('validation.login.username')
+			email: {
+				required: I18n.t('validation.login.email')
 			},
 			password: {
 				required: I18n.t('validation.login.password')
@@ -131,9 +130,6 @@
 
 	$('#register_form').validate({
 		rules : {
-			username: {
-				required: true
-			},
 			city_id: {
 				required: true
 			},
@@ -154,9 +150,6 @@
 			}
 		},
 		messages: {
-			username: {
-				required: I18n.t('validation.register.username')
-			},
 			city_id: {
 				required: I18n.t('validation.register.city')
 			},

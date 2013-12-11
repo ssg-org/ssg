@@ -107,9 +107,9 @@ class User < TranslatedBase
 
   def full_name
     if self.first_name.blank? && self.last_name.blank?
-      return self.username.titlecase
+      return self.email
     else
-      return "#{self.first_name} #{self.last_name}".titlecase
+      return "#{self.first_name} #{self.last_name}"
     end
   end
 
@@ -278,8 +278,8 @@ class User < TranslatedBase
     end
   end
 
-  def self.exists?(username, pwd)
-    usr = User.find_by_username(username)
+  def self.exists?(email, pwd)
+    usr = User.find_by_email(email)
     if (usr && usr.password_hash == Digest::SHA256.hexdigest(pwd))
       return usr
     end
@@ -315,16 +315,16 @@ class User < TranslatedBase
   #
   # Returns user only with ssg admin
   #
-  def self.user_ssg_admin?(username, pwd)
-    usr = exists?(username, pwd)
+  def self.user_ssg_admin?(email, pwd)
+    usr = exists?(email, pwd)
     usr && usr.active && (usr.ssg_admin?) ? usr : nil
   end
   
   #
   # Returns user only with ssg admin
   #
-  def self.user_admin?(username, pwd)
-    usr = exists?(username, pwd)
+  def self.user_admin?(email, pwd)
+    usr = exists?(email, pwd)
     usr && usr.active && usr.city_admin? ? usr : nil
   end
   
@@ -339,31 +339,12 @@ class User < TranslatedBase
     return OAuth2::Client.new(Config::Configuration.get(:fb, :application_id), Config::Configuration.get(:fb, :secret_key), :site => Config::Configuration.get(:fb, :site_url))
   end
 
-  def self.create_fb_user(token, email, fb_id, last_name, first_name, username, is_active = true, role = User::ROLE_USER)
+  def self.create_fb_user(token, email, fb_id, last_name, first_name, is_active = true, role = User::ROLE_USER)
     user = User.new
     user.email = email
     user.uuid = UUIDTools::UUID.random_create.to_s
     user.fb_id = fb_id
     user.fb_token = token
-    user.username = username
-    user.last_name = last_name
-    user.first_name = first_name
-    user.active = is_active
-    user.role = role
-    user.locale = I18n.default_locale
-    user.save
-    
-    return user
-  end  
-
-  def self.create_twitter_user(token, email, t_id, last_name, first_name, username, is_active = true, role = User::ROLE_USER)
-    user = User.new
-    user.uuid = UUIDTools::UUID.random_create.to_s
-    # there can be twitter users without email (we hack in that case)
-    user.email = email ? email : user.uuid
-    user.twitter_id = t_id
-    user.twitter_token = token
-    user.username = username
     user.last_name = last_name
     user.first_name = first_name
     user.active = is_active
@@ -374,9 +355,9 @@ class User < TranslatedBase
     return user
   end
 
-  def self.create_ssg_user(username, email, pwd, city_id)
+  def self.create_ssg_user(email, pwd, city_id)
 
-    user = User.find_by_username(username)
+    user = User.find_by_email(email)
 
     # New user
     if user.nil?
@@ -385,7 +366,6 @@ class User < TranslatedBase
 
     # Inactive user - send email again
     if (user.active == false)
-      user.username = username
       user.email = email
       user.password_hash = Digest::SHA256.hexdigest(pwd)
       user.uuid = UUIDTools::UUID.random_create.to_s
@@ -413,8 +393,8 @@ class User < TranslatedBase
     end
   end
 
-  def create_ssg_admin_user(username, email, city_id, first_name, last_name, role, url)
-    user = User.create_ssg_user(username, email, Digest::SHA1.hexdigest(Time.now().to_s), city_id)
+  def create_ssg_admin_user(email, city_id, first_name, last_name, role, url)
+    user = User.create_ssg_user(email, Digest::SHA1.hexdigest(Time.now().to_s), city_id)
     
     unless user.nil?
       user.role = role
@@ -441,7 +421,6 @@ class User < TranslatedBase
     user.first_name = params[:user][:first_name]
     user.last_name = params[:user][:last_name]
     user.email = params[:user][:email]
-    user.username = params[:user][:username]
     user.city_id = params[:user][:city_id]
     user.active = params[:user][:active]
     user.role = params[:user][:role]

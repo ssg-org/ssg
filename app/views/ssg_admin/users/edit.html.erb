@@ -21,7 +21,6 @@
     <div class="new-admin-user">
 
       <%= form_for @edit_user, url: ssg_admin_user_path(), :method => "PUT", :html => { :id => "update_admin_user" } do |f| %>
-        <%= f.text_field :username, :autocomplete=> :off , :placeholder => "Korisničko Ime", :class => 'span12', :required => true %>
         <%= f.text_field :email, :autocomplete=> :off , :placeholder => "Email", :class => 'span12', :required => true %>
         <%= f.text_field :first_name, :autocomplete=> :off , :placeholder => "Ime", :class => 'span12' %>
         <%= f.text_field :last_name, :autocomplete=> :off , :placeholder => "Prezime", :class => 'span12' %>

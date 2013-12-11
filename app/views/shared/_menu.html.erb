@@ -79,30 +79,31 @@
 				<% end %>
 			</li>
 			<% else %>
-				<li class="menu-sub" id="bar"  style="float:right;">					
-					<div class="dropdown">
-						<a class="account">
-							<%= image_tag @user.avatar, :class => 'profile-user-photo' %>
-							<%=@user.full_name %>&nbsp;<%= image_tag 'carrot-down.png', :class => '' %>
-						</a>
-						<div class="submenu">
-						<ul class="root">
-							<li><a href='<%= user_path(@user.id) %>'><%= t('users.show.profile') %></a></li>
-							<li><a href='<%= edit_user_path(@user.id) %>'><%= t('users.show.settings') %></a></li>
-							<li><%=link_to t('users.show.logout'), logout_user_path(@user.id)%></li>
-						</ul>
-						</div>
-					</div>
+				<li class="menu-sub" style="float:right;">
+					<%= link_to logout_user_path(@user.id) do %>
+					<i class="fa fa-sign-out fa-2x"></i>
+					<% end %> 
 				</li>
-			<% end -%>
+				<li class="menu-sub" style="float:right;">
+					<a href='<%= edit_user_path(@user.id) %>'>
+						<i class="fa fa-cog fa-2x"></i>
+					</a>
+				</li>
+				<li class="menu-sub" style="float:right;">
+						<%= link_to user_path(@user) do %>
+							<span class="menu-user-title"><%= @user.full_name %></span>
+							<%= image_tag @user.avatar, :class => 'profile-user-photo' %>
+						<% end %>
+				</li>
+			<% end %>
 
-			<li class="menu-sub" style="float:right;">
+		<!--	<li class="menu-sub" style="float:right;">
 				<%=link_to t('shared.menu.contact'), contact_path(), :class => "value_strip() font-black #{'menu-selected' if selection[:contact]}"%><br/>
 				<span class="font-gray "><%=t('shared.menu.information')%></span><br/>
 				<% if selection[:contact]%>
 					<div class="selection"></div>
 				<% end %>
-			</li>
+			</li>-->
 
 		</ul>
 	</div>

@@ -67,6 +67,8 @@
     <br />
     <br />
 
+    <label><%= t('users.edit.email') %></label>
+    <%= f.text_field :email, :autocomplete=> :off , :placeholder => t('users.edit.email'), :disabled => true, :readonly => true %>
     <label><%= t('users.edit.first_name') %></label>
     <%= f.text_field :first_name, :autocomplete=> :off , :placeholder => t('users.edit.first_name') %>
     <label><%= t('users.edit.last_name') %></label>
@@ -114,7 +116,7 @@
       <br />
       <br />
       <br />
-      <%= f.text_field :website, :autocomplete=> :off , :placeholder => t('users.edit.website') %>
+      <%= f.url_field :website, :autocomplete=> :off , :placeholder => t('users.edit.website'), :style=>"width:100%;" %>
       <%= f.text_area :description, :autocomplete=> :off , :placeholder => t('users.edit.short_desc') %>
     </div>
     <div style="margin-top: 20px; margin-left: 220px;">

@@ -42,7 +42,7 @@
           </tr>
           <tr>
             <td>Korisnik</td>
-            <td><%=@issue.user.username%></td>
+            <td><%=@issue.user.full_name%></td>
           </tr>
           <tr>
             <td>Kreiran</td>
@@ -60,7 +60,7 @@
               <td colspan="2">
                 <hr/>
                 <span style="font-size:20px;"><%=update.subject%></span><br/>
-                <span style="font-size:8px;"><%=update.created_at.strftime("%d %b. %Y")%> [<%=update.user.username%>]</span><br/>
+                <span style="font-size:8px;"><%=update.created_at.strftime("%d %b. %Y")%> [<%=update.user.full_name %>]</span><br/>
                 <%=update.text%>
               </td>
             </tr>

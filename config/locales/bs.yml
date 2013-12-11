@@ -91,6 +91,7 @@ bs:
             pass_change:    'PROMJENA LOZINKE'
             profile_img:    'PROFILNA SLIKA'
             details:        'DETALJI'
+            email:          'Email adresa'
             first_name:     'Ime'
             last_name:      'Prezime'
             website:        'Web stranica'
