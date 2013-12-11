@@ -1,6 +1,6 @@
 <div style="float:left; padding: 22px;">
 	<%= link_to root_path do %>
-	<div class="asset-logo"></div>
+	<div id="logo" class="asset-logo-ulica"></div>
 	<% end %>
 </div>
 
@@ -80,17 +80,17 @@
 			</li>
 			<% else %>
 				<li class="menu-sub" style="float:right;">
-					<%= link_to logout_user_path(@user.id) do %>
+					<%= link_to logout_user_path(@user.id), :title=>t('shared.menu.logout') do %>
 					<i class="fa fa-sign-out fa-2x"></i>
 					<% end %> 
 				</li>
 				<li class="menu-sub" style="float:right;">
-					<a href='<%= edit_user_path(@user.id) %>'>
+					<%= link_to edit_user_path(@user.id), :title=>t('shared.menu.settings') do %>
 						<i class="fa fa-cog fa-2x"></i>
-					</a>
+					<% end %>
 				</li>
 				<li class="menu-sub" style="float:right;">
-						<%= link_to user_path(@user) do %>
+						<%= link_to user_path(@user.id), :title=>t('shared.menu.profile') do %>
 							<span class="menu-user-title"><%= @user.full_name %></span>
 							<%= image_tag @user.avatar, :class => 'profile-user-photo' %>
 						<% end %>
@@ -150,6 +150,15 @@ $(document).mouseup(function()
 $(".submenu").hide();
 $(".account").attr('id', '');
 });
+
+  $('#logo').hover(function() {
+      $('#logo').addClass('asset-logo-ssg');
+      $('#logo').removeClass('asset-logo-ulica');
+  }, function(){
+      $('#logo').removeClass('asset-logo-ssg');
+      $('#logo').addClass('asset-logo-ulica');
+  });
+
 });
 </script>
 <% end %>
