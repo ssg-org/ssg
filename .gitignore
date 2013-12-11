@@ -5,7 +5,6 @@
 db/*.sqlite3
 db/schema.rb
 config/configuration.local.yml
-config/newrelic.yml
 public/assets
 public/system/**/*
 public/uploads

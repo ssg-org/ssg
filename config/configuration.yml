@@ -18,6 +18,9 @@ development:
   twitter:
     consumer_key:
     consumer_secret:        
+  newrelic:
+      app_name:             "ssg"
+      key:
   misc:
     unique_view_epsilon:    3600
 
@@ -41,5 +44,8 @@ production:
   twitter:
     consumer_key:
     consumer_secret:        
+  newrelic:
+      app_name:             "ssg"
+      key:
   misc:
     unique_view_epsilon:    3600
