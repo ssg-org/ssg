@@ -31,7 +31,8 @@ bs:
             help:       'Pomoć i FAQ'
             advertise:  'Reklamiranje'
             contact:    'Kontakt'
-            disclamer:  '"Ovaj projekat je omogućila velikodušna podrška američkog naroda putem Američke ambasade u Sarajevu i svi stavovi, mišljenja i zaključci izneseni ovdje ne odražavaju nužno stav Američke ambasade ili Vlade SAD, već isključivo autora."'
+            disclamer1: 'Ovaj projekat je omogućila velikodušna podrška američkog naroda putem Američke ambasade u Sarajevu.'
+            disclamer2: 'Svi stavovi, mišljenja i zaključci izneseni ovdje ne odražavaju nužno stav Američke ambasade ili Vlade SAD, već isključivo autora.'
         comments:
             comment:    'Komentar'
             comments:   'komentar'

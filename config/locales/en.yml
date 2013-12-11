@@ -31,7 +31,8 @@ en:
             help:       'Help & FAQ'
             advertise:  'Advertise'
             contact:    'Contact'
-            disclamer:  '"This project is made possible by the generous support of the American people through the United States Department of State. The contents are the responsibility of Sredi Svoj Grad and do not necessarily reflect the views of the Department of State or the United States Government."'
+            disclamer1: 'This project is made possible by the generous support of the American people through the United States Department of State.'
+            disclamer2: 'The contents are the responsibility of Sredi Svoj Grad and do not necessarily reflect the views of the Department of State or the United States Government.'
         comments:
             comment:    'Comment'
             comments:   'comments'
