@@ -10,7 +10,7 @@ class CitiesController < ApplicationController
 
 	def show
 		@city = City.find(params[:id])
-		@issues = @city.issues.order('created_at desc')
+		@issues = @city.issues.includes([:images, :user, :category, :city]).order('created_at desc')
 	end
 
 	def zoom

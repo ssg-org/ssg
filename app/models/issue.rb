@@ -61,7 +61,7 @@ class Issue < TranslatedBase
     ne_lat = north_east_geo[:lat]
     ne_long = north_east_geo[:long]
 
-    return Issue.where('lat > ? AND lat < ? AND long > ? AND long < ?', sw_lat, ne_lat, sw_long, ne_long).limit(limit)  
+    return Issue.where('lat > ? AND lat < ? AND long > ? AND long < ?', sw_lat, ne_lat, sw_long, ne_long).includes([:images, :user, :category, :city]).limit(limit)  
   end
 
   def get_status
