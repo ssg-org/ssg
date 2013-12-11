@@ -159,6 +159,7 @@ en:
             info:           'Issue'
             updates:        'Updates'
             status:         'Status'
+            created:        'Created'
         delete:
             success:         'Issue successfully deleted!'
             error:           'Error deleting issue!'

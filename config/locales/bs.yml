@@ -159,6 +159,7 @@ bs:
             info:           'Problem'
             updates:        'Promjene'
             status:         'Status'
+            created:        'Kreiran'
         delete:
             success:         'Uspješno izbrisan problem!'
             error:           'Problem prilikom brisanja problema!'

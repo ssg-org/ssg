@@ -1,7 +1,9 @@
 <div class="issue-container-green">
   <div class="issue-cell">
     <span class="issue-cell-title"><%= trans(@issue.title.upcase) %></span><br/>
-    <span class="issue-cell-subtitle"><%=@issue.category.name%>, <%=@issue.city.name%></span><br/>
+    <span class="issue-cell-subtitle"><%=@issue.category.name%>, <%=@issue.city.name%></span>
+    <span class="issue-cell-date"><%= "#{t('issues.show.created')}: #{@issue.created_at.strftime("%d %b. %Y %H:%M")}" %></span>
+    <br/>
   </div>
   <div class="issue-cell">
     <p><%= trans(@issue.description.gsub(/(?:\n\r?|\r\n?)/, '<br/>')).html_safe%></p>

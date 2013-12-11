@@ -36,6 +36,8 @@ gem 'viljushka'
 
 gem 'aws-ses', :require => 'aws/ses'
 
+gem 'newrelic_rpm'
+
 group :development do
   gem 'better_errors'
   gem 'seed_dump'
