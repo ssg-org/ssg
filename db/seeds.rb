@@ -39,4 +39,4 @@ Category.create({ :name => 'Saobraćaj i parking', :color => 'ffc80c', :icon => 
 Category.create({ :name => 'Zdravlje i sigurnost gradjana',  :color => '683b17', :icon => 'putevi.png'  })
 Category.create({ :name => 'Ostalo',  :color => '683b17', :icon => 'putevi.png'  })
 
-User.create({ :email => 'admin@ssg.com', :username => 'admin_ssg', :password_hash => Digest::SHA256.hexdigest('admin'), :uuid => UUIDTools::UUID.random_create.to_s, :active => true, :role => User::ROLE_SSG_ADMIN, :locale => :bs })
+User.create({ :email => 'administrator@sredisvojgrad.com', :password_hash => Digest::SHA256.hexdigest('admin'), :uuid => UUIDTools::UUID.random_create.to_s, :active => true, :role => User::ROLE_SSG_ADMIN, :locale => :bs })
