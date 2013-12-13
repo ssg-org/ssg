@@ -27,11 +27,11 @@ class ImageUploader < CarrierWave::Uploader::Base
   end
 
   version :logo_full do
-    process :resize_and_pad => [160, 160]
+    process :resize_to_fill => [160, 160]
   end
 
   version :logo_small do
-    process :resize_and_pad => [64, 48]
+    process :resize_to_fill => [50, 50]
   end
 
   #

@@ -25,7 +25,7 @@ bs:
             settings:   'PODEŠAVANJA'
             logout:     'ODJAVA'
             admin_login: 'ADMIN PRIJAVA'
-            error:      'Molimo Vas popunite sva obavezna polja i ponovo prijavite Vaš problem.'
+            error:      'Molimo Vas popunite sva obavezna polja i pokušate ponovo.'
         footer:
             tos:        'Uslovi korištenja i privatnost'
             help:       'Pomoć i FAQ'

@@ -96,7 +96,7 @@
     <br />
     <br />
     <br />
-    <%= image_tag @edit_user.avatar, :id => 'user_photo_settings', :class => 'user-settings-photo' %>
+    <%= image_tag @edit_user.avatar(:full), :id => 'user_photo_settings', :class => 'user-settings-photo' %>
     <br />
     <input type = "button" id="upload_image_btn" value="<%= t('users.edit.image') %>" onclick ="javascript:document.getElementById('fileupload_field2').click();">
     <input id = "fileupload_field2" type="file" style='visibility: hidden;' name="image" multiple/>
@@ -116,7 +116,7 @@
       <br />
       <br />
       <br />
-      <%= f.url_field :website, :autocomplete=> :off , :placeholder => t('users.edit.website'), :style=>"width:100%;" %>
+      <%= f.text_field :website, :autocomplete=> :off , :placeholder => t('users.edit.website'), :style=>"width:100%;" %>
       <%= f.text_area :description, :autocomplete=> :off , :placeholder => t('users.edit.short_desc') %>
     </div>
     <div style="margin-top: 20px; margin-left: 220px;">
@@ -161,7 +161,7 @@
       alert( $('#password0').text());
       return $('#password0').text();
     },
-    I18n.t('validation.new_issue.image')
+    I18n.t('validation.register.password_match')
   );
 
   // UPLOAD SETUP

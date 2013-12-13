@@ -55,7 +55,7 @@
       </a>
 
       <% if !@profile_user.website.blank? %>
-        <%= link_to @profile_user.website, @profile_user.website, :class => 'user-info-web' %>
+        <%= link_to(@profile_user.website, url_for(@profile_user.website), :class => 'user-info-web') %>
         <br>
         <br>
       <% end %>      

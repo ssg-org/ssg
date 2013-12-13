@@ -113,11 +113,11 @@ class User < TranslatedBase
     end
   end
 
-  def avatar
+  def avatar(size = :small)
     if !self.image_id.nil?
-      return image.image.logo_small
+      return size == :full ? image.image.logo_full : image.image.logo_small
     elsif fbuser? 
-      return "http://graph.facebook.com/#{fb_id}/picture"
+      return "http://graph.facebook.com/#{fb_id}/picture?type=square"
     else
       return '/assets/no_avatar.png'
     end
@@ -432,7 +432,7 @@ class User < TranslatedBase
     self.first_name = params[:user][:first_name]
     self.last_name = params[:user][:last_name]
     self.city_id = params[:user][:city_id]
-    self.website = params[:user][:website]
+    self.website = params[:user][:website] if valid?(params[:user][:website])
     self.description = params[:user][:description]
 
     # locale includes script: example bs_latin, bs_cyrilic
@@ -455,6 +455,15 @@ class User < TranslatedBase
 
   def get_issues_by_status(status = nil) 
     return status.nil? ? issues : issues.where(:status => status)
+  end
+
+  require 'uri'
+
+  private
+  def valid?(uri)
+    uri.nil? || !!URI.parse(uri)
+  rescue
+    false
   end
 
 end
