@@ -6,7 +6,8 @@ L.Icon.Default.imagePath = '/assets/images';
 
 // Google tracker
 var _gaq = _gaq || [];
-_gaq.push(['_setAccount', 'UA-30569816-1']);
+_gaq.push(['_setAccount', 'UA-30569816-4']);
+_gaq.push(['_setDomainName', 'ulica.ba']);
 _gaq.push(['_trackPageview']);
 (function() {
   var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
