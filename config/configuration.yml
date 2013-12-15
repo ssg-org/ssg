@@ -1,6 +1,6 @@
 development:
   ssg:
-    email_address:          "no-reply@ulica.ba
+    email_address:          "no-reply@ulica.ba"
     notify_address:         "notifications@sredisvojgrad.com"
     auth_enabled:           False
     auth_username:          "username"
