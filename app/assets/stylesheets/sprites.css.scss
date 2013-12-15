@@ -46,11 +46,19 @@
 	height: 50px;
 }
 
-
 @media only screen and (-webkit-min-device-pixel-ratio: 2),
        only screen and (-moz-min-device-pixel-ratio: 2),
        only screen and (-o-min-device-pixel-ratio: 2/1),
        only screen and (min-device-pixel-ratio: 2) {
+
+       .asset-logo-ulica {
+ 		      background: url(logo-ulica-main@2x.png) no-repeat;
+ 		      background-position: 0px 0px !important;
+ 		      background-repeat: no-repeat !important;
+ 		      -webkit-backgorund-size:95px 95px !important; 
+ 		      background-size: 95px 95px !important;
+ 		      -moz-background-size: 95px 95px !important;
+ 		    } 
 }
 
 .asset-learn-more-bs {
