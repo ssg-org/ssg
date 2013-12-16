@@ -17,7 +17,7 @@
 //= require ssg_map
 //= require fb
 //= require scrollpagination
-//= require leaflet
+//= require leaflet-0.7.1
 //= require jquery-fileupload/basic
 //= require jquery.validate.min
 //= require jquery.nivo.slider
