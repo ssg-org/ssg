@@ -242,4 +242,10 @@ bs:
             name:           'Unesite Vaše ime.'
             email:          'Unesite Vašu email adresu.'
             email_f:        'Email adresa je u pogrešnom formatu.'
-
+    errors:
+        not_found:
+            title:      "Stranica nije pronađena."
+            message:    "Izvinjavamo se, stanica koju tražite ne može biti pronađena."
+        internal_server_error:
+            title:      'Desila se greška.'
+            message:    "Izvinjavamo se, desila se greška prilikom izvršavanja ove stranice."

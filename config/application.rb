@@ -64,5 +64,8 @@ module Ssg
         :host => Config::Configuration.get(:ssg, :host),
         :port => Config::Configuration.get(:ssg, :port)
     }
+
+    # Handle exceptions with ExceptionsController
+    config.exceptions_app = ->(env) { ExceptionsController.action(:show).call(env) }
   end
 end

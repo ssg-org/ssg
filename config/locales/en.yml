@@ -241,4 +241,10 @@ en:
             name:           'Enter your name.'
             email:          'Enter your contact email address.'
             email_f:        'Provided email has incorrect format.'
-
+    errors:
+        not_found:
+            title:      "Page not found."
+            message:    "We're sorry, the page you are looking for is missing."
+        internal_server_error:
+            title:      'Something went wrong.'
+            message:    "We're sorry, something went wrong while processing your request."
