@@ -5,7 +5,7 @@ bs:
     shared:
         menu:
             what:   'Šta je Ulica.ba?'
-            we_are: ' Mi smo društvena mreža koja želi obezbijediti građanima život u ljepšem gradu.'
+            we_are: 'Mi smo društvena mreža koja želi obezbijediti građanima život u ljepšem gradu.'
             issues: 'PROBLEMI'
             discover:   'OTKRIJ SVE'
             cities:     'OPĆINE'
@@ -157,7 +157,7 @@ bs:
             comments:       'Komentara'
             unvote:         'Poništite svoj glas'
             vote:           'Dajte svoj glas'
-            login_to_vote:  'Molimo da se prijavite da bi ste glasali'
+            login_to_vote:  'Molimo da se prijavite da biste glasali'
             change_status:  'Promjeni status problema'
             reported_by:    'prijavio'
             share:          'Podijeli problem'
@@ -232,8 +232,8 @@ bs:
             password:       'Šifra je obavezna.'
             email:          'Email je obavezan.'
         register:
-            first_name:     'Molimo Vas uniesite vaše ime'
-            last_name:      'Molimo Vas uniesite vaše prezime'
+            first_name:     'Molimo Vas unesite vaše ime.'
+            last_name:      'Molimo Vas unesite vaše prezime.'
             username:       'Molimo Vas unesite korisničko ime.'
             city:           'Općina je obavezno polje, izaberite Vašu općinu.'
             email:          'Molimo Vas unesite Vašu email adresu.'
