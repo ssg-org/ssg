@@ -7,12 +7,12 @@
 	<table style="background-color: #E3E3E3; padding: 40px; width: 600px; height: 300px;">
 		<tr>
 			<td colspan="2" style="background-color: white; height: 50px; margin-bottom: 15px; padding: 10px 25px 10px 25px;">
-				<span>Zdravo i dobrodošli na Ulica.ba! Prije nego što počnete molimo Vas da potvrdite vašu email adresu pomoću linka ispod.</span>
+				<span>Zdravo i dobrodošli na ULICA.BA! Prije nego što počnete molimo Vas da potvrdite vašu email adresu pomoću linka ispod.</span>
 			</td>
 		</tr>
 		<tr>
 			<td rowspan="2" style="width: 100px; height: 100px; margin-right: 15px;">
-				<%=image_tag 'http://ssg-dev.herokuapp.com/assets/logo-ulica.png',:style => "width: 85px;", :alt => "ULICA.ba Logo" %>
+			  <%= image_tag image_path('logo-ulica.png'), :alt => "ULICA.BA Logo" %>
 			</td>
 			<td style="height: 45px; background-color: white; padding-top: 10px; padding-bottom: 10px; margin-bottom: 15px; text-align: center;">
 				<%= link_to 'Verificirajte email adresu', @url, :style => 'font-size: 30; text-decoration: none; color: #9dcc39;' %>
@@ -20,7 +20,7 @@
 		</tr>
 		<tr>
 
-			<td><span>Copyright 2013 ULICA.ba by Sredi Svoj Grad &amp; CPCD</span></td>
+			<td><span>Copyright 2013 ULICA.BA by Sredi Svoj Grad &amp; CPCD</span></td>
 		</tr>
 	</table>
   </body>

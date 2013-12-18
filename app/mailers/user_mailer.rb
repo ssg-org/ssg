@@ -35,7 +35,7 @@ class UserMailer < ActionMailer::Base
   def notify_admin_user_creation(user, token, url)
     @user = user
     @url = url + reset_password_users_path() + "?token=" + token + "&set_pwd=true"
-    using_locale(user.locale) { mail(:to => @user.email, :subject => "Kreiran Vam je administratorski nalog na ULICA.ba") }
+    using_locale(user.locale) { mail(:to => @user.email, :subject => "Kreiran Vam je administratorski nalog na ULICA.BA") }
   end
 
   def notify_issue_updated(user, updated_by_user, issue)
@@ -52,7 +52,7 @@ class UserMailer < ActionMailer::Base
     @name = name
     @email = email
 
-    mail(:subject => "New message from SrediSvojGrad: #{@subject} ")
+    mail(:subject => "New message from ULICA.BA: #{@subject} ")
   end
 
   protected
