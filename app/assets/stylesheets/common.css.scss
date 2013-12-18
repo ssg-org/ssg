@@ -439,20 +439,16 @@ textarea {
 .issue-info-title {
 	position:relative; 
 	overflow:hidden;
-	white-space:nowrap;
 	width:180px;
 	left:10px; 
-	height:17px;
+	height:30px;
 	width:180px;
-	overflow:hidden;
-	white-space:nowrap;
 	font-weight: bold;	
+	font-size:12px;
 }
 
 .issue-info-name {
 	position:relative; 
-	overflow:hidden;
-	white-space:nowrap;
 	width:180px;
 	left:10px; 
 	top:3px;
@@ -464,7 +460,7 @@ textarea {
 .issue-info-loc {
 	position:relative; 
 	left:10px; 
-	top:16px;	
+	top:5px;
 }
 
 .issue-info-user-image {
