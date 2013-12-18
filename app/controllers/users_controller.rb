@@ -52,7 +52,7 @@ class UsersController < ApplicationController
   # Login, logout, signup actions
   #
   def signup
-    user = User.create_ssg_user(params[:email], params[:password1], params[:city_id])
+    user = User.create_ssg_user(params[:email], params[:password1], params[:city_id], params[:first_name], params[:last_name])
     puts "User #{user.inspect}"
 
     if user.nil?

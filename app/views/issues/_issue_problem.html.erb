@@ -1,6 +1,11 @@
 <div class="issue-container-green">
   <div class="issue-cell">
-    <span class="issue-cell-title"><%= trans(@issue.title.upcase) %></span><br/>
+    <span class="issue-cell-title">
+      <% if @issue.city.active.nil? || !@issue.city.active %>
+        *
+      <% end %>
+      <%= trans(@issue.title.upcase) %>
+    </span><br/>
     <span class="issue-cell-subtitle"><%=@issue.category.name%>, <%=@issue.city.name%></span>
     <span class="issue-cell-date"><%= "#{t('issues.show.created')}: #{@issue.created_at.strftime("%d %b. %Y %H:%M")}" %></span>
     <br/>
@@ -14,6 +19,15 @@
       <%= image_tag img.image.issue_full, :style=> 'margin-bottom:20px;'%><br/>
     <% end %>
   </div>
+  <% if @issue.city.active.nil? ||  !@issue.city.active %>
+  <i style="font-size:12px; color:white; padding:10px;" id="city-warn">
+    <br/>
+    * <%=t('issues.new.city_warn1')%>
+    <br/>
+    <%=t('issues.new.city_warn2')%>
+    <a href="<%=faq_path%>#question_16" style="color:white; text-decoration:underline"/><%=t('issues.new.city_warn3')%></a>
+  </i>  
+  <% end %>
 </div>
 
 <div>

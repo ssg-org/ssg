@@ -19,7 +19,7 @@
 
 </style>
 <div style="position:relative;">
-	<div id="form-div" style="position:absolute; z-index:1000;  background-color:#9ecc3a; height:490px; width:380px; padding:30px;">
+	<div id="form-div" style="position:absolute; z-index:1000;  background-color:#9ecc3a; height:570px; width:380px; padding:30px;">
 		
 		<span class="value_strip() din-font" style="font-size:26px; color:white;"><%= t('issues.new.report')%></span><br/>
 		
@@ -37,6 +37,13 @@
 				<tr>
 					<td colspan="2">
 						<%= f.collection_select(:city_id, @user.get_cities, :id, :name, {:include_blank => t('issues.new.select_city'), :selected=>@user.get_city_id } ) %>
+						<i style="font-size:12px; color:white; display:none; padding:10px;" id="city-warn">
+							<br/>
+							<%=t('issues.new.city_warn1')%>
+							<br/>
+							<%=t('issues.new.city_warn2')%>
+							<a href="<%=faq_path%>#question_16" style="color:white; text-decoration:underline"/><%=t('issues.new.city_warn3')%></a> 
+						</i>
 					</td>
 				</tr>
 				<tr>
@@ -90,8 +97,8 @@
 	</div>
 	
 	
-	<div id="map" style="height:550px; float:right; width:550px;">
-		
+	<div id="map" style="height:630px; float:right; width:550px;">
+			
 	</div>
 </div>
 <br style="clear:both;"/>
@@ -109,7 +116,7 @@ $(document).ready(function() {
   $('#issue_city_id').selectbox();
 });
 
-var cities = <%=@user.get_cities.to_json(:only => [:id, :lat, :long]).html_safe%>;
+var cities = <%=@user.get_cities.to_json(:only => [:id, :lat, :long, :active, :name]).html_safe%>;
 var marker = null;
 var city_radius = 30;
 var city_lat = null;
@@ -150,6 +157,13 @@ $(function () {
 				city_long = cities[i]['long'];
 
 				$('#map').SSGMap('setView', city_lat, city_long, 13);
+
+				if (cities[i].active) {
+					$('#city-warn').hide();
+				}
+				else {
+					$('#city-warn').show();
+				}
 				return;
 			}
 		}

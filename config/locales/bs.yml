@@ -64,6 +64,8 @@ bs:
             username:   'Korisničko Ime'
             password:   'Lozinka'
             current_password:   'Unesite trenutnu lozinku'
+            first_name: 'Ime'
+            last_name: 'Prezime'
             new_password:   'Unesite novu lozinku'
             register_repeat_new_password:   'Ponovite novu lozinku'
             login_button:   'PRIJAVITE SE ODMAH'
@@ -143,6 +145,9 @@ bs:
             issue_desc:     'Opišite problem'
             btn:            'PRIJAVI'
             add_img:        'Dodaj sliku'
+            city_warn1:     'Odabrana općina trenutno nema uspostavljenu saradnju sa ULICA.BA platformom, te općinske vlasti neće biti automatski obavještene o prijavljenom problemu. '
+            city_warn2:     'Sredi Svoj Grad tim aktivno radi na uspostavljanju saradnje sa što većim brojm općina, zahvaljujemo se na prijavi i molimo Vas za strpljene. Više informacija o općinama s kojima je uspostvaljena saradnja možete naći '
+            city_warn3:     'ovdje.'            
         show:
             issues:         'PROBLEMI'
             delete_confirm: 'Da li stvarno želite obrisati ovaj problem?'
@@ -227,6 +232,8 @@ bs:
             password:       'Šifra je obavezna.'
             email:          'Email je obavezan.'
         register:
+            first_name:     'Molimo Vas uniesite vaše ime'
+            last_name:      'Molimo Vas uniesite vaše prezime'
             username:       'Molimo Vas unesite korisničko ime.'
             city:           'Općina je obavezno polje, izaberite Vašu općinu.'
             email:          'Molimo Vas unesite Vašu email adresu.'

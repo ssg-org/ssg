@@ -12,7 +12,7 @@ class City < TranslatedBase
   default_scope where(:deleted => false)
 	
 	def self.for_search
-	  return City.where(:active => true).all
+	  return City.all
   end
   
   def friendly_id_link

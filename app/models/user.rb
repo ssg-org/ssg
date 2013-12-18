@@ -66,7 +66,7 @@ class User < TranslatedBase
   end
 
   def get_cities
-    return City.where(:active => true).order(:name)
+    return City.order(:name)
   end
 
   def self.ssg_admins
@@ -355,7 +355,7 @@ class User < TranslatedBase
     return user
   end
 
-  def self.create_ssg_user(email, pwd, city_id)
+  def self.create_ssg_user(email, pwd, city_id, first_name, last_name)
 
     user = User.find_by_email(email)
 
@@ -371,6 +371,8 @@ class User < TranslatedBase
       user.uuid = UUIDTools::UUID.random_create.to_s
       user.active = false
       user.role = ROLE_USER
+      user.first_name = first_name
+      user.last_name = last_name
       user.city_id = city_id
       user.locale = I18n.default_locale
 
@@ -394,12 +396,12 @@ class User < TranslatedBase
   end
 
   def create_ssg_admin_user(email, city_id, first_name, last_name, role, url)
-    user = User.create_ssg_user(email, Digest::SHA1.hexdigest(Time.now().to_s), city_id)
+    user = User.create_ssg_user(email, Digest::SHA1.hexdigest(Time.now().to_s), city_id, first_name, last_name)
     
     unless user.nil?
       user.role = role
-      user.first_name = first_name
-      user.last_name = last_name
+      # user.first_name = first_name
+      # user.last_name = last_name
       user.active = true
       user.save
 

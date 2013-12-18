@@ -62,6 +62,8 @@ en:
             password:   'Password'
             current_password:   'Enter current password'
             new_password:   'Enter new password'
+            first_name: 'First name'
+            last_name: 'Last name'
             register_repeat_new_password:   'Repeat new password'
             login_button:   'LOG IN NOW'
             remember_me:  'Remember me'
@@ -143,6 +145,9 @@ en:
             upload_error:   'Error during upload. Please refresh your browser and try again'
             btn:            'REPORT'
             add_img:        'Choose image'
+            city_warn1:     "Municipality you have selected isn't currently engaged with Ulica.ba platform, hence municipally authorities are not going to be automatically notified about reported issue. "
+            city_warn2:     "Sredi Svoj Grad team is actively working on integrating as many municipalities as possible. We thank you for submission and kindly ask for your patience. More details on integrated municipalities you can find "
+            city_warn3:     'here.'
         show:
             issues:         'ISSUES'
             delete_confirm: 'Do you really want to delete this issue?'
@@ -226,6 +231,8 @@ en:
             password:       'Password is required.'
             email:          'Email is required.'
         register:
+            first_name:     'Please enter your first name'
+            last_name:      'Please enter your last name'
             username:       'Please enter your username.'
             city:           'City needs to be selected, please select city.'
             email:          'Please enter your email address.'

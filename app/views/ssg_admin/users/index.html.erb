@@ -30,7 +30,7 @@
               </tr>
             </thead> 
             <tbody>
-              <% @users.sort.each do |user| %>
+              <% @users.each do |user| %>
                 <tr id="<%= "row_#{user.id}" %>">
                   <td><%= user.id %></td>
                   <td><%= user.email %></td>
@@ -39,7 +39,7 @@
                   <td><%= user.city ? user.city.name : 'Nema opcine' %></td>
                   <td><%= user.issues.size %> <%= user.issues.size == 1 ? 'problem' : 'problema' %></td>
                   <td><%= user.user_type %></td>
-                  <td><%= user.created_at.strftime("%d/%m/%Y") %></td>
+                  <td><%= user.created_at %></td>
                   <td class="admin-list-toolbar-cell" align="center">
                     <div class="btn-toolbar">
                       <div class="btn-group">
