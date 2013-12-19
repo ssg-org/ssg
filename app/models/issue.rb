@@ -163,7 +163,7 @@ class Issue < TranslatedBase
       sort_by = params[:featured]
 
       if (sort_by == 'viewed')
-        order_by = 'view_count desc'
+        order_by = 'session_view_count desc'
       elsif (sort_by == 'votes')
         order_by = 'vote_count desc'
       elsif (sort_by == 'discussed')
