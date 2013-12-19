@@ -38,7 +38,7 @@
 	<div style="margin-top:35px;">
 		<ul id="menu-list">
 			<li class="menu-sub">
-				<%=link_to t('shared.menu.issues'), issues_path(), :class => "value_strip() font-black #{'menu-selected' if selection[:issues]}"%><br/>
+				<%=link_to t('shared.menu.issues'), root_path(), :class => "value_strip() font-black #{'menu-selected' if selection[:issues]}"%><br/>
 				<span class="font-gray"><%=t('shared.menu.discover')%></span><br/>
 				<% if selection[:issues]%>
 					<div class="selection"></div>

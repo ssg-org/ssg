@@ -70,7 +70,7 @@ $.fn.SSGMap = function(method) {
 	   };
 		var $this = $(this);
 		var opts = $.extend(defaults, method);
-		console.log(opts);
+		//console.log(opts);
 		$this.data('ssg_map', { opts : opts });
 
 
