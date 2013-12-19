@@ -8,7 +8,12 @@ class UsersController < ApplicationController
 
   def index
     @profile_user = User.find(params[:id])
-    @issues = @profile_user.issues.order('created_at desc')
+
+    if (@profile_user.active)
+      @issues = @profile_user.issues.order('created_at desc')
+    else
+      raise ActionController::RoutingError.new('Not Found')
+    end
   end
 
   def edit
