@@ -19,7 +19,7 @@
 		<%=link_to t('issues.right_menu.most_viewed'), issues_path(clear_params(:featured => :viewed)), { :class => "#{'r-menu-selected' if params[:featured] == 'viewed' }"} %><br/>
 		<%=link_to t('issues.right_menu.most_voted'), issues_path(clear_params(:featured => :votes)), { :class => "#{'r-menu-selected' if params[:featured] == 'votes' }"} %><br/>
 		<%=link_to t('issues.right_menu.most_discussed'), issues_path(clear_params(:featured => :discussed)), { :class => "#{'r-menu-selected' if params[:featured] == 'discussed' }"} %><br/>
-		<%=link_to t('issues.right_menu.most_shared'), issues_path(clear_params(:featured => :shared)), { :class => "#{'r-menu-selected' if params[:featured] == 'shared' }"} %><br/>
+		<%link_to t('issues.right_menu.most_shared'), issues_path(clear_params(:featured => :shared)), { :class => "#{'r-menu-selected' if params[:featured] == 'shared' }"} %><br/>
 	</div>
 	<br style="clear:both;">
 	<br />
