@@ -19,6 +19,8 @@ class Admin::IssuesController < AdminController
     @issue.updates << Update.new({ :subject => params[:subject], :text => params[:text], :user_id => @user.id })
     @issue.save!
 
+    @user.notify_issue_updated @issue
+
     redirect_to admin_issues_path()
   end
 
