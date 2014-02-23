@@ -771,7 +771,9 @@ a.account  {
 	font-size: 15px;
 	display: inline-block;
 	margin-top: 3px;
+	white-space: pre-line;
 }
+
 .comment-text-admin {
 	@extend .comment-text;
 	font-size: 13px;

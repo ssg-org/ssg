@@ -9,9 +9,9 @@
 	<div id="comment_editor" style="padding:25px 0 25px 0; overflow:auto;">
 			<%= image_tag @user.avatar, :style => 'width: 50px; float:left; margin-right:10px;' %>
 			<%= form_tag comments_path(), :id => 'comment_form', :remote => true do |f| %>
-				<%= text_field_tag :text, "", :style => 'width:300px;' %>
+				<%= text_area_tag :text, "", :rows => 3, :onfocus => "this.rows=10;", :style => 'width:470px; margin: 0; resize: vertical;' %>
 				<input type="hidden" name="issue_id" value="<%=issue.id%>" />
-				<%= ssg_button(t('shared.comments.comment'), { :onclick => "$('\#comment_form').submit();"}, { :style => 'height:32px; line-height:30px;' }) %>
+				<%= ssg_button(t('shared.comments.comment'), { :onclick => "$('\#comment_form').submit();"}, { :style => 'height:32px; line-height:30px; float: right;' }) %>
 			<% end %>
 	</div>
 <% end %>
