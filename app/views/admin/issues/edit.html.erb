@@ -14,7 +14,7 @@
       <%= text_field_tag :subject, nil, :class => 'input-xlarge', :required => true  %>
 
       <label>Opis</label>
-      <%= text_area_tag :text, nil, :style => 'width:90%; height:150px;', :required => true  %><br/>
+      <%= text_area_tag :text, nil, :style => 'width:90%; height:150px;' %><br/>
 
       <div style="text-align:center; margin-top:15px;">
         <button type="submit" class="btn">Ažuriraj</button>
@@ -61,7 +61,7 @@
                 <hr/>
                 <span style="font-size:20px;"><%=update.subject%></span><br/>
                 <span style="font-size:8px;"><%=update.created_at.strftime("%d %b. %Y")%> [<%=update.user.full_name %>]</span><br/>
-                <%=update.text%>
+                <%= raw update.text %>
               </td>
             </tr>
           <% end %>
@@ -69,6 +69,10 @@
       </table>
     </form>
   </div>
-
 </div>
 
+<% content_for :javascript do %>
+<script type="text/javascript">
+  bkLib.onDomLoaded(function() { nicEditors.allTextAreas() });
+</script>
+<% end -%>

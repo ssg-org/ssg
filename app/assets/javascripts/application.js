@@ -23,6 +23,7 @@
 //= require jquery.nivo.slider
 //= require i18n
 //= require i18n/translations
+//= require nicEdit
 //= require common
 
 
