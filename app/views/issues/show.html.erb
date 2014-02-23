@@ -176,8 +176,8 @@
 
 		<hr>
 		<br/>
-		<div style="width: 100%; height: 45px; line-height: 45px; background-color: #E6FAFC; text-align: center; font-size: 14px;">
-			<span style="display: inline-block; vertical-align: middle; font-weight: bold;"><%= "#{t('issues.show.status')}: #{@issue.get_status}".upcase %></span>			
+		<div style="width: 100%; height: 45px; background-color: #E6FAFC; display:table; font-size: 14px;">
+			<span style="text-align: center; display: table-cell; vertical-align:middle; font-weight: bold;"><%= "#{t('issues.show.status')}: #{@issue.get_status}".upcase %></span>			
 		</div>
 		<br>
 
@@ -200,7 +200,9 @@
 				</div>
 				<div class="issue-update-text">
 					<h4><%= update.subject %></h4>
-					<p>"<%= update.short_text %>"</p>
+					<div>
+						<%= raw update.text %>					
+					</div>
 				</div>
 				<div class="issue-update-time">
 					<%= update.updated_at.strftime("%d %b. %Y %H:%M") %>
