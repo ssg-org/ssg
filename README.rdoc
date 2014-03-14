@@ -1,7 +1,3 @@
-== Install SSG
+== COMING SOON
 
-
-- bundle install
-- rails s
-
-	Enjoy!!!
+Visit us on www.ulica.ba or www.sredisvojgrad.org
