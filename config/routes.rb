@@ -1,5 +1,12 @@
 Ssg::Application.routes.draw do
   root :to => 'issues#index'
+
+  namespace :api do
+    namespace :v1 do
+      resources :sessions, :only => [:create]
+      resources :issues
+    end
+  end
   
   resources  :users do
     collection do
