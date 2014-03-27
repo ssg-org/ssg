@@ -1,3 +1,18 @@
 == COMING SOON
 
-Visit us on www.ulica.ba or www.sredisvojgrad.org
+
+
+Kreirati github account ako nemate
+Instalirati VirtualBox
+Instalirati Vagrant
+Skinuti vagrant box
+command prompt
+vagrant add —name sag-hackday xxx.box
+vagrant init ssg-hackday
+vagrant up
+vagrant ssh
+re-generate ssh key
+register on github
+cd /vagrant
+git clone git@github.com:zpasal/ssg.git
+cd ssg

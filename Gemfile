@@ -6,7 +6,7 @@ gem 'rails', '3.2.6'
 
 gem 'i18n-js'
 # gem 'sqlite3'
-gem 'pg'
+gem 'sqlite3'
 #
 gem 'awesome_print'
 
