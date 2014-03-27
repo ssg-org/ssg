@@ -16,33 +16,8 @@ development:
     consumer_key:
     consumer_secret:        
   aws:
-    access_key:             AKIAIDBQTR4BEK6W5XTQ
-    access_secret:          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
-  newrelic:
-      app_name:             "ssg-dev"
-      key:                  9c08fdc3340241d7b2261079b490db0640780e3a
-  misc:
-    unique_view_epsilon:    3600
-production:
-  ssg:
-    email_address:          "no-reply@ulica.ba"
-    notify_address:         "notifications@sredisvojgrad.com"
-    auth_enabled:           False
-    auth_username:          "username"
-    auth_password:          "pass"
-    host:                   "localhost"
-    port:                   "3000"
-  fb:
-    site_url:               "https://graph.facebook.com"
-    scope:                  "email,user_photos"
-    application_id:         463608053690571
-    secret_key:             dbe6240714c1699358c828ddb741dfab
-  twitter:
-    consumer_key:
-    consumer_secret:        
-  aws:
-    access_key:             AKIAIDBQTR4BEK6W5XTQ
-    access_secret:          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
+    access_key:             AKIAJNQ5MEYLCS7WK5CA
+    access_secret:          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
   newrelic:
       app_name:             "ssg-dev"
       key:                  9c08fdc3340241d7b2261079b490db0640780e3a
