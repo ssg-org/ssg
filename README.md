@@ -47,5 +47,13 @@ bundle exec rails s
 * Install Imagemagic  
   * Macports (http://www.macports.org/) or
   * Native (http://www.imagemagick.org/)
-* Create ssh key if neccessery 
+* Clone repository and bundle
 
+```
+git clone git@github.com:zpasal/ssg.git
+cd ssg
+bundle
+bundle exec rake db:migrate
+bundle exec rake db:seed
+bundle exec rails s
+```
