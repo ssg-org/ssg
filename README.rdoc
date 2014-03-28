@@ -1,7 +1,5 @@
 == HACK-DAY
 
-= WINDOWS
-
 == HACKDAY RULES
 
 * Send your github username to pasalic.zaharije@gmail.com
@@ -10,6 +8,8 @@
 * Create branch for each feature
 * If you dont know RoR - pair with somebady that know
 * Happy coding :)
+
+= WINDOWS
 
 * Create github account 
 * Install Imagemagick - http://www.imagemagick.org/
