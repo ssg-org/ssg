@@ -32,9 +32,9 @@ City.create({ :name => 'Travnik', :lat =>  44.222321, :long => 17.6651 })
 City.create({ :name => 'Tuzla', :lat =>  444.532841, :long => 18.6705 })
 City.create({ :name => 'Zenica', :lat =>  44.198116, :long => 17.915890  })
 
-Category.create({ :name => 'Lice grada', :color => '44A8D6', :icon => 'fa-truck.jpg', :description => 'obrušene fasade, grafiti, nepropisno plakatiranje' })
-Category.create({ :name => 'Zelene i rekreativne površine',  :color => 'E23408', :icon => 'fa-leaf.jpg'  })
-Category.create({ :name => 'Zdravlje i sigurnost gradjana',  :color => '683b17', :icon => 'fa-road.jpg'  })
+Category.create({ :name => 'Lice grada',                     :color => '44A8D6', :icon => 'fa-truck', :map_icon => 'sabracajiparking.png', :description => 'obrušene fasade, grafiti, nepropisno plakatiranje' })
+Category.create({ :name => 'Zelene i rekreativne površine',  :color => 'E23408', :icon => 'fa-leaf', :map_icon =>  'licegrada.png'})
+Category.create({ :name => 'Zdravlje i sigurnost gradjana',  :color => '683b17', :icon => 'fa-road', :map_icon => 'putevi.png'  })
 
 User.create({ :email => 'administrator@sredisvojgrad.com', :password_hash => Digest::SHA256.hexdigest('admin'), :uuid => UUIDTools::UUID.random_create.to_s, :active => true, :role => User::ROLE_SSG_ADMIN, :locale => :bs })
 
