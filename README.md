@@ -1,6 +1,6 @@
-== HACK-DAY
+# ULICA.BA HACK-DAY
 
-== HACKDAY RULES
+## HACKDAY RULES
 
 * Send your github username to pasalic.zaharije@gmail.com
 * Everyboady will have read/write access to this repository
@@ -9,39 +9,39 @@
 * If you dont know RoR - pair with somebady that know
 * Happy coding :)
 
-= WINDOWS
+## WINDOWS
 
 * Create github account 
 * Install Imagemagick - http://www.imagemagick.org/
-* Install Rails Installer (all default options) + 'Configure git and ssh when installation has completed'
+* Install Rails Installer (http://railsinstaller.org/en) 
 * After installation has finished, your public key will be copied into clipboard. Open
 github and add new ssh key
 
-'
+```
 git clone git@github.com:zpasal/ssg.git
 cd ssg
 bundle
 bundle exec rake db:migrate
 bundle exec rake db:seed
-'
+```
 
 * Set SSL Root certificates
 
-'
+```
 ruby ssl_patch.rb
 set SSL_CERT_FILE=C:\RailsInstaller\cacert.pem
-'
+```
 
 * start server
 
-'
+```
 bundle exec rails s
-'
+```
 
 * Allow access to firewall if Windows asks
 
 
-= MAC
+## MAC
 * Create github account
 * Install Ruby 1.9.3 via RVM (https://rvm.io/)
 * Install Imagemagic  
