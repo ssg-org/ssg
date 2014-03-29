@@ -1,9 +1,11 @@
 <tr>
   <td colspan="2">
     <div class='update'>
-      <span style="font-size:20px;"><%=update.subject%></span><br/>
-      <span style="font-size:8px;"><%=update.created_at.strftime("%d %b. %Y")%> [<%=update.user.full_name %>]</span><br/>
-      <%= raw update.text %>
+      <p class='update-subject'><%=update.subject%></p>
+      <p class='update-header'><%=update.created_at.strftime("%d %b. %Y")%> [<%=update.user.full_name %>]</p>
+      <div class='update-text'>
+        <%= raw update.text %>
+    </div>
     </div>
   </td>
 </tr>
