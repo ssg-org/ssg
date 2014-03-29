@@ -6,6 +6,8 @@ class IssuesController < ApplicationController
   def index
     params[:offset] ||= 0
     @issues = Issue.get_issues(params, 12, params[:offset].to_i)
+    # @cities is defined for combobox issues with mapping
+    @cities = @user.get_cities
     @city_names = collect_city_names() unless @city_names
     @city_names.unshift([t('issues.right_menu.all_counties'), 0])
   end

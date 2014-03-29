@@ -91,6 +91,8 @@ GEM
     jquery-rails (3.0.4)
       railties (>= 3.0, < 5.0)
       thor (>= 0.14, < 2.0)
+    jquery-ui-rails (4.1.2)
+      railties (>= 3.1.0)
     json (1.8.1)
     jwt (0.1.8)
       multi_json (>= 1.5)
@@ -222,6 +224,7 @@ DEPENDENCIES
   jhtmlarea
   jquery-fileupload-rails
   jquery-rails
+  jquery-ui-rails
   lorem
   mini_magick (= 3.5.0)
   newrelic_rpm

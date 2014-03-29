@@ -3,6 +3,7 @@
 
 bs:
     shared:
+        prompt_city: 'Unesite željenu opštinu!'
         menu:
             what:   'Šta je Ulica.ba?'
             we_are: 'Mi smo društvena mreža koja želi obezbijediti građanima život u ljepšem gradu.'

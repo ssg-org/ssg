@@ -48,7 +48,7 @@
 	
 	<div class="filter">
 		<span class="title value_strip()"><%= t('issues.right_menu.cities')%></span><br/>
-		<%= select_tag :city_id, options_for_select(@city_names), { :id => 'city_select' } %><br />
+		<%= select_tag :cmb_selected_city, options_from_collection_for_select(@cities, :slug, :name), { :id => 'cmb_city_select', :onChange=>"return selectCity(this);", :prompt =>'' } %><br />
 	</div>
 	
 </div>
@@ -63,17 +63,23 @@
 			$("select").val(<%= params[:city].to_i %>);
 		<% end %>
 
-	  $('select').selectbox();
+	  $('select').combobox();
 
 	  var url = '<%= issues_path(clear_params({:city => nil})) %>';
 
-		$('select').on('change', function() {
-			if (this.value == 0) {
-				window.location.href = url;
-			} else {
-		  	window.location.href = url + "&city=" + this.value;
-		  }
-		});
+		
 	});
+	function selectCity(selectedItem) {
+		
+		var item = selectedItem.item;
+		console.log(item);
+		if (this.value == 0) {
+			window.location.href = url;
+		} else {
+		
+	  	window.location.href = '<%= cities_path() %>' + '/' + item.value;
+		  
+	  }
+	};
 
 </script>

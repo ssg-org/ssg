@@ -11,6 +11,18 @@
 		color: #666666;
 	}
 
+	.custom-combobox-input{
+		width:200px !important;
+		background: #FFFFFF;
+	}
+	.custom-combobox-toggle{
+		background: #FFFFFF;
+	}
+	#email{
+		margin-top:15px;
+	}
+
+
 </style>
 
 <br />
@@ -47,7 +59,7 @@
 		</div>
 		<br />
 		<%= form_tag signup_users_path(), :id => "register_form" do %>
-			<%= select_tag :city_id, options_for_select(@city_names), { } %><br />
+			<%= select_tag :cmb_city_select, options_for_select(@city_names), { } %><br />
 			<%= text_field_tag :email, nil, :placeholder => t('users.login.email'), :class => "" %><br/>
 			<%= text_field_tag :first_name, nil, :placeholder => t('users.login.first_name'), :class => "" %><br/>
 			<%= text_field_tag :last_name, nil, :placeholder => t('users.login.last_name'), :class => "" %><br/>
@@ -111,6 +123,9 @@
 		return false;
 	});
 
+	function selectCity(selectedItem) {
+		$("#cmb_city_select").selectedItem = selectedItem;
+	}
 	// Validation
 	$('#login_form').validate({
 		rules: {
