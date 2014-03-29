@@ -2,6 +2,7 @@
 class IssuesController < ApplicationController
   include Concerns::ImageUploadHandler
   
+  before_filter :redirect_guests_to_login, only: [:new]
   disable_layout_for_ajax
   
   def index
@@ -82,5 +83,14 @@ class IssuesController < ApplicationController
   def follow
     @user.follow(params[:id])
     redirect_to issues_path()
+  end
+
+  private
+
+  def redirect_guests_to_login
+    if @user.guest?
+      flash[:error] = t('issues.new.login')
+      redirect_to login_users_path(:create_issue => true)
+    end
   end
 end

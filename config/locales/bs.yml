@@ -149,6 +149,7 @@ bs:
             city_warn1:     'Odabrana općina trenutno nema uspostavljenu saradnju sa ULICA.BA platformom, te općinske vlasti neće biti automatski obavještene o prijavljenom problemu. '
             city_warn2:     'Sredi Svoj Grad tim aktivno radi na uspostavljanju saradnje sa što većim brojm općina, zahvaljujemo se na prijavi i molimo Vas za strpljene. Više informacija o općinama s kojima je uspostvaljena saradnja možete naći '
             city_warn3:     'ovdje.'            
+            login:          'Morate se prijaviti kako biste mogli dodati problem.'
         show:
             issues:         'PROBLEMI'
             delete_confirm: 'Da li stvarno želite obrisati ovaj problem?'
