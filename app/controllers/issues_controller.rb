@@ -1,5 +1,6 @@
 # encoding: UTF-8
 class IssuesController < ApplicationController
+  include Concerns::ImageUploadHandler
   
   disable_layout_for_ajax
   
@@ -24,14 +25,8 @@ class IssuesController < ApplicationController
   end
   
   def create
-    image_count = params[:image_count].to_i
-    image_ids = []
-    (0..image_count-1).each do |i|
-      image_ids << params["image_#{i}"]
-    end
-
     flash[:info] = t('issues.new.success')
-    issue = @user.create_issue(params[:issue][:title], params[:issue][:category_id], params[:issue][:city_id], params[:issue][:description], params[:issue][:lat], params[:issue][:long],image_ids)
+    issue = @user.create_issue(params[:issue][:title], params[:issue][:category_id], params[:issue][:city_id], params[:issue][:description], params[:issue][:lat], params[:issue][:long], image_ids)
     
     url = "#{request.protocol}#{request.host_with_port}#{issue_path(issue.friendly_id)}"
 

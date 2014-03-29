@@ -1,5 +1,6 @@
 # encoding: UTF-8
 class Admin::IssuesController < AdminController
+  include Concerns::ImageUploadHandler
 
   def index
     @issues = Issue.where(:city_id => @user.city_id).order('created_at desc')
@@ -19,12 +20,7 @@ class Admin::IssuesController < AdminController
     @issue.updates << Update.new({ :subject => params[:subject], :text => params[:text], :user_id => @user.id })
     @issue.save!
 
-    image_count = params[:image_count].to_i
-    image_ids = []
-    (0..image_count-1).each do |i|
-      image_ids << params["image_#{i}"]
-    end
-    Image.update_all({ :issue_id => @issue.id}, { :id => image_ids })
+    @issue.assign_images(image_ids)
 
     @user.notify_issue_updated @issue
 

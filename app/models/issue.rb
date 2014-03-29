@@ -179,4 +179,9 @@ class Issue < TranslatedBase
     
     return @issues_relation.limit(limit).offset(offset).order(order_by).includes([:user, :city, :category, :images, :category])
   end
+
+  def assign_images(image_ids)
+    image_ids = Array(image_ids)
+    Image.where(:id => image_ids).update_all({ :issue_id => id })
+  end
 end
