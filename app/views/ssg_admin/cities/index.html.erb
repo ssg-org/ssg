@@ -83,7 +83,9 @@
             <thead>
               <tr role="row">
                 <th role="columnheader" tabindex="0" rowspan="1" colspan="1">#</th>
-                <th role="columnheader" tabindex="0" rowspan="1" colspan="1">Naziv</th>
+                <th role="columnheader" tabindex="0" rowspan="1" colspan="1">
+                  <a class="show" href="<%=ssg_admin_cities_path({sort: get_switched_sort})%>">Naziv<%=get_sort_icon(@sort)%></a>
+                </th>
                 <th role="columnheader" tabindex="0" rowspan="1" colspan="1">Aktivna?</th>
                 <th role="columnheader" tabindex="0" rowspan="1" colspan="1">Latituda</th>
                 <th role="columnheader" tabindex="0" rowspan="1" colspan="1">Longituda</th>

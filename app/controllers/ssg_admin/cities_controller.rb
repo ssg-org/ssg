@@ -4,7 +4,8 @@ class SsgAdmin::CitiesController < SsgAdminController
   before_filter :check_ssg_admin
 
   def index
-    @cities = City.order("name #{sort_option}")
+    @sort_option = sort_option
+    @cities = City.order("name #{@sort_option}")
   end
 
   def destroy
@@ -33,6 +34,6 @@ class SsgAdmin::CitiesController < SsgAdminController
 
   def sort_option
     permited_sorts = ["ASC", "DESC"]
-    params[:sort].present? && permited_sorts.include?(params[:sort].upcase) ? params[:sort] : "ASC"
+    params[:sort].present? && permited_sorts.include?(params[:sort].upcase) ? params[:sort].upcase : "ASC"
   end
 end
