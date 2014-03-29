@@ -17,10 +17,10 @@ class Admin::IssuesController < AdminController
   def update
     @issue.status = params[:status].to_i
     @issue.category_id = params[:category_id]
-    @issue.updates << Update.new({ :subject => params[:subject], :text => params[:text], :user_id => @user.id })
     @issue.save!
 
-    @issue.assign_images(image_ids)
+    update = @issue.updates.create!(update_attributes.merge({ :user_id => @user.id }))
+    update.assign_images(image_ids)
 
     @user.notify_issue_updated @issue
 
@@ -40,4 +40,7 @@ class Admin::IssuesController < AdminController
     @issue = current_city.issues.find_by_id(params[:id])
   end
 
+  def update_attributes
+    params.slice(:subject, :text)
+  end
 end
