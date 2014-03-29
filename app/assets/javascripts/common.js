@@ -1,8 +1,7 @@
-<% environment.context_class.instance_eval { include ApplicationHelper} %>
 L.Icon.Default.imagePath = '/assets/images';
 
 
-// convert all <select> elements    to selectbox
+// convert all <select> elements	to selectbox
 //$('select').selectbox();
 
 // Google tracker
@@ -47,19 +46,19 @@ function goto_url(url){ window.location.href = url; }
 //:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
 function distance(lat1, lon1, lat2, lon2, unit) {
-var radlat1 = Math.PI * lat1/180
-var radlat2 = Math.PI * lat2/180
-var radlon1 = Math.PI * lon1/180
-var radlon2 = Math.PI * lon2/180
-var theta = lon1-lon2
-var radtheta = Math.PI * theta/180
-var dist = Math.sin(radlat1) * Math.sin(radlat2) + Math.cos(radlat1) * Math.cos(radlat2) * Math.cos(radtheta);
-dist = Math.acos(dist)
-dist = dist * 180/Math.PI
-dist = dist * 60 * 1.1515
-if (unit=="K") { dist = dist * 1.609344 }
-if (unit=="N") { dist = dist * 0.8684 }
-// return dist
+	var radlat1 = Math.PI * lat1/180
+	var radlat2 = Math.PI * lat2/180
+	var radlon1 = Math.PI * lon1/180
+	var radlon2 = Math.PI * lon2/180
+	var theta = lon1-lon2
+	var radtheta = Math.PI * theta/180
+	var dist = Math.sin(radlat1) * Math.sin(radlat2) + Math.cos(radlat1) * Math.cos(radlat2) * Math.cos(radtheta);
+	dist = Math.acos(dist)
+	dist = dist * 180/Math.PI
+	dist = dist * 60 * 1.1515
+	if (unit=="K") { dist = dist * 1.609344 }
+	if (unit=="N") { dist = dist * 0.8684 }
+	// return dist
     // Hack to disable distance validation on creation of issue remove later
     return 0
 };
@@ -69,16 +68,16 @@ function global_locale_change(e) {
 };
 
 function submitForm(form_id_selector) {
-$('#form-error-div ul').empty();
+	$('#form-error-div ul').empty();
     $('#form-error-div').hide();
-return $(form_id_selector).submit();
+	return $(form_id_selector).submit();
 };                                                                    
 
 jQuery.validator.setDefaults({
     onkeyup: false,
     onclick: false,
     errorPlacement: function(error, element) {
-    $('#form-error-div').show();
+    		$('#form-error-div').show();
 
             var form = $(element).closest('form')[0];
             // Hack since for some reasone required is not working on select
@@ -90,19 +89,14 @@ jQuery.validator.setDefaults({
                 return;
             }
 
-    // add error class to select box
-    if (element.is("select")) {
-    var id_selectbox = '.sbHolder_' + element.attr('id');
-    $(id_selectbox).addClass('error');
-    }
+    		// add error class to select box
+    		if (element.is("select")) {
+    			var id_selectbox = '.sbHolder_' + element.attr('id');
+    			$(id_selectbox).addClass('error');
+    		}
 
         //error.appendTo(element.prev());
         appendErrorText(error.text());
-
-        // Hide message
-        setTimeout(function() {
-            $("#form-error-div").hide('fade', {}, 1000)
-        }, 1500);
     }
 });
 
@@ -127,6 +121,20 @@ function errorDisplayed(error_text) {
 function appendErrorText(error_text) {
     $('#form-error-div ul').append('<li>' + error_text + '</li>');
 };
+
+//Format string implementation
+if (!String.prototype.format) {
+  String.prototype.format = function() {
+    var args = arguments;
+    return this.replace(/{(\d+)}/g, function(match, number) { 
+      return typeof args[number] != 'undefined'
+        ? args[number]
+        : match
+      ;
+    });
+  };
+}
+
 
 /* autocomplete combobox widget
     #######implement multi language#######*/
@@ -260,11 +268,3 @@ $(function() {
 });
 
 /* end of autocomplete combobox widget */
-
-
-
-
-
-
-
-
