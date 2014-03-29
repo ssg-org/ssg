@@ -34,6 +34,11 @@ class Issue < TranslatedBase
     paginate(page: page, per_page: ISSUES_PER_PAGE)
   end
 
+  def self.sort_by(column=nil)
+    sort_criteria = column || 'vote_count DESC'
+    order(sort_criteria)
+  end
+
   def mark_as_viewed(user_uniq_cookie_id) 
     uniq_view = self.unique_views.where(:session => user_uniq_cookie_id).first
 
