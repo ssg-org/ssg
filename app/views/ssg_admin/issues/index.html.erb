@@ -16,19 +16,35 @@
             <thead>
               <tr role="row">
                 <th role="columnheader" tabindex="0" rowspan="1" colspan="1">#</th>
-                <th role="columnheader" tabindex="0" rowspan="1" colspan="1">Naziv</th>
-                <th role="columnheader" tabindex="0" rowspan="1" colspan="1">Korisnik</th>
-                <th role="columnheader" tabindex="0" rowspan="1" colspan="1">Status</th>
-                <th role="columnheader" tabindex="0" rowspan="1" colspan="1">Općina</th>
-                <th role="columnheader" tabindex="0" rowspan="1" colspan="1">Glasovi</th>
-                <th role="columnheader" tabindex="0" rowspan="1" colspan="1">Pregled</th>
-                <th role="columnheader" tabindex="0" rowspan="1" colspan="1">Kreiran</th>
-                <th role="columnheader" tabindex="0" rowspan="1" colspan="1">Modifikovan</th>
+                <th role="columnheader" tabindex="0" rowspan="1" colspan="1">
+                  <%= link_to 'Naziv', sort_by('title ASC') %>
+                </th>
+                <th role="columnheader" tabindex="0" rowspan="1" colspan="1">
+                  <%= link_to 'Korisnik', sort_by('user_id') %>
+                </th>
+                <th role="columnheader" tabindex="0" rowspan="1" colspan="1">
+                  <%= link_to 'Status', sort_by('status') %>
+                </th>
+                <th role="columnheader" tabindex="0" rowspan="1" colspan="1">
+                  <%= link_to 'Općina', sort_by('city_id') %>
+                </th>
+                <th role="columnheader" tabindex="0" rowspan="1" colspan="1">
+                  <%= link_to 'Glasovi', sort_by('vote_count DESC') %>
+                </th>
+                <th role="columnheader" tabindex="0" rowspan="1" colspan="1">
+                  <%= link_to 'Pregled', sort_by('view_count DESC') %>
+                </th>
+                <th role="columnheader" tabindex="0" rowspan="1" colspan="1">
+                  <%= link_to 'Kreiran', sort_by('created_at DESC') %>
+                </th>
+                <th role="columnheader" tabindex="0" rowspan="1" colspan="1">
+                  <%= link_to 'Modifikovan', sort_by('updated_at DESC') %>
+                </th>
                 <th role="columnheader" tabindex="0" rowspan="1" colspan="1">Komande</th>
               </tr>
             </thead> 
             <tbody>
-              <% @issues.sort.each do |issue| %>
+              <% @issues.each do |issue| %>
                 <tr id="<%= "row_#{issue.id}" %>">
                   <td><%= issue.id %></td>
                   <td><%= link_to truncate(issue.title, :length => 20), issue_path(issue), :target => "_blank" %></td>
