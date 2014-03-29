@@ -8,6 +8,10 @@
 	
 </div>
 
+<div id="on_load_show">
+  <%= render :partial => 'yt_video'%>
+</div>
+
 <%= render :partial => 'right_menu' %>
 
 <!--
@@ -46,6 +50,21 @@
              delay += 100;
          });
      };
+
+     // load youtube in colorbox
+      if (document.cookie.indexOf('visited=true') == -1) {
+          var fifteenDays = 1000*60*60*24*1;
+          var expires = new Date((new Date()).valueOf() + fifteenDays);
+          document.cookie = "visited=true;expires=" + expires.toUTCString();
+          $.colorbox({
+            iframe      : true,
+            innerWidth  : 560,
+            innerHeight : 315,
+            href        : "//www.youtube.com/embed/oj873yVsUJ0"
+          });
+      }
+
+      
             
   });
 </script>
