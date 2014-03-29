@@ -22,6 +22,8 @@ class Issue < TranslatedBase
 
   has_many		:comments, :dependent => :destroy
   has_many    :images, :dependent => :destroy
+  has_many    :issue_images, class_name: 'Image', conditions: { :update_id => nil }
+  has_many    :update_images, class_name: 'Image', conditions: 'update_id IS NOT NULL'
   has_many    :votes, :dependent => :destroy
   has_many    :unique_views, :dependent => :destroy
   has_many    :updates
