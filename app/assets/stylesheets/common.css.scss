@@ -1079,3 +1079,29 @@ a.account  {
 	text-align: center;
 	margin-top: 100px;
 }
+
+.contrib-header {
+	padding: 0px 30px 30px 30px;
+	color : #0f485e;
+}
+
+.contrib {
+	text-align:center;
+}
+
+.contrib ul {
+	list-style:none;	
+}
+
+.contrib li {
+	display: inline-block;
+}
+
+.contrib li img {
+	box-shadow: 0px 0px 5px #888888;
+	margin:5px;
+}
+
+.bottom-spacer {
+	height: 80px;
+}

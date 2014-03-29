@@ -1,5 +1,7 @@
 Ssg::Application.routes.draw do
   root :to => 'issues#index'
+
+  get 'contributors' => 'contributors#index'
   
   resources  :users do
     collection do
