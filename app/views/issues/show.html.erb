@@ -37,7 +37,7 @@
 		.issue-info-vote-count {
 			color: #A4D43C;
 			font-weight: bold;
-			font-size: 26px;
+			font-size: 26px;			
 		}
 		.issue-info-count {
 			font-weight: bold;
@@ -91,7 +91,19 @@
 					<%=t('issues.show.updates')%> <span class="issue-header-count"><%=@issue.updates.count%></span>
 				</a>
 			</li>
+			<li style="float: right; margin-right: 0;">
+			  <% url = issue_url(@issue) %>
+
+			  <a href="#" onclick="fb_share('ULICA.BA', '<%= j @issue.title %>', '<%= j @issue.description %>', '<%= j url %>', '<%= "#{request.protocol}#{request.host_with_port}#{@issue.image_url}" %>')">
+			    <%=image_tag 'fbshare.png', :border => '0' %>
+			  </a>
+
+			  <a href='<%= @issue.twiter_share_link(url) %>' onclick="window.open(this.href, 'mywin','left=20,top=20,width=500,height=300,toolbar=1,resizable=0'); return false;" data-via="ULICA.BA">
+			    <%=image_tag 'twshare.png' %>
+			  </a>  
+  		</li>
 		</ul>
+		<div style="clear: both;"></div>
 
 		<% if params[:view].blank? %>
 			<%= render :partial => 'issue_problem'%>
@@ -126,7 +138,13 @@
 				<tr>
 					<th rowspan="2">
 						<div class="issue-info-heart-container">
-							<div class="issue-info-heart"></div>
+							<% if @user.guest? %>
+								<i style="padding-right: 15px;" class="fa fa-heart-o fa-3x font-gray"></i>
+							<% elsif !@already_voted %>
+								<i style="padding-right: 15px;" class="fa fa-heart-o fa-3x font-green" onclick="vote()"></i>
+							<% else %>
+								<i style="padding-right: 15px;" class="fa fa-heart fa-3x font-green"></i>
+							<% end %>
 							<span class="issue-info-vote-count"><%= @issue.vote_count %></span>
 						</div>
 					</th>
@@ -144,19 +162,11 @@
 			</table>
 		</div>
 
-		<div style="margin-bottom:10px;">
-			<% if !@user.guest? %>
-				<% if @issue.user_id != @user.id%>
-					<% if @already_voted %>
-						<%= ssg_button_v2("&nbsp;&nbsp;&nbsp;&nbsp;#{t('issues.show.unvote')}&nbsp;&nbsp;&nbsp;&nbsp;", { :onclick => 'unvote()' } )%>
-					<% else %>
-						<%= ssg_button_v2("&nbsp;&nbsp;&nbsp;&nbsp;#{t('issues.show.vote')}&nbsp;&nbsp;&nbsp;&nbsp;", { :onclick => 'vote()' })%>
-					<% end %>
-				<% end %>
-			<% else %>
+		<% if @user.guest? %>
+			<div style="margin-bottom:10px;">
 				<p class="font-green font-18" style="text-align: center;"><%= t('issues.show.login_to_vote')%></p>
-			<% end %>
-		</div>
+			</div>
+		<% end %>
 
 		<% if @user.ssg_admin? || @issue.user_id == @user.id %>
 			<div style="margin-bottom:10px;">
@@ -244,16 +254,6 @@ function vote() {
 function change_status(el) {
 	$.ajax({
 		url : '<%=change_status_issue_path(@issue.id)%>' + '?status=' + $(el).val(),
-		type : 'post',
-		success : function() {
-			window.location = '<%=issue_path(params[:id])%>';
-		}
-	});
-}
-
-function unvote() {
-	$.ajax({
-		url : '<%=unvote_issue_path(@issue.id)%>',
 		type : 'post',
 		success : function() {
 			window.location = '<%=issue_path(params[:id])%>';

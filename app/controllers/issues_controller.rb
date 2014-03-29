@@ -51,7 +51,7 @@ class IssuesController < ApplicationController
       # TODO Refactor this
       @issue.mark_as_viewed(cookies[:unique])
 
-      @already_voted = !(@issue.votes.where(:user_id => @user.id).first.nil?)
+      @already_voted = (@user.id == @issue.user_id ) || !@issue.votes.where(:user_id => @user.id).empty?
     end
   end
 
