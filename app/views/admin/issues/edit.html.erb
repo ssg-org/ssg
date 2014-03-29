@@ -55,16 +55,7 @@
           <tr>
             <td colspan="2"><%=@issue.description%></td>
           </tr>
-          <% @issue.updates.order('created_at desc').each do |update|%>
-            <tr>
-              <td colspan="2">
-                <hr/>
-                <span style="font-size:20px;"><%=update.subject%></span><br/>
-                <span style="font-size:8px;"><%=update.created_at.strftime("%d %b. %Y")%> [<%=update.user.full_name %>]</span><br/>
-                <%= raw update.text %>
-              </td>
-            </tr>
-          <% end %>
+          <%= render @issue.updates.order('created_at desc') %>
         </tbody>
       </table>
     </form>

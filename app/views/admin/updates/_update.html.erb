@@ -1,0 +1,9 @@
+<tr>
+  <td colspan="2">
+    <div class='update'>
+      <span style="font-size:20px;"><%=update.subject%></span><br/>
+      <span style="font-size:8px;"><%=update.created_at.strftime("%d %b. %Y")%> [<%=update.user.full_name %>]</span><br/>
+      <%= raw update.text %>
+    </div>
+  </td>
+</tr>
