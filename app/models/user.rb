@@ -225,7 +225,7 @@ class User < TranslatedBase
       })
       issue.save
 
-      Image.update_all({ :issue_id => issue.id}, { :id => image_ids })
+      issue.assign_images(image_ids)
 
       return issue
     end

@@ -15,7 +15,7 @@
   </div>
   <br />
   <div  class="issue-cell">
-    <% @issue.images.each do |img| %>
+    <% @issue.issue_images.each do |img| %>
       <%= image_tag img.image.issue_full, :style=> 'margin-bottom:20px;'%><br/>
     <% end %>
   </div>
