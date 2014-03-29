@@ -14,8 +14,8 @@ class Issue < TranslatedBase
   default_scope where('status <> 4')
 
   attr_accessor :image_url, :short_desc, :issue_url
-  attr_accessible  :title, :category, :city, :description, :user, :lat, :long, :status, :vote_count, :view_count, :comment_count, :share_count, :created_at
-
+  attr_accessible  :title, :category, :city, :description, :user, :lat, :long, :status, :vote_count, :view_count, :comment_count, :share_count, :created_at, :sort_date
+  
   belongs_to 	:user
   belongs_to  :category
   belongs_to	:city
@@ -168,6 +168,8 @@ class Issue < TranslatedBase
         order_by = 'vote_count desc'
       elsif (sort_by == 'discussed')
         order_by = 'comment_count desc'
+      #elsif (sort_by == 'updated')
+       # order_by = 
       end
     end
 
