@@ -26,6 +26,7 @@ en:
             logout:     'LOGOUT'
             admin_login: 'ADMIN LOGIN'
             error:      'Please fill in all requested fields and try again.'
+            contrib:     'CONTRIBUTORS'            
         footer:
             tos:        'Terms of use and privacy policy'
             help:       'Help & FAQ'

@@ -1,5 +1,5 @@
 <div class="breadcrumb-container" >
-  <a href="/">ULICA.BA</a> / <span>CONTRIBUTORS</span>
+  <a href="/">ULICA.BA</a> / <span><%= t('shared.menu.contrib')%></span>
 </div>  
 
 <div class="contrib-header">
@@ -17,9 +17,10 @@
 
 <div class="contrib">
   <ul>
-    <% (1..12).each do |idx|%>  
-    <li><a href="www.hub387.com"><%= image_tag "contribs/contrib#{idx}.png", :style => 'width: 220px;'%></a></li>
+    <% (1..11).each do |idx|%>  
+    <li><%= image_tag "contribs/contrib#{idx}.png", :style => 'width: 220px;'%></li>
     <% end %>
+    <li><a href="http://www.hub387.com"><%= image_tag "contribs/contrib12.png", :style => 'width: 220px;'%></a></li>
   </ul>
 </div>
 

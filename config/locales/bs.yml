@@ -26,6 +26,7 @@ bs:
             logout:     'ODJAVA'
             admin_login: 'ADMIN PRIJAVA'
             error:      'Molimo Vas popunite sva obavezna polja i pokušate ponovo.'
+            contrib:     'SARADNICI'
         footer:
             tos:        'Uslovi korištenja i privatnost'
             help:       'Pomoć i FAQ'
