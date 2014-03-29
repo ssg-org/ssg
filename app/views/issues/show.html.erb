@@ -98,26 +98,6 @@
 			<br />
 			<%= collection_select(:get, :status, @user.ssg_admin? ? Issue.all_statuses : Issue.user_statuses, :id, :name, { :selected => @issue.status }, { :onChange => "return change_status(this);" } ) %> <br />
 		<% end %>
-
-		<% if params[:view].blank? %>
-			<% @issue.updates.order('created_at desc').each do |update| %>			
-			<div class="issue-update-container">
-				<div class="issue-update-user-info">
-					<%= image_tag update.user.avatar, :class => "issue-update-logo" %>
-					<span class="issue-update-user"><%= update.user.full_name %></span>
-				</div>
-				<div class="issue-update-text">
-					<h4><%= update.subject %></h4>
-					<div>
-						<%= raw update.text %>					
-					</div>
-				</div>
-				<div class="issue-update-time">
-					<%= update.updated_at.strftime("%d %b. %Y %H:%M") %>
-				</div>
-			</div>
-			<% end %>
-		<% end %>
 	</div>
 
 	<br style="clear:both;" />
