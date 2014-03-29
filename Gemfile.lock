@@ -201,6 +201,7 @@ GEM
     unf_ext (0.0.6-x86-mingw32)
     uuidtools (2.1.4)
     viljushka (0.7.1)
+    will_paginate (3.0.4)
     xml-simple (1.1.2)
 
 PLATFORMS
@@ -239,3 +240,4 @@ DEPENDENCIES
   uglifier (>= 1.0.3)
   uuidtools
   viljushka
+  will_paginate (~> 3.0)

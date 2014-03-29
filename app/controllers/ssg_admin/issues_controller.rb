@@ -2,9 +2,8 @@
 class SsgAdmin::IssuesController < SsgAdminController
 
   def index
-
     if @user.ssg_admin?
-      @issues = Issue.find(:all, :order => 'vote_count DESC')
+      @issues = Issue.with_paging(params[:page])
     else
       @issues = Issue.where(:city_id => @user.city_id).order('vote_count DESC').all
     end

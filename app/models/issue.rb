@@ -9,6 +9,8 @@ class Issue < TranslatedBase
   FIXED         = 3
   DELETED       = 4
 
+  ISSUES_PER_PAGE = 30
+
   TRANS_KEYS = ['none','reported','in_progress','fixed','deleted']
 
   default_scope where('status <> 4')
@@ -28,6 +30,9 @@ class Issue < TranslatedBase
   
   friendly_id :title, :use => [:slugged]
 
+  def self.with_paging(page)
+    paginate(page: page, per_page: ISSUES_PER_PAGE)
+  end
 
   def mark_as_viewed(user_uniq_cookie_id) 
     uniq_view = self.unique_views.where(:session => user_uniq_cookie_id).first
