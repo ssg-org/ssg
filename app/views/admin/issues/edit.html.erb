@@ -7,7 +7,7 @@
   <label>Promjeni Status</label>
   <%= select_tag :status, options_from_collection_for_select(Issue.all_statuses, 'id', 'name'), :class => 'input-xlarge'%>
 
-  <label>Razlog ažuriranje</label>
+  <label>Razlog za ažuriranje</label>
   <%= text_field_tag :subject, nil, :class => 'input-xlarge', :required => true  %>
 
   <label>Opis</label>
