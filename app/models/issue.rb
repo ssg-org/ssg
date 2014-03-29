@@ -168,16 +168,23 @@ class Issue < TranslatedBase
         order_by = 'vote_count desc'
       elsif (sort_by == 'discussed')
         order_by = 'comment_count desc'
+      elsif (sort_by == 'updated')
+        order_by = "coalesce(updates.created_at, date('now')) desc"
       end
     end
+    Issue.joins("left join updates on issues.id = updates.issue_id").order("coalesce(updates.created_at, date('now')) desc").uniq('issues.id')
 
     if (query.empty?)
   		@issues_relation = Issue
-	  else
+    else
 		  @issues_relation = Issue.where(query.join(' AND '), values)
     end
     
-    return @issues_relation.limit(limit).offset(offset).order(order_by).includes([:user, :city, :category, :images, :category])
+    if !params[:featured].blank? && sort_by == 'updated'
+      return Issue.joins("left join updates on issues.id = updates.issue_id").order("coalesce(updates.created_at, date('now')) desc").uniq('issues.id')
+    else
+      return @issues_relation.limit(limit).offset(offset).order(order_by).includes([:user, :city, :category, :images, :category])
+    end
   end
 
 

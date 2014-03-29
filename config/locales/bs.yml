@@ -192,6 +192,7 @@ bs:
             in_progress:    'U postupku rješavanja'
             fixed:          'Riješeni'
             all_counties:   'Sve općine'
+            most_updated:   'Najviše izmjena'
         status:
             none:           'Nepoznato'
             reported:       'Prijavljen'
