@@ -37,7 +37,7 @@ bs:
         comments:
             comment:    'Komentar'
             discuss:    'Dodajte vlastiti komentar'
-            log_in:     'Morate se prijaviti da bi komentarisali problem'
+            log_in:     'Morate se prijaviti da biste komentarisali problem.'
             deleted:    'Uspješno izbrisan komentar!'
         locale:
             en:         'ENG'
