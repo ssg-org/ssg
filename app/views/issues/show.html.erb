@@ -168,6 +168,27 @@
 			</div>
 		<% end %>
 
+	<% if !@user.guest? %>
+		<% if @issue.user_id == @user.id%>
+			<div style="margin-bottom:10px;">
+				<%= form_tag attach_images_issue_path(@issue.id), "id" => "newImage" do %>
+					<input type="button" class="btn_green" style="width: 100%;" value="Dodaj Sliku" onclick ="javascript:document.getElementById('fileupload_field').click();" />
+					<input id = "fileupload_field" type="file" style='visibility: hidden;' name="image" multiple />
+					<span id="gallery_inputs">
+						<input type="hidden" id="image_count" name="image_count" value="0" />
+					</span>
+				<% end %>
+				<div id="progress">
+					<div class="bar" style="width: 0%;"></div>
+				</div>
+				<div style="height: 40px; width: 100%; overflow-y:auto;">
+					<ul id="gallery" style="list-style:none;" >
+					</ul>
+				</div>
+			</div>
+		<% end %>
+	<% end %>
+
 		<br style="clear:both;"/>
 
 		<div id="mini_map" style="height:260px;">
@@ -260,5 +281,22 @@ function unvote() {
 		}
 	});
 }
+
+// Image upload
+$('#fileupload_field').fileupload({
+	url : '<%= images_path() %>',
+	progressall: function (e, data) {
+		var progress = parseInt(data.loaded / data.total * 100, 10);
+		$('#progress .bar').css('width', progress + '%');
+	},
+	success : function() {
+		$('#progress').css('width', '0%');
+		$('#newImage').submit();
+	},
+	fail : function() {
+		alert(I18n.t('issues.new.upload_error'));
+	}
+});
+
 </script>
 <% end %>
