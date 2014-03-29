@@ -6,6 +6,7 @@ class SsgAdmin::CitiesController < SsgAdminController
   def index
     @sort_option = sort_option
     @cities = City.order("name #{@sort_option}")
+    refine_seach
   end
 
   def destroy
@@ -35,5 +36,9 @@ class SsgAdmin::CitiesController < SsgAdminController
   def sort_option
     permited_sorts = ["ASC", "DESC"]
     params[:sort].present? && permited_sorts.include?(params[:sort].upcase) ? params[:sort].upcase : "ASC"
+  end
+
+  def refine_seach
+    @cities = @cities.where("name LIKE(?)", "%#{params[:q]}%") if params[:q].present?
   end
 end
