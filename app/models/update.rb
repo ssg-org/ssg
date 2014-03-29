@@ -1,6 +1,7 @@
 class Update < ActiveRecord::Base
   belongs_to :user
   belongs_to :issue
+  has_many :images
 
   SHORT_TEXT_SIZE = 100
 
