@@ -37,3 +37,20 @@
   font-size: 8px;
   margin: 0;
 }
+
+.gallery-container {
+  height: 50px;
+  padding-top: 15px;
+  width: 100%;
+  overflow-y:auto;
+}
+
+#gallery {
+  float: left;
+  margin: 0;
+}
+
+.upload-preview {
+	float:left;
+	margin-right:2px;
+}

@@ -19,6 +19,13 @@ class Admin::IssuesController < AdminController
     @issue.updates << Update.new({ :subject => params[:subject], :text => params[:text], :user_id => @user.id })
     @issue.save!
 
+    image_count = params[:image_count].to_i
+    image_ids = []
+    (0..image_count-1).each do |i|
+      image_ids << params["image_#{i}"]
+    end
+    Image.update_all({ :issue_id => @issue.id}, { :id => image_ids })
+
     @user.notify_issue_updated @issue
 
     redirect_to admin_issues_path()

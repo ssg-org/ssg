@@ -16,11 +16,29 @@
       <label>Opis</label>
       <%= text_area_tag :text, nil, :style => 'width:90%; height:150px;' %><br/>
 
+      <div>
+        <input type = "button" value="<%= t('issues.new.add_img') %>" onclick ="javascript:document.getElementById('fileupload_field').click();" class="btn">
+        <input id = "fileupload_field" type="file" style='visibility: hidden;' name="image" multiple/>
+        <span id="gallery_inputs">
+          <input type="hidden" id="image_count" name="image_count" value="0" />
+        </span>
+      </div>
+
+      <div id="progress">
+        <div class="bar" style="width: 0%;"></div>
+      </div>
+      <div class="gallery-container">
+        <ul id="gallery" style="list-style:none;" >
+          <% @issue.images.each do |image| %>
+            <li class="upload-preview"><img height="30" src="<%= image.image.logo_small.url %>"></li>
+          <% end %>
+        </ul>
+      </div>
+
       <div style="text-align:center; margin-top:15px;">
         <button type="submit" class="btn">Ažuriraj</button>
         <%= link_to 'Odustani', admin_issues_path %>
       </div>
-      
     <% end %>
   </div>
 
@@ -66,5 +84,20 @@
 <% content_for :javascript do %>
 <script type="text/javascript">
   bkLib.onDomLoaded(function() { nicEditors.allTextAreas() });
+
+  $('#fileupload_field').fileupload({
+    url : '<%= images_path() %>',
+     formData : { _method: 'POST' },
+     progressall: function (e, data) {
+        var progress = parseInt(data.loaded / data.total * 100, 10);
+        $('#progress .bar').css('width', progress + '%');
+     },
+    success : function() {
+      $('#progress').css('width', '0%');
+    },
+    fail : function() {
+      alert(I18n.t('issues.new.upload_error'));
+    }
+  });
 </script>
 <% end -%>
