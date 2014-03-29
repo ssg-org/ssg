@@ -4,24 +4,9 @@
 
 <div class="show-container">
 	<div class="issue-container">
-
-		<ul class="issue-header-menu">
-			<li class="<%= 'header-menu-active' if params[:view].blank? %>">
-				<%= link_to t('issues.show.info'), issue_path(@issue.friendly_id)%>
-			</li>
-			<li class="<%= 'header-menu-active' if params[:view] == 'promjene' %>">
-				<a href="<%=issue_path(@issue.friendly_id, {:view => 'promjene'})%>">
-					<%=t('issues.show.updates')%> <span class="issue-header-count"><%=@issue.updates.count%></span>
-				</a>
-			</li>
-		</ul>
-
-		<% if params[:view].blank? %>
-			<%= render :partial => 'issue_problem'%>
-			<%= render :partial => 'shared/comments', :locals => { :comments => @issue.comments.order('created_at desc'), :issue => @issue }%>
-		<% else %>
-			<%= render :partial => 'issue_promjena'%>
-		<% end %>
+		<%= render :partial => 'issue_problem'%>
+		<%= render @issue.feed_items %>
+		<%= render :partial => 'shared/comments', :locals => { :comments => @issue.comments.order('created_at desc'), :issue => @issue }%>
 	</div>
 
 	<div style="float:left; margin-left:20px; width:240px;">

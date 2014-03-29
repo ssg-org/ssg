@@ -1,0 +1,18 @@
+<div class="update-container">
+  <div style="margin-bottom:15px;">
+    <div style="color:#9ecc3b !important; font-size:14px; font-weight:bold;">
+      <%= t('issues.show.update.municipality_update') %>
+    </div>
+    <span style="color:#9ecc3b !important; font-size:28px; font-weight:bold;">
+      <%=update.subject%>
+    </span>
+    <br/>
+    <span style="font-size:10px; font-style:italic;"><%=update.updated_at.strftime("%d %b. %Y")%> [<%=link_to update.user.full_name, user_path(update.user.id)%>]</span>
+  </div>
+  <div class="update-text">
+    <%= raw update.text %>
+  </div>
+  <% update.images.each do |img| %>
+    <%= image_tag img.image.issue_full, :style=> 'margin-bottom:20px;'%><br/>
+  <% end %>
+</div>

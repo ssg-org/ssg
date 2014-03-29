@@ -1,8 +1,6 @@
-<br />
-<span class="comments-title"><%=t('shared.comments.discuss')%> (<%=comments.count%> <%=t('shared.comments.comments')%>)</span>
-<br/>
-<br/>
-<hr/>
+<h3 class="comments-title">
+  <%=t('shared.comments.discuss')%>
+</h3>
 <% if @user.guest? %>
 	<span class="comments-guest"><%=t('shared.comments.log_in')%></span>
 <% else %>
@@ -16,30 +14,6 @@
 	</div>
 <% end %>
 <hr/>
-
-<% comments.each do |comment|%>
-	<hr/>
-	<div class="comment-entry" style="padding:25px 0 25px 0; overflow:auto;">
-		<%= image_tag comment.user.avatar, :style => 'width: 50px; float:left;' %>
-		<div style="float:left; margin-left:10px; width:500px;">
-			<div style="margin-top: 3px;">
-				<span class="comment-name"><%= comment.user.full_name %>  </span>&nbsp;&nbsp;
-				<span class="comment-time"> &nbsp;&nbsp;<%=distance_of_time_in_words_to_now(comment.created_at)%></span>
-
-				<%-# if admin user or this comment is owned by this user -%>
-				<% if @user.ssg_admin? || comment.is_owned?(@user) %>
-					<%= link_to comment_path(comment), :class => "comment-delete", :method => :delete, :title => 'Obriši!', :data => {:confirm => t('issues.comments.delete_confirm')} do %>
-						<%= @user.ssg_admin? ? '[Admin Delete!]' : t('issues.comments.delete_comment') %>
-					<% end %>
-				<% end %>
-
-			</div>
-			<span class="comment-text">
-				<%= comment.text %>
-			</span>
-		</div>
-	</div>
-<% end %>
 
 <% content_for :javascript do %>
 <script>
