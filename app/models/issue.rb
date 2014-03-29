@@ -172,8 +172,7 @@ class Issue < TranslatedBase
         order_by = "coalesce(updates.created_at, date('now')) desc"
       end
     end
-    Issue.joins("left join updates on issues.id = updates.issue_id").order("coalesce(updates.created_at, date('now')) desc").uniq('issues.id')
-
+    
     if (query.empty?)
   		@issues_relation = Issue
     else
