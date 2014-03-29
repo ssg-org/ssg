@@ -1,6 +1,7 @@
 # encoding: UTF-8
 class Admin::IssuesController < AdminController
   include Concerns::ImageUploadHandler
+  layout :layout
 
   def index
     @issues = Issue.where(:city_id => @user.city_id).order('created_at desc')
@@ -25,6 +26,15 @@ class Admin::IssuesController < AdminController
     @user.notify_issue_updated @issue
 
     redirect_to admin_issues_path()
+  end
+
+  private
+
+  def layout
+    case action_name
+    when 'edit' then 'admin/updates'
+    else 'admin'
+    end
   end
 
 end

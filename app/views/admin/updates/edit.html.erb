@@ -1,63 +1,14 @@
-<div class="grid">
+<%= form_for [:admin, @update] do |f| %>
+  <legend>Ispravi izmjenu</legend>
 
-  <div class="span6">
-    <%= form_for [:admin, @update] do |f| %>
-      <legend>Ispravi izmjenu</legend>
+  <label>Razlog ažuriranje</label>
+  <%= f.text_field :subject, :class => 'input-xlarge', :required => true  %>
 
-      <label>Razlog ažuriranje</label>
-      <%= f.text_field :subject, :class => 'input-xlarge', :required => true  %>
+  <label>Opis</label>
+  <%= f.text_area :text, :style => 'width:90%; height:150px;' %><br/>
 
-      <label>Opis</label>
-      <%= f.text_area :text, :style => 'width:90%; height:150px;' %><br/>
-
-      <div style="text-align:center; margin-top:15px;">
-        <button type="submit" class="btn">Ispravi</button>
-        <%= link_to 'Odustani', edit_admin_issue_path(@update.issue_id) %>
-      </div>
-    <% end %>
+  <div style="text-align:center; margin-top:15px;">
+    <button type="submit" class="btn">Ispravi</button>
+    <%= link_to 'Odustani', edit_admin_issue_path(@update.issue_id) %>
   </div>
-
-  <div class="span4">
-    <form>
-      <legend><%=@issue.title%></legend>
-      <table class="table no-lines table-condensed">
-        <tbody>
-          <tr>
-            <td>Općina</td>
-            <td><%=@issue.city.name%></td>
-          </tr>
-          <tr>
-            <td>Kategorija</td>
-            <td><%=@issue.category.name%></td>
-          </tr>
-          <tr>
-            <td>Status</td>
-            <td><%=@issue.get_status%></td>
-          </tr>
-          <tr>
-            <td>Korisnik</td>
-            <td><%=@issue.user.full_name%></td>
-          </tr>
-          <tr>
-            <td>Kreiran</td>
-            <td><%=@issue.created_at.strftime("%d %b. %Y")%></td>
-          </tr>
-          <tr>
-            <td>Ažuriran</td>
-            <td><%=@issue.updated_at.strftime("%d %b. %Y")%></td>
-          </tr>
-          <tr>
-            <td colspan="2"><%=@issue.description%></td>
-          </tr>
-          <%= render @issue.updates.order('created_at desc') %>
-        </tbody>
-      </table>
-    </form>
-  </div>
-</div>
-
-<% content_for :javascript do %>
-<script type="text/javascript">
-  bkLib.onDomLoaded(function() { nicEditors.allTextAreas() });
-</script>
-<% end -%>
+<% end %>

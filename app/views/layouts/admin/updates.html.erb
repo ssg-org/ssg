@@ -1,0 +1,52 @@
+<% content_for :admin do %>
+<div class="grid">
+
+  <div class="span6">
+    <%= yield %>
+  </div>
+
+  <div class="span4">
+    <form>
+      <legend><%=@issue.title%></legend>
+      <table class="table no-lines table-condensed">
+        <tbody>
+          <tr>
+            <td>Općina</td>
+            <td><%=@issue.city.name%></td>
+          </tr>
+          <tr>
+            <td>Kategorija</td>
+            <td><%=@issue.category.name%></td>
+          </tr>
+          <tr>
+            <td>Status</td>
+            <td><%=@issue.get_status%></td>
+          </tr>
+          <tr>
+            <td>Korisnik</td>
+            <td><%=@issue.user.full_name%></td>
+          </tr>
+          <tr>
+            <td>Kreiran</td>
+            <td><%=@issue.created_at.strftime("%d %b. %Y")%></td>
+          </tr>
+          <tr>
+            <td>Ažuriran</td>
+            <td><%=@issue.updated_at.strftime("%d %b. %Y")%></td>
+          </tr>
+          <tr>
+            <td colspan="2"><%=@issue.description%></td>
+          </tr>
+          <%= render @issue.updates.order('created_at desc') %>
+        </tbody>
+      </table>
+    </form>
+  </div>
+</div>
+<% end %>
+<% content_for :javascript do %>
+<script type="text/javascript">
+  bkLib.onDomLoaded(function() { nicEditors.allTextAreas() });
+</script>
+<% end -%>
+<%= render template: "layouts/admin" %>
