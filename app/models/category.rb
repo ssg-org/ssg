@@ -28,4 +28,12 @@ class Category < TranslatedBase
   def self.subcategories_ids(parent_id)
     Category.select(:id).where(:parent_id => parent_id).pluck(:id)
   end
+
+  def self.check_parent_id(category)
+    if category.parent_id
+      check_parent_id(category.parent)
+    else
+      return category.id
+    end
+  end
 end
