@@ -3,7 +3,7 @@ class SsgAdmin::IssuesController < SsgAdminController
 
   def index
     if @user.ssg_admin?
-      @issues = Issue.with_paging(params[:page])
+      @issues = Issue.sort_by(params[:sort]).with_paging(params[:page])
     else
       @issues = Issue.where(:city_id => @user.city_id).order('vote_count DESC').all
     end
@@ -15,7 +15,6 @@ class SsgAdmin::IssuesController < SsgAdminController
 
 
   def update
-
     issue = Issue.find(params[:id])
     old_status   = issue.status
 
