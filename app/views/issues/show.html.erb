@@ -6,7 +6,7 @@
 	<div class="issue-container">
 		<%= render :partial => 'issue_problem'%>
 		<%= render @issue.feed_items %>
-		<%= render :partial => 'shared/comments', :locals => { :comments => @issue.comments.order('created_at desc'), :issue => @issue }%>
+		<%= render 'comments/form', :issue => @issue%>
 	</div>
 
 	<div style="float:left; margin-left:20px; width:240px;">
