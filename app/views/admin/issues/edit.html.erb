@@ -1,78 +1,58 @@
-<div class="grid">
+<%= form_tag admin_issue_path(@issue.id), :method => :put do %>
+  <legend>Ažuriraj problem</legend>
 
-  <div class="span6">
-    <%= form_tag admin_issue_path(@issue.id), :method => :put do %>
-      <legend>Ažuriraj problem</legend>
+  <label>Promjeni kategoriju</label>
+  <%= select_tag :category_id, options_from_collection_for_select(@user.get_categories, 'id', 'name'), :class => 'input-xlarge'%>
 
-      <label>Promjeni kategoriju</label>
-      <%= select_tag :category_id, options_from_collection_for_select(@user.get_categories, 'id', 'name'), :class => 'input-xlarge'%>
+  <label>Promjeni Status</label>
+  <%= select_tag :status, options_from_collection_for_select(Issue.all_statuses, 'id', 'name'), :class => 'input-xlarge'%>
 
-      <label>Promjeni Status</label>
-      <%= select_tag :status, options_from_collection_for_select(Issue.all_statuses, 'id', 'name'), :class => 'input-xlarge'%>
+  <label>Razlog za ažuriranje</label>
+  <%= text_field_tag :subject, nil, :class => 'input-xlarge', :required => true  %>
 
-      <label>Razlog ažuriranje</label>
-      <%= text_field_tag :subject, nil, :class => 'input-xlarge', :required => true  %>
+  <label>Opis</label>
+  <%= text_area_tag :text, nil, :style => 'width:90%; height:150px;' %><br/>
 
-      <label>Opis</label>
-      <%= text_area_tag :text, nil, :style => 'width:90%; height:150px;' %><br/>
-
-      <div style="text-align:center; margin-top:15px;">
-        <button type="submit" class="btn">Ažuriraj</button>
-      </div>
-      
-    <% end %>
+  <div>
+    <input type = "button" value="<%= t('issues.new.add_img') %>" onclick ="javascript:document.getElementById('fileupload_field').click();" class="btn">
+    <input id = "fileupload_field" type="file" style='visibility: hidden;' name="image" multiple/>
+    <span id="gallery_inputs">
+      <input type="hidden" id="image_count" name="image_count" value="0" />
+    </span>
   </div>
 
-  <div class="span4">
-    <form>
-      <legend><%=@issue.title%></legend>      
-      <table class="table no-lines table-condensed">
-        <tbody>
-          <tr>
-            <td>Općina</td>
-            <td><%=@issue.city.name%></td>
-          </tr>
-          <tr>
-            <td>Kategorija</td>
-            <td><%=@issue.category.name%></td>
-          </tr>
-          <tr>
-            <td>Status</td>
-            <td><%=@issue.get_status%></td>
-          </tr>
-          <tr>
-            <td>Korisnik</td>
-            <td><%=@issue.user.full_name%></td>
-          </tr>
-          <tr>
-            <td>Kreiran</td>
-            <td><%=@issue.created_at.strftime("%d %b. %Y")%></td>
-          </tr>
-          <tr>
-            <td>Ažuriran</td>
-            <td><%=@issue.updated_at.strftime("%d %b. %Y")%></td>
-          </tr>
-          <tr>
-            <td colspan="2"><%=@issue.description%></td>
-          </tr>
-          <% @issue.updates.order('created_at desc').each do |update|%>
-            <tr>
-              <td colspan="2">
-                <hr/>
-                <span style="font-size:20px;"><%=update.subject%></span><br/>
-                <span style="font-size:8px;"><%=update.created_at.strftime("%d %b. %Y")%> [<%=update.user.full_name %>]</span><br/>
-                <%= raw update.text %>
-              </td>
-            </tr>
-          <% end %>
-        </tbody>
-      </table>
-    </form>
+  <div id="progress">
+    <div class="bar" style="width: 0%;"></div>
   </div>
-</div>
+  <div class="gallery-container">
+    <ul id="gallery" style="list-style:none;" >
+      <% @issue.images.each do |image| %>
+        <li class="upload-preview"><img height="30" src="<%= image.image.logo_small.url %>"></li>
+      <% end %>
+    </ul>
+  </div>
+
+  <div style="text-align:center; margin-top:15px;">
+    <button type="submit" class="btn">Ažuriraj</button>
+    <%= link_to 'Odustani', admin_issues_path %>
+  </div>
+<% end %>
 
 <% content_for :javascript do %>
-<script type="text/javascript">
-  bkLib.onDomLoaded(function() { nicEditors.allTextAreas() });
+<script>
+  $('#fileupload_field').fileupload({
+    url : '<%= images_path() %>',
+     formData : { _method: 'POST' },
+     progressall: function (e, data) {
+        var progress = parseInt(data.loaded / data.total * 100, 10);
+        $('#progress .bar').css('width', progress + '%');
+     },
+    success : function() {
+      $('#progress').css('width', '0%');
+    },
+    fail : function() {
+      alert(I18n.t('issues.new.upload_error'));
+    }
+  });
 </script>
-<% end -%>
+<% end %>

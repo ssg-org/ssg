@@ -32,4 +32,8 @@ class AdminController < ActionController::Base
     redirect_to admin_login_path
   end
 
+  def current_city
+    @user.city
+  end
+
 end

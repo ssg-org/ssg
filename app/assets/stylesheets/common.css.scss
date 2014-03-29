@@ -517,9 +517,21 @@ textarea {
 	background-color:$color-green;
 	color:white;
 }
-.issue-container-gray {
-	padding: 30px 0;	
+.comment-container {
+	padding: 30px;
+  margin: 30px 0;
+	background-color: #dedede;
+	color: black;
+  overflow: auto;
+}
+.update-container {
+	padding: 30px;	
+	background-color: #EEF2EA;
 	color:#555555;
+
+	a {
+		color: black;
+	}
 }
 .issue-cell {
 	margin-bottom:10px;
@@ -741,6 +753,9 @@ a.account  {
 /* COMMENTS CSS */
 
 .comments-title {
+	padding-bottom: 15px;
+	border-bottom: 1px solid #ccc;
+	margin-bottom: 0;
 	font-size: 18px;
 	font-weight: bold;
 	margin-top: 20px;
@@ -1021,31 +1036,6 @@ a.account  {
  	text-align:center;
 }
 
-.issue-header-menu {
-	list-style:none;	
-	margin:0 3px 3px 25px;
-}
-.issue-header-menu li {
-	display:inline-block;
-	border-bottom:4px solid #f9f9f9;
-	margin:0 15px;
-}
-
-.header-menu-active {
-	border-bottom:4px solid #9ecc3b !important;
-}
-.issue-header-count {
-	display:inline-block; 
-	background-color:gray; 
-	color:white;
-	border-radius:4px;
-	padding: 0 2px;
-}
-
-.issue-container-green a {
-	color:white;
-}
-
 .issue-update-container {
 	height: 175px;
 	padding: 15px 15px 0px 15px;
@@ -1107,4 +1097,8 @@ a.account  {
 
 .bottom-spacer {
 	height: 80px;
+}
+
+.update-text {
+	margin: 0 0 15px 0;
 }

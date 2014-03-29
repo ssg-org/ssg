@@ -1,0 +1,14 @@
+<%= form_for [:admin, @update] do |f| %>
+  <legend>Ispravi izmjenu</legend>
+
+  <label>Razlog za ažuriranje</label>
+  <%= f.text_field :subject, :class => 'input-xlarge', :required => true  %>
+
+  <label>Opis</label>
+  <%= f.text_area :text, :style => 'width:90%; height:150px;' %><br/>
+
+  <div style="text-align:center; margin-top:15px;">
+    <button type="submit" class="btn">Ispravi</button>
+    <%= link_to 'Odustani', edit_admin_issue_path(@update.issue_id) %>
+  </div>
+<% end %>

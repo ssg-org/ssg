@@ -20,7 +20,7 @@
     <% end %>
 
     <div class="container">
-      <%= yield %>
+      <%= content_for?(:admin) ? yield(:admin) : yield %>
     </div>
 
     <%= yield :javascript %>
