@@ -60,7 +60,7 @@ class Issue < TranslatedBase
   end
 
   def setup_json_attributes!()
-    @image_url = self.images.first.image.issue_full.url if !self.images.empty?
+    @image_url = images.first.image.issue_full.url unless images.empty?
     @short_desc = ApplicationController.helpers.truncate(self.description, :length => 200)
     @issue_url = Rails.application.routes.url_helpers.issue_path(self.friendly_id)
   end
@@ -107,7 +107,7 @@ class Issue < TranslatedBase
     if images.length > 0
       return  images.first.image.issue_thumb.url
     else
-      return ApplicationController.helpers.icon_path(category.icon, 'jpg')
+      return ApplicationController.helpers.image_path("icons/#{category.icon}.jpg")
     end
   end
 
