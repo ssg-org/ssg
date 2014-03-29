@@ -51,7 +51,6 @@ var methods = {
 		}
 
 		marker.addTo(data.map);
-
 	}
 };
 
