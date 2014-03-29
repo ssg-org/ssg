@@ -179,4 +179,27 @@ class Issue < TranslatedBase
     
     return @issues_relation.limit(limit).offset(offset).order(order_by).includes([:user, :city, :category, :images, :category])
   end
+
+
+  def is_new
+    return self.created_at > 3.days.ago ? true : false
+  end
+
+  def is_changed
+    return self.created_at < self.sort_date && self.sort_date > 3.days.ago ? true : false
+  end
+
+  def get_ribbon(lang = nil)
+    
+    if is_changed
+      return "izmjena_#{lang}.png"
+    elsif is_new
+      return "novo_#{lang}.png"
+    else
+      return ""
+    end
+
+  end
+
+
 end

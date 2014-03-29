@@ -40,6 +40,11 @@ module ApplicationHelper
     return "icons/#{icon}.#{extension}"
   end
 
+  def ribbon_path(image)
+    return "#{image}"
+  end
+
+
   def collect_city_names()
     cities = City.all.sort { |a,b| a.name <=> b.name }
     cities.collect { |c| [c.name, c.id ] }
