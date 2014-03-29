@@ -74,6 +74,12 @@ class Issue < TranslatedBase
     return Issue.where('lat > ? AND lat < ? AND long > ? AND long < ?', sw_lat, ne_lat, sw_long, ne_long).includes([:images, :user, :category, :city]).limit(limit)  
   end
 
+  # get topmost category for issue
+  # we need it to fetch icon for marker
+  def top_category_id
+    Category.check_parent_id(category)
+  end
+
   def get_status
     trans_key = TRANS_KEYS[self.status]
     I18n.t("issues.status.#{trans_key}")
@@ -115,6 +121,7 @@ class Issue < TranslatedBase
     # also can be solved by adding :methods to options hash
     response = super(options)
     response[:image_url] = self.image_url
+    response[:top_category_id] = self.top_category_id
     response[:short_desc] = self.short_desc
     response[:issue_url] = self.issue_url
     response

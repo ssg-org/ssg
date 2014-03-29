@@ -86,11 +86,11 @@ function loadMoreIssues() {
 function drawIssues(issue_array) {
 	// why not pass all ?!
 	for (var i in issue_array) {
-		var issue = issue_array[i];
+    var issue = issue_array[i];
 		$('#mini_map').SSGMap('drawIssue', {
 			lat : issue['lat'], 
 			lng : issue['long'], 
-			icon : __icons[issue.category_id],
+			icon : __icons[issue.top_category_id],
 			title : issue.title,
 			description : issue.short_desc,
 			image_url: issue.image_url,
