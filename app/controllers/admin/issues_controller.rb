@@ -16,6 +16,7 @@ class Admin::IssuesController < AdminController
     @issue = Issue.where(:city_id => @user.city_id, :id => params[:id]).first
     @issue.status = params[:status].to_i
     @issue.category_id = params[:category_id]
+    @issue.sort_date = Time.now
     @issue.updates << Update.new({ :subject => params[:subject], :text => params[:text], :user_id => @user.id })
     @issue.save!
 

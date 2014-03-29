@@ -119,7 +119,7 @@ class Issue < TranslatedBase
     values = Hash.new
 
     # Order
-    order_by = 'created_at desc'
+    order_by = 'sort_date desc'
 
     # Get category, status and city params
     if (!params[:category].blank?)
