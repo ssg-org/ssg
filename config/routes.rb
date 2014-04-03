@@ -4,7 +4,8 @@ Ssg::Application.routes.draw do
   namespace :api do
     namespace :v1 do
       resources :sessions, :only => [:create]
-      resources :issues
+      # resources :issues
+      get 'info' => 'info#index'
     end
   end
   
