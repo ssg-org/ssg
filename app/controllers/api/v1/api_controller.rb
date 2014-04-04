@@ -1,5 +1,9 @@
+require 'openssl'
+require 'base64'
+
 class Api::V1::ApiController < ActionController::Base
   before_filter :check_token
+  before_filter :check_signature
 
   ActionController::Renderers.add :api_response do |obj, options|
     resp = Api::V1::Response.new
@@ -36,6 +40,21 @@ class Api::V1::ApiController < ActionController::Base
         raise Api::V1::ApiError.missing_param(req_param.to_s)
       end
     end
+  end
+
+  def check_signature
+    signature = params[:signature]
+    ts = params[:ts]
+
+    sorted_kvs = params.except(:controller, :action, :signature).map { |k, v| [k, v] }.sort { |a, b| a[0] <=> b[0] }.map { |ar| ar.join('=') }.join('&')
+    signature  = Base64.strict_encode64(OpenSSL::HMAC.digest('sha256', "secret", sorted_kvs))
+
+    puts "SRV SIGN : '#{signature}'"
+    puts "API SIGN : '#{params[:signature]}'"
+    if (params[:signature] != signature) 
+      raise Api::V1::ApiError.invalid_signature
+    end
+
   end
 
 end

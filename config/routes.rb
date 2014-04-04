@@ -3,7 +3,11 @@ Ssg::Application.routes.draw do
 
   namespace :api do
     namespace :v1 do
-      resources :sessions, :only => [:create]
+      resources :sessions, :only => [:create] do
+        collection do
+          post :fb_create
+        end
+      end
       # resources :issues
       get 'info' => 'info#index'
     end

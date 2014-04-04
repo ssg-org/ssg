@@ -22,6 +22,14 @@ class Api::V1::ApiError < StandardError
   end
 
   def self.missing_param(name)
-    Api::V1::ApiError.new(400, "Missing required param : #{name}")
+    Api::V1::ApiError.new(601, "Missing required param : #{name}")
+  end
+
+  def self.invalid_signature()
+    Api::V1::ApiError.new(602, "Invalid signature")
+  end
+
+  def self.invalid_ts()
+    Api::V1::ApiError.new(603, "Timestamp too old")
   end
 end
