@@ -3,6 +3,7 @@
 
 bs:
     shared:
+        prompt_city: 'Unesite željenu opštinu!'
         menu:
             what:   'Šta je Ulica.ba?'
             we_are: 'Mi smo društvena mreža koja želi obezbijediti građanima život u ljepšem gradu.'
@@ -256,3 +257,6 @@ bs:
         internal_server_error:
             title:      'Desila se greška.'
             message:    "Izvinjavamo se, desila se greška prilikom izvršavanja ove stranice."
+    will_paginate:
+        next_label: 'Sljedeći'
+        previous_label: 'Prethodni'

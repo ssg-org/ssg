@@ -409,7 +409,7 @@
         onOpen = this._get(inst, 'onOpen');
       el.css({
         "top": height + "px",
-        "maxHeight": (diff - height) + "px"
+        "maxHeight": "200px"
       });
       inst.settings.effect === "fade" ? el.fadeIn(inst.settings.speed) : el.slideDown(inst.settings.speed);
       $("#sbToggle_" + inst.uid).addClass(inst.settings.classToggleOpen);
