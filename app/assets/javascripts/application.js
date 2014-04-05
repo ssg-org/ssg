@@ -12,7 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require jquery-ui.min
+//= require jquery.ui.all
 //= require jquery.selectbox-0.2
 //= require ssg_map
 //= require fb
@@ -25,5 +25,6 @@
 //= require i18n/translations
 //= require nicEdit
 //= require common
+//= require jquery.colorbox.min.js
 
 

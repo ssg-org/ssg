@@ -1,0 +1,18 @@
+<% content_for :javascript do %>
+<script>
+  $(function() {
+     // load youtube in colorbox
+      if (document.cookie.indexOf('visited=true') == -1) {
+          var expires = new Date((new Date()).valueOf() + 1000*60*60*24*1);
+          document.cookie = "visited=true;expires=" + expires.toUTCString();
+          $.colorbox({
+            iframe      : true,
+            innerWidth  : 560,
+            innerHeight : 315,
+            href        : "//www.youtube.com/embed/oj873yVsUJ0?&autoplay=1",
+            opacity     : 0.6
+          });
+      }
+  });
+</script>
+<% end %>
