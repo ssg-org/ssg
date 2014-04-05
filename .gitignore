@@ -3,7 +3,6 @@
 .DS_Store
 .bundle
 db/*.sqlite3
-db/schema.rb
 config/configuration.local.yml
 public/assets
 public/system/**/*
