@@ -44,6 +44,14 @@ class IssuesController < ApplicationController
     redirect_to issues_path()
   end
   
+  def attach_images
+    image_id = params["image_0"]
+
+    Image.update_all({ :issue_id => params[:id] }, { :id => image_id })
+
+    redirect_to issue_url(params[:id])
+  end
+
   def show
     ActiveRecord::Base.transaction do
       @issue = Issue.find(params[:id])

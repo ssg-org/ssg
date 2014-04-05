@@ -20,21 +20,21 @@
       <div class="grid-title">
         <div class="pull-left">
           <div class="setup-icon"><i class="icon-bookmark"></i></div>
-          <span>Kreiraj Općinu</span> 
+          <span>Kreiraj Općinu</span>
           <div class="clearfix"></div>
         </div>
-        <div class="clearfix"></div>   
+        <div class="clearfix"></div>
       </div>
 
       <div class="grid-content">
         <%= form_tag create_or_edit_ssg_admin_cities_path, { :id => "mainForm", :class => "controls"} do %>
           <input type="hidden" name="city_id">
           <input type="text" required id="inputName" name="city_name" placeholder="Ime Općine" data-original-title="" title="" class="span12">
-          
+
           <label class="checkbox">
             <input type="checkbox" id="inputActive" name="city_active" placeholder="Aktivna?" data-original-title="" title="" > Aktivna Općina?
           </label>
-          
+
           <input type="text" required id="inputLat" name="lat" placeholder="Latituda" data-original-title="" title="" class="span12">
           <input type="text" required id="inputLong" name="lon" placeholder="Longituda" data-original-title="" title="" class="span12">
 
@@ -66,33 +66,41 @@
         <% end %>
       </div>
     </div>
-    
-    <!-- TABLE --> 
+
+    <!-- TABLE -->
     <div class="grid span8">
       <div class="grid-title">
         <div class="pull-left">
           <div class="setup-icon"><i class="icon-bookmark"></i></div>
-          <span>Lista Općina</span> 
-          <div class="clearfix"></div>
+          <span>Lista Općina</span>
+
         </div>
-        <div class="clearfix"></div>   
+        <div class="pull-right">
+          <%= form_tag ssg_admin_cities_path, { sort: params[:sort], :method => "get"} do %>
+            <%= text_field_tag :q, params[:q], {placeholder: "Pretraži" , class: "admin-search"}%>
+            <input type="submit" class="hide" ></input>
+          <% end %>
+        </div>
+        <div class="clearfix"></div>
       </div>
       <div class="grid-content">
-        <div class="dataTables_wrapper" role="grid"> 
+        <div class="dataTables_wrapper" role="grid">
           <table class="table table-bordered table-mod-2 dataTable" id="entry_table" aria-describedby="datatable_3_info">
             <thead>
               <tr role="row">
                 <th role="columnheader" tabindex="0" rowspan="1" colspan="1">#</th>
-                <th role="columnheader" tabindex="0" rowspan="1" colspan="1">Naziv</th>
+                <th role="columnheader" tabindex="0" rowspan="1" colspan="1">
+                  <a class="show" href="<%=ssg_admin_cities_path({sort: get_switched_sort})%>">Naziv<%=get_sort_icon(@sort)%></a>
+                </th>
                 <th role="columnheader" tabindex="0" rowspan="1" colspan="1">Aktivna?</th>
                 <th role="columnheader" tabindex="0" rowspan="1" colspan="1">Latituda</th>
                 <th role="columnheader" tabindex="0" rowspan="1" colspan="1">Longituda</th>
                 <th role="columnheader" tabindex="0" rowspan="1" colspan="1">Slika?</th>
                 <th role="columnheader" tabindex="0" rowspan="1" colspan="1">Kontrole</th>
               </tr>
-            </thead> 
+            </thead>
             <tbody>
-              <% @cities.sort.each do |city| %>
+              <% @cities.each do |city| %>
                 <tr id="<%= "row_#{city.id}" %>">
                   <td><%= city.id %></td>
                   <td><%= city.name %></td>
@@ -125,7 +133,7 @@
 </div>
 
 <script type="text/javascript">
-  
+
   FormValues = ['city_id','city_name','city_active','lat','lon','website', 'description'];
 
   enableCreateBtn = function(flag) {
