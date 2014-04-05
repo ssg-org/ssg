@@ -9,7 +9,8 @@
 				<% end %>
 
 				<% if !issue.get_ribbon.blank? %>
-					<%= image_tag issue.get_ribbon('en'), :style => 'position: absolute; height: auto; top: -7px; width: 50px; right: -7px;' %>
+					<% img_ext = I18n.script == :cyrillic ? 'cyr' : I18n.locale%>
+					<%= image_tag issue.get_ribbon(img_ext), :style => 'position: absolute; height: auto; top: -7px; width: 50px; right: -7px;' %>
 				<% end%>
 
 			</div>

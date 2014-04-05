@@ -9,13 +9,15 @@ class Issue < TranslatedBase
   FIXED         = 3
   DELETED       = 4
 
+  ISSUES_PER_PAGE = 30
+
   TRANS_KEYS = ['none','reported','in_progress','fixed','deleted']
 
   default_scope where('status <> 4')
 
   attr_accessor :image_url, :short_desc, :issue_url
-  attr_accessible  :title, :category, :city, :description, :user, :lat, :long, :status, :vote_count, :view_count, :comment_count, :share_count, :created_at
-
+  attr_accessible  :title, :category, :city, :description, :user, :lat, :long, :status, :vote_count, :view_count, :comment_count, :share_count, :created_at, :sort_date
+  
   belongs_to 	:user
   belongs_to  :category
   belongs_to	:city
@@ -28,6 +30,14 @@ class Issue < TranslatedBase
   
   friendly_id :title, :use => [:slugged]
 
+  def self.with_paging(page)
+    paginate(:page => page, :per_page => ISSUES_PER_PAGE)
+  end
+
+  def self.sort_by(column=nil)
+    sort_criteria = column || 'vote_count DESC'
+    order(sort_criteria)
+  end
 
   def mark_as_viewed(user_uniq_cookie_id) 
     uniq_view = self.unique_views.where(:session => user_uniq_cookie_id).first
@@ -50,7 +60,7 @@ class Issue < TranslatedBase
   end
 
   def setup_json_attributes!()
-    @image_url = self.images.first.image.issue_full.url if !self.images.empty?
+    @image_url = images.first.image.issue_full.url unless images.empty?
     @short_desc = ApplicationController.helpers.truncate(self.description, :length => 200)
     @issue_url = Rails.application.routes.url_helpers.issue_path(self.friendly_id)
   end
@@ -62,6 +72,12 @@ class Issue < TranslatedBase
     ne_long = north_east_geo[:long]
 
     return Issue.where('lat > ? AND lat < ? AND long > ? AND long < ?', sw_lat, ne_lat, sw_long, ne_long).includes([:images, :user, :category, :city]).limit(limit)  
+  end
+
+  # get topmost category for issue
+  # we need it to fetch icon for marker
+  def top_category_id
+    Category.check_parent_id(category)
   end
 
   def get_status
@@ -97,7 +113,7 @@ class Issue < TranslatedBase
     if images.length > 0
       return  images.first.image.issue_thumb.url
     else
-      return ApplicationController.helpers.icon_path(category.icon, 'jpg')
+      return ApplicationController.helpers.image_path("icons/#{category.icon}.jpg")
     end
   end
 
@@ -105,6 +121,7 @@ class Issue < TranslatedBase
     # also can be solved by adding :methods to options hash
     response = super(options)
     response[:image_url] = self.image_url
+    response[:top_category_id] = self.top_category_id
     response[:short_desc] = self.short_desc
     response[:issue_url] = self.issue_url
     response
@@ -170,6 +187,8 @@ class Issue < TranslatedBase
         order_by = 'comment_count desc'
       elsif (sort_by == 'updated')
         order_by = "coalesce(updates.created_at, date('now')) desc"
+      #elsif (sort_by == 'updated')
+       # order_by = 
       end
     end
     

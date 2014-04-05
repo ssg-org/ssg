@@ -3,6 +3,7 @@
 
 en:
     shared:
+        prompt_city: 'Please enter Municipality'
         menu:
             what:   'What is Ulica.ba?'
             we_are: 'We are social community that wants to provide its citizens life in nicer environment'

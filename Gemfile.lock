@@ -91,6 +91,8 @@ GEM
     jquery-rails (3.0.4)
       railties (>= 3.0, < 5.0)
       thor (>= 0.14, < 2.0)
+    jquery-ui-rails (4.1.2)
+      railties (>= 3.1.0)
     json (1.8.1)
     jwt (0.1.8)
       multi_json (>= 1.5)
@@ -201,6 +203,7 @@ GEM
     unf_ext (0.0.6-x86-mingw32)
     uuidtools (2.1.4)
     viljushka (0.7.1)
+    will_paginate (3.0.4)
     xml-simple (1.1.2)
 
 PLATFORMS
@@ -222,6 +225,7 @@ DEPENDENCIES
   jhtmlarea
   jquery-fileupload-rails
   jquery-rails
+  jquery-ui-rails
   lorem
   mini_magick (= 3.5.0)
   newrelic_rpm
@@ -239,3 +243,4 @@ DEPENDENCIES
   uglifier (>= 1.0.3)
   uuidtools
   viljushka
+  will_paginate (~> 3.0)
