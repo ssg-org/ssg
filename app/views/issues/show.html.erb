@@ -173,7 +173,7 @@
 			<div style="margin-bottom:10px;">
 				<%= form_tag attach_images_issue_path(@issue.id), "id" => "newImage" do %>
 					<input type="button" class="btn_green" style="width: 100%;" value="Dodaj Sliku" onclick ="javascript:document.getElementById('fileupload_field').click();" />
-					<input id = "fileupload_field" type="file" style='visibility: hidden;' name="image" multiple />
+					<input id = "fileupload_field" type="file" style='visibility: hidden;' name="image" />
 					<span id="gallery_inputs">
 						<input type="hidden" id="image_count" name="image_count" value="0" />
 					</span>
