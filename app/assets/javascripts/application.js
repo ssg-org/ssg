@@ -25,5 +25,6 @@
 //= require i18n/translations
 //= require nicEdit
 //= require common
+//= require jquery.colorbox.min.js
 
 
