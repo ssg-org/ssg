@@ -186,4 +186,8 @@ class Issue < TranslatedBase
     image_ids = Array(image_ids)
     Image.where(:id => image_ids).update_all({ :issue_id => id })
   end
+
+  def feed_items
+    (comments + updates).sort_by { |fi| fi.created_at }
+  end
 end
