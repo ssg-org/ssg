@@ -124,7 +124,7 @@ textarea {
 }
 
 .header-menu a {
-	@extend .font-gray; 
+	@extend .font-dark-gray; 
 }
 
 .what-are-we {
@@ -1082,6 +1082,7 @@ a.account  {
 
 
 .custom-combobox {
+	height: 28px;
 	position: relative;
 	display: inline-block;
 }
