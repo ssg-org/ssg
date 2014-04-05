@@ -31,7 +31,7 @@ class Issue < TranslatedBase
   friendly_id :title, :use => [:slugged]
 
   def self.with_paging(page)
-    paginate(page: page, per_page: ISSUES_PER_PAGE)
+    paginate(:page => page, :per_page => ISSUES_PER_PAGE)
   end
 
   def self.sort_by(column=nil)
