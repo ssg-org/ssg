@@ -9,7 +9,18 @@ class Api::V1::SessionsController < Api::V1::ApiController
   #   ts
   #   signature
   # Response: 
+  #
   #  { 'access_token' => '123123-123123-123-123-123-123' }
+  #
+  # Errors:
+  #  { code : 600, msg : 'Invalid credentials' }
+  #
+  #  { code : 400, msg : 'Bad request')
+  #  { code : 600, msg : 'Invalid credentials')
+  #  { code : 601, msg : "Missing required param : #{name}")
+  #  { code : 602, msg : "Invalid signature")
+  #  { code : 603, msg : "Timestamp too old")
+  #
   def create
     define_required(:ts, :signature, :email, :password)
 
@@ -29,14 +40,25 @@ class Api::V1::SessionsController < Api::V1::ApiController
   # Params:
   #   email
   #   fb_id
-  #   firstname
-  #   lastname
+  #   first_name
+  #   last_name
   #   ts
   #   signature
   # Response: 
+  #
   #  { 'access_token' => '123123-123123-123-123-123-123' }
+  #
+  # Errors:
+  #  { code : 600, msg : 'Invalid credentials' }
+  #
+  #  { code : 400, msg : 'Bad request')
+  #  { code : 600, msg : 'Invalid credentials')
+  #  { code : 601, msg : "Missing required param : #{name}")
+  #  { code : 602, msg : "Invalid signature")
+  #  { code : 603, msg : "Timestamp too old")
+  #
   def fb_create
-    define_required(:ts, :signature, :email, :fb_id, :firstname, :lastname)
+    define_required(:ts, :signature, :email, :fb_id, :first_name, :last_name)
 
     @user = User.where(:email => params[:email]).first
     if (@user.nil?)
@@ -47,8 +69,8 @@ class Api::V1::SessionsController < Api::V1::ApiController
         :active => true, 
         :role => User::ROLE_USER, 
         :locale => :bs,
-        :first_name => params[:firstname],
-        :last_name => params[:lastname],
+        :first_name => params[:first_name],
+        :last_name => params[:last_name],
         :fb_id => params[:fb_id],
         :access_token => SecureRandom.uuid 
       })
@@ -68,6 +90,46 @@ class Api::V1::SessionsController < Api::V1::ApiController
       render :api_response => { :access_token => @user.access_token }
     else
       raise Api::V1::ApiError.invalid_user
+    end
+  end
+
+  # POST /api/v1/sessions/fb_create
+  # Params:
+  #   email
+  #   password
+  #   city_id
+  #   first_name
+  #   last_name
+  #   ts
+  #   signature
+  # Response: 
+  #
+  #  { 'access_token' => '123123-123123-123-123-123-123' }
+  #
+  # Errors:
+  #  { code : 604, msg :  "User already exist"}
+  #  { code : 605, msg :  "Error creating user"}
+  #
+  #  { code : 400, msg : 'Bad request')
+  #  { code : 600, msg : 'Invalid credentials')
+  #  { code : 601, msg : "Missing required param : #{name}")
+  #  { code : 602, msg : "Invalid signature")
+  #  { code : 603, msg : "Timestamp too old")
+  def signup
+    # define_required(:ts, :signature, :email, :password, :city_id,  :first_name, :last_name)
+    define_required(:email, :password, :city_id,  :first_name, :last_name)
+
+    user = User.create_ssg_user(params[:email], params[:password], params[:city_id], params[:first_name], params[:last_name])
+
+    if user.nil?
+      raise Api::V1::ApiError.invalid_user
+    else
+      if user.save
+        UserMailer.verify(user, "#{request.protocol}#{request.host_with_port}").deliver
+        render :api_response => { :verify => 'Verify email' }
+      else
+        raise Api::V1::ApiError.error_creating_exist
+      end      
     end
   end
 

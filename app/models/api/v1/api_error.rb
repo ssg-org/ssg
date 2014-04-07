@@ -32,4 +32,12 @@ class Api::V1::ApiError < StandardError
   def self.invalid_ts()
     Api::V1::ApiError.new(603, "Timestamp too old")
   end
+
+  def self.user_exist
+    Api::V1::ApiError.new(604, "User already exist")
+  end
+
+  def self.error_creating_exist
+    Api::V1::ApiError.new(605, "Error creating user")
+  end
 end

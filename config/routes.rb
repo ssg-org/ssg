@@ -6,6 +6,7 @@ Ssg::Application.routes.draw do
       resources :sessions, :only => [:create] do
         collection do
           post :fb_create
+          post :signup
         end
       end
       # resources :issues
