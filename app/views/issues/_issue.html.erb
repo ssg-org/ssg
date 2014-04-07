@@ -1,12 +1,18 @@
 <div class="issue">
 	<div class="issue-img-part">
 		<a class="info-link" href="<%=issue_path(issue.friendly_id)%>">
-			<div style="height:155px; width:198px;">
+			<div style="height:155px; width:198px; position: relative">
 				<% if  issue.images.length > 0 %>
 					<%=image_tag issue.images.first.image.issue_thumb, :border => '0'%>
 				<% else %>
 					<%=image_tag icon_path(issue.category.icon, 'jpg'), :border => '0' %>
 				<% end %>
+
+				<% if !issue.get_ribbon.blank? %>
+					<% img_ext = I18n.script == :cyrillic ? 'cyr' : I18n.locale%>
+					<%= image_tag issue.get_ribbon(img_ext), :style => 'position: absolute; height: auto; top: -7px; width: 50px; right: -7px;' %>
+				<% end%>
+
 			</div>
 		</a>
 		<div style="height:5px; background-color:#<%=issue.category.color%>;"></div>

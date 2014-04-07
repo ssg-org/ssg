@@ -8,6 +8,8 @@ class IssuesController < ApplicationController
   def index
     params[:offset] ||= 0
     @issues = Issue.get_issues(params, 12, params[:offset].to_i)
+    # @cities is defined for combobox issues with mapping
+    @cities = @user.get_cities
     @city_names = collect_city_names() unless @city_names
     @city_names.unshift([t('issues.right_menu.all_counties'), 0])
   end
@@ -40,6 +42,14 @@ class IssuesController < ApplicationController
     redirect_to issues_path()
   end
   
+  def attach_images
+    image_id = params["image_0"]
+
+    Image.update_all({ :issue_id => params[:id] }, { :id => image_id })
+
+    redirect_to issue_url(params[:id])
+  end
+
   def show
     ActiveRecord::Base.transaction do
       @issue = Issue.find(params[:id])
@@ -47,7 +57,7 @@ class IssuesController < ApplicationController
       # TODO Refactor this
       @issue.mark_as_viewed(cookies[:unique])
 
-      @already_voted = !(@issue.votes.where(:user_id => @user.id).first.nil?)
+      @already_voted = (@user.id == @issue.user_id ) || !@issue.votes.where(:user_id => @user.id).empty?
     end
   end
 

@@ -4,7 +4,9 @@ class SsgAdmin::CitiesController < SsgAdminController
   before_filter :check_ssg_admin
 
   def index
-    @cities = City.find(:all).sort() { |a,b| a.name <=> b.name}
+    @sort_option = sort_option
+    @cities = City.order("name #{@sort_option}")
+    refine_seach
   end
 
   def destroy
@@ -21,11 +23,22 @@ class SsgAdmin::CitiesController < SsgAdminController
   end
 
 
-  # 
+  #
   def create_or_edit
     is_created = City.create_or_edit(params)
 
     flash[:info] = "Uspješno ste #{is_created ? 'kreirali' : 'ažurirali'} grad '#{params[:city_name].capitalize}'!"
     redirect_to ssg_admin_cities_path()
+  end
+
+  protected
+
+  def sort_option
+    permited_sorts = ["ASC", "DESC"]
+    params[:sort].present? && permited_sorts.include?(params[:sort].upcase) ? params[:sort].upcase : "ASC"
+  end
+
+  def refine_seach
+    @cities = @cities.where("name LIKE(?)", "%#{params[:q]}%") if params[:q].present?
   end
 end

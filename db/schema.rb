@@ -11,17 +11,17 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140223132752) do
+ActiveRecord::Schema.define(:version => 20140329151853) do
 
   create_table "categories", :force => true do |t|
-    t.string   "name",                                         :null => false
+    t.string   "name",                                        :null => false
     t.text     "description"
-    t.string   "color",       :limit => 6,                     :null => false
-    t.string   "icon",        :limit => 32
-    t.datetime "created_at",                                   :null => false
-    t.datetime "updated_at",                                   :null => false
+    t.string   "color",       :limit => 6,                    :null => false
+    t.string   "icon"
+    t.datetime "created_at",                                  :null => false
+    t.datetime "updated_at",                                  :null => false
     t.integer  "parent_id"
-    t.boolean  "deleted",                   :default => false
+    t.boolean  "deleted",                  :default => false
     t.string   "map_icon"
   end
 
@@ -41,14 +41,14 @@ ActiveRecord::Schema.define(:version => 20140223132752) do
   end
 
   create_table "comments", :force => true do |t|
-    t.integer  "issue_id",                                        :null => false
-    t.integer  "user_id",                                         :null => false
-    t.text     "text",          :limit => 255,                    :null => false
-    t.datetime "created_at",                                      :null => false
-    t.datetime "updated_at",                                      :null => false
-    t.boolean  "admin_comment",                :default => false
-    t.integer  "status_first",                 :default => 0
-    t.integer  "status_second",                :default => 0
+    t.integer  "issue_id",                         :null => false
+    t.integer  "user_id",                          :null => false
+    t.text     "text",                             :null => false
+    t.datetime "created_at",                       :null => false
+    t.datetime "updated_at",                       :null => false
+    t.boolean  "admin_comment", :default => false
+    t.integer  "status_first",  :default => 0
+    t.integer  "status_second", :default => 0
   end
 
   create_table "follows", :force => true do |t|
@@ -71,7 +71,10 @@ ActiveRecord::Schema.define(:version => 20140223132752) do
     t.text     "image"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.integer  "update_id"
   end
+
+  add_index "images", ["update_id"], :name => "index_images_on_update_id"
 
   create_table "issues", :force => true do |t|
     t.integer  "user_id",                           :null => false
@@ -90,6 +93,7 @@ ActiveRecord::Schema.define(:version => 20140223132752) do
     t.integer  "comment_count",      :default => 0
     t.integer  "share_count",        :default => 0
     t.integer  "session_view_count", :default => 0
+    t.datetime "sort_date"
   end
 
   add_index "issues", ["slug"], :name => "index_issues_on_slug", :unique => true
@@ -138,6 +142,7 @@ ActiveRecord::Schema.define(:version => 20140223132752) do
     t.string   "twitter_id"
     t.string   "twitter_token"
     t.string   "script"
+    t.string   "access_token"
   end
 
   add_index "users", ["email", "fb_id", "fb_token"], :name => "index_users_on_email_and_fb_id_and_fb_token"

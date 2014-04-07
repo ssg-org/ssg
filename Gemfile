@@ -16,7 +16,7 @@ gem 'omniauth-twitter'
 gem 'twitter'
 gem 'twitter-text'
 
-#gem 'execjs'
+# gem 'execjs'
 gem 'therubyracer'
 #gem 'oauth2', '0.4.1'
 
@@ -57,6 +57,7 @@ group :assets do
 end
 
 gem 'jquery-rails'
+gem 'jquery-ui-rails'
 gem 'jquery-fileupload-rails'
 
 gem 'jhtmlarea'
@@ -76,3 +77,4 @@ gem 'thin'
 
 # To use debugger
 # gem 'ruby-debug19', :require => 'ruby-debug'
+gem 'will_paginate', '~> 3.0'

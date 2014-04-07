@@ -3,9 +3,7 @@
 </div>
 
 <div id="issues_left_column">
-
-	<%= render :partial => 'issue', :collection => @issues %>
-	
+	<%= render :partial => 'issue', :collection => @issues %>	
 </div>
 
 <%= render :partial => 'right_menu' %>
@@ -16,6 +14,7 @@
 </div>
 -->
 
+<%= render :partial => 'yt_video'%>
 
 <% content_for :javascript do %>
 <script>
@@ -46,7 +45,6 @@
              delay += 100;
          });
      };
-            
   });
 </script>
 <% end %>

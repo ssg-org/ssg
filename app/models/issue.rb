@@ -9,13 +9,15 @@ class Issue < TranslatedBase
   FIXED         = 3
   DELETED       = 4
 
+  ISSUES_PER_PAGE = 30
+
   TRANS_KEYS = ['none','reported','in_progress','fixed','deleted']
 
-  default_scope where('status <> 4')
+  default_scope where('issues.status <> 4')
 
   attr_accessor :image_url, :short_desc, :issue_url
-  attr_accessible  :title, :category, :city, :description, :user, :lat, :long, :status, :vote_count, :view_count, :comment_count, :share_count, :created_at
-
+  attr_accessible  :title, :category, :city, :description, :user, :lat, :long, :status, :vote_count, :view_count, :comment_count, :share_count, :created_at, :sort_date
+  
   belongs_to 	:user
   belongs_to  :category
   belongs_to	:city
@@ -30,6 +32,14 @@ class Issue < TranslatedBase
   
   friendly_id :title, :use => [:slugged]
 
+  def self.with_paging(page)
+    paginate(:page => page, :per_page => ISSUES_PER_PAGE)
+  end
+
+  def self.sort_by(column=nil)
+    sort_criteria = column || 'vote_count DESC'
+    order(sort_criteria)
+  end
 
   def mark_as_viewed(user_uniq_cookie_id) 
     uniq_view = self.unique_views.where(:session => user_uniq_cookie_id).first
@@ -52,7 +62,7 @@ class Issue < TranslatedBase
   end
 
   def setup_json_attributes!()
-    @image_url = self.images.first.image.issue_full.url if !self.images.empty?
+    @image_url = images.first.image.issue_full.url unless images.empty?
     @short_desc = ApplicationController.helpers.truncate(self.description, :length => 200)
     @issue_url = Rails.application.routes.url_helpers.issue_path(self.friendly_id)
   end
@@ -64,6 +74,12 @@ class Issue < TranslatedBase
     ne_long = north_east_geo[:long]
 
     return Issue.where('lat > ? AND lat < ? AND long > ? AND long < ?', sw_lat, ne_lat, sw_long, ne_long).includes([:images, :user, :category, :city]).limit(limit)  
+  end
+
+  # get topmost category for issue
+  # we need it to fetch icon for marker
+  def top_category_id
+    Category.check_parent_id(category)
   end
 
   def get_status
@@ -99,7 +115,7 @@ class Issue < TranslatedBase
     if images.length > 0
       return  images.first.image.issue_thumb.url
     else
-      return ApplicationController.helpers.icon_path(category.icon, 'jpg')
+      return ApplicationController.helpers.image_path("icons/#{category.icon}.jpg")
     end
   end
 
@@ -107,6 +123,7 @@ class Issue < TranslatedBase
     # also can be solved by adding :methods to options hash
     response = super(options)
     response[:image_url] = self.image_url
+    response[:top_category_id] = self.top_category_id
     response[:short_desc] = self.short_desc
     response[:issue_url] = self.issue_url
     response
@@ -121,7 +138,7 @@ class Issue < TranslatedBase
     values = Hash.new
 
     # Order
-    order_by = 'created_at desc'
+    order_by = 'sort_date desc'
 
     # Get category, status and city params
     if (!params[:category].blank?)
@@ -170,16 +187,45 @@ class Issue < TranslatedBase
         order_by = 'vote_count desc'
       elsif (sort_by == 'discussed')
         order_by = 'comment_count desc'
+      elsif (sort_by == 'updated')
+        order_by = "coalesce(updates.created_at, date('now')) desc"
+      #elsif (sort_by == 'updated')
+       # order_by = 
       end
     end
-
+    
     if (query.empty?)
   		@issues_relation = Issue
-	  else
+    else
 		  @issues_relation = Issue.where(query.join(' AND '), values)
     end
     
-    return @issues_relation.limit(limit).offset(offset).order(order_by).includes([:user, :city, :category, :images, :category])
+    if !params[:featured].blank? && sort_by == 'updated'
+      return Issue.select("issues.*, coalesce(updates.created_at, date('now')) as new_order").joins("left join updates on issues.id = updates.issue_id").order("new_order desc").uniq('issues.id')
+    else
+      return @issues_relation.limit(limit).offset(offset).order(order_by).includes([:user, :city, :category, :images, :category])
+    end
+  end
+
+
+  def is_new
+    return self.created_at > 3.days.ago ? true : false
+  end
+
+  def is_changed
+    return self.created_at < self.sort_date && self.sort_date > 3.days.ago ? true : false
+  end
+
+  def get_ribbon(lang = nil)
+    
+    if is_changed
+      return "izmjena_#{lang}.png"
+    elsif is_new
+      return "novo_#{lang}.png"
+    else
+      return ""
+    end
+
   end
 
   def assign_images(image_ids)

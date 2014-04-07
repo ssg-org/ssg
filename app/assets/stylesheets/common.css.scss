@@ -124,7 +124,7 @@ textarea {
 }
 
 .header-menu a {
-	@extend .font-gray; 
+	@extend .font-dark-gray; 
 }
 
 .what-are-we {
@@ -605,7 +605,7 @@ textarea {
 	/*font-family: 'Conv_DINPro-Regular';*/
 	font-family: 'Arial';
 	font-size:15px; 
-	margin: 15px 0px 15px 30px;
+	margin: 15px 0px 0px 30px;
 	font-weight: bold;
 }
 .breadcrumb-container span {
@@ -1101,4 +1101,24 @@ a.account  {
 
 .update-text {
 	margin: 0 0 15px 0;
+}
+
+.custom-combobox {
+	height: 28px;
+	position: relative;
+	display: inline-block;
+}
+.custom-combobox-toggle {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	margin-left: -1px;
+	padding: 0;
+	/* support: IE7 */
+	*height: 1.7em;
+	*top: 0.1em;
+}
+.custom-combobox-input {
+	margin: 0;
+	padding: 0.3em;
 }
