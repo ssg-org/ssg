@@ -3,6 +3,16 @@ class ImageUploader < CarrierWave::Uploader::Base
 
   include CarrierWave::MiniMagick
 
+
+  process :auto_orient # this should go before all other "process" steps
+
+  # auto rotate camera photos
+  def auto_orient
+    manipulate! do |image|
+      image.tap(&:auto_orient)
+    end
+  end
+
   # Choose what kind of storage to use for this uploader:
   # storage :fog
 
