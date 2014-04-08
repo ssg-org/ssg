@@ -9,7 +9,7 @@ Ssg::Application.routes.draw do
           post :signup
         end
       end
-      # resources :issues
+      resources :issues, :only => [:create]
       get 'info' => 'info#index'
     end
   end

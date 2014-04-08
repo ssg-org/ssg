@@ -46,15 +46,15 @@ class Api::V1::ApiController < ActionController::Base
     signature = params[:signature]
     ts = params[:ts]
 
-    sorted_kvs = params.except(:controller, :action, :signature).map { |k, v| [k, v] }.sort { |a, b| a[0] <=> b[0] }.map { |ar| ar.join('=') }.join('&')
+    sorted_kvs = params.except(:controller, :action, :signature, :image).map { |k, v| [k, v] }.sort { |a, b| a[0] <=> b[0] }.map { |ar| ar.join('=') }.join('&')
     signature  = Base64.strict_encode64(OpenSSL::HMAC.digest('sha256', "secret", sorted_kvs))
 
+    # puts "PARAMS : #{params}"
     puts "SRV SIGN : '#{signature}'"
     puts "API SIGN : '#{params[:signature]}'"
-    # if (params[:signature] != signature) 
-    #   raise Api::V1::ApiError.invalid_signature
-    # end
-
+    if (params[:signature] != signature) 
+      raise Api::V1::ApiError.invalid_signature
+    end
   end
 
 end
