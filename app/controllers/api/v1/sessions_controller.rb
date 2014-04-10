@@ -25,7 +25,7 @@ class Api::V1::SessionsController < Api::V1::ApiController
     define_required(:ts, :signature, :email, :password)
 
     usr = User.exists?(params[:email], params[:password])
-    if (!usr.nil?) 
+    if (!usr.nil? && usr.active) 
       usr.access_token = SecureRandom.uuid 
       usr.save!
 
