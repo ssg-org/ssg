@@ -198,7 +198,7 @@ en:
             in_progress:    'In progress'
             fixed:          'Fixed'
             all_counties:   'All cities'
-            most_updated:   'Most updated'
+            most_updated:   'Newest updates'
         status:
             none:           'Not set'
             reported:       'Reported'

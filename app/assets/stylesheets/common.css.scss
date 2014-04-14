@@ -524,7 +524,7 @@ textarea {
   overflow: auto;
 }
 .update-container {
-	padding: 30px;	
+	padding: 15px 30px 15px 30px ;
 	background-color: #EEF2EA;
 	color:#555555;
 
@@ -1136,4 +1136,10 @@ a.account  {
 	padding:1px 4px; 
 	color:white; 
 	border-radius:4px;
+}
+
+.filter-header {
+	display: block !important;
+	background-color: #eee;
+	margin: 0px 10px 0 0px;
 }
