@@ -93,8 +93,14 @@
 				</li>
 				<li class="menu-sub" style="float:right;">
 						<%= link_to user_path(@user.id), :title=>t('shared.menu.profile') do %>
-							<span class="menu-user-title"><%= @user.full_name %></span>
-							<%= image_tag @user.avatar, :class => 'profile-user-photo' %>
+							<div style="display:inline-block;">
+								<span><%= @user.full_name.upcase %></span><br/>								
+								<span class="font-gray">MOJE PRIJAVE</span>
+							</div>
+							<div style="display:inline-block; margin-left:5px;">
+								<%= image_tag @user.avatar, :class => 'profile-user-photo' %>								
+							</div>
+
 						<% end %>
 				</li>
 			<% end %>
