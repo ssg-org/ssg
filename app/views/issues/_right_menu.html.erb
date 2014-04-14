@@ -34,7 +34,7 @@
 	<br style="clear:both;">
 	<br />
 
-	<div class="filter">
+	<div class="filter filter-wide">
 		<span class="title value_strip()"><%= t('issues.right_menu.resolution')%></span><br/>
 		<%=link_to t('issues.right_menu.all'), issues_path(clear_params({:status => nil})), { :class => "#{'r-menu-selected' if params[:status].blank? }"} %><br/>
 		<% Issue::TRANS_KEYS.each_with_index do |status, i| %>
