@@ -227,6 +227,7 @@ class Issue < TranslatedBase
       return ""
     end
 
+    return @issues_relation.limit(limit).offset(offset).order(order_by).includes([:user, :city, :category, :images, :category, :updates])
   end
 
   def assign_images(image_ids)

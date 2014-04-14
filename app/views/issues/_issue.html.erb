@@ -7,12 +7,15 @@
 				<% else %>
 					<%=image_tag icon_path(issue.category.icon, 'jpg'), :border => '0' %>
 				<% end %>
-
 				<% if !issue.get_ribbon.blank? %>
 					<% img_ext = I18n.script == :cyrillic ? 'cyr' : I18n.locale%>
 					<%= image_tag issue.get_ribbon(img_ext), :style => 'position: absolute; height: auto; top: -7px; width: 50px; right: -7px;' %>
 				<% end%>
-
+				<% if issue.updates.length > 0 %>
+				<div class="issue-badge" style="">
+					<span><%=issue.updates.length%> <%=t("issues.show.badge", :count => issue.updates.length)%></span>
+				</div>
+				<% end %>
 			</div>
 		</a>
 		<div style="height:5px; background-color:#<%=issue.category.color%>;"></div>

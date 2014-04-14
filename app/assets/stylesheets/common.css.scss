@@ -1102,6 +1102,7 @@ a.account  {
 	margin: 0 0 15px 0;
 }
 
+
 .custom-combobox {
 	height: 28px;
 	position: relative;
@@ -1120,4 +1121,19 @@ a.account  {
 .custom-combobox-input {
 	margin: 0;
 	padding: 0.3em;
+}
+
+
+.issue-badge {
+	position: relative;
+	top: -150px;
+	right: -132px;
+	font-size: 10px;
+}
+
+.issue-badge span {
+	background-color:gray; 
+	padding:1px 4px; 
+	color:white; 
+	border-radius:4px;
 }

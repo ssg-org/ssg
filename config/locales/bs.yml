@@ -169,6 +169,10 @@ bs:
             created:        'Kreiran'
             update:
                 municipality_update: 'Komentar opštine'
+            badge:
+                zero:       ''
+                one:        'odgovor'
+                other:      'odgovora'
         delete:
             success:         'Uspješno izbrisan problem!'
             error:           'Problem prilikom brisanja problema!'

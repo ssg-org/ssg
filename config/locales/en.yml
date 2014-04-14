@@ -167,6 +167,11 @@ en:
             updates:        'Updates'
             status:         'Status'
             created:        'Created'
+            badge:
+                zero:       ''
+                one:        'update'
+                other:      'updates'
+
         delete:
             success:         'Issue successfully deleted!'
             error:           'Error deleting issue!'
