@@ -7,6 +7,11 @@
 				<% else %>
 					<%=image_tag icon_path(issue.category.icon, 'jpg'), :border => '0' %>
 				<% end %>
+				<% if issue.updates.length > 0 %>
+				<div class="issue-badge" style="">
+					<span><%=issue.updates.length%> <%=t("issues.show.badge", :count => issue.updates.length)%></span>
+				</div>
+				<% end %>
 			</div>
 		</a>
 		<div style="height:5px; background-color:#<%=issue.category.color%>;"></div>

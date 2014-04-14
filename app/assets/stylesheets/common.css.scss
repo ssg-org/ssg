@@ -1102,3 +1102,19 @@ a.account  {
 .update-text {
 	margin: 0 0 15px 0;
 }
+
+
+.issue-badge {
+	position: relative;
+	top: -150px;
+	right: -132px;
+	font-size: 10px;
+}
+
+.issue-badge span {
+	background-color:gray; 
+	padding:1px 4px; 
+	color:white; 
+	border-radius:4px;
+}
+

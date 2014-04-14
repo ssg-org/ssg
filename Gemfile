@@ -6,10 +6,11 @@ gem 'rails', '3.2.6'
 
 gem 'i18n-js'
 # gem 'sqlite3'
-gem 'pg'
+gem 'pg', '0.14.1'
 #
 gem 'awesome_print'
 
+gem 'quiet_assets', :group => :development
 gem 'omniauth-facebook', '1.4.0'
 gem 'omniauth'
 gem 'omniauth-twitter'
