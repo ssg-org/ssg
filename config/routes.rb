@@ -3,6 +3,19 @@ Ssg::Application.routes.draw do
 
   get 'contributors' => 'contributors#index'
   
+  namespace :api do
+    namespace :v1 do
+      resources :sessions, :only => [:create] do
+        collection do
+          post :fb_create
+          post :signup
+        end
+      end
+      resources :issues, :only => [:create]
+      get 'info' => 'info#index'
+    end
+  end
+  
   resources  :users do
     collection do
       get   :fb_login
