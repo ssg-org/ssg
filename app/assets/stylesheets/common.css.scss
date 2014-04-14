@@ -1114,6 +1114,7 @@ a.account  {
 	bottom: 0;
 	margin-left: -1px;
 	padding: 0;
+	height:24px;
 	/* support: IE7 */
 	*height: 1.7em;
 	*top: 0.1em;
@@ -1121,9 +1122,17 @@ a.account  {
 .custom-combobox-input {
 	margin: 0;
 	padding: 0.3em;
+	width:185px !important;
+	background: #FFFFFF;
+	border: 1px solid #9ecc3b;
+	font-size:13px !important;
+	border-radius: 0px;
 }
-
-
+.custom-combobox-toggle{
+	background: #FFFFFF;
+	border: 1px solid #9ecc3b;
+	border-radius: 0px;
+}
 .issue-badge {
 	position: relative;
 	top: -150px;
@@ -1142,4 +1151,8 @@ a.account  {
 	display: block !important;
 	background-color: #eee;
 	margin: 0px 10px 0 0px;
+}
+
+#cmb_city_select {
+	font-size:13px;
 }

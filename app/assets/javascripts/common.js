@@ -182,7 +182,7 @@ if (!String.prototype.format) {
         wasOpen = false;
         $( "<a>" )
         .attr( "tabIndex", -1 )
-        .attr( "title", "Prikazi sve opstine" )
+        // .attr( "title", "Prikazi sve opstine" )
         .tooltip()
         .appendTo( this.wrapper )
         .button({
@@ -255,9 +255,7 @@ _destroy: function() {
 });
 })( jQuery );
 $(function() {
-
     $( "#cmb_city_select" ).combobox({ 
-
         select: function(ui, option){
             selectCity(option);
         } 
