@@ -204,7 +204,7 @@ class Issue < TranslatedBase
     if !params[:featured].blank? && sort_by == 'updated'
       return Issue.select("issues.*, coalesce(updates.created_at, date('now')) as new_order").joins("left join updates on issues.id = updates.issue_id").order("new_order desc").uniq('issues.id')
     else
-      return @issues_relation.limit(limit).offset(offset).order(order_by).includes([:user, :city, :category, :images, :category])
+      return @issues_relation.limit(limit).offset(offset).order(order_by).includes([:user, :city, :category, :images, :category, :updates])
     end
   end
 
