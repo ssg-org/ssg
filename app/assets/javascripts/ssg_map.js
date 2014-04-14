@@ -15,8 +15,10 @@ var methods = {
 		map.addLayer(cloudmade);
 		map.setView(new L.LatLng(data.opts.lat, data.opts.lng), data.opts.zoom);	
 
-		if (data.opts.zoomend) { map.on("zoomend", 	data.opts.zoomend); }
-		if (data.opts.dragend) { map.on("dragend", 	data.opts.dragend); }
+		// Commented this for load on drag/zoom
+		// if (data.opts.zoomend) { map.on("zoomend", 	data.opts.zoomend); }
+		// if (data.opts.dragend) { map.on("dragend", 	data.opts.dragend); }
+
 		if (data.opts.click)   { map.on("click", 		data.opts.click); }
 
 		data.map = map;
