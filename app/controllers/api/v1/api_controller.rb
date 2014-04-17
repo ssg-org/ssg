@@ -31,7 +31,7 @@ class Api::V1::ApiController < ActionController::Base
   end
 
   def check_token
-    @api_user = User.where(params[:access_token]).first
+    @api_user = User.where(:access_token => params[:access_token]).first
   end
 
   def define_required(*required)
