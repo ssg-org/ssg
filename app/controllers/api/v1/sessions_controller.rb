@@ -29,7 +29,11 @@ class Api::V1::SessionsController < Api::V1::ApiController
       usr.access_token = SecureRandom.uuid 
       usr.save!
 
-      render :api_response => { :access_token => usr.access_token }
+      render :api_response => { 
+        :access_token => usr.access_token, 
+        :user => usr,
+        :avatar_path => usr.avatar        
+      }
     else
       raise Api::V1::ApiError.invalid_user
     end
@@ -87,7 +91,11 @@ class Api::V1::SessionsController < Api::V1::ApiController
     end
 
     if (!@user.nil?)
-      render :api_response => { :access_token => @user.access_token }
+      render :api_response => { 
+        :access_token => @user.access_token,
+        :user => @user,
+        :avatar_path => @user.avatar
+      }
     else
       raise Api::V1::ApiError.invalid_user
     end
