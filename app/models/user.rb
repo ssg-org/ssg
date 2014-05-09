@@ -164,10 +164,11 @@ class User < TranslatedBase
       if (issue.user_id == self.id || self.ssg_admin?)
         old_status   = issue.status
         issue.status = status.to_i
+        issue.sort_date = Time.now
         issue.save
 
         # Add Comment
-        comment_on_issue(issue.id, 'status comment', true, old_status, status)
+        # comment_on_issue(issue.id, 'status comment', true, old_status, status)
 
         # Send notifications
         notify_issue_updated(issue)
@@ -221,11 +222,12 @@ class User < TranslatedBase
         :category => category, 
         :city => city,
         :lat => lat,
-        :long => long
+        :long => long,
+        :sort_date => Time.now
       })
       issue.save
 
-      Image.update_all({ :issue_id => issue.id}, { :id => image_ids })
+      issue.assign_images(image_ids)
 
       return issue
     end

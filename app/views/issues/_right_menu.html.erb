@@ -7,24 +7,25 @@
 <div id="issues_right_column" class="font-13" style="clear:right;">
 	
 	<div class="filter">
-		<span class="title value_strip()"><%= t('issues.right_menu.date')%></span><br/>
+		<span class="title filter-header value_strip()"><%= t('issues.right_menu.date')%></span>
 		<%=link_to t('issues.right_menu.all_time'), issues_path(clear_params({:date => nil})), { :class => "#{'r-menu-selected' if params[:date].blank? }"} %><br/>
 		<%=link_to t('issues.right_menu.today'), issues_path(clear_params({:date => :today})), { :class => "#{'r-menu-selected' if params[:date] == 'today' }"} %><br/>
 		<%=link_to t('issues.right_menu.this_week'), issues_path(clear_params({:date => :week})), { :class => "#{'r-menu-selected' if params[:date] == 'week' }"} %><br/>
 		<%=link_to t('issues.right_menu.this_month'), issues_path(clear_params({:date => :month})), { :class => "#{'r-menu-selected' if params[:date] == 'month' }"} %><br/>
 	</div>
 	<div class="filter">
-		<span class="title value_strip()"><%= t('issues.right_menu.featured')%></span><br/>
+		<span class="title filter-header  value_strip()"><%= t('issues.right_menu.featured')%></span>
 		<%=link_to t('issues.right_menu.all_time'), issues_path(clear_params(:featured => nil)), { :class => "#{'r-menu-selected' if params[:featured].blank? }"} %><br/>
 		<%=link_to t('issues.right_menu.most_viewed'), issues_path(clear_params(:featured => :viewed)), { :class => "#{'r-menu-selected' if params[:featured] == 'viewed' }"} %><br/>
 		<%=link_to t('issues.right_menu.most_voted'), issues_path(clear_params(:featured => :votes)), { :class => "#{'r-menu-selected' if params[:featured] == 'votes' }"} %><br/>
 		<%=link_to t('issues.right_menu.most_discussed'), issues_path(clear_params(:featured => :discussed)), { :class => "#{'r-menu-selected' if params[:featured] == 'discussed' }"} %><br/>
+		<%link_to t('issues.right_menu.most_updated'), issues_path(clear_params(:featured => :updated)), { :class => "#{'r-menu-selected' if params[:featured] == 'updated' }"} %><br/>
 		<%link_to t('issues.right_menu.most_shared'), issues_path(clear_params(:featured => :shared)), { :class => "#{'r-menu-selected' if params[:featured] == 'shared' }"} %><br/>
 	</div>
 	<br style="clear:both;">
-	<br />
+	
 	<div class="filter filter-wide">
-		<span class="title value_strip()"><%= t('issues.right_menu.categories')%></span><br/>
+		<span class="title filter-header value_strip()"><%= t('issues.right_menu.categories')%></span>
 		<%=link_to t('issues.right_menu.all_categories'), issues_path(clear_params({:category => nil})), { :class => "#{'r-menu-selected' if params[:category].blank? }"} %><br/>
 		<% @user.get_categories.each do |cat|%>
 			<%=link_to cat.name, issues_path(clear_params({:category => cat.id})), { :class => "#{'r-menu-selected' if params[:category] == cat.id.to_s }"} %><br/>
@@ -33,8 +34,8 @@
 	<br style="clear:both;">
 	<br />
 
-	<div class="filter">
-		<span class="title value_strip()"><%= t('issues.right_menu.resolution')%></span><br/>
+	<div class="filter filter-wide">
+		<span class="title filter-header value_strip()"><%= t('issues.right_menu.resolution')%></span>
 		<%=link_to t('issues.right_menu.all'), issues_path(clear_params({:status => nil})), { :class => "#{'r-menu-selected' if params[:status].blank? }"} %><br/>
 		<% Issue::TRANS_KEYS.each_with_index do |status, i| %>
 			<% next if i == 0 || i == 4 # we skip first one since it is 'none' %>
@@ -46,9 +47,9 @@
 	<br style="clear:both;">
 	<br />
 	
-	<div class="filter">
-		<span class="title value_strip()"><%= t('issues.right_menu.cities')%></span><br/>
-		<%= select_tag :city_id, options_for_select(@city_names), { :id => 'city_select' } %><br />
+	<div class="filter filter-wide">
+		<span class="title filter-header value_strip()"><%= t('issues.right_menu.cities')%></span>
+		<%= select_tag :cmb_selected_city, options_from_collection_for_select(@cities, :id, :name), { :id => 'cmb_city_select', :onChange=>"return selectCity(this);", :prompt =>'' } %>
 	</div>
 	
 </div>
@@ -60,20 +61,21 @@
 	$(document).ready(function() {
 
 		<% if params[:city] %>
-			$("select").val(<%= params[:city].to_i %>);
+			$("#cmb_city_select").val(<%= params[:city].to_i %>);
 		<% end %>
 
-	  $('select').selectbox();
+	  // $('select').combobox();
 
-	  var url = '<%= issues_path(clear_params({:city => nil})) %>';
-
-		$('select').on('change', function() {
-			if (this.value == 0) {
-				window.location.href = url;
-			} else {
-		  	window.location.href = url + "&city=" + this.value;
-		  }
-		});
 	});
+
+	function selectCity(selectedItem) {		
+		var item = selectedItem.item;
+	  var url = '<%= issues_path(clear_params({:city => nil})) %>';
+		if (item.value == 0) {
+			window.location.href = url;
+		} else {		
+	  	window.location.href = url + "&city=" + item.value;
+	  }
+	};
 
 </script>

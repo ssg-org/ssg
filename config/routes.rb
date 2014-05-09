@@ -3,6 +3,19 @@ Ssg::Application.routes.draw do
 
   get 'contributors' => 'contributors#index'
   
+  namespace :api do
+    namespace :v1 do
+      resources :sessions, :only => [:create] do
+        collection do
+          post :fb_create
+          post :signup
+        end
+      end
+      resources :issues, :only => [:create]
+      get 'info' => 'info#index'
+    end
+  end
+  
   resources  :users do
     collection do
       get   :fb_login
@@ -31,6 +44,7 @@ Ssg::Application.routes.draw do
       post  :unvote
       get   :follow
       post  :change_status
+      post  :attach_images
     end
     collection do 
       get   :more
@@ -67,7 +81,9 @@ Ssg::Application.routes.draw do
 
 
   namespace :admin do
-    resources :issues
+    resources :issues, shallow: true do
+      resources :updates, only: [:edit, :update]
+    end
     resource :city
   end
 

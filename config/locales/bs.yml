@@ -3,6 +3,7 @@
 
 bs:
     shared:
+        prompt_city: 'Unesite željenu opštinu!'
         menu:
             what:   'Šta je Ulica.ba?'
             we_are: 'Mi smo društvena mreža koja želi obezbijediti građanima život u ljepšem gradu.'
@@ -36,9 +37,8 @@ bs:
             disclamer2: 'Svi stavovi, mišljenja i zaključci izneseni ovdje ne odražavaju nužno stav Američke ambasade ili Vlade SAD, već isključivo autora.'
         comments:
             comment:    'Komentar'
-            comments:   'komentar'
-            discuss:    'Komentarišite problem'
-            log_in:     'Morate se prijaviti da bi komentarisali problem'
+            discuss:    'Dodajte vlastiti komentar'
+            log_in:     'Morate se prijaviti da biste komentarisali problem.'
             deleted:    'Uspješno izbrisan komentar!'
         locale:
             en:         'ENG'
@@ -149,6 +149,7 @@ bs:
             city_warn1:     'Odabrana općina trenutno nema uspostavljenu saradnju sa ULICA.BA platformom, te općinske vlasti neće biti automatski obavještene o prijavljenom problemu. '
             city_warn2:     'Sredi Svoj Grad tim aktivno radi na uspostavljanju saradnje sa što većim brojm općina, zahvaljujemo se na prijavi i molimo Vas za strpljene. Više informacija o općinama s kojima je uspostvaljena saradnja možete naći '
             city_warn3:     'ovdje.'            
+            login:          'Morate se prijaviti kako biste mogli dodati problem.'
         show:
             issues:         'PROBLEMI'
             delete_confirm: 'Da li stvarno želite obrisati ovaj problem?'
@@ -166,6 +167,12 @@ bs:
             updates:        'Promjene'
             status:         'Status'
             created:        'Kreiran'
+            update:
+                municipality_update: 'Komentar opštine'
+            badge:
+                zero:       ''
+                one:        'odgovor'
+                other:      'odgovora'
         delete:
             success:         'Uspješno izbrisan problem!'
             error:           'Problem prilikom brisanja problema!'
@@ -193,6 +200,7 @@ bs:
             in_progress:    'U postupku rješavanja'
             fixed:          'Riješeni'
             all_counties:   'Sve općine'
+            most_updated:   'Najnoviji odgovori'
         status:
             none:           'Nepoznato'
             reported:       'Prijavljen'
@@ -257,3 +265,6 @@ bs:
         internal_server_error:
             title:      'Desila se greška.'
             message:    "Izvinjavamo se, desila se greška prilikom izvršavanja ove stranice."
+    will_paginate:
+        next_label: 'Sljedeći'
+        previous_label: 'Prethodni'

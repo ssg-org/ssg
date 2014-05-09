@@ -39,8 +39,9 @@
 	<div style="margin-top:35px;">
 		<ul id="menu-list">
 			<li class="menu-sub">
-				<%=link_to t('shared.menu.issues'), root_path(), :class => "value_strip() font-black #{'menu-selected' if selection[:issues]}"%><br/>
-				<span class="font-gray"><%=t('shared.menu.discover')%></span><br/>
+				<%= link_to t('shared.menu.issues'), root_path(), :class => "value_strip() font-black #{'menu-selected' if selection[:issues]}"%><br/>
+				<%= link_to t('shared.menu.discover'), root_path(), :class => "font-gray" %>
+				<br/>
 				<% if selection[:issues]%>
 					<div class="selection"></div>
 				<% end %>
@@ -48,16 +49,16 @@
 
 			<li class="menu-sub">
 				<%=link_to t('shared.menu.cities'), cities_path(), :class => "value_strip() font-black #{'menu-selected' if selection[:cities]}"%><br/>
-				<span class="font-gray "><%=t('shared.menu.country')%></span><br/>
+				<%= link_to t('shared.menu.country'), cities_path(), :class => "font-gray" %>
 				<% if selection[:cities]%>
 					<div class="selection"></div>
 				<% end %>
 			</li>			
 			
 			<li class="menu-sub">
-				<% path = @user.guest? ?  login_users_path(:create_issue => true) : new_issue_path() %>
+				<% path = @user.guest? ? login_users_path(:create_issue => true) : new_issue_path() %>
 				<%=link_to t('shared.menu.report'), path, :class => "value_strip() font-black #{'menu-selected' if selection[:report]}"%><br/>
-				<span class="font-gray "><%=t('shared.menu.create_problem')%></span><br/>
+				<%= link_to t('shared.menu.create_problem'), path, :class => "font-gray" %>
 				<% if selection[:report]%>
 					<div class="selection"></div>
 				<% end %>
@@ -65,7 +66,7 @@
 
 			<li class="menu-sub">
 				<%=link_to t('shared.menu.reports'), reports_path(), :class => "value_strip() font-black #{'menu-selected' if selection[:reports]}"%><br/>
-				<span class="font-gray "><%=t('shared.menu.reports_discover')%></span><br/>
+				<%= link_to t('shared.menu.reports_discover'), reports_path(), :class => "font-gray" %>
 				<% if selection[:reports]%>
 					<div class="selection"></div>
 				<% end %>
@@ -74,7 +75,7 @@
 			<% if @user.guest? %>
 			<li class="menu-sub" style="float:right;">
 				<%=link_to t('shared.menu.login'), login_users_path(), :class => "value_strip() font-black #{'menu-selected' if selection[:login]}" %><br/>
-				<span class="font-gray "><%=t('shared.menu.registration')%></span>
+				<%= link_to t('shared.menu.registration'), login_users_path(), :class => "font-gray" %>
 				<% if selection[:login]%>
 					<div class="selection"></div>
 				<% end %>
@@ -92,8 +93,14 @@
 				</li>
 				<li class="menu-sub" style="float:right;">
 						<%= link_to user_path(@user.id), :title=>t('shared.menu.profile') do %>
-							<span class="menu-user-title"><%= @user.full_name %></span>
-							<%= image_tag @user.avatar, :class => 'profile-user-photo' %>
+							<div style="display:inline-block;">
+								<span><%= @user.full_name.upcase %></span><br/>								
+								<span class="font-gray">MOJE PRIJAVE</span>
+							</div>
+							<div style="display:inline-block; margin-left:5px;">
+								<%= image_tag @user.avatar, :class => 'profile-user-photo' %>								
+							</div>
+
 						<% end %>
 				</li>
 			<% end %>

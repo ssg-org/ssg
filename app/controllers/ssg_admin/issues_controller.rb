@@ -2,12 +2,11 @@
 class SsgAdmin::IssuesController < SsgAdminController
 
   def index
-
-    if @user.ssg_admin?
-      @issues = Issue.find(:all, :order => 'vote_count DESC')
-    else
-      @issues = Issue.where(:city_id => @user.city_id).order('vote_count DESC').all
-    end
+    # if @user.ssg_admin?
+      @issues = Issue.sort_by(params[:sort]).paginate(:page => params[:page], :per_page => 20)
+    # elsif @user.
+    #   @issues = Issue.where(:city_id => @user.city_id).order('vote_count DESC').all
+    # end
   end
 
   def edit
@@ -16,7 +15,6 @@ class SsgAdmin::IssuesController < SsgAdminController
 
 
   def update
-
     issue = Issue.find(params[:id])
     old_status   = issue.status
 

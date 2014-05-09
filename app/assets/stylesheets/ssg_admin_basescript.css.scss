@@ -40,7 +40,7 @@
     position: relative;
 }
 
-#page_container.admin {  
+#page_container.admin {
   height: auto;
   min-height: 100%;
   width: 80%;
@@ -65,44 +65,44 @@
 }
 
 #page_container.admin {
-  
+
   .navbar {
 
     margin-top: 20px;
-    
+
     .navbar-inner {
-      padding: 0;  
-    }    
-  
-    .container {
-      margin: 0 auto;      
+      padding: 0;
     }
-   
+
+    .container {
+      margin: 0 auto;
+    }
+
     .nav {
       margin: 0;
       display: table;
       width: 100%;
-      
+
       li {
         display: table-cell;
         width: auto;
-        float: none;   
-        
+        float: none;
+
         a {
           font-weight: bold;
           text-align: center;
           border-left: 1px solid rgba(255,255,255,.75);
           border-right: 1px solid rgba(0,0,0,.1);
-        }             
-      }            
-      
+        }
+      }
+
       li:first-child a {
           border-left: 0;
           border-radius: 3px 0 0 3px;
       }
     }
-  }    
-  
+  }
+
   .grid {
     background: #fff;
     border: 1px solid #c9c9c9;
@@ -110,10 +110,10 @@
     -moz-border-radius: 3px;
     border-radius: 3px;
   }
-  
+
   .grid.profile-images {
     margin-top: 10px;
-    
+
     #img_delete_anim {
       width: 16px;
       height: 16px;
@@ -123,7 +123,7 @@
       display: none;
     }
   }
-  
+
   .grid-title {
     height: 35px;
     background: #fafafa;
@@ -145,7 +145,7 @@
     border-radius: 0px;
     border-top-left-radius: 3px;
     border-top-right-radius: 3px;
-    
+
     .pull-left {
       .setup-icon {
         padding-right: 10px;
@@ -158,7 +158,7 @@
         float: left;
         color: #5f5f5f;
       }
-      
+
       span {
         color: #5f5f5f;
         font-size: 14px;
@@ -170,54 +170,54 @@
       }
     }
   }
-  
+
   .grid-content {
     padding: 10px;
     overflow: hidden;
   }
 
-  .place-form {  
-    ul.thumbnails {         
+  .place-form {
+    ul.thumbnails {
       clear: both;
-      
+
       li {
         position: relative;
         margin-bottom: 0;
         margin-top: 20px;
-        
+
         span {
           background: #000;
           display: block;
         }
       }
-                  
+
       .p_actions {
         width: 18px;
         position: absolute;
         top: 0px;
         right: 0px;
         opacity: 0;
-        -moz-transition: opacity 0.3s ease-in-out;                       
-        
+        -moz-transition: opacity 0.3s ease-in-out;
+
         a.p_delete {
-          width: 100%;          
-          display: block;          
-          color: white;  
-          text-decoration: none;  
-          font-size: 18px;      
-        }                
+          width: 100%;
+          display: block;
+          color: white;
+          text-decoration: none;
+          font-size: 18px;
+        }
       }
-    }        
-    
+    }
+
     ul.thumbnails > li {
       float: left;
       margin-bottom: 20px;
       margin-left: 30px;
-    }        
+    }
     ul.thumbnails > li:hover .p_actions {
       opacity: 1
     }
-    
+
     .thumbnail {
       display: block;
       padding: 4px;
@@ -235,26 +235,26 @@
       transition: all 0.2s ease-in-out;
     }
   }
-    
+
   .dataTables_wrapper {
     position: relative;
     clear: both;
     zoom: 1;
   }
-  
+
   .dataTables_filter {
     width: 50%;
     float: right;
     text-align: right;
     color: #5f5f5f;
-  }     
-  
+  }
+
   table {
-  
+
     .table-mod-2 {
       background-color: #fbfbfb;
     }
-    
+
     thead, tbody, tr {
       margin: 0;
       padding: 0;
@@ -263,12 +263,12 @@
       vertical-align: baseline;
       background: transparent;
     }
-    
+
     td {
       vertical-align: middle;
       overflow: hidden;
     }
-    
+
     td.admin-list-toolbar-cell {
       width: 80px;
       text-align: center;
@@ -280,31 +280,35 @@
 
     td.admin-list-toolbar-cell div.btn-toolbar {
       margin: 0;
-    }        
+    }
   }
 
   .category-item {
     .inline-toolbar {
       margin-right: 10px;
-      display: inline;  
+      display: inline;
     }
 
     font-size: 14px;
     line-height: 30px;
   }
-  
+
   #create_map {
     height: 800px;
     position: relative;
     border: 15px solid #ffffff;
     margin-left: 50px;
   }
-  
+
   #create_map.street-form {
     height: 410px;
-  }  
+  }
   .add-admin-user{
     margin-bottom:15px;
   }
-
+  .admin-search{
+    margin-top:3px;
+    margin-right: 10px;
+    height: 20px;
+  }
 }

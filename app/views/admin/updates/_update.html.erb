@@ -1,0 +1,12 @@
+<tr>
+  <td colspan="2">
+    <div class='update <%= update == @update ? 'is-current' : nil %>'>
+      <p class='update-subject'><%=update.subject%></p>
+      <p class='update-header'><%=update.created_at.strftime("%d %b. %Y")%> [<%=update.user.full_name %>]</p>
+      <p class='update-edit'><%=link_to 'Ispravi', edit_admin_update_path(update)%></p>
+      <div class='update-text'>
+        <%= raw update.text %>
+    </div>
+    </div>
+  </td>
+</tr>

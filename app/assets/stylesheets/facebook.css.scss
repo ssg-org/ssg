@@ -12,7 +12,8 @@
     -ms-user-select: none;
     user-select: none;
     white-space: nowrap;
-    cursor: pointer
+    cursor: pointer;
+    width: 100%;
 }
 
 .btn:hover, select:hover, .btn:focus, select:focus {

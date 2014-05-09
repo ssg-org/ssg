@@ -3,8 +3,11 @@
 </div>
 
 <div style="padding:0px 25px 25px 25px;">
-	<div style="float: right;">
-		<%= select_tag :city_id, options_from_collection_for_select(@cities, :slug, :name), { :id => 'city_select', :onChange=>"return selectCity(this);" , :prompt => t("cities.index.select")} %><br />
+	<div style="float: right; margin-right:30px; margin-bottom:15px;">
+		
+		<%= select_tag :city_id, options_from_collection_for_select(@cities, :slug, :name), { :id => 'cmb_city_select', 
+			:onChange=>"return selectCity(this);" , :prompt =>"Select something pls"} %><br />
+
 	</div>
 
 	<div id="mini_map" style="width:100%;  height:700px; float:left;">
@@ -15,9 +18,7 @@
 
 <% content_for :javascript do %>
 <script>
-
 $(document).ready(function() {
-	$('#city_select').selectbox();
 });
 
 $(function () {
@@ -41,12 +42,12 @@ var __icons = {};
 var __cities = {};
 
 function selectCity(selectedItem) {
-	var item = $(selectedItem);
-
-	if (item.val() == 0) {
+	
+	var item = selectedItem.item;
+	if (item.value == '') {
 		return true;
 	} else {
-		window.location.href = '<%= cities_path() %>' + '/' + item.val();
+		window.location.href = '<%= cities_path() %>' + '/' + item.value;
 	}
 };
 
@@ -79,11 +80,11 @@ function loadMoreIssues() {
 function drawIssues(issue_array) {
 	// why not pass all ?!
 	for (var i in issue_array) {
-		var issue = issue_array[i];
+    var issue = issue_array[i];
 		$('#mini_map').SSGMap('drawIssue', {
 			lat : issue['lat'], 
 			lng : issue['long'], 
-			icon : __icons[issue.category_id],
+			icon : __icons[issue.top_category_id],
 			title : issue.title,
 			description : issue.short_desc,
 			image_url: issue.image_url,

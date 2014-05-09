@@ -3,6 +3,7 @@
 
 en:
     shared:
+        prompt_city: 'Please enter Municipality'
         menu:
             what:   'What is Ulica.ba?'
             we_are: 'We are social community that wants to provide its citizens life in nicer environment'
@@ -166,6 +167,11 @@ en:
             updates:        'Updates'
             status:         'Status'
             created:        'Created'
+            badge:
+                zero:       ''
+                one:        'update'
+                other:      'updates'
+
         delete:
             success:         'Issue successfully deleted!'
             error:           'Error deleting issue!'
@@ -192,6 +198,7 @@ en:
             in_progress:    'In progress'
             fixed:          'Fixed'
             all_counties:   'All cities'
+            most_updated:   'Newest updates'
         status:
             none:           'Not set'
             reported:       'Reported'

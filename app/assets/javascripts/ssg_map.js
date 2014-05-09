@@ -15,8 +15,10 @@ var methods = {
 		map.addLayer(cloudmade);
 		map.setView(new L.LatLng(data.opts.lat, data.opts.lng), data.opts.zoom);	
 
-		if (data.opts.zoomend) { map.on("zoomend", 	data.opts.zoomend); }
-		if (data.opts.dragend) { map.on("dragend", 	data.opts.dragend); }
+		// Commented this for load on drag/zoom
+		// if (data.opts.zoomend) { map.on("zoomend", 	data.opts.zoomend); }
+		// if (data.opts.dragend) { map.on("dragend", 	data.opts.dragend); }
+
 		if (data.opts.click)   { map.on("click", 		data.opts.click); }
 
 		data.map = map;
@@ -43,15 +45,14 @@ var methods = {
 		}
 
 		if (opts.title) {
-			htmlMarkup += "<b><a href='" + opts.issue_url + "'>" +  opts.title + "</a></b></br></br>";
-			//htmlMarkup += "<img  style='width: 70px; height: 70px; display: inline-block;' src='" +  opts.image_url + "'></img>";
-			htmlMarkup += "<span style='color: black; display: inline-block;'>" + opts.description + "</span></br></br>";
-			//console.log(htmlMarkup);
-			marker.bindPopup(htmlMarkup);
+      popup =   "<div class='clearfix' style='min-width: 200px;'>";
+      popup +=    "<img src={0} style='width:100%'>".format(opts.image_url);
+      popup +=    "<div class='info'><b><a href='" + opts.issue_url + "' style='color:black'>{0}</a></b><br>{1}".format(opts.title, opts.description);
+      popup +=  "</div>";
+			marker.bindPopup(popup);
 		}
 
 		marker.addTo(data.map);
-
 	}
 };
 

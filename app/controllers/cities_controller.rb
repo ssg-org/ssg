@@ -14,10 +14,11 @@ class CitiesController < ApplicationController
 	end
 
 	def zoom
+		# Limit removed
 		@issues = Issue.get_geo_issues(
 			{:lat => params[:sw_lat], :long => params[:sw_long]}, 
-			{:lat => params[:ne_lat], :long => params[:ne_long]},
-			20
+			{:lat => params[:ne_lat], :long => params[:ne_long]}
+			#,20
 		)
 
 		# will set members to data we need in map view

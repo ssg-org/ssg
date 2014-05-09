@@ -4,6 +4,7 @@ class City < TranslatedBase
   
 	has_many :issues
   has_many :users
+  has_many :updates, through: :issues
 
   belongs_to :image
 	

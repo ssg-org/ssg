@@ -124,7 +124,7 @@ textarea {
 }
 
 .header-menu a {
-	@extend .font-gray; 
+	@extend .font-dark-gray; 
 }
 
 .what-are-we {
@@ -360,7 +360,6 @@ textarea {
 	float:left;
 	margin-top:10px;
 	font-size:13px;
-	font: Helvetica;
 
 	.title {
 		font-weight: bold;
@@ -517,9 +516,21 @@ textarea {
 	background-color:$color-green;
 	color:white;
 }
-.issue-container-gray {
-	padding: 30px 0;	
+.comment-container {
+	padding: 30px;
+  margin: 30px 0;
+	background-color: #dedede;
+	color: black;
+  overflow: auto;
+}
+.update-container {
+	padding: 15px 30px 15px 30px ;
+	background-color: #EEF2EA;
 	color:#555555;
+
+	a {
+		color: black;
+	}
 }
 .issue-cell {
 	margin-bottom:10px;
@@ -593,7 +604,7 @@ textarea {
 	/*font-family: 'Conv_DINPro-Regular';*/
 	font-family: 'Arial';
 	font-size:15px; 
-	margin: 15px 0px 15px 30px;
+	margin: 15px 0px 0px 30px;
 	font-weight: bold;
 }
 .breadcrumb-container span {
@@ -741,6 +752,9 @@ a.account  {
 /* COMMENTS CSS */
 
 .comments-title {
+	padding-bottom: 15px;
+	border-bottom: 1px solid #ccc;
+	margin-bottom: 0;
 	font-size: 18px;
 	font-weight: bold;
 	margin-top: 20px;
@@ -1021,31 +1035,6 @@ a.account  {
  	text-align:center;
 }
 
-.issue-header-menu {
-	list-style:none;	
-	margin:0 3px 3px 25px;
-}
-.issue-header-menu li {
-	display:inline-block;
-	border-bottom:4px solid #f9f9f9;
-	margin:0 15px;
-}
-
-.header-menu-active {
-	border-bottom:4px solid #9ecc3b !important;
-}
-.issue-header-count {
-	display:inline-block; 
-	background-color:gray; 
-	color:white;
-	border-radius:4px;
-	padding: 0 2px;
-}
-
-.issue-container-green a {
-	color:white;
-}
-
 .issue-update-container {
 	height: 175px;
 	padding: 15px 15px 0px 15px;
@@ -1107,4 +1096,63 @@ a.account  {
 
 .bottom-spacer {
 	height: 80px;
+}
+
+.update-text {
+	margin: 0 0 15px 0;
+}
+
+
+.custom-combobox {
+	height: 28px;
+	position: relative;
+	display: inline-block;
+}
+.custom-combobox-toggle {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	margin-left: -1px;
+	padding: 0;
+	height:24px;
+	/* support: IE7 */
+	*height: 1.7em;
+	*top: 0.1em;
+}
+.custom-combobox-input {
+	margin: 0;
+	padding: 0.3em;
+	width:185px !important;
+	background: #FFFFFF;
+	border: 1px solid #9ecc3b;
+	font-size:13px !important;
+	border-radius: 0px;
+}
+.custom-combobox-toggle{
+	background: #FFFFFF;
+	border: 1px solid #9ecc3b;
+	border-radius: 0px;
+}
+.issue-badge {
+	position: relative;
+	top: -150px;
+	left: 5px;
+	font-size: 10px;
+}
+
+.issue-badge span {
+	background-color:gray; 
+	padding:1px 4px; 
+	color:white; 
+	border-radius:4px;
+}
+
+.filter-header {
+	display: block !important;
+	background-color: #eee;
+	margin: 0px 10px 0 0px;
+}
+
+#cmb_city_select {
+	font-size:13px;
 }

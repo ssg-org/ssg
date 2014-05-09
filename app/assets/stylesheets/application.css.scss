@@ -9,14 +9,87 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require_self
- *= require common
+ *= require jquery.ui.all
  *= require sprites
  *= require smoothness/jquery-ui
  *= require jquery.selectbox
- *= require jquery-ui.menu
  *= require leaflet-0.7.1
  *= require nivo-slider/themes/default/default
  *= require nivo-slider/nivo-slider
  *= require facebook
  *= require font-awesome
+ *= require common
+ *= require colorbox
 */
+
+.sbOverride, .sbOptionsOverride {
+  width: 238px;
+  margin-top: 2px;
+}
+
+.show-container {
+  padding: 15px 25px 25px 25px;
+}
+.issue-info-display-name {
+  float: left;
+  font-size: 16px;
+  font-weight: bold;
+  display: inline-block;
+  margin-bottom: 5px;
+}
+
+.issue-info-person {
+  margin-left: 15px;
+  margin-top: 5px;
+  display: inline-block;
+}
+
+.issue-info-city {
+  display: inline-block;
+  margin-left: 7px;
+}
+
+.issue-info-heart {
+  background: url('/assets/green-heart.png') no-repeat;
+  display: block;
+  float: left;
+  width: 50px;
+  height: 35px;
+}
+.issue-info-vote-count {
+  color: #A4D43C;
+  font-weight: bold;
+  font-size: 26px;
+}
+.issue-info-count {
+  font-weight: bold;
+  font-size: 14px;
+}
+.issue-info-count-title {
+  font-size: 10px;
+}
+.issue-info-heart-container {
+  float:left; 
+  width:105px; 
+  padding:10px; 
+  margin: 10px 0px 0px 5px;
+  display: block;
+}
+.table-style {
+  border: 1px #CCCCCC dotted;
+  border-collapse: collapse;
+  border-left: none;
+  border-right: none;
+  width: 235px;
+}
+
+.table-style td {
+  padding: 10px;
+}
+
+.table-style th {
+  border: 1px #CCCCCC dotted;
+  border-left: none;
+  padding: 0px;
+  width: 130px;
+}

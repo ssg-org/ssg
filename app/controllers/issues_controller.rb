@@ -1,11 +1,15 @@
 # encoding: UTF-8
 class IssuesController < ApplicationController
+  include Concerns::ImageUploadHandler
   
+  before_filter :redirect_guests_to_login, only: [:new]
   disable_layout_for_ajax
   
   def index
     params[:offset] ||= 0
     @issues = Issue.get_issues(params, 12, params[:offset].to_i)
+    # @cities is defined for combobox issues with mapping
+    @cities = @user.get_cities
     @city_names = collect_city_names() unless @city_names
     @city_names.unshift([t('issues.right_menu.all_counties'), 0])
   end
@@ -24,14 +28,8 @@ class IssuesController < ApplicationController
   end
   
   def create
-    image_count = params[:image_count].to_i
-    image_ids = []
-    (0..image_count-1).each do |i|
-      image_ids << params["image_#{i}"]
-    end
-
     flash[:info] = t('issues.new.success')
-    issue = @user.create_issue(params[:issue][:title], params[:issue][:category_id], params[:issue][:city_id], params[:issue][:description], params[:issue][:lat], params[:issue][:long],image_ids)
+    issue = @user.create_issue(params[:issue][:title], params[:issue][:category_id], params[:issue][:city_id], params[:issue][:description], params[:issue][:lat], params[:issue][:long], image_ids)
     
     url = "#{request.protocol}#{request.host_with_port}#{issue_path(issue.friendly_id)}"
 
@@ -44,6 +42,14 @@ class IssuesController < ApplicationController
     redirect_to issues_path()
   end
   
+  def attach_images
+    image_id = params["image_0"]
+
+    Image.update_all({ :issue_id => params[:id] }, { :id => image_id })
+
+    redirect_to issue_url(params[:id])
+  end
+
   def show
     ActiveRecord::Base.transaction do
       @issue = Issue.find(params[:id])
@@ -51,7 +57,7 @@ class IssuesController < ApplicationController
       # TODO Refactor this
       @issue.mark_as_viewed(cookies[:unique])
 
-      @already_voted = !(@issue.votes.where(:user_id => @user.id).first.nil?)
+      @already_voted = (@user.id == @issue.user_id ) || !@issue.votes.where(:user_id => @user.id).empty?
     end
   end
 
@@ -87,5 +93,14 @@ class IssuesController < ApplicationController
   def follow
     @user.follow(params[:id])
     redirect_to issues_path()
+  end
+
+  private
+
+  def redirect_guests_to_login
+    if @user.guest?
+      flash[:error] = t('issues.new.login')
+      redirect_to login_users_path(:create_issue => true)
+    end
   end
 end

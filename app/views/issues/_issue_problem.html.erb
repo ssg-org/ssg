@@ -15,7 +15,7 @@
   </div>
   <br />
   <div  class="issue-cell">
-    <% @issue.images.each do |img| %>
+    <% @issue.issue_images.each do |img| %>
       <%= image_tag img.image.issue_full, :style=> 'margin-bottom:20px;'%><br/>
     <% end %>
   </div>
@@ -28,18 +28,4 @@
     <a href="<%=faq_path%>#question_16" style="color:white; text-decoration:underline"/><%=t('issues.new.city_warn3')%></a>
   </i>  
   <% end %>
-</div>
-
-<div>
-  <br>
-  <span class="issue-share-title"><%= t('issues.show.share') %></span> <br/>
-  <% url = issue_url(@issue) %>
-
-  <a href="#" onclick="fb_share('ULICA.BA', '<%= j @issue.title %>', '<%= j @issue.description %>', '<%= j url %>', '<%= "#{request.protocol}#{request.host_with_port}#{@issue.image_url}" %>')">
-    <%=image_tag 'fbshare2x.png', :border => '0' %>
-  </a>
-
-  <a href='<%= @issue.twiter_share_link(url) %>' onclick="window.open(this.href, 'mywin','left=20,top=20,width=500,height=300,toolbar=1,resizable=0'); return false;" data-via="ULICA.BA">
-    <%=image_tag 'twshare2x.png' %>
-  </a>  
 </div>
