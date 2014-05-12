@@ -7,10 +7,10 @@ class User < TranslatedBase
   ROLE_USER             = 2
   ROLE_CITY_ADMIN       = 3
   ROLE_SSG_ADMIN        = 4
-
-  DUMMY_TWITTER_EMAIL = 'dummy@twitter.com'
   
   GUEST_USER = User.new(:role => ROLE_GUEST, :first_name => 'Guest', :locale => I18n.default_locale)
+
+  DEF_LAT, DEF_LON, DEF_ZOOM_LVL, CITY_ZOOM = 43.855078, 18.395748, 10, 13
 
   LOCALES = [:bs, :en]
 
@@ -20,8 +20,6 @@ class User < TranslatedBase
 
   belongs_to  :city
   belongs_to  :image
-
-  DEF_LAT, DEF_LON, DEF_ZOOM_LVL, CITY_ZOOM = 43.855078, 18.395748, 10, 13
 
   default_scope where(:deleted => false)
   
@@ -290,17 +288,20 @@ class User < TranslatedBase
   end
 
   def notify_issue_updated(issue)
-    # Send email notifications to issue creator
-    UserMailer.notify_issue_updated(issue.user, self, issue).deliver
 
-    # Send emails to all active city admins
-    issue.city.admin_users.each do |city_admin|
-      UserMailer.notify_issue_updated(city_admin, self, issue).deliver unless city_admin == issue.user
-    end
+    if UserMailer.send_emails?
+      # Send email notifications to issue creator
+      UserMailer.notify_issue_updated(issue.user, self, issue).deliver
 
-    # Send emails to all system admins
-    User.ssg_admins.each do |ssg_admin|
-      UserMailer.notify_issue_updated(ssg_admin, self, issue).deliver unless ssg_admin == issue.user            
+      # Send emails to all active city admins
+      issue.city.admin_users.each do |city_admin|
+        UserMailer.notify_issue_updated(city_admin, self, issue).deliver unless city_admin == issue.user
+      end
+
+      # Send emails to all system admins
+      User.ssg_admins.each do |ssg_admin|
+        UserMailer.notify_issue_updated(ssg_admin, self, issue).deliver unless ssg_admin == issue.user            
+      end
     end
   end
 
@@ -361,17 +362,15 @@ class User < TranslatedBase
 
     user = User.find_by_email(email)
 
-    # New user
+    # Non-existing user?
     if user.nil?
-      user = User.new(:active => false)
+      user = User.new(:active => false, :uuid => UUIDTools::UUID.random_create.to_s)
     end
 
     # Inactive user - send email again
     if (user.active == false)
       user.email = email
       user.password_hash = Digest::SHA256.hexdigest(pwd)
-      user.uuid = UUIDTools::UUID.random_create.to_s
-      user.active = false
       user.role = ROLE_USER
       user.first_name = first_name
       user.last_name = last_name
@@ -388,7 +387,7 @@ class User < TranslatedBase
   def self.verify(id, uuid)
     user = User.where("id = ? and uuid = ?", id, uuid).first
     # Only inactive users can be activated
-    if (!user.nil? && user.active == false)
+    if !user.nil?
       user.active = true;
       user.save
       return user

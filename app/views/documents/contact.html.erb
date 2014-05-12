@@ -15,13 +15,15 @@
 			<%= text_field_tag :name, nil, :placeholder => t('documents.contact.name') %><br/>
 			<%= text_field_tag :email, nil, :placeholder => t('documents.contact.email') %><br/>
 			<br />
-			<%= ssg_button t('documents.contact.send_button'), {:onclick => "$('\#contact_form').submit();"}%>
+			<%= ssg_button t('documents.contact.send_button'), {:onclick => "submitForm('\#contact_form');"}%>
 		<%end%>
 	</div>
 </div>
 
 <script type="text/javascript">
-		$('#contact_form').validate({
+		$('#contact_form')
+		.submit(showLoader)
+		.validate({
 			ignore: null,
 			rules : {
 				question:  {
@@ -54,5 +56,4 @@
 				}
 			}
 	});
-
 </script>

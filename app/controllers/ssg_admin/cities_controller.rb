@@ -1,6 +1,8 @@
 # encoding: UTF-8
 class SsgAdmin::CitiesController < SsgAdminController
 
+  #TODO: Implement i18n
+
   before_filter :check_ssg_admin
 
   def index
@@ -14,20 +16,20 @@ class SsgAdmin::CitiesController < SsgAdminController
 
     num_of_users = city.users.size
     unless num_of_users == 0
-      flash[:error] = "Grad ima '#{num_of_users}' aktivnih korisnika. Molimo obišite korisnike prije brisanja grada!"
+      flash[:alert] = "Grad ima '#{num_of_users}' aktivnih korisnika. Molimo obišite korisnike prije brisanja grada!"
     else
       city.delete!
-      flash[:info] = "Uspješno ste obrisali grad!"
+      flash[:notice] = "Uspješno ste obrisali grad!"
     end
+
     redirect_to ssg_admin_cities_path()
   end
-
 
   #
   def create_or_edit
     is_created = City.create_or_edit(params)
 
-    flash[:info] = "Uspješno ste #{is_created ? 'kreirali' : 'ažurirali'} grad '#{params[:city_name].capitalize}'!"
+    flash[:notice] = "Uspješno ste #{is_created ? 'kreirali' : 'ažurirali'} grad '#{params[:city_name].capitalize}'!"
     redirect_to ssg_admin_cities_path()
   end
 

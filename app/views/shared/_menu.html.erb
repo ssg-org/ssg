@@ -95,7 +95,7 @@
 						<%= link_to user_path(@user.id), :title=>t('shared.menu.profile') do %>
 							<div style="display:inline-block;">
 								<span><%= @user.full_name.upcase %></span><br/>								
-								<span class="font-gray">MOJE PRIJAVE</span>
+								<span class="font-gray"><%= t('shared.menu.my_issues') %></span>
 							</div>
 							<div style="display:inline-block; margin-left:5px;">
 								<%= image_tag @user.avatar, :class => 'profile-user-photo' %>								

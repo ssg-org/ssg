@@ -3,14 +3,12 @@
 	.sbOverride, .sbOptionsOverride {
 		width: 240px;
 	}
-
 	.forgot-pass {
 		font: 'Arial';
 		font-size: 12px;
 		text-decoration: underline;
 		color: #666666;
 	}
-
 	.custom-combobox-input{
 		width:200px !important;
 		background: #FFFFFF;
@@ -21,8 +19,6 @@
 	#email{
 		margin-top:15px;
 	}
-
-
 </style>
 
 <br />
@@ -76,7 +72,7 @@
 			<br />
 			<br />
 			<div style="padding-left: 35px;">
-				<%= ssg_button t('users.login.register_button'), {:onclick => "submitForm('\#register_form');"} %>
+				<%= ssg_button t('users.login.register_button'), {:id => 'register_button', :onclick => "submitForm('\#register_form');"} %>
 			</div>
 			<br />
 		<%end%>
@@ -101,10 +97,6 @@
 	<br />
 	<br />
 	<br />
-<!-- 	<%= form_tag "/auth/twitter", :method => "get",:id => "twitter_form", :html => {:class => ""} do |f| %>
-    <%= link_to image_tag('twitter_login_en.png'), '#', :id => 'twitter-login-link' %>
-	<% end %>
- -->
  </div>
 <br style="clear:both">
 
@@ -119,14 +111,16 @@
 		return false;
 	});
 
-	$('#twitter-login-link').click(function(event) {
-		document.forms['twitter_form'].submit();
-		return false;
-	});
-
 	function selectCity(selectedItem) {
 		$("#cmb_city_select").selectedItem = selectedItem;
 	}
+	// Add loaders
+	$('#login_form, #register_form').submit(function(e) {
+		if($(this).valid()) {
+			showLoader();
+		}
+	});
+
 	// Validation
 	$('#login_form').validate({
 		rules: {

@@ -1,18 +1,23 @@
 <div class="update-container">
-  <div style="margin-bottom:5px;">
-    <div style="color:#9ecc3b !important; font-size:14px; font-weight:bold;">
-      <%= t('issues.show.update.municipality_update') %>
-    </div>
-    <span style="color:#9ecc3b !important; font-size:28px; font-weight:bold;">
+  <%= link_to image_tag(update.issue.city.image.image.logo_small, :style => 'float: left; width: 50px;'), city_path(update.issue.city) %>
+
+  <div style="float: left; width: 580px; margin-left: 10px;">
+<!--     <div style="color:#9ecc3b !important; font-size:14px; font-weight:bold;"><%= t('issues.show.update.municipality_update') %>
+    </div> --> 
+    <div style="float:left; color:#9ecc3b !important; font-size:24px; width:500px; font-weight:normal;">
       <%=update.subject%>
-    </span>
-    <br/>
-    <span style="font-size:10px; font-style:italic;"><%=update.updated_at.strftime("%d %b. %Y")%> [<%=link_to update.user.full_name, user_path(update.user.id)%>]</span>
+    </div>
+    <div style="float: right; padding-top: 10px; font-size:10px; font-style:italic; width:80px; text-align: right;">
+      <%=update.updated_at.strftime("%d %b. %Y")%>
+    </div> 
+    
+    <div class="update-text" style="clear:both;">
+      <%= raw update.text %>
+    </div>
+
+    <% update.images.each do |img| %>
+      <%= image_tag img.image.issue_full, :style=> 'margin-bottom:20px;'%><br/>
+    <% end %>
   </div>
-  <div class="update-text">
-    <%= raw update.text %>
-  </div>
-  <% update.images.each do |img| %>
-    <%= image_tag img.image.issue_full, :style=> 'margin-bottom:20px;'%><br/>
-  <% end %>
+  <div style="clear: both;"></div>
 </div>

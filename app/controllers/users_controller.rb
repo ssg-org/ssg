@@ -21,7 +21,7 @@ class UsersController < ApplicationController
   end
 
   def auth_error
-    flash[:error] = "Not able to login to via social network!"
+    flash[:alert] = "Not able to login to via social network!"
     @redirect_uri = issues_path()
   end
 
@@ -30,8 +30,7 @@ class UsersController < ApplicationController
     # if password there check password
     if !params[:password0].empty? || !(params[:password1].empty? && params[:password2].empty?)
       unless @user.is_good_password?(params[:password0])
-        flash[:error] = t('users.edit.wrong_pass')
-        return redirect_to edit_user_path(@user.id)
+        return redirect_to edit_user_path(@user.id), :alert => t('users.edit.wrong_pass')
       end
     end
 
@@ -49,8 +48,7 @@ class UsersController < ApplicationController
       Rails.cache.clear
     end
 
-    flash[:info] = t('users.edit.succ_save')
-    redirect_to user_path(@user.id)
+    redirect_to user_path(@user.id), :notice => t('users.edit.succ_save')
   end
 
   #
@@ -58,24 +56,22 @@ class UsersController < ApplicationController
   #
   def signup
     user = User.create_ssg_user(params[:email], params[:password1], params[:city_id], params[:first_name], params[:last_name])
-    puts "User #{user.inspect}"
 
     if user.nil?
-      flash[:error] = t('users.msgs.exists')
-      redirect_to login_users_path
+      redirect_to login_users_path, :alert => t('users.msgs.exists')
     else
       if user.save
         UserMailer.verify(user, "#{request.protocol}#{request.host_with_port}").deliver
-        flash[:info] = t('users.msgs.created')
-        redirect_to issues_path
+
+        redirect_to issues_path, :notice => t('users.msgs.created')
       else
-        flash[:error] = t('users.msgs.error_create')
-        redirect_to login_users_path
+        redirect_to login_users_path, :alert => t('users.msgs.error_create')
       end      
     end
   end
 
   def login
+
     # Already loged user
     return redirect_to issues_path if !@user.guest?
 
@@ -91,11 +87,9 @@ class UsersController < ApplicationController
 
     if (!user.nil?)
       session[:id] = user.id
-      flash[:info] = t('users.msgs.verify_ok')
-      redirect_to(issues_path())
+      redirect_to issues_path(), :notice => t('users.msgs.verify_ok')
     else
-      flash[:error] = t('users.msgs.error_verify')
-      redirect_to(login_users_path())
+      redirect_to login_users_path(), :alert => t('users.msgs.error_verify')
     end
   end
 
@@ -103,8 +97,7 @@ class UsersController < ApplicationController
     forgot_pass = ForgotPassword.where(:token => params[:token]).first
 
     if forgot_pass.nil?
-      flash[:error] = t('users.msgs.error_creds')
-      return redirect_to root_path
+      return redirect_to root_path, :alert => t('users.msgs.error_creds')
     end
 
     user = forgot_pass.user
@@ -113,7 +106,7 @@ class UsersController < ApplicationController
 
     forgot_pass.destroy
 
-    flash[:info] = t('users.msgs.pass_change')
+    flash[:notice] = t('users.msgs.pass_change')
 
     if (user.ssg_admin?)
       redirect_to ssg_admin_login_path()
@@ -128,8 +121,7 @@ class UsersController < ApplicationController
     token = params[:token]
     forgot_pass = ForgotPassword.where(:token => token).first
     if forgot_pass.nil?
-      flash[:error] = t('users.msgs.error_pass_change')
-      return redirect_to root_path()
+      return redirect_to root_path(), :alert => t('users.msgs.error_pass_change')
     end
 
     @token = forgot_pass.token
@@ -153,8 +145,7 @@ class UsersController < ApplicationController
       UserMailer.reset_password(user, forgot_pass.token, "#{request.protocol}#{request.host_with_port}").deliver
     end
 
-    flash[:info] = t('users.msgs.forgot_pass')
-    redirect_to login_users_path()
+    redirect_to login_users_path(), :notice => t('users.msgs.forgot_pass')
   end
 
   def redirect_uri()
@@ -177,10 +168,10 @@ class UsersController < ApplicationController
       session[:id] = user.id
       session[:locale] = user.locale
       session[:script] = user.script
+
       redirect_to session[:referer_url] ? session.delete(:referer_url) : issues_path()
     else
-      flash[:error] = t('users.msgs.invalid_login')
-      redirect_to login_users_path()
+      redirect_to login_users_path(), :alert => t('users.msgs.invalid_login')
     end
   end
 
@@ -190,10 +181,10 @@ class UsersController < ApplicationController
       session[:id] = user.id
       session[:locale] = user.locale
       session[:script] = user.script
+
       redirect_to ssg_admin_path()
     else
-      flash[:error] = t('users.msgs.invalid_login')
-      redirect_to(ssg_admin_login_path())
+      redirect_to ssg_admin_login_path(), :alert => t('users.msgs.invalid_login')
     end
   end
 
@@ -205,8 +196,7 @@ def admin_login
       session[:script] = user.script
       redirect_to admin_issues_path()
     else
-      flash[:error] = t('users.msgs.invalid_login')
-      redirect_to(admin_login_path())
+      redirect_to admin_login_path(), :alert => t('users.msgs.invalid_login')
     end
   end
 
@@ -242,6 +232,5 @@ def admin_login
     session[:script] = user.script
 
     @redirect_uri = issues_path()
-  end
-  
+  end  
 end

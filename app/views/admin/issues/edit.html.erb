@@ -2,10 +2,10 @@
   <legend>Ažuriraj problem</legend>
 
   <label>Promjeni kategoriju</label>
-  <%= select_tag :category_id, options_from_collection_for_select(@user.get_categories, 'id', 'name'), :class => 'input-xlarge'%>
+  <%= select_tag :category_id, options_from_collection_for_select(@user.get_categories, 'id', 'name', @issue.category_id), :class => 'input-xlarge'%>
 
   <label>Promjeni Status</label>
-  <%= select_tag :status, options_from_collection_for_select(Issue.all_statuses, 'id', 'name'), :class => 'input-xlarge'%>
+  <%= select_tag :status, options_from_collection_for_select(Issue.all_statuses, 'id', 'name', @issue.status), :class => 'input-xlarge'%>
 
   <label>Razlog za ažuriranje</label>
   <%= text_field_tag :subject, nil, :class => 'input-xlarge', :required => true  %>

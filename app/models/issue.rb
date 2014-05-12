@@ -236,6 +236,6 @@ class Issue < TranslatedBase
   end
 
   def feed_items
-    (comments + updates).sort { |a, b| b.created_at <=> a.created_at }
+    (comments + updates).sort { |a, b| a.created_at <=> b.created_at }
   end
 end

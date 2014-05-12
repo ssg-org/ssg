@@ -124,7 +124,7 @@ textarea {
 }
 
 .header-menu a {
-	@extend .font-dark-gray; 
+	color: $color-dark-gray; 
 }
 
 .what-are-we {
@@ -366,6 +366,7 @@ textarea {
 		color: black;
 		display: inline-block;
 		margin-bottom: 5px;
+		padding:5px 0 5px 5px;
 	}
 }
 .filter-wide {
@@ -472,7 +473,7 @@ textarea {
 /* BUTTON */
 
 .btn_green {
-	font-family: 'Conv_DINPro-Bold';
+	font-family: $font-family;
 	height:36px;
 	line-height:36px;
 	padding:0 30px 0 30px;
@@ -487,9 +488,12 @@ textarea {
 	}
 }
 
+.btn_medium {
+	width: 178px;
+}
+
 .btn_green_v2 {
 	@extend .btn_green;
-	width: 178px;
 	background: url('/assets/btn-v2-back.png'); 
 }
 
@@ -517,14 +521,15 @@ textarea {
 	color:white;
 }
 .comment-container {
-	padding: 30px;
-  margin: 30px 0;
-	background-color: #dedede;
+	padding: 15px;
+  margin: 10px 0 0 20px;
+	background-color: #EEF2EA;
 	color: black;
   overflow: auto;
 }
 .update-container {
-	padding: 15px 30px 15px 30px ;
+	padding: 15px;
+  margin: 10px 0;
 	background-color: #EEF2EA;
 	color:#555555;
 
@@ -532,6 +537,7 @@ textarea {
 		color: black;
 	}
 }
+
 .issue-cell {
 	margin-bottom:10px;
 
@@ -559,6 +565,7 @@ textarea {
 }
 
 .login-container {
+	position: relative;
 	float:left;
 	width:268px;
 	padding: 40px 25px 0 25px;
@@ -782,15 +789,14 @@ a.account  {
 	font-size: 12px;
 }
 .comment-text {
-	font-size: 15px;
+	font-size: 12px;
 	display: inline-block;
-	margin-top: 3px;
 	white-space: pre-line;
 }
 
 .comment-text-admin {
 	@extend .comment-text;
-	font-size: 13px;
+	font-size: 12px;
 }
 
 .comment-delete {
@@ -1100,11 +1106,12 @@ a.account  {
 
 .update-text {
 	margin: 0 0 15px 0;
+	display: inline-block;
+	white-space: pre-line;
 }
 
 
 .custom-combobox {
-	height: 28px;
 	position: relative;
 	display: inline-block;
 }
@@ -1113,19 +1120,20 @@ a.account  {
 	top: 0;
 	bottom: 0;
 	margin-left: -1px;
+	height: 27px;
 	padding: 0;
-	height:24px;
 	/* support: IE7 */
-	*height: 1.7em;
-	*top: 0.1em;
+	/* height: 1.7em;
+	top: 0.1em; */
 }
 .custom-combobox-input {
+	font-size: $font-size;
+	font-family: $font-family;
 	margin: 0;
-	padding: 0.3em;
+	height: 25px;
 	width:185px !important;
 	background: #FFFFFF;
 	border: 1px solid #9ecc3b;
-	font-size:13px !important;
 	border-radius: 0px;
 }
 .custom-combobox-toggle{
@@ -1133,6 +1141,43 @@ a.account  {
 	border: 1px solid #9ecc3b;
 	border-radius: 0px;
 }
+
+/* Corner radius */
+.ui-corner-all,
+.ui-corner-top, .ui-corner-left, .ui-corner-tl {
+    -moz-border-radius-topleft: 0px; 
+    -webkit-border-top-left-radius: 0px; 
+    -khtml-border-top-left-radius: 0px; 
+    border-top-left-radius: 0px; 
+}
+
+.ui-corner-all, .ui-corner-top, .ui-corner-right, .ui-corner-tr {
+    -moz-border-radius-topright: 0px; 
+    -webkit-border-top-right-radius: 0px; 
+    -khtml-border-top-right-radius: 0px; 
+     border-top-right-radius: 0px; 
+}
+
+.ui-corner-all, .ui-corner-bottom, .ui-corner-left, .ui-corner-bl {
+    -moz-border-radius-bottomleft: 0px; 
+    -webkit-border-bottom-left-radius: 0px; 
+    -khtml-border-bottom-left-radius: 0px; 
+    border-bottom-left-radius: 0px; 
+}
+
+.ui-corner-all, .ui-corner-bottom, .ui-corner-right, .ui-corner-br {
+    -moz-border-radius-bottomright: 0px; 
+    -webkit-border-bottom-right-radius: 0px; 
+    -khtml-border-bottom-right-radius: 0px; 
+    border-bottom-right-radius: 0px; 
+}
+
+.ui-menu-item a:hover
+{ 
+	background: $color-gray none no-repeat; 
+	border: none;
+}
+
 .issue-badge {
 	position: relative;
 	top: -150px;
@@ -1151,8 +1196,4 @@ a.account  {
 	display: block !important;
 	background-color: #eee;
 	margin: 0px 10px 0 0px;
-}
-
-#cmb_city_select {
-	font-size:13px;
 }

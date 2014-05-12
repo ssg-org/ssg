@@ -1,6 +1,6 @@
 <div class="comment-entry comment-container">
   <%= image_tag comment.user.avatar, :style => 'width: 50px; float:left;' %>
-  <div style="float:left; margin-left:10px; width:500px;">
+  <div style="float:left; margin-left:10px; width:550px;">
     <div style="margin-top: 3px;">
       <span class="comment-name"><%= comment.user.full_name %>  </span>&nbsp;&nbsp;
       <span class="comment-time"> &nbsp;&nbsp;<%=distance_of_time_in_words_to_now(comment.created_at)%></span>

@@ -35,22 +35,30 @@
      }(document, 'script', 'facebook-jssdk'));
   </script>
 
+  <div id="loading">
+      <div id="loadingcontent">
+          <p id="loadingspinner">
+              <%= t('layouts.application.loading')%>...
+          </p>
+      </div>
+  </div>
+
   <div id="form-error-div" class="error-div" onclick="hideThisDiv(this);">
     <%= t('shared.menu.error') %>
     <ul>
     </ul>
   </div>
-  <% if flash[:info] %>
+  <% if flash[:notice] %>
     <div id="flash-info-div" class="info-div dummy-hide-div" onclick="hideThisDiv(this);">
-      <%= flash[:info] %>
+      <%= flash[:notice] %>
     </div>
   <% end %>
-  <% if flash[:error] %>
+  <% if flash[:alert] %>
     <div id="form-error-div" class="error-flash-div dummy-hide-div" onclick="hideThisDiv(this);">
-      <%= flash[:error] %>
+      <%= flash[:alert] %>
     </div>
   <% end %>
-  <% if flash[:info] || flash[:error] %>
+  <% if flash[:notice] || flash[:alert] %>
   <script>
     $(function() {
       // setTimeout() function will be fired after page is loaded

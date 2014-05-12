@@ -28,7 +28,6 @@ class IssuesController < ApplicationController
   end
   
   def create
-    flash[:info] = t('issues.new.success')
     issue = @user.create_issue(params[:issue][:title], params[:issue][:category_id], params[:issue][:city_id], params[:issue][:description], params[:issue][:lat], params[:issue][:long], image_ids)
     
     url = "#{request.protocol}#{request.host_with_port}#{issue_path(issue.friendly_id)}"
@@ -39,7 +38,7 @@ class IssuesController < ApplicationController
       ActiveRecord::Base.connection.close
     end
 
-    redirect_to issues_path()
+    redirect_to issues_path(), :notice => t('issues.new.success')
   end
   
   def attach_images
@@ -67,9 +66,10 @@ class IssuesController < ApplicationController
     if @user.id == issue.user_id || @user.ssg_admin?
       issue.status = Issue::DELETED
       issue.save!
-      flash[:info] = t('issues.delete.success')
+
+      flash[:notice] = t('issues.delete.success')
     else
-      flash[:error] = t('issues.delete.error')
+      flash[:alert] = t('issues.delete.error')
     end
 
     redirect_to issues_url()
@@ -99,8 +99,7 @@ class IssuesController < ApplicationController
 
   def redirect_guests_to_login
     if @user.guest?
-      flash[:error] = t('issues.new.login')
-      redirect_to login_users_path(:create_issue => true)
+      redirect_to login_users_path(:create_issue => true), :alert => t('issues.new.login')
     end
   end
 end

@@ -4,8 +4,19 @@ class UserMailer < ActionMailer::Base
 
   default :from => Config::Configuration.get(:ssg, :email_address), :to => Config::Configuration.get(:ssg, :notify_address)
 
-  def verify(user, url)
+  def self.send_emails?
+    Config::Configuration.get(:ssg, :send_emails)
+  end
 
+  def notify_issue_updated(user, updated_by_user, issue)
+    @user = user
+    @updated_by_user = updated_by_user
+    @issue = issue
+
+    using_locale(user.locale) { mail(:to => @user.email, :subject => t('users.notify.issue_updated')) }
+  end
+
+  def verify(user, url)
   	@user = user
   	@url = url + verify_users_path() + "?id=#{@user.id}&uuid=#{@user.uuid}"
 
@@ -38,13 +49,6 @@ class UserMailer < ActionMailer::Base
     using_locale(user.locale) { mail(:to => @user.email, :subject => "Kreiran Vam je administratorski nalog na ULICA.BA") }
   end
 
-  def notify_issue_updated(user, updated_by_user, issue)
-    @user = user
-    @updated_by_user = updated_by_user
-    @issue = issue
-
-    using_locale(user.locale) { mail(:to => @user.email, :subject => t('users.notify.issue_updated')) }
-  end
 
   def send_contact_message(subject, message, name, email)
     @subject = subject

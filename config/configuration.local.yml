@@ -1,7 +1,8 @@
 development:
   ssg:
+    send_emails:            True
     email_address:          "no-reply@ulica.ba"
-    notify_address:         "notifications@sredisvojgrad.com"
+    notify_address:         "ssg.ulica.ba@gmail.com"
     auth_enabled:           False
     auth_username:          "username"
     auth_password:          "pass"
@@ -16,8 +17,9 @@ development:
     consumer_key:
     consumer_secret:        
   aws:
-    access_key:             AKIAIDBQTR4BEK6W5XTQ
-    access_secret:          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
+    access_key:             AKIAJN7NKZ7FGBKAQUWA
+    access_secret:          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
+    ses_region:             "email.eu-west-1.amazonaws.com"
   newrelic:
       app_name:             "ssg-dev"
       key:                  9c08fdc3340241d7b2261079b490db0640780e3a
@@ -25,6 +27,7 @@ development:
     unique_view_epsilon:    3600
 production:
   ssg:
+    send_emails:            True
     email_address:          "no-reply@ulica.ba"
     notify_address:         "notifications@sredisvojgrad.com"
     auth_enabled:           False

@@ -2,6 +2,9 @@
 # See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 en:
+    layouts:
+        application:
+            loading:    'Loading'
     shared:
         prompt_city: 'Please enter Municipality'
         menu:
@@ -27,7 +30,8 @@ en:
             logout:     'LOGOUT'
             admin_login: 'ADMIN LOGIN'
             error:      'Please fill in all requested fields and try again.'
-            contrib:     'CONTRIBUTORS'            
+            contrib:     'CONTRIBUTORS'
+            my_issues:  'MY ISSUES'
         footer:
             tos:        'Terms of use and privacy policy'
             help:       'Help & FAQ'
@@ -164,6 +168,8 @@ en:
             reported_by:    'by'
             share:          'Share issue'
             info:           'Issue'
+            update:
+                municipality_update: 'Municipality response'
             updates:        'Updates'
             status:         'Status'
             created:        'Created'
@@ -171,7 +177,7 @@ en:
                 zero:       ''
                 one:        'update'
                 other:      'updates'
-
+            add_image:      'Add image'                
         delete:
             success:         'Issue successfully deleted!'
             error:           'Error deleting issue!'

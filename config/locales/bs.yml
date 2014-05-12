@@ -2,6 +2,9 @@
 # See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 bs:
+    layouts:
+        application:
+            loading:    'Učitavam'
     shared:
         prompt_city: 'Unesite željenu opštinu!'
         menu:
@@ -28,6 +31,7 @@ bs:
             admin_login: 'ADMIN PRIJAVA'
             error:      'Molimo Vas popunite sva obavezna polja i pokušate ponovo.'
             contrib:     'SARADNICI'
+            my_issues:  'MOJE PRIJAVE'
         footer:
             tos:        'Uslovi korištenja i privatnost'
             help:       'Pomoć i FAQ'
@@ -173,6 +177,7 @@ bs:
                 zero:       ''
                 one:        'odgovor'
                 other:      'odgovora'
+            add_image:      'Dodaj sliku'
         delete:
             success:         'Uspješno izbrisan problem!'
             error:           'Problem prilikom brisanja problema!'

@@ -145,6 +145,7 @@ ActiveRecord::Schema.define(:version => 20140329151853) do
     t.string   "access_token"
   end
 
+  add_index "users", ["access_token"], :name => "index_users_on_access_token"
   add_index "users", ["email", "fb_id", "fb_token"], :name => "index_users_on_email_and_fb_id_and_fb_token"
 
   create_table "votes", :force => true do |t|

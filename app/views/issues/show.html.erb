@@ -143,7 +143,7 @@
 				<% button_text = @user.ssg_admin? ? '[ Admin Delete! ]' : t('issues.show.delete') %>
 
 				<%= link_to issue_path(@issue), :class => "", :method => :delete, :title => 'Obriši!', :data => {:confirm => t('issues.show.delete_confirm')} do %>
-					<%= ssg_button_v2( button_text, {}, {}, 'btn-red', true) %>
+					<%= ssg_button_v2( button_text, {}, {}, 'btn_medium btn-red', true) %>
 				<% end %>	
 			</div>
 		<% end %>
@@ -151,8 +151,8 @@
 	<% if !@user.guest? %>
 		<% if @issue.user_id == @user.id%>
 			<div style="margin-bottom:10px;">
-				<%= form_tag attach_images_issue_path(@issue.id), "id" => "newImage" do %>
-					<input type="button" class="btn_green" style="width: 100%;" value="Dodaj Sliku" onclick ="javascript:document.getElementById('fileupload_field').click();" />
+				<%= form_tag attach_images_issue_path(@issue.id), :id => "newImage" do %>
+					<%= ssg_button t('issues.show.add_image'), {:id => 'newImage', :onclick => "openFileDialog();"}, {}, 'btn_medium' %>
 					<input id = "fileupload_field" type="file" style='visibility: hidden;' name="image" />
 					<span id="gallery_inputs">
 						<input type="hidden" id="image_count" name="image_count" value="0" />
@@ -224,6 +224,8 @@ function vote() {
 
 function change_status(el) {
 	$.ajax({
+		beforeSend: showLoader,
+		complete: hideLoader,
 		url : '<%=change_status_issue_path(@issue.id)%>' + '?status=' + $(el).val(),
 		type : 'post',
 		success : function() {
@@ -240,6 +242,10 @@ function unvote() {
 			window.location = '<%=issue_path(params[:id])%>';
 		}
 	});
+}
+
+function openFileDialog() {
+	$('#fileupload_field').click();
 }
 
 // Image upload

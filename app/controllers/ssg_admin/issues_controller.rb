@@ -2,11 +2,7 @@
 class SsgAdmin::IssuesController < SsgAdminController
 
   def index
-    # if @user.ssg_admin?
-      @issues = Issue.sort_by(params[:sort]).paginate(:page => params[:page], :per_page => 20)
-    # elsif @user.
-    #   @issues = Issue.where(:city_id => @user.city_id).order('vote_count DESC').all
-    # end
+    @issues = Issue.sort_by(params[:sort]).paginate(:page => params[:page], :per_page => 20)
   end
 
   def edit
@@ -16,21 +12,14 @@ class SsgAdmin::IssuesController < SsgAdminController
 
   def update
     issue = Issue.find(params[:id])
-    old_status   = issue.status
 
     # Update model and save
     issue.update_attributes(params[:issue], :without_protection => true)
 
-    # add admin comment
-    if old_status != issue.status
-      @user.comment_on_issue(issue.id, 'status comment', true, old_status, issue.status)
-    end
-
     # Send  email notifications
     @user.notify_issue_updated(issue)
 
-    flash[:info] = "Uspješno ste ažurirali proble '#{issue.title}'"
-    redirect_to ssg_admin_issues_path()
+    redirect_to ssg_admin_issues_path(), :notice => "Uspješno ste ažurirali problem '#{issue.title}'"
   end
 
   def destroy

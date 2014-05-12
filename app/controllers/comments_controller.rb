@@ -14,9 +14,9 @@ class CommentsController < ApplicationController
 
     if @user.ssg_admin? || comment.is_owned?(@user)
       comment.destroy
-      flash[:info] = t('shared.comments.deleted')
+      flash[:notice] = t('shared.comments.deleted')
     else
-      flash[:error] = ApplicationController::ACCESS_DENIED
+      flash[:alert] = ApplicationController::ACCESS_DENIED
     end
 
     return redirect_to request.referer

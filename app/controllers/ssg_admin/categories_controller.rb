@@ -15,14 +15,14 @@ class SsgAdmin::CategoriesController < SsgAdminController
 
     unless category.children.size == 0
       children_names = category.children.collect { |c| c.name }
-      flash[:error] = "Kategorija ima pod kategorije '#{children_names.join(',')}', ne možemo obrisati kategoriju."
+      flash[:alert] = "Kategorija ima pod kategorije '#{children_names.join(',')}', ne možemo obrisati kategoriju."
     else
       number_of_issues = category.issues.size
       unless number_of_issues == 0
-        flash[:error] = "Kategorija ima '#{number_of_issues}' problema vezanih za sebe, ne možemo obrisati kategoriju."
+        flash[:alert] = "Kategorija ima '#{number_of_issues}' problema vezanih za sebe, ne možemo obrisati kategoriju."
       else
         category.delete!
-        flash[:info] = "Uspješno ste obrisali kategoriju!"
+        flash[:notice] = "Uspješno ste obrisali kategoriju!"
       end
     end
 
@@ -34,7 +34,7 @@ class SsgAdmin::CategoriesController < SsgAdminController
   def create_or_edit
     is_created = Category.create_or_edit(params)
 
-    flash[:info] = "Uspješno ste #{is_created ? 'kreirali' : 'ažurirali'} kategoriju '#{params[:category_name].capitalize}'!"
+    flash[:notice] = "Uspješno ste #{is_created ? 'kreirali' : 'ažurirali'} kategoriju '#{params[:category_name].capitalize}'!"
     redirect_to ssg_admin_categories_path()
   end
 end

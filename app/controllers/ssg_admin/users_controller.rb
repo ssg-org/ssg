@@ -1,6 +1,8 @@
 # encoding: UTF-8
 class SsgAdmin::UsersController < SsgAdminController
 
+  #TODO: Implement i18n
+
   before_filter :check_ssg_admin
   
   def index
@@ -11,10 +13,10 @@ class SsgAdmin::UsersController < SsgAdminController
     user = User.find(params[:id])
 
     if user.issues.size > 0
-      flash[:error] = "Korisnik ima kreirane probleme, prvo pobrišite probleme."
+      flash[:alert] = "Korisnik ima kreirane probleme, prvo pobrišite probleme."
     else
       user.delete!
-      flash[:info] = "Uspješno ste obrisali korisnika!"
+      flash[:notice] = "Uspješno ste obrisali korisnika!"
     end
 
     redirect_to ssg_admin_users_path()
@@ -22,8 +24,7 @@ class SsgAdmin::UsersController < SsgAdminController
 
   def update
     @user.ssg_admin_update(params)
-    flash[:info] = "Uspješno ste ažurirali korisnika!"
-    redirect_to ssg_admin_users_path
+    redirect_to ssg_admin_users_path, :notice => "Uspješno ste ažurirali korisnika!"
   end
 
   def new
@@ -36,7 +37,6 @@ class SsgAdmin::UsersController < SsgAdminController
 
   def create
     @user.create_ssg_admin_user(params[:email], params[:city_id], params[:first_name], params[:last_name], params[:role], "#{request.protocol}#{request.host_with_port}")
-    flash[:info] = "Uspješno ste dodali novog korisnika!"
-    redirect_to ssg_admin_users_path
+    redirect_to ssg_admin_users_path, :notice => "Uspješno ste dodali novog korisnika!"
   end
 end

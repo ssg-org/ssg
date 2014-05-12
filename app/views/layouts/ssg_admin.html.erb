@@ -49,14 +49,14 @@
       <!-- FLASH MESSAGES -->
       <div class="row-fluid">
         <div class="container-fluid">
-          <% if flash[:info] %>
+          <% if flash[:notice] %>
             <div class="alert alert-info span12">
-                <a class="close" data-dismiss="alert" href="#">×</a> <%= flash[:info] %>
+                <a class="close" data-dismiss="alert" href="#">×</a> <%= flash[:notice] %>
             </div>
           <% end %>    
-          <% if flash[:error] %>
+          <% if flash[:alert] %>
             <div class="alert alert-error span12">
-                <a class="close" data-dismiss="alert" href="#">×</a> <%= flash[:error] %>
+                <a class="close" data-dismiss="alert" href="#">×</a> <%= flash[:alert] %>
             </div>
           <% end %>
         </div>

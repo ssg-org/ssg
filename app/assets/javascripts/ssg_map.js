@@ -7,12 +7,12 @@ var methods = {
 
       // first time initialize
 		var map = new L.Map($this.attr('id'), data.opts.map_options);
-
-		var cloudmade = new L.TileLayer('http://{s}.tile.cloudmade.com/10a3c88ad1f14f18a611c6ebc2300e35/997/256/{z}/{x}/{y}.png', {
-		    attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://cloudmade.com">CloudMade</a>',
+		var osmLayer = new L.TileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+		    attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>',
 		    maxZoom: 18
 		});
-		map.addLayer(cloudmade);
+
+		map.addLayer(osmLayer);
 		map.setView(new L.LatLng(data.opts.lat, data.opts.lng), data.opts.zoom);	
 
 		// Commented this for load on drag/zoom

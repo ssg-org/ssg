@@ -15,6 +15,7 @@
 //= require jquery.ui.all
 //= require jquery.selectbox-0.2
 //= require ssg_map
+//= require ssg_autocomplete_combo
 //= require fb
 //= require scrollpagination
 //= require leaflet-0.7.1
@@ -26,5 +27,5 @@
 //= require nicEdit
 //= require common
 //= require jquery.colorbox.min.js
-
-
+//= require spin.min
+//= require jquery.spin
