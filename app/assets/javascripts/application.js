@@ -18,7 +18,7 @@
 //= require ssg_autocomplete_combo
 //= require fb
 //= require scrollpagination
-//= require leaflet-0.7.1
+//= require_tree ./leaflet
 //= require jquery-fileupload/basic
 //= require jquery.validate.min
 //= require jquery.nivo.slider

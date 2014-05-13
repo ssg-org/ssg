@@ -7,12 +7,13 @@ var methods = {
 
       // first time initialize
 		var map = new L.Map($this.attr('id'), data.opts.map_options);
-		var osmLayer = new L.TileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-		    attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>',
-		    maxZoom: 18
-		});
+		var googleRoads = new L.Google('ROADMAP', data.opts.map_options);
+		var googleSatelite = new L.Google('SATELLITE', data.opts.map_options);
 
-		map.addLayer(osmLayer);
+		map.addLayer(googleRoads);
+		
+		map.addControl(new L.Control.Layers( {'Google':googleRoads, 'Google Satellite':googleSatelite}, {}));
+
 		map.setView(new L.LatLng(data.opts.lat, data.opts.lng), data.opts.zoom);	
 
 		// Commented this for load on drag/zoom
