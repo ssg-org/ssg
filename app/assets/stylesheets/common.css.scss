@@ -1129,9 +1129,9 @@ a.account  {
 .custom-combobox-input {
 	font-size: $font-size;
 	font-family: $font-family;
-	margin: 0;
+	text-indent: 5px;
 	height: 25px;
-	width:185px !important;
+	width:200px !important;
 	background: #FFFFFF;
 	border: 1px solid #9ecc3b;
 	border-radius: 0px;
@@ -1140,6 +1140,10 @@ a.account  {
 	background: #FFFFFF;
 	border: 1px solid #9ecc3b;
 	border-radius: 0px;
+}
+.ui-widget {
+	font-size: 13px;
+	font-family: $font-family;	
 }
 
 /* Corner radius */

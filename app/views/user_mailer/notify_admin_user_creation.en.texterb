@@ -7,5 +7,5 @@ Your account data
 
 Email:</b> <%= @user.email %>
 
-Copyright 2013 ULICA.BA by Sredi Svoj Grad CPCD.
+2013-2014 ULICA.BA by Sredi Svoj Grad CPCD.
 This email is generic and you should not reply to it.
