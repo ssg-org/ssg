@@ -115,7 +115,7 @@ class User < TranslatedBase
     if !self.image_id.nil?
       return size == :full ? image.image.logo_full : image.image.logo_small
     elsif fbuser? 
-      return "http://graph.facebook.com/#{fb_id}/picture?type=square"
+      return "https://graph.facebook.com/#{fb_id}/picture?type=square"
     else
       return '/assets/no_avatar.png'
     end

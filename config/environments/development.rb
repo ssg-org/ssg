@@ -26,7 +26,7 @@ Ssg::Application.configure do
   }
 
   # This is requred to create full URL for assets used in email
-  config.action_mailer.asset_host = "http://#{Config::Configuration.get(:ssg, :host)}:#{Config::Configuration.get(:ssg, :port)}"
+  config.action_mailer.asset_host = "#{Config::Configuration.get(:ssg, :host)}:#{Config::Configuration.get(:ssg, :port)}"
 
   # Print deprecation notices to the Rails logger
   config.active_support.deprecation = :log
